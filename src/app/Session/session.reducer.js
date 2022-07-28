@@ -14,7 +14,9 @@ const initialState = {
         loginPending: false,
         registryError: false,
         registryPending: false
-    } // Check
+    }, // Check
+
+    accessToken: null
 }
 
 const sessionReducer = (state = initialState, action) => {
@@ -22,11 +24,14 @@ const sessionReducer = (state = initialState, action) => {
         case LOGIN_REQUEST:
             return { ...state, ui: { ...state.ui, loginError: false, loginPending: true } };
         case LOGIN_RESPONSE:
-            console.log(action.res);
+            const accessToken = action.res.access_token;
 
-            return { ...state, ui: { ...state.ui, loginPending: false }};
+            return { ...state, 
+                ui: { ...state.ui, loginPending: false },
+                accessToken
+            };
         case LOGIN_RESPONSE_ERROR:
-            console.log(action.error);
+            console.log(action.error); // TODO delete
             
             return { ...state, ui: { ...state.ui, loginError: true, loginPending: false } };
         case REGISTER_REQUEST:

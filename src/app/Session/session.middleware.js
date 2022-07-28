@@ -8,21 +8,32 @@ const sessionMiddleware = ({ getState, dispatch }) => next => action => {
         case LOGIN_REQUEST:
             sessionServices.login(action.body)
                 .then(res => {
-                    if (res.status === 201) {
-                        dispatch(sessionActions.loginResponse(res.body));
+                    // if (res.status < 400) {
+                        dispatch(sessionActions.loginResponse(res));
 
                         // Next actions for get data
 
-                    } else {
-                        dispatch(sessionActions.loginResponseError(res));
-                    }
+                    // } else {
+
+                        // }
                 })
                 .catch(err => {
                     dispatch(sessionActions.loginResponseError(err));
                 })
             break;
         case REGISTER_REQUEST:
-            sessionServices.register(action.body)
+            const body {
+                email,
+                name,
+                surname,
+                password,
+                sex,
+                birthDate: {}, // TODO check
+                institutionId
+            };
+
+
+            sessionServices.register(body)
                 .then(res => {
                     if (res.status === 400) { dispatch(sessionActions.registerResponseError(res.errorMessage)); }
                     else if (res.status === 201) {
