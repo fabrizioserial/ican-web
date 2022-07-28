@@ -1,6 +1,6 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import sessionReducer from "../Session/session.reducer";
+import sessionState from "../Session/session.slice";
 
-const rootReducers = { sessionReducer };
+const rootReducers = { sessionState };
 
 export default combineReducers(rootReducers);

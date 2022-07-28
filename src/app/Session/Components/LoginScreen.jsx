@@ -1,27 +1,39 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { loginRequest, logout } from '../session.slice';
 
-import "./Styles/LoginScreenStyle.css";
+function Counter() {
+  const dispatch = useDispatch()
+  const [email, setEmail] = useState("manuelhernandez@sirius.com.ar");
+  const [password, setPassword] = useState("manuel123");
+  const accessToken = useSelector(state => state.sessionState.accessToken)
 
-export default (props) => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  return (
+    <div>
+      <div>
+        <button
+          aria-label="LANZAR LOGIN"
+          onClick={() => dispatch(loginRequest({ email, password }))}
+        >
+          LANZAR LOGIN
+        </button>
 
-    const onSubmit = e => {
-        // e.preventDefault();
-        let userData = { email, password }
-        console.log(props)
-        
-        props.loginRequest(userData);
-    } // Basic Func. TODO
+        <br/>
+        <br/>
 
-    return <main>
-        <strong>Login Screen</strong>
+        <button
+          aria-label="LOGOUT"
+          onClick={() => dispatch(logout())}
+        >
+          LOGOUT
+        </button>
 
-        {/* Test endpoint */}
-        <input onChange={(text) => setEmail(text.target.value)} />
-        <input onChange={(text) => setPassword(text.target.value)} />
-        <button onClick={onSubmit}>env</button>
-        {/*  */}
-        
-    </main>
+        <br/>
+        <br/>
+        Access token: {accessToken}
+      </div>
+    </div>
+  )
 }
+
+export default Counter;
