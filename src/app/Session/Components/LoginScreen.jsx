@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { loginRequest, logout } from '../session.slice';
 
-function Counter() {
+function LoginScreen() {
   const dispatch = useDispatch()
   const [email, setEmail] = useState("manuelhernandez@sirius.com.ar");
   const [password, setPassword] = useState("manuel123");
@@ -36,4 +36,4 @@ function Counter() {
   )
 }
 
-export default Counter;
+export default LoginScreen;
