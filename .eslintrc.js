@@ -20,6 +20,10 @@ module.exports = {
   rules: {
     "no-undef": 0,
     "no-case-declarations": 0,
+    "no-unused-vars": 0,
+    "react/react-in-jsx-scope": 0,
+    "react/prop-types": 0,
+    "prefer-const": 0,
   },
   settings: {
     react: {
