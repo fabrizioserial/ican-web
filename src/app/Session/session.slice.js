@@ -11,8 +11,8 @@ const initialState = {
     accessToken: null
 }
 
-export const counterSlice = createSlice({
-  name: 'counter',
+export const sessionSlice = createSlice({
+  name: 'session',
   initialState,
   reducers: {
     loginRequest: (state) => { state.ui.loginPending = true; },
@@ -26,6 +26,6 @@ export const counterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { loginRequest, loginResponse, loginResponseError, logout } = counterSlice.actions
+export const { loginRequest, loginResponse, loginResponseError, logout } = sessionSlice.actions
 
-export default counterSlice.reducer
+export default sessionSlice.reducer
