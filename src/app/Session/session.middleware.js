@@ -1,10 +1,14 @@
-import {sessionServices} from './session.services';
-import {loginRequest, loginResponse, loginResponseError} from './session.slice';
+import { sessionServices } from "./session.services";
+import {
+  loginRequest,
+  loginResponse,
+  loginResponseError,
+} from "./session.slice";
 
 const sessionMiddleware =
-  ({getState, dispatch}) =>
-  next =>
-  action => {
+  ({ getState, dispatch }) =>
+  (next) =>
+  (action) => {
     next(action);
 
     switch (action.type) {
@@ -16,12 +20,12 @@ const sessionMiddleware =
 
         sessionServices
           .login(body)
-          .then(res => {
+          .then((res) => {
             dispatch(loginResponse(res));
 
             // Next actions for get data
           })
-          .catch(err => dispatch(loginResponseError(err)));
+          .catch((err) => dispatch(loginResponseError(err)));
         break;
       default:
         break;

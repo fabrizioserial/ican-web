@@ -1,4 +1,4 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   ui: {
@@ -12,28 +12,28 @@ const initialState = {
 };
 
 export const counterSlice = createSlice({
-  name: 'counter',
+  name: "counter",
   initialState,
   reducers: {
-    loginRequest: state => {
+    loginRequest: (state) => {
       state.ui.loginPending = true;
     },
-    loginResponse: (state, {payload}) => {
+    loginResponse: (state, { payload }) => {
       state.accessToken = payload.access_token;
       state.ui.loginPending = false;
     },
-    loginResponseError: state => {
+    loginResponseError: (state) => {
       state.ui.loginError = true;
       state.ui.loginPending = false;
     },
-    logout: state => {
+    logout: (state) => {
       state.accessToken = null;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const {loginRequest, loginResponse, loginResponseError, logout} =
+export const { loginRequest, loginResponse, loginResponseError, logout } =
   counterSlice.actions;
 
 export default counterSlice.reducer;
