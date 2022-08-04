@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import OncoButton from "../../Common/Components/OncoButton";
 import OncoText from "../../Common/Components/OncoText";
 import OncoInputForm from "../../Common/Components/OncoInputForm";
 import { LoginImage } from "../../Common/SvgImages";
-import { loginRequest, logout } from "../session.slice";
 import { accentColor } from "../../Common/Colors";
+import { useLoginMutation } from "../session.api";
 
 const LoginWrapper = styled.main`
   display: flex;
@@ -57,16 +57,19 @@ const OncoLoginText = styled(OncoText)`
 
 function LoginScreen() {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("manuelhernandez@sirius.com.ar");
   const [password, setPassword] = useState("manuel123");
   const [showPassword, setShowPassword] = useState(false);
-  const accessToken = useSelector((state) => state.sessionState.accessToken);
+  const accessToken = useSelector((state) => state);
+  const [login, _] = useLoginMutation();
 
   const onSubmit = (e) => {
     e.preventDefault();
-    let data = { email, password };
-    dispatch(loginRequest(data));
+
+    login({ email, password });
   };
+
+  console.log(accessToken);
 
   return (
     <LoginWrapper>
