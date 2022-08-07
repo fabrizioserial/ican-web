@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { accentColor, inactiveColor, primaryColor } from "../Colors";
+import { accentColor, inactiveColor, primaryColor, textColor } from "../Colors";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const OncoStyledButton = styled.button`
   width: 80%;
@@ -23,14 +24,14 @@ const OncoStyledButton = styled.button`
     background-color: ${accentColor};
 
     & > span {
-      color: white;
+      color: ${textColor};
     }
   }
 `;
 
-const OncoButton = ({ onClick, text }) => (
+const OncoButton = ({ onClick, text, pending = false }) => (
   <OncoStyledButton>
-    <span>{text}</span>
+    {pending ? <CircularProgress color={textColor} size="0.95rem" style={{ color: textColor }} /> : <span> {text} </span>}
   </OncoStyledButton>
 );
 

@@ -18,4 +18,5 @@ export const store = configureStore({
   reducer: rootReducers,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sessionApi.middleware),
 });
+
 // export const persistor = persistStore(store);

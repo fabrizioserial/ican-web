@@ -797,3 +797,9 @@ export const LoginImage = () => (
     </defs>
   </svg>
 );
+
+export const HomeSideImage = () => <svg fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M306 0H0V1080H306V0Z" fill="#9357F7" />
+  <path opacity="0.55" d="M0 1063.51V708.487C0 708.487 66.0259 584.615 162.19 660.233C258.354 735.851 304.044 590.149 304.044 590.149V1063.51H0Z" fill="#9B62FA" />
+  <path opacity="0.776" d="M0 1080V948.3C0 948.3 66.0259 821.482 162.19 898.9C258.354 976.318 304.044 827.15 304.044 827.15V1080L0 1080Z" fill="#A270F5" />
+</svg>

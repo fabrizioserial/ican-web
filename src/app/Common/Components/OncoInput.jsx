@@ -11,6 +11,9 @@ const OncoInputWrapper = styled.div`
     flex: 1;
     padding: 12px;
     font-size: 1rem;
+    transition: 0.2s;
+
+    outline: 2px solid ${props => props.outlineColor};
   }
 
   & > input:focus {
@@ -19,8 +22,8 @@ const OncoInputWrapper = styled.div`
   }
 `;
 
-const OncoInput = ({ placeholder, onChangeText, type = "text" }) => (
-  <OncoInputWrapper>
+const OncoInput = ({ placeholder, onChangeText, type = "text", outlineColor = "transparent" }) => (
+  <OncoInputWrapper outlineColor={outlineColor}>
     <input
       type={type}
       placeholder={placeholder}

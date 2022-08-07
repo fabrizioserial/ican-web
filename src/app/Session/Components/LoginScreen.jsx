@@ -6,7 +6,10 @@ import OncoText from "../../Common/Components/OncoText";
 import OncoInputForm from "../../Common/Components/OncoInputForm";
 import { LoginImage } from "../../Common/SvgImages";
 import { accentColor } from "../../Common/Colors";
-import { useLoginMutation } from "../session.api";
+import { setLoginPending } from "../auth.slice";
+import sessionWrapper from "../session.api.wrapper";
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 
 const LoginWrapper = styled.main`
   display: flex;
@@ -60,16 +63,18 @@ function LoginScreen() {
   const [email, setEmail] = useState("manuelhernandez@sirius.com.ar");
   const [password, setPassword] = useState("manuel123");
   const [showPassword, setShowPassword] = useState(false);
-  const accessToken = useSelector((state) => state);
-  const [login, _] = useLoginMutation();
+  const { loginError, loginPending } = useSelector((state) => state.authState.ui);
+  const { login } = sessionWrapper(dispatch);
+
+  const generalState = useSelector((state) => state); // TODO dev
+  console.log(generalState); // TODO dev
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    login({ email, password });
+    dispatch(setLoginPending());
+    login(email, password);
   };
-
-  console.log(accessToken);
 
   return (
     <LoginWrapper>
@@ -77,22 +82,21 @@ function LoginScreen() {
         <OncoLoginText>Log in</OncoLoginText>
         <form onSubmit={onSubmit}>
           <OncoInputForm
+            error={loginError}
             legend="Dirección de email"
             onChangeText={setEmail}
             placeholder="name@example.com"
           />
           <OncoInputForm
+            error={loginError}
             legend="Contraseña"
-            onChangeText={setEmail}
+            onChangeText={setPassword}
             placeholder="at least 8 characters"
-            Icon={() => (
-              <span onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? "ocultar" : "ver"}
-              </span>
-            )} // TODO IconType definition
             type={showPassword ? "text" : "password"}
+            icon={showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+            iconAction={() => setShowPassword(!showPassword)}
           />
-          <OncoButton text="Log in" />
+          <OncoButton text="Log in" pending={loginPending} />
         </form>
       </LoginFormSection>
       <LoginImageSection>
