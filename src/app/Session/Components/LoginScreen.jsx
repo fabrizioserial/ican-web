@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import styled from 'styled-components';
-import OncoButton from '../../Common/Components/OncoButton';
-import OncoText from '../../Common/Components/OncoText';
-import OncoInputForm from '../../Common/Components/OncoInputForm';
-import { LoginImage } from '../../Common/SvgImages';
-import { loginRequest, logout } from '../session.slice';
-import { accentColor } from '../../Common/Colors';
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import styled from "styled-components";
+import OncoButton from "../../Common/Components/OncoButton";
+import OncoText from "../../Common/Components/OncoText";
+import OncoInputForm from "../../Common/Components/OncoInputForm";
+import { LoginImage } from "../../Common/SvgImages";
+import { loginRequest, logout } from "../session.slice";
+import { accentColor } from "../../Common/Colors";
 
 const LoginWrapper = styled.main`
   display: flex;
@@ -37,7 +37,7 @@ const LoginImageSection = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   flex: 0.7;
 `;
 
@@ -48,35 +48,45 @@ const OncoLoginText = styled(OncoText)`
   font-size: 3rem;
 
   &::after {
-   content: ".";
+    content: ".";
     font-weight: bolder;
     font-size: 3rem;
-    color: ${accentColor}
+    color: ${accentColor};
   }
 `;
 
 function LoginScreen() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("manuel123");
   const [showPassword, setShowPassword] = useState(false);
-  const accessToken = useSelector(state => state.sessionState.accessToken)
-  
+  const accessToken = useSelector((state) => state.sessionState.accessToken);
+
   const onSubmit = (e) => {
     e.preventDefault();
     let data = { email, password };
     dispatch(loginRequest(data));
-  }
+  };
 
   return (
     <LoginWrapper>
       <LoginFormSection>
         <OncoLoginText>Log in</OncoLoginText>
         <form onSubmit={onSubmit}>
-          <OncoInputForm legend="Dirección de email" onChangeText={setEmail} placeholder="name@example.com" />
           <OncoInputForm
-            legend="Contraseña" onChangeText={setEmail} placeholder="at least 8 characters"
-            Icon={() => <span onClick={() => setShowPassword(!showPassword)}>{showPassword ? "ocultar" : "ver"}</span>}  // TODO IconType definition
+            legend="Dirección de email"
+            onChangeText={setEmail}
+            placeholder="name@example.com"
+          />
+          <OncoInputForm
+            legend="Contraseña"
+            onChangeText={setEmail}
+            placeholder="at least 8 characters"
+            Icon={() => (
+              <span onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? "ocultar" : "ver"}
+              </span>
+            )} // TODO IconType definition
             type={showPassword ? "text" : "password"}
           />
           <OncoButton text="Log in" />
@@ -86,7 +96,7 @@ function LoginScreen() {
         <LoginImage />
       </LoginImageSection>
     </LoginWrapper>
-  )
+  );
 }
 
 export default LoginScreen;
