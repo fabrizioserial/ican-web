@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { accentColor, primaryColor } from "../Colors";
+import { accentColor, primaryColor } from "../../Colors";
 
 const OncoInputWrapper = styled.div`
   width: 100%;
