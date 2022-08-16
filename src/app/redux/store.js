@@ -1,10 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 // import { persistStore, persistReducer } from "redux-persist";
 // import storage from "redux-persist/lib/storage";
-import rootReducers from "./Common/rootReducers";
 // import sessionMiddleware from "./Session/session.middleware";
-import { sessionApi } from "./Session/session.api";
-
+import { sessionApi } from "./api/session.api";
+import authState from "./slices/auth.slice";
+import homeState from "./slices/home.slice";
 // const middlewares = [sessionMiddleware];
 
 // const persistConfig = {
@@ -14,8 +14,13 @@ import { sessionApi } from "./Session/session.api";
 
 // const persistedReducer = persistReducer(persistConfig, rootReducers);
 
+const reducers = combineReducers({
+  authState,
+  homeState
+})
+
 export const store = configureStore({
-  reducer: rootReducers,
+  reducer: reducers,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sessionApi.middleware),
 });
 

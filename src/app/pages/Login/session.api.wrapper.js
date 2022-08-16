@@ -1,5 +1,5 @@
-import { useLoginMutation, useAddPostMutation } from "./session.api";
-import { setLoginError } from "./auth.slice";
+import { useLoginMutation, useAddPostMutation } from "../../redux/api/session.api";
+import { setLoginError } from "../../redux/slices/auth.slice";
 import { useSelector } from "react-redux";
 
 const sessionWrapper = (dispatch) => {

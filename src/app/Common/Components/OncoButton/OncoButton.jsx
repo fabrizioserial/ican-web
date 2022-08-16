@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { OncoStyledButton } from "./StyledOncoButton";
 
 const OncoButton = ({ onClick, text, pending = false }) => (
   <OncoStyledButton>

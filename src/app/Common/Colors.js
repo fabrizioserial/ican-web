@@ -6,7 +6,6 @@ export const errorColor = "red";
 export const focusableColor = "#E4E4E4";
 export const itemBackgroundColor = "#F4F4F4";
 
-
 const colors = {
   primary: primaryColor,
   accent: accentColor,

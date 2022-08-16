@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import appInfo from "../../settings.json";
-import endpointsBuilder from "../Utils/endpointsBuilder";
+import appInfo from "../../../settings.json";
+import endpointsBuilder from "../../Utils/endpointsBuilder";
 import sessionEndpoints from './session.endpoints';
 
 export const sessionApi = createApi({

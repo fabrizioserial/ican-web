@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { accentColor, focusableColor, inactiveColor, itemBackgroundColor } from "../Colors"
+import { accentColor, itemBackgroundColor } from "../Colors"
 
 const OncoComponentWrapperStyled = styled.div`
     position: relative;

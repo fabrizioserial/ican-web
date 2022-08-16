@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { sessionApi } from "../Session/session.api";
+import { sessionApi } from "../api/session.api";
 
 const initialState = {
     user: {
