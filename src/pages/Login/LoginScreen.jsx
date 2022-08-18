@@ -9,7 +9,7 @@ import InputForm from "../../common/components/inputForm/InputForm";
 
 function LoginScreen() {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("manuelhernandez@sirius.com.ar");
   const [password, setPassword] = useState("manuel123");
   const [showPassword, setShowPassword] = useState(false);
   // const accessToken = useSelector((state) => state.sessionState.accessToken);
@@ -17,8 +17,7 @@ function LoginScreen() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    let data = { email, password };
-    dispatch(loginRequest(data));
+    login(email, password)
   };
 
   return (
