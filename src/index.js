@@ -1,18 +1,15 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
+import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { store } from "./app/redux/store";
-import App from "./app/App";
+import { store } from "./redux/store";
+import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 // import { PersistGate } from "redux-persist/integration/react";
-// import { sessionrkt } from "./app/Session/session.api";
+// import { sessionrkt } from ".//Session/sessionApi";
 // import { ApiProvider } from '@reduxjs/toolkit/dist/query/react'
 
-const container = document.getElementById("root");
-const root = createRoot(container);
-
-root.render(
+ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       {/* <ApiProvider api={sessionrkt}> */}
@@ -21,7 +18,8 @@ root.render(
         {/* </PersistGate> */}
       {/* </ApiProvider> */}
     </Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
 
-reportWebVitals(); // TODO
+reportWebVitals(); // TODO utility?
