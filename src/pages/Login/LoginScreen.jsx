@@ -32,7 +32,7 @@ function LoginScreen() {
           />
           <InputForm
             legend="Contraseña"
-            onChangeText={setEmail}
+            onChangeText={setPassword}
             placeholder="at least 8 characters"
             Icon={() => (
               <span onClick={() => setShowPassword(!showPassword)}>
