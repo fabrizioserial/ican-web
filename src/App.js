@@ -1,10 +1,12 @@
 import React from "react";
-import Login from "./Session/Components/LoginScreen";
+import Login from "./pages/Login/LoginScreen";
+import Home from "./pages/Home/HomeScreen";
 
 function App() {
   return (
     <div className="App">
       <Login />
+      {/* <Home /> */}
     </div>
   );
 }

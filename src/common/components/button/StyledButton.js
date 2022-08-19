@@ -1,7 +1,7 @@
+import { accentColor, inactiveColor, primaryColor } from "../../colors";
 import styled from "styled-components";
-import { accentColor, inactiveColor, primaryColor } from "../Colors";
 
-const OncoStyledButton = styled.button`
+export const StyledButton = styled.button`
   width: 80%;
   color: ${primaryColor};
   padding: 1rem;
@@ -27,11 +27,3 @@ const OncoStyledButton = styled.button`
     }
   }
 `;
-
-const OncoButton = ({ onClick, text }) => (
-  <OncoStyledButton>
-    <span>{text}</span>
-  </OncoStyledButton>
-);
-
-export default OncoButton;

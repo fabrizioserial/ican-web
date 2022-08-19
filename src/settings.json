@@ -1,4 +1,3 @@
 {
-  "BASE_URL": "https://oncomedic-api-dev.herokuapp.com",
-  "whitelist": ""
+  "BASE_URL": "https://oncomedic-api-dev.herokuapp.com"
 }

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const OncoText = styled.span`
+const StyledText = styled.span`
   font-size: 1rem;
 `;
 
-export default OncoText;
+export default StyledText;
