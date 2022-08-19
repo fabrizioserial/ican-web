@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { sessionApi } from "../api/sessionApi";
 
 const initialState = {
-    accessToken: "ola",
+    accessToken: null,
     ui: { loginPending: false, loginError: false, errorMessage: null },
 };
 

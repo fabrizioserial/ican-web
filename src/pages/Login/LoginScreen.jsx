@@ -1,19 +1,26 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { LoginImage } from "../../utils/SvgImages";
 import { LoginFormSection, LoginImageSection, LoginWrapper, LoginText } from "./StyledLoginScreen";
 import SessionWrapper from "./sessionApiWrapper";
 import Button from "../../common/components/button/Button";
 import InputForm from "../../common/components/inputForm/InputForm";
+import {useNavigate} from "react-router";
 
 
 function LoginScreen() {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("manuelhernandez@sirius.com.ar");
-  const [password, setPassword] = useState("manuel123");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   // const accessToken = useSelector((state) => state.sessionState.accessToken);
   const { login } = SessionWrapper(dispatch);
+  const accessToken = useSelector((state) => state.authState.accessToken);
+  const navigate = useNavigate()
+
+  useEffect(()=>{
+    accessToken && navigate("/home")
+  },[accessToken])
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +39,7 @@ function LoginScreen() {
           />
           <InputForm
             legend="Contraseña"
-            onChangeText={setEmail}
+            onChangeText={setPassword}
             placeholder="at least 8 characters"
             Icon={() => (
               <span onClick={() => setShowPassword(!showPassword)}>
