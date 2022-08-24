@@ -19,12 +19,15 @@ function LoginScreen() {
   const navigate = useNavigate()
 
   useEffect(()=>{
+
+    //localStorage.getItem('itemName')
     accessToken && navigate("/home")
   },[accessToken])
 
   const onSubmit = (e) => {
     e.preventDefault();
     login(email, password)
+    localStorage.setItem('accessToken', accessToken)
   };
 
   return (
