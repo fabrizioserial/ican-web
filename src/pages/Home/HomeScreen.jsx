@@ -8,7 +8,7 @@ function HomeScreen() {
 
     useEffect(()=>{
 
-        console.log(localStorage.getItem('accessToken'))
+       //   console.log(localStorage.getItem('accessToken'))
 
     },[])
 

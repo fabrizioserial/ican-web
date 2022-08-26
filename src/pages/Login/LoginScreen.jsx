@@ -13,21 +13,25 @@ function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  // const accessToken = useSelector((state) => state.sessionState.accessToken);
   const { login } = SessionWrapper(dispatch);
   const accessToken = useSelector((state) => state.authState.accessToken);
   const navigate = useNavigate()
 
   useEffect(()=>{
+    if(accessToken!=null) {
+      console.log(accessToken)
+      localStorage.setItem('accessToken', accessToken)
+      console.log(localStorage.getItem('accessToken'))
+      navigate("/home")
+    }
 
-    //localStorage.getItem('itemName')
-    accessToken && navigate("/home")
   },[accessToken])
 
   const onSubmit = (e) => {
     e.preventDefault();
     login(email, password)
-    localStorage.setItem('accessToken', accessToken)
+    //  console.log(localStorage.getItem('itemName'))
+    //  localStorage.setItem('accessToken', accessToken)
   };
 
   return (

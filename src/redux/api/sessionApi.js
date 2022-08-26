@@ -3,11 +3,22 @@ import appInfo from "../../settings.json";
 import endpointsBuilder from "../../utils/endpointsBuilder";
 import sessionEndpoints from './sessionEndpoints';
 
-export const sessionApi = createApi({
+const baseQuery = fetchBaseQuery({
     reducerPath: 'sessionApi',
-    baseQuery: fetchBaseQuery({ baseUrl: appInfo.BASE_URL }),
-    tagTypes: ['Post'],
+    baseUrl: appInfo.BASE_URL,
+    prepareHeaders: (headers) => {
+        const token = localStorage.getItem("accessToken")
+        if (token) {
+            headers.set('authentication', `Bearer ${token}`)
+        }
+        return headers
+    },
+})
 
+
+export const sessionApi = createApi({
+    baseQuery: baseQuery,
+    tagTypes: ['Post'],
     endpoints: (builder) => endpointsBuilder(builder, sessionEndpoints),
 });
 
