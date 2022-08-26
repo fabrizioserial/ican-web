@@ -4,11 +4,10 @@ import HomeH1 from "../../common/components/HomeH1";
 import Button from "../../common/components/button/Button";
 import {useEffect} from "react";
 
+
 function HomeScreen() {
 
     useEffect(()=>{
-
-       //   console.log(localStorage.getItem('accessToken'))
 
     },[])
 
