@@ -3,9 +3,7 @@ import React from "react";
 import { Outlet } from "react-router";
 
 export const ProtectedRoute = ({ accessToken, children }) => {
-    if (!accessToken) {
-        return <Navigate to="/login" replace />;
-    }
+    if (!accessToken) { return <Navigate to="/login" replace />; }
 
     return children ?? <Outlet />;
 };
