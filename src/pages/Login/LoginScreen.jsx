@@ -14,7 +14,7 @@ function LoginScreen() {
   const [showPassword, setShowPassword] = useState(false);
   const [login, response] = useLoginMutation();
 
-  const accessToken = useSelector((state) => state.authState.accessToken);
+  const accessToken = useSelector((state) => state.authSlice.accessToken);
   const navigate = useNavigate()
   
   useEffect(() => {
@@ -23,7 +23,7 @@ function LoginScreen() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    login({ email, password })
+    login({ email: email.trim(), password: password.trim() })
   };
 
   return (

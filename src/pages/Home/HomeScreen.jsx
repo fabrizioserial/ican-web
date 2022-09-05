@@ -3,13 +3,12 @@ import { DateSectionStyled, HomeDashboardSection, HomeDateSection, HomeWrapper }
 import HomeH1 from "../../common/components/HomeH1";
 import Button from "../../common/components/button/Button";
 import {useEffect} from "react";
+import {usePatientsQuery} from "../../redux/api/homeApi";
+import {useSelector} from "react-redux";
 
 
 function HomeScreen() {
 
-    useEffect(()=>{
-
-    },[])
 
     const DateSection = () => {
         const date = new Date(Date.now());

@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { BrowserRouter, Navigate } from "react-router-dom";
 
 const App = () => {
-    const accessToken = useSelector((state) => state.authState.accessToken);
+    const accessToken = useSelector((state) => state.authSlice.accessToken);
 
     return (
         <BrowserRouter>
