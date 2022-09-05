@@ -2,14 +2,11 @@ import { HomeSideImage } from "../../utils/SvgImages";
 import { DateSectionStyled, HomeDashboardSection, HomeDateSection, HomeWrapper } from "./StyledHomeScreen";
 import HomeH1 from "../../common/components/HomeH1";
 import Button from "../../common/components/button/Button";
-import {useEffect} from "react";
 
 
 function HomeScreen() {
 
-    useEffect(()=>{
 
-    },[])
 
     const DateSection = () => {
         const date = new Date(Date.now());
