@@ -16,9 +16,7 @@ const App = () => {
                     <Route path="/home" element={<HomeScreen />} />
                 </Route>
                 <Route path="/login" element={<LoginScreen />} />
-                
-                {/* Redirect to login or home */}
-                <Route path="*" element={<Navigate to={accessToken != null ? "/home" : "/login"} replace />} /> 
+                <Route path="*" element={<Navigate to="/home"  replace />} />
             </Routes>
         </BrowserRouter>
 
