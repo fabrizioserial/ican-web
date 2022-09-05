@@ -18,8 +18,9 @@ function LoginScreen() {
   const navigate = useNavigate()
   
   useEffect(() => {
-    if (accessToken != null) navigate("/home");
-  }, [accessToken])
+    if (accessToken != null)
+      navigate("/home")}
+  , [accessToken])
 
   const onSubmit = (e) => {
     e.preventDefault();
