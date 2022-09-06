@@ -2,8 +2,14 @@ import { HomeSideImage } from "../../utils/SvgImages";
 import { DateSectionStyled, HomeDashboardSection, HomeDateSection, HomeWrapper } from "./StyledHomeScreen";
 import HomeH1 from "../../common/components/HomeH1";
 import Button from "../../common/components/button/Button";
+import {useEffect} from "react";
+import {usePatientsQuery} from "../../redux/api/homeApi";
+import {useSelector} from "react-redux";
+
 
 function HomeScreen() {
+
+
     const DateSection = () => {
         const date = new Date(Date.now());
         const daysNames = ["DOM", "LUN", "MAR", "MIE", "JUE", "VIE", "SAB"];

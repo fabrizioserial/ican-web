@@ -1,30 +1,30 @@
-import React, {useEffect, useState} from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { LoginImage } from "../../utils/SvgImages";
 import { LoginFormSection, LoginImageSection, LoginWrapper, LoginText } from "./StyledLoginScreen";
-import SessionWrapper from "./sessionApiWrapper";
 import Button from "../../common/components/button/Button";
 import InputForm from "../../common/components/inputForm/InputForm";
-import {useNavigate} from "react-router";
+import { useNavigate } from "react-router";
+import { useLoginMutation } from "../../redux/api/sessionApi"
 
 
 function LoginScreen() {
-  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  // const accessToken = useSelector((state) => state.sessionState.accessToken);
-  const { login } = SessionWrapper(dispatch);
-  const accessToken = useSelector((state) => state.authState.accessToken);
-  const navigate = useNavigate()
+  const [login, response] = useLoginMutation();
 
-  useEffect(()=>{
-    accessToken && navigate("/home")
-  },[accessToken])
+  const accessToken = useSelector((state) => state.authSlice.accessToken);
+  const navigate = useNavigate()
+  
+  useEffect(() => {
+    if (accessToken != null)
+      navigate("/home")}
+  , [accessToken])
 
   const onSubmit = (e) => {
     e.preventDefault();
-    login(email, password)
+    login({ email: email.trim(), password: password.trim() })
   };
 
   return (
