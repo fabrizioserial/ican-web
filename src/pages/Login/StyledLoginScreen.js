@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { accentColor } from "../../common/colors";
 import Text from "../../common/components/text/Text";
 
 export const LoginWrapper = styled.main`
@@ -45,6 +44,6 @@ export const LoginText = styled(Text)`
     content: ".";
     font-weight: bolder;
     font-size: 3rem;
-    color: ${accentColor};
+    color: ${props => props.theme.accent};
   }
 `;

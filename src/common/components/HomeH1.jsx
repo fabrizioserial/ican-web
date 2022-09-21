@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { accentColor, focusableColor } from "../colors";
+import { accentColor, focusableColor } from "../theme";
 import ComponentWrapperStyled from "./ComponentWrapper";
 import SettingsIcon from '@material-ui/icons/Settings';
 import EventNoteIcon from '@material-ui/icons/EventNote';
@@ -28,13 +28,13 @@ export const HomeH1 = ({ userName, width }) => {
             justify-content: center;
             align-items: center;
             padding: 7px;
-            background-color: ${focusableColor};
+            background-color: ${props => props.theme.focusable};
             border-radius: 100%;
             transition: 0.3s;
             border: none;
 
             &:hover {
-                background-color: ${accentColor};
+                background-color: ${props => props.theme.accent};
                 color: white;
             }
         }

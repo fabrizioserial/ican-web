@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { accentColor, primaryColor } from "../../colors";
 
 export const InputWrapper = styled.div`
   width: 100%;
@@ -7,7 +6,7 @@ export const InputWrapper = styled.div`
 
   & > input {
     border-radius: 7px;
-    border: 1px solid ${primaryColor};
+    border: 1px solid ${props => props.theme.primary};
     flex: 1;
     padding: 12px;
     font-size: 1rem;
@@ -15,6 +14,6 @@ export const InputWrapper = styled.div`
 
   & > input:focus {
     border-color: transparent;
-    outline: 2px solid ${accentColor};
+    outline: 2px solid ${props => props.theme.accent};
   }
 `;

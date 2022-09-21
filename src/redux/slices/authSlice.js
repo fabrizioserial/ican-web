@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { sessionApi } from "../api/sessionApi";
 
 const initialState = {
-    accessToken: null,
+    accessToken: localStorage.getItem("accessToken"),
     ui: { loginPending: false, loginError: false, errorMessage: null },
 };
 
@@ -14,7 +14,11 @@ export const authSlice = createSlice({
         setLoginError: (state, { payload }) => { state.ui.loginError = true; state.ui.loginPending = false; state.ui.errorMessage = payload.errorMessage; }
     },
     extraReducers: builder => {
-        builder.addMatcher(sessionApi.endpoints.login.matchFulfilled, (state, { payload }) => { state.ui.loginPending = false; state.accessToken = payload.access_token; }); // Match with the endpoint
+        builder.addMatcher(sessionApi.endpoints.login.matchFulfilled, (state, { payload }) => {
+            state.ui.loginPending = false;
+            state.accessToken = payload.access_token;
+            localStorage.setItem("accessToken", payload.access_token)
+        }); // Match with the endpoint
     }
 });
 

@@ -5,10 +5,10 @@ export const homeApi = api.injectEndpoints({
     endpoints: (builder) => ({
         patients: builder.query({
             query: () => ({
-                url:"/api/user/medic-home",
+                url:"/api/user/doctor-patients",
                 method:"GET"
             })
-        })
+        }),
     })
 })
 

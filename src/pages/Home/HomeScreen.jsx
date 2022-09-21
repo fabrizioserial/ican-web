@@ -1,44 +1,39 @@
-import { HomeSideImage } from "../../utils/SvgImages";
-import { DateSectionStyled, HomeDashboardSection, HomeDateSection, HomeWrapper } from "./StyledHomeScreen";
-import HomeH1 from "../../common/components/HomeH1";
-import Button from "../../common/components/button/Button";
-import {useEffect} from "react";
-import {usePatientsQuery} from "../../redux/api/homeApi";
-import {useSelector} from "react-redux";
+import React from 'react'
+import {StyledBox} from "../../common/styledCommonComponents";
+import WidgetHome from "../../componenets/WidgetHome";
 
 
 function HomeScreen() {
 
+    return (
+        <StyledBox css={{
+            display: "flex",
+            width: "100vw",
+            minHeight: "100vh"
+        }}>
+            <StyledBox css={{
+                display: "flex",
+                flexDirection:"row",
+                margin:"30px 60px",
+                height:"inherit",
+                width:"inherit",
+             }}>
+                <StyledBox css={{
+                    display: "flex",
+                    flexDirection:"column",
+                    flex:0.6,
+                    maxWidth:"760px",
+                }}>
+                    <WidgetHome/>
+                </StyledBox>
+                <StyledBox css={{display:"flex", flex: 0.4}}>
 
-    const DateSection = () => {
-        const date = new Date(Date.now());
-        const daysNames = ["DOM", "LUN", "MAR", "MIE", "JUE", "VIE", "SAB"];
-        const monthNames = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"];
-        let dayNumber = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+                </StyledBox>
 
-        return <DateSectionStyled>
-            <span>{dayNumber}</span>
-            <span>{daysNames[date.getDay()]}</span>
-            <span>{monthNames[date.getMonth()]}</span>
-        </DateSectionStyled>;
-    }
+            </StyledBox>
 
-    return <HomeWrapper>
-        <HomeDateSection>
-            <HomeSideImage />
-            <DateSection />
-        </HomeDateSection>
-        <HomeDashboardSection>
-            <HomeH1 width="80%" userName="Ricardo" />
-            <div>
-                <Button text="REGISTRAR NUEVO PACIENTE" />
-                <Button text="VER TODOS LOS PACIENTES" />
-                <Button text="VER ÚLTIMOS PACIENTES CON SÍNTOMAS" />
-            </div>
-            <aside>
-            </aside>
-        </HomeDashboardSection>
-    </HomeWrapper>
+        </StyledBox>
+    )
 }
 
 export default HomeScreen;

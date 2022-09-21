@@ -1,12 +1,5 @@
 import styled from "styled-components"
-import { textColor } from "../../common/colors";
 
-export const HomeWrapper = styled.main`
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-`
 
 export const HomeDateSection = styled.section`
     width: 15vw;
@@ -52,7 +45,7 @@ export const DateSectionStyled = styled.div`
     left: 50%;
     width: 80%;
     transform: translateX(-45%);
-    color: ${textColor};
+    color: ${props => props.theme.text};
     flex-direction: column;
     
     & > span {

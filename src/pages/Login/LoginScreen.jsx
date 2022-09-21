@@ -6,21 +6,25 @@ import Button from "../../common/components/button/Button";
 import InputForm from "../../common/components/inputForm/InputForm";
 import { useNavigate } from "react-router";
 import { useLoginMutation } from "../../redux/api/sessionApi"
+import classNames from "classnames";
 
 
 function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [login, response] = useLoginMutation();
+  const [login, data] = useLoginMutation();
 
   const accessToken = useSelector((state) => state.authSlice.accessToken);
   const navigate = useNavigate()
   
   useEffect(() => {
-    if (accessToken != null)
-      navigate("/home")}
-  , [accessToken])
+    if (accessToken) {
+      navigate("/home")
+    }
+  }, [accessToken])
+
+  console.log(data)
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -48,7 +52,7 @@ function LoginScreen() {
             )} // TODO IconType definition
             type={showPassword ? "text" : "password"}
           />
-          <Button text="Log in" /> {/* TODO ADD PENDING PARAM  */}
+          <Button  className={classNames({"inactive": (email.length === 0 || password.length === 0)})} text="Log in" /> {/* TODO ADD PENDING PARAM  */}
         </form>
       </LoginFormSection>
       <LoginImageSection>
