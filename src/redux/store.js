@@ -1,11 +1,11 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 // import { persistStore, persistReducer } from "redux-persist";
 // import storage from "redux-persist/lib/storage";
 // import sessionMiddleware from "./Session/session.middleware";
-import { sessionApi } from "./api/sessionApi";
-import authSliceReducer from "./slices/authSlice";
-import homeSliceReducer from "./slices/homeSlice";
-import {api} from "./api/api";
+import { sessionApi } from './api/sessionApi';
+import authSliceReducer from './slices/authSlice';
+import homeSliceReducer from './slices/homeSlice';
+import { api } from './api/api';
 // const middlewares = [sessionMiddleware];
 
 // const persistConfig = {
@@ -16,14 +16,15 @@ import {api} from "./api/api";
 // const persistedReducer = persistReducer(persistConfig, rootReducers);
 
 const reducers = combineReducers({
-  [api.reducerPath]: api.reducer,
-  authSlice: authSliceReducer,
-  homeSlice: homeSliceReducer
-})
+	[api.reducerPath]: api.reducer,
+	authSlice: authSliceReducer,
+	homeSlice: homeSliceReducer,
+});
 
 export const store = configureStore({
-  reducer: reducers,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),
+	reducer: reducers,
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware().concat(api.middleware),
 });
 
 // export const persistor = persistStore(store);
