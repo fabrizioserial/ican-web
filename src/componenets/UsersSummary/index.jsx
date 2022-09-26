@@ -7,9 +7,8 @@ import {
 	StyledSpan,
 } from '../../common/styledCommonComponents';
 import { useTheme } from 'styled-components';
-import {useLocation} from "react-router";
-import { Link } from "react-router-dom";
-
+import { useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const UsersSummary = () => {
 	const theme = useTheme();
@@ -57,7 +56,7 @@ const UsersSummary = () => {
 								imageRendering: '',
 							}}
 							firstChild={{
-								marginLeft:"0px"
+								marginLeft: '0px',
 							}}
 							src={
 								'https://media.discordapp.net/attachments/411201278031560708/1023937441264054302/default_user.png'
@@ -78,9 +77,9 @@ const UsersSummary = () => {
 							justifyContent: 'center',
 							alignItems: 'center',
 							cursor: 'pointer',
-							textDecorationLine:"none",
+							textDecorationLine: 'none',
 						}}
-						to={"/"}// TODO: Change url
+						to={'/'} // TODO: Change url
 					>
 						<StyledP css={{ textAlign: 'center', color: 'white' }}>
 							Ver mas
@@ -134,9 +133,9 @@ const UsersSummary = () => {
 							justifyContent: 'center',
 							alignItems: 'center',
 							cursor: 'pointer',
-							textDecorationLine:"none",
+							textDecorationLine: 'none',
 						}}
-						to={"/"} // TODO: Change url
+						to={'/'} // TODO: Change url
 					>
 						<StyledP css={{ textAlign: 'center', color: 'white' }}>
 							Ver mas

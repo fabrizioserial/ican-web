@@ -36,7 +36,7 @@ export const StyledInput = styled.input`
 
 export const StyledImg = styled.img`
 	${(props) => styledComponentCss`${props.css}`}
-	&:first-child{
+	&:first-child {
 		${(props) => props.firstChild}
 	}
 `;
