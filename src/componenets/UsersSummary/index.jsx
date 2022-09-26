@@ -36,7 +36,7 @@ const UsersSummary = () => {
 		>
 			<StyledBox css={{ display: 'flex', flexDirection: 'column' }}>
 				<StyledP css={{ fontWeight: 500, fontSize: '14px' }}>
-					<StyledSpan css={{ fontWeight: 700, marginRight: '3px' }}>
+					<StyledSpan css={{ fontWeight: 700, marginRight: '3px', fontSize:"16px" }}>
 						{users.activeUsers.amount}
 					</StyledSpan>
 					Pacientes totales
@@ -95,7 +95,7 @@ const UsersSummary = () => {
 				}}
 			>
 				<StyledP css={{ fontWeight: 500, fontSize: '14px' }}>
-					<StyledSpan css={{ fontWeight: 700, marginRight: '3px' }}>
+					<StyledSpan css={{ fontWeight: 700, marginRight: '3px', fontSize:"16px"  }}>
 						{users.waitingUsers.amount}
 					</StyledSpan>
 					Pacientes en espera

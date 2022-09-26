@@ -22,7 +22,7 @@
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"scriptname": "cmd",
-		"prettier": "prettier 'src/**/*.js'",
+		"prettier": "npx prettier --write .",
 		"format": "npx prettier --write .",
 		"eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
 		"prepare": "husky install"
