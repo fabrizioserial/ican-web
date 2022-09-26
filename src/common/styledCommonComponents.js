@@ -34,8 +34,11 @@ export const StyledInput = styled.input`
 	}
 `;
 
-export const StyledImg = styled(Image)`
+export const StyledImg = styled.img`
 	${(props) => styledComponentCss`${props.css}`}
+	&:first-child {
+		${(props) => props.firstChild}
+	}
 `;
 
 /// Custom components

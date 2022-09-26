@@ -20,6 +20,7 @@ const WeeklySummary = () => {
 				height: '230px',
 				display: 'flex',
 				flexDirection: 'column',
+				color: theme.oncoBlack,
 			}}
 		>
 			<StyledBox

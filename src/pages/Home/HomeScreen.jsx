@@ -3,7 +3,6 @@ import { StyledBox } from '../../common/styledCommonComponents';
 import WidgetHome from '../../componenets/WidgetHome';
 
 function HomeScreen() {
-	//to remove this comment
 	return (
 		<StyledBox
 			css={{
