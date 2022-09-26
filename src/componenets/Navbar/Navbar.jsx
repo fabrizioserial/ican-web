@@ -1,5 +1,7 @@
 import * as React from "react";
 import {useNavigate} from "react-router";
+import {StyledNav} from "./StyledNavbar";
+import {StyledNavItem} from "./NavItem/StyledNavItem";
 
 
 
@@ -7,19 +9,13 @@ import {useNavigate} from "react-router";
     const navigate = useNavigate()
 
         return (
-            <nav className={"nav"}>
-            <a href={"/"} className={"home"}>
-                Home
-            </a>
-            <ul>
-                <li>
-                    <a href={"/login"}>
-                        Login
-                    </a>
-                </li>
+            <StyledNav>
 
-                </ul>
-            </nav>
+           <StyledNavItem >
+
+           </StyledNavItem>
+            </StyledNav>
+
         );
 
 }
