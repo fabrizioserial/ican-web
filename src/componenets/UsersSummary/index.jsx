@@ -42,7 +42,7 @@ const UsersSummary = () => {
 					Pacientes totales
 				</StyledP>
 				<StyledBox
-					css={{ display: 'flex', flexDirection: 'row', marginTop: '8px' }}
+					css={{ display: 'flex', flexDirection: 'row', marginTop: '10px' }}
 				>
 					{users?.activeUsers?.users?.map((value, index) => (
 						<StyledImg
@@ -91,7 +91,7 @@ const UsersSummary = () => {
 				css={{
 					display: 'flex',
 					flexDirection: 'column',
-					marginTop: '25px',
+					marginTop: '20px',
 				}}
 			>
 				<StyledP css={{ fontWeight: 500, fontSize: '14px' }}>
@@ -101,7 +101,7 @@ const UsersSummary = () => {
 					Pacientes en espera
 				</StyledP>
 				<StyledBox
-					css={{ display: 'flex', flexDirection: 'row', marginTop: '8px' }}
+					css={{ display: 'flex', flexDirection: 'row', marginTop: '10px' }}
 				>
 					{users?.waitingUsers?.users?.map((value, index) => (
 						<StyledImg
