@@ -59,10 +59,6 @@
     "react-router-dom": "^6.3.0"
   },
   "lint-staged": {
-    "*.js": [
-      "npx prettier --write .",
-      "git add",
-      "npx eslint --fix"
-    ]
+    "**/*": "prettier --write --ignore-unknown"
   }
 }
