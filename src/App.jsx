@@ -5,6 +5,7 @@ import HomeScreen from './pages/Home/HomeScreen';
 import LoginScreen from './pages/Login/LoginScreen';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Navigate } from 'react-router-dom';
+import Validation from './pages/Validation';
 
 const App = () => {
 	const accessToken = useSelector((state) => state.authSlice.accessToken);
@@ -14,6 +15,7 @@ const App = () => {
 			<Routes>
 				<Route element={<ProtectedRoute accessToken={accessToken} />}>
 					<Route path="/home" element={<HomeScreen />} />
+					<Route path="/validate-patient" element={<Validation />} />
 				</Route>
 				<Route path="/login" element={<LoginScreen />} />
 				<Route path="*" element={<Navigate to="/home" replace />} />

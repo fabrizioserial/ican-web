@@ -50,3 +50,10 @@ export const StyledCardHome = styled(StyledBox)`
 	box-sizing: border-box;
 	padding: 24px 20px;
 `;
+
+export const StyledScreen = styled(StyledBox)`
+	background-color: #fafbfc;
+	display: flex;
+	width: 100vw;
+	min-height: 100vh;
+`;

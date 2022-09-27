@@ -1,16 +1,10 @@
 import React from 'react';
-import { StyledBox } from '../../common/styledCommonComponents';
+import { StyledBox, StyledScreen } from '../../common/styledCommonComponents';
 import WidgetHome from '../../componenets/WidgetHome';
 
 function HomeScreen() {
 	return (
-		<StyledBox
-			css={{
-				display: 'flex',
-				width: '100vw',
-				minHeight: '100vh',
-			}}
-		>
+		<StyledScreen>
 			<StyledBox
 				css={{
 					display: 'flex',
@@ -32,7 +26,7 @@ function HomeScreen() {
 				</StyledBox>
 				<StyledBox css={{ display: 'flex', flex: 0.4 }}></StyledBox>
 			</StyledBox>
-		</StyledBox>
+		</StyledScreen>
 	);
 }
 

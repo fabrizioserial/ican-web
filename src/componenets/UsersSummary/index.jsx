@@ -36,13 +36,23 @@ const UsersSummary = () => {
 		>
 			<StyledBox css={{ display: 'flex', flexDirection: 'column' }}>
 				<StyledP css={{ fontWeight: 500, fontSize: '14px' }}>
-					<StyledSpan css={{ fontWeight: 700, marginRight: '3px', fontSize:"16px" }}>
+					<StyledSpan
+						css={{
+							fontWeight: 700,
+							marginRight: '3px',
+							fontSize: '16px',
+						}}
+					>
 						{users.activeUsers.amount}
 					</StyledSpan>
 					Pacientes totales
 				</StyledP>
 				<StyledBox
-					css={{ display: 'flex', flexDirection: 'row', marginTop: '10px' }}
+					css={{
+						display: 'flex',
+						flexDirection: 'row',
+						marginTop: '10px',
+					}}
 				>
 					{users?.activeUsers?.users?.map((value, index) => (
 						<StyledImg
@@ -95,13 +105,23 @@ const UsersSummary = () => {
 				}}
 			>
 				<StyledP css={{ fontWeight: 500, fontSize: '14px' }}>
-					<StyledSpan css={{ fontWeight: 700, marginRight: '3px', fontSize:"16px"  }}>
+					<StyledSpan
+						css={{
+							fontWeight: 700,
+							marginRight: '3px',
+							fontSize: '16px',
+						}}
+					>
 						{users.waitingUsers.amount}
 					</StyledSpan>
 					Pacientes en espera
 				</StyledP>
 				<StyledBox
-					css={{ display: 'flex', flexDirection: 'row', marginTop: '10px' }}
+					css={{
+						display: 'flex',
+						flexDirection: 'row',
+						marginTop: '10px',
+					}}
 				>
 					{users?.waitingUsers?.users?.map((value, index) => (
 						<StyledImg
