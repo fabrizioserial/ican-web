@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import {useTheme} from "styled-components";
 
 const TaskContainer = ({quantity, title,color, progress=0, icon}) => {
-    const [colors, setColors] = useState({})
+    const [colors, setColors] = useState({});
     const theme = useTheme()
 
     useEffect(()=>{

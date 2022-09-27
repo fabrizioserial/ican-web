@@ -1,7 +1,7 @@
 import React from 'react'
-import {StyledBox} from "../../common/styledCommonComponents";
+import { StyledBox } from "../../common/styledCommonComponents";
 import WidgetHome from "../../componenets/WidgetHome";
-
+import PatientsInTreatments from './components/PatientsInTreatments';
 
 function HomeScreen() {
 
@@ -13,22 +13,21 @@ function HomeScreen() {
         }}>
             <StyledBox css={{
                 display: "flex",
-                flexDirection:"row",
-                margin:"30px 60px",
-                height:"inherit",
-                width:"inherit",
-             }}>
+                flexDirection: "row",
+                margin: "30px 60px",
+                height: "inherit",
+                width: "inherit",
+            }}>
                 <StyledBox css={{
                     display: "flex",
-                    flexDirection:"column",
-                    flex:0.6,
-                    maxWidth:"760px",
+                    flexDirection: "column",
+                    flex: 0.6,
+                    maxWidth: "760px",
                 }}>
-                    <WidgetHome/>
+                    <WidgetHome />
                 </StyledBox>
-                <StyledBox css={{display:"flex", flex: 0.4}}>
 
-                </StyledBox>
+                <PatientsInTreatments patientsInTreatment={16} totalPatients={70} />
 
             </StyledBox>
 

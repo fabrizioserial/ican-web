@@ -1,5 +1,5 @@
 import styled from "styled-components"
-
+import { StyledCardHome } from "../../../common/styledCommonComponents"
 
 export const HomeDateSection = styled.section`
     width: 15vw;
@@ -68,3 +68,13 @@ export const DateSectionStyled = styled.div`
         @media (max-width: 1024px) { font-size: 5rem; }
     }
 `
+
+export const CardHomeStyled = styled(StyledCardHome)`
+    padding: 0;
+    position: relative;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15px;
+`;
