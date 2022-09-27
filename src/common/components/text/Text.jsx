@@ -1,4 +1,4 @@
-import StyledText from "./StyledText";
+import StyledText from './StyledText';
 
 // const Text = ({ text }) => <StyledText>{text}</StyledText>
 
