@@ -10,10 +10,13 @@ import {StyledNavItem} from "./NavItem/StyledNavItem";
 
         return (
             <StyledNav>
+                <a href={"/"} className={"home"}>
+                    Home
+                </a>
 
-           <StyledNavItem >
-
-           </StyledNavItem>
+                <a href={"/login"}>
+                    Login
+                </a>
             </StyledNav>
 
         );
