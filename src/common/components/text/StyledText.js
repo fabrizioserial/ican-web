@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledText = styled.span`
-  font-size: 1rem;
+	font-size: 1rem;
 `;
 
 export default StyledText;
