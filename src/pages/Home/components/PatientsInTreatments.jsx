@@ -12,8 +12,8 @@ function PatientsInTreatments({ patientsInTreatment, totalPatients }) {
 
     return <CardHomeStyled lineColor={theme.itemBackground}>
         <TreatmentsTitleBox>
-            <StyledBox><TreatmentIcon /></StyledBox>
-            <StyledH3 css={{ color: theme.oncoPurpleTitle, margin: "0", textAlign: "left", fontSize: "1rem", fontWeight: "normal" }}> Pacientes en tratamiento </StyledH3>
+            <StyledBox><TreatmentIcon color={theme.OncoPurple} width={23} height={19.55} /></StyledBox>
+            <StyledH3 css={{ color: theme.OncoPurple, margin: "0", textAlign: "left", fontSize: "1rem", fontWeight: "normal" }}> Pacientes en tratamiento </StyledH3>
         </TreatmentsTitleBox>
 
         <TreatmentsContainer>
@@ -30,12 +30,12 @@ function PatientsInTreatments({ patientsInTreatment, totalPatients }) {
             <CircularProgress
                 size="8rem"
                 thickness={1.5}
-                style={{ color: theme.oncoPurpleSubtitle, zIndex: 2 }}
+                style={{ color: theme.oncoLightPurple3, zIndex: 2 }}
                 value={progress}
                 variant="determinate" />
     
             <TreatmentsLegendContainer>
-                <StyledSpan css={{ fontSize: "2rem", fontWeight: "bold" }}>{patientsInTreatment}</StyledSpan>
+                <StyledSpan css={{ fontSize: "2rem", fontWeight: "500" }}>{patientsInTreatment}</StyledSpan>
                 <StyledSpan css={{ fontSize: "0.8rem" }}> /{totalPatients}</StyledSpan>
             </TreatmentsLegendContainer>
         </TreatmentsContainer>

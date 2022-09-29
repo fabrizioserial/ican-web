@@ -95,7 +95,7 @@ export const CardHomeStyled = styled(StyledCardHome)`
         left: 0;
         top: 50px;
         width: 100%;
-        height: 2px;
+        height: 1px;
         background-color:  ${(props) => (props.lineColor)};
     }
 `;

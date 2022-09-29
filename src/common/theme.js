@@ -26,6 +26,7 @@ export const theme = {
 
 	oncoLightPurple: '#ECE1FD',
 	oncoLightPurple2: '#E1CEFF',
+	oncoLightPurple3: "#C39EFF",
 	oncoPurpleTitle: '#5D2BAF',
 	oncoPurpleSubtitle: 'rgba(93, 43, 175, 0.4)',
 
