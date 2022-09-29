@@ -82,11 +82,10 @@ export const DateSectionStyled = styled.div`
 `;
 
 export const CardHomeStyled = styled(StyledCardHome)`
-    width: 300px;
-    height: 300px;
+    width: 260px;
+    height: 230px;
     position: relative;
     display: flex;
-    /* justify-content: space-between; */
     flex-direction: column;
     padding: 20px;
 
