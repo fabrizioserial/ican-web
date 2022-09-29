@@ -1,51 +1,44 @@
 import React from 'react';
 import { CircularProgress } from '@material-ui/core';
 import { useTheme } from 'styled-components';
-import { StyledH3, StyledSpan } from "../../../common/styledCommonComponents";
-import { CardHomeStyled } from './StyledHomeScreen';
+import { StyledBox, StyledH3, StyledSpan } from "../../../common/styledCommonComponents";
+import { CardHomeStyled, TreatmentsContainer, TreatmentsLegendContainer, TreatmentsTitleBox } from './StyledHomeScreen';
+import TreatmentIcon from '../../../assets/TreatmentIcon';
 
 // If you want to reduce the size of the component, just modify the "size" of circularProgress
 function PatientsInTreatments({ patientsInTreatment, totalPatients }) {
     let progress = (patientsInTreatment / totalPatients) * 100;
     const theme = useTheme();
 
-    return <CardHomeStyled>
-        <StyledH3 css={{ color: theme.oncoPurpleTitle, margin: "0", paddingBottom: "12px", textAlign: "left", fontSize: "1rem", fontWeight: "normal" }}> Pacientes en tratamiento </StyledH3>
-        <StyledSpan css={{
-            backgroundColor: theme.itemBackground,
-            height: "2px", width: "112.5%",
-            marginLeft: "-15px"
-        }} />
+    return <CardHomeStyled lineColor={theme.itemBackground}>
+        <TreatmentsTitleBox>
+            <StyledBox><TreatmentIcon /></StyledBox>
+            <StyledH3 css={{ color: theme.oncoPurpleTitle, margin: "0", textAlign: "left", fontSize: "0.9rem", fontWeight: "normal" }}> Pacientes en tratamiento </StyledH3>
+        </TreatmentsTitleBox>
 
-        <CircularProgress
-            variant="determinate"
-            value="100"
-            size="14rem"
-            thickness={0.5}
-            style={{
-                position: "absolute",
-                transform: "translate(0%, -39%)",
-                top: "50%",
-                color: theme.itemBackground,
-            }} />
-
-        <CircularProgress
-            size="14rem"
-            thickness={0.5}
-            style={{ color: theme.oncoPurpleTitle, marginTop: "15px" }}
-            value={progress}
-            variant="determinate" />
-
-        <StyledSpan css={{
-            position: "absolute",
-            fontWeight: "lighter",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -20%)",
-        }}>
-            <StyledSpan css={{ fontSize: "3.5rem" }}>{patientsInTreatment}</StyledSpan>
-            <StyledSpan css={{ fontSize: "1rem" }}>/ {totalPatients}</StyledSpan>
-        </StyledSpan>
+        <TreatmentsContainer>
+            <CircularProgress
+                variant="determinate"
+                value="100"
+                size="10rem"
+                thickness={1.5}
+                style={{
+                    color: theme.itemBackground,
+                    zIndex: 1
+                }} />
+    
+            <CircularProgress
+                size="10rem"
+                thickness={1.5}
+                style={{ color: theme.oncoPurpleSubtitle, zIndex: 2 }}
+                value={progress}
+                variant="determinate" />
+    
+            <TreatmentsLegendContainer>
+                <StyledSpan css={{ fontSize: "2.5rem", fontWeight: "bold" }}>{patientsInTreatment}</StyledSpan>
+                <StyledSpan css={{ fontSize: "0.8rem" }}> /{totalPatients}</StyledSpan>
+            </TreatmentsLegendContainer>
+        </TreatmentsContainer>
     </CardHomeStyled>;
 }
 

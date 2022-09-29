@@ -27,7 +27,7 @@ function HomeScreen() {
                     <WidgetHome />
                 </StyledBox>
 
-                <PatientsInTreatments patientsInTreatment={16} totalPatients={70} />
+                <PatientsInTreatments patientsInTreatment={50} totalPatients={70} />
 
             </StyledBox>
 

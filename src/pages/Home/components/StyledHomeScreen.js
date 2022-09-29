@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { StyledCardHome } from "../../../common/styledCommonComponents"
+import { StyledBox, StyledCardHome, StyledSpan } from "../../../common/styledCommonComponents"
 
 export const HomeDateSection = styled.section`
     width: 15vw;
@@ -70,11 +70,60 @@ export const DateSectionStyled = styled.div`
 `
 
 export const CardHomeStyled = styled(StyledCardHome)`
-    padding: 0;
+    width: 300px;
+    height: 300px;
     position: relative;
-    height: fit-content;
+    display: flex;
+    /* justify-content: space-between; */
+    flex-direction: column;
+    padding: 20px;
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50px;
+        width: 100%;
+        height: 2px;
+        background-color:  ${(props) => (props.lineColor)};
+    }
+`;
+
+export const TreatmentsTitleBox = styled(StyledBox)`
+    display: flex;
+    flex-direction: row;
+    height: 20px;
+    padding-top: 0px;
+
+    & > h3 {
+        flex: 0.9;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(-10%);
+        justify-content: center;
+        margin-left: 10px;
+    }
+
+    & > div {
+        flex: 0.1;
+        text-align: center;
+    }
+`
+
+export const TreatmentsContainer = styled(StyledBox)`
+    margin-top: 40px;
+    position: relative;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    padding: 15px;
+    align-items: center;
+
+    & > div { position: absolute; }
+
+`;
+
+
+export const TreatmentsLegendContainer = styled(StyledSpan)`
+    font-weight: normal;
 `;
