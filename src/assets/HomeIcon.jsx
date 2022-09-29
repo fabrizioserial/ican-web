@@ -1,6 +1,7 @@
 import React from 'react';
 import {useTheme} from "styled-components";
 const HomeIcon = ({state}) => {
+
     const theme=useTheme()
     const color= state? theme.OncoPurple : theme.oncoGrey
     return (

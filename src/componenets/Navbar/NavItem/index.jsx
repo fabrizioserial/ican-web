@@ -1,12 +1,12 @@
 
-import React from "react";
+import React, {useState} from "react";
 import {StyledBox} from "../../../common/styledCommonComponents";
 import Link from "@material-ui/core/Link";
 
  const NavItem  = ( {icon,title, pathName, state}) => {
      let handleClick;
      return (
-         <StyledBox css={{
+         <StyledBox onClick={()=>setState(title)} css={{
              height: "70px",
              width: "75px",
              textAlign: "center",
@@ -14,7 +14,7 @@ import Link from "@material-ui/core/Link";
              fontSize: "2.7em",
              color: "#9FFFCB"
          }}>
-             <Link href={pathName}>
+             <Link to={pathName}>
              {icon}
              </Link>
 

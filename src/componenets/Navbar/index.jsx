@@ -1,16 +1,26 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {StyledBox} from "../../common/styledCommonComponents";
 import NavItem from "./NavItem";
 import HomeIcon from "../../assets/HomeIcon";
 import PatientsListIcon from "../../assets/PatientsListIcon";
 import StatisticsIcon from "../../assets/StatisticsIcon";
+import {useLocation} from "react-router";
 
 
-
-const Navbar = ({state}) => {
+const Navbar = () => {
+    let location = useLocation();
+    const [state, setState]= useState("home")
     const [navbarItems]=useState(["Home","Mis Pacientes","Estadísticas"])
     const [navbarPath]=useState(["/home","/patients","/statistics"])
     const [navbarIcons]= useState([<HomeIcon state={state}/>,<PatientsListIcon state={state}/>,<StatisticsIcon state={state}/> ])
+    const [navbarActiveState] =useState([false,false,false])
+        /*  useEffect(()=>{
+            for (let i = 0; i < navbarPath.length; i++) {
+                if (location.pathname === navbarPath[i]) {
+                    navbarActiveState[i] = true
+                }}}
+        ,[])    */
+
         return (
             <StyledBox css={{  position: "fixed",    /* Fixed Sidebar (stay in place on scroll and position relative to viewport) */
                 height: "100%",
@@ -22,7 +32,7 @@ const Navbar = ({state}) => {
                 paddingTop: "10px"}}>
 
                 {navbarItems.map((name,index) => (
-                    <NavItem icon={navbarIcons[index]} pathName={navbarPath[index]} title={name} state={state}/>
+                    <NavItem key={index} icon={navbarIcons[index]} pathName={navbarPath[index]} title={name} state={state} />
 
                 ))}
 
