@@ -8,6 +8,7 @@ const baseQuery = fetchBaseQuery({
 	baseUrl: appInfo.BASE_URL,
 	prepareHeaders: (headers) => {
 		const token = store.getState()?.authSlice?.accessToken;
+		
 		if (token) {
 			headers.set('authorization', `Bearer ${token}`);
 		}
