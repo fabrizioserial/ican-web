@@ -1,6 +1,4 @@
-import * as React from "react";
-import {useNavigate} from "react-router";
-import Link from "@material-ui/core/Link";
+import React, {useState} from "react";
 import {StyledBox} from "../../common/styledCommonComponents";
 import NavItem from "./NavItem";
 import HomeIcon from "../../assets/HomeIcon";
@@ -10,7 +8,9 @@ import StatisticsIcon from "../../assets/StatisticsIcon";
 
 
 const Navbar = ({state}) => {
-
+    const [navbarItems]=useState(["Home","Mis Pacientes","Estadísticas"])
+    const [navbarPath]=useState(["/home","/patients","/statistics"])
+    const [navbarIcons]= useState([<HomeIcon state={state}/>,<PatientsListIcon state={state}/>,<StatisticsIcon state={state}/> ])
         return (
             <StyledBox css={{  position: "fixed",    /* Fixed Sidebar (stay in place on scroll and position relative to viewport) */
                 height: "100%",
@@ -20,13 +20,16 @@ const Navbar = ({state}) => {
                 backgroundColor: "#222", /* Black */
                 overflowX: "hidden",   /* Disable horizontal scroll */
                 paddingTop: "10px"}}>
-               <NavItem icon={<HomeIcon state={state}/>} pathName={"/"} title={"Home"} state={state}/>
-               <NavItem icon={<PatientsListIcon state={state}/>} pathName={"/login"} title={"Mis Pacientes"} state={state}/>
-               <NavItem icon={<StatisticsIcon state={state}/>} pathName={"/login"} title={"Estadísticas"} state={state}/>
-               //array con objetos
+
+                {navbarItems.map((name,index) => (
+                    <NavItem icon={navbarIcons[index]} pathName={navbarPath[index]} title={name} state={state}/>
+
+                ))}
+
+
             </StyledBox>
 
         );
 
 }
-export default Navbar
+  export default Navbar
