@@ -13,23 +13,30 @@ const NavItem = ({ icon, title, pathName, state }) => {
 				width: '70px',
 				textAlign: 'center',
 				backgroundColor: color,
+				display:'flex',
 				left:"0px",
-				top:"97px"
+				position:'relative',
+				alignItems:'center',
+				justifyContent:'center',
+				boxSizing:'border-box',
+				marginBottom:'4px'
 			}}
 		>
 			<NavLink to={pathName}>
-				<StyledBox css={{ paddingTop:'10px'}}>
+				<StyledBox >
 					{icon && icon(state)}
 				</StyledBox>
 
 			</NavLink>
-			<StyledBox css={{ position: 'absolute',
+
+			{ state && <StyledBox css={{
+				position: 'absolute',
 				width: '4px',
 				height: '34.96px',
-				left: '66px',
-				top: '100px',
+				top: '2px',
+				right:'0px',
 				background: '#AF7EFF',
-				borderRadius: '10px 0px 0px 10px',}}/>
+				borderRadius: '10px 0px 0px 10px',}}/>}
 		</StyledBox>
 
 	);
