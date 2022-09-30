@@ -65,10 +65,7 @@ const InputTypeBuilder = (type, index, properties, values, onChangeHandle) => {
 			);
 		case InputTypeEnum.DATEFIELD:
 			return (
-				<DateInputField
-					key={index}
-					type={properties.type}
-					placeholder={properties.placeholder}
+				<DateInputField key={index} type={properties.type} placeholder={properties.placeholder}
 					value={values[properties.name]}
 					label={properties.label}
 					name={properties.name}
