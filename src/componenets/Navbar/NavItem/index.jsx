@@ -9,16 +9,29 @@ const NavItem = ({ icon, title, pathName, state }) => {
 	return (
 		<StyledBox
 			css={{
-				height: '70px',
-				width: '75px',
+				height: '40px',
+				width: '70px',
 				textAlign: 'center',
-				marginBottom: 0,
-				fontSize: '2.7em',
 				backgroundColor: color,
+				left:"0px",
+				top:"97px"
 			}}
 		>
-			<NavLink to={pathName}>{icon && icon(state)}</NavLink>
+			<NavLink to={pathName}>
+				<StyledBox css={{ paddingTop:'10px'}}>
+					{icon && icon(state)}
+				</StyledBox>
+
+			</NavLink>
+			<StyledBox css={{ position: 'absolute',
+				width: '4px',
+				height: '34.96px',
+				left: '66px',
+				top: '100px',
+				background: '#AF7EFF',
+				borderRadius: '10px 0px 0px 10px',}}/>
 		</StyledBox>
+
 	);
 };
 
