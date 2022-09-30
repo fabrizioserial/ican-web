@@ -21,7 +21,7 @@ function HomeScreen() {
 					width: 'inherit',
 					justifyContent: 'space-between',
 				}}
-				>
+			>
 				<StyledBox
 					css={{
 						display: 'flex',
@@ -32,7 +32,9 @@ function HomeScreen() {
 				>
 					<WidgetHome />
 				</StyledBox>
-				<StyledBox css={{ display: 'flex', flex: 0.4, justifyContent: "flex-end" }}>
+				<StyledBox
+					css={{ display: 'flex', flex: 0.4, justifyContent: 'flex-end' }}
+				>
 					<PatientsList />
 				</StyledBox>
 			</StyledBox>
