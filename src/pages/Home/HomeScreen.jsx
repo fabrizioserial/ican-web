@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyledBox } from '../../common/styledCommonComponents';
+import PatientsList from '../../componenets/PatientsList';
 import WidgetHome from '../../componenets/WidgetHome';
 
 function HomeScreen() {
@@ -18,6 +19,7 @@ function HomeScreen() {
 					margin: '30px 60px',
 					height: 'inherit',
 					width: 'inherit',
+					justifyContent: 'space-between',
 				}}
 			>
 				<StyledBox
@@ -30,7 +32,11 @@ function HomeScreen() {
 				>
 					<WidgetHome />
 				</StyledBox>
-				<StyledBox css={{ display: 'flex', flex: 0.4 }}></StyledBox>
+				<StyledBox
+					css={{ display: 'flex', flex: 0.4, justifyContent: 'flex-end' }}
+				>
+					<PatientsList />
+				</StyledBox>
 			</StyledBox>
 		</StyledBox>
 	);
