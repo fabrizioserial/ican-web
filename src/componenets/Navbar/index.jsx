@@ -1,45 +1,41 @@
-import React, {useEffect, useState} from "react";
-import {StyledBox} from "../../common/styledCommonComponents";
-import NavItem from "./NavItem";
-import HomeIcon from "../../assets/HomeIcon";
-import PatientsListIcon from "../../assets/PatientsListIcon";
-import StatisticsIcon from "../../assets/StatisticsIcon";
-import {useLocation} from "react-router";
-
+import React, { useEffect, useState } from 'react';
+import { StyledBox } from '../../common/styledCommonComponents';
+import NavItem from './NavItem';
+import HomeIcon from '../../assets/HomeIcon';
+import PatientsListIcon from '../../assets/PatientsListIcon';
+import StatisticsIcon from '../../assets/StatisticsIcon';
+import { useLocation } from 'react-router';
+import { NavbarConfig } from '../../utils/utils';
+import { useTheme } from 'styled-components';
 
 const Navbar = () => {
-    let location = useLocation();
-    const [state, setState]= useState("home")
-    const [navbarItems]=useState(["Home","Mis Pacientes","Estadísticas"])
-    const [navbarPath]=useState(["/home","/patients","/statistics"])
-    const [navbarIcons]= useState([<HomeIcon state={state}/>,<PatientsListIcon state={state}/>,<StatisticsIcon state={state}/> ])
-    const [navbarActiveState] =useState([false,false,false])
-        /*  useEffect(()=>{
-            for (let i = 0; i < navbarPath.length; i++) {
-                if (location.pathname === navbarPath[i]) {
-                    navbarActiveState[i] = true
-                }}}
-        ,[])    */
+	let location = useLocation();
+	const [navbarList, setNavbarList] = useState(NavbarConfig);
+	 const theme=useTheme()
 
-        return (
-            <StyledBox css={{  position: "fixed",    /* Fixed Sidebar (stay in place on scroll and position relative to viewport) */
-                height: "100%",
-                width: "75px",     /* Set the width of the sidebar */
-                zIndex: 1,     /* Stay on top of everything */
-                top: "3.4em",     /* Stay at the top */
-                backgroundColor: "#222", /* Black */
-                overflowX: "hidden",   /* Disable horizontal scroll */
-                paddingTop: "10px"}}>
-
-                {navbarItems.map((name,index) => (
-                    <NavItem key={index} icon={navbarIcons[index]} pathName={navbarPath[index]} title={name} state={state} />
-
-                ))}
-
-
-            </StyledBox>
-
-        );
-
-}
-  export default Navbar
+	return (
+		<StyledBox
+			css={{
+				position:
+					'fixed' /* Fixed Sidebar (stay in place on scroll and position relative to viewport) */,
+				height: '980px',
+				width: '70px' /* Set the width of the sidebar */,
+				zIndex: 1 /* Stay on top of everything */,
+				backgroundColor: theme.white /* Black */,
+				overflowX: 'hidden' /* Disable horizontal scroll */,
+				paddingTop: '10px',
+			}}
+		>
+			{navbarList.map((item, index) => (
+				<NavItem
+					key={index}
+					icon={item.icon}
+					pathName={item.path}
+					title={item.name}
+					state={location.pathname===item.path}
+				/>
+			))}
+		</StyledBox>
+	);
+};
+export default Navbar;

@@ -35,5 +35,5 @@ export const theme = {
 	oncoOrangeTitle: '#7E4228',
 	oncoOrangeSubtitle: 'rgba(126, 66, 40, 0.4)',
 
-	oncoGrey: '#555555'
+	oncoGrey: '#555555',
 };
