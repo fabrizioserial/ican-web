@@ -15,6 +15,7 @@ export const theme = {
 	focusable: focusableColor,
 	itemBackground: itemBackgroundColor,
 	OncoPurple: '#AF7EFF',
+	OncoLightPurple: '#E1D1FC',
 	white: '#FFFFFF',
 	oncoBlack: '#5F5F5F',
 
@@ -26,6 +27,7 @@ export const theme = {
 
 	oncoLightPurple: '#ECE1FD',
 	oncoLightPurple2: '#E1CEFF',
+	oncoLightPurple3: "#C39EFF",
 	oncoPurpleTitle: '#5D2BAF',
 	oncoPurpleSubtitle: 'rgba(93, 43, 175, 0.4)',
 
