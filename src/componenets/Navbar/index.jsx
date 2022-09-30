@@ -48,8 +48,8 @@ const Navbar = () => {
 
 
 			<StyledBox >
-				<NavItem icon={()=><BellIcon/>} pathName={"/notifications"} title={"Notificaciones"}/>
-				<NavItem icon={()=><SettingsIcon/>} pathName={"/settings"} title={"Configuración"}/>
+				<NavItem icon={()=><BellIcon/>} pathName={"/notifications"} title={"Notificaciones"} state={location.pathname==="/notifications"}/>
+				<NavItem icon={()=><SettingsIcon/>} pathName={"/settings"} title={"Configuración"} state={location.pathname==="/settings"}/>
 			</StyledBox>
 
 		</StyledBox>

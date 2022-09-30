@@ -6,6 +6,7 @@ import LoginScreen from './pages/Login/LoginScreen';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Navigate } from 'react-router-dom';
 import Navbar from './componenets/Navbar';
+import {StyledBox} from "./common/styledCommonComponents";
 
 const App = () => {
 	const accessToken = useSelector((state) => state.authSlice.accessToken);
@@ -16,8 +17,10 @@ const App = () => {
 			<Routes>
 				<Route element={<ProtectedRoute accessToken={accessToken} />}>
 					<Route path="/home" element={<HomeScreen />} />
-					<Route path="/statistics" element={<div> statistics</div>} />
-					<Route path="/my-patients" element={<div> my patients</div>} />
+					<Route path="/statistics" element={<StyledBox css={{textAlign: 'center', fontSize:'23px',padding:'100px'}}> Statistics</StyledBox> }/>
+					<Route path="/my-patients" element={<StyledBox css={{textAlign: 'center',fontSize:'23px',padding:'100px'}}> My patients</StyledBox> } />
+					<Route path="/settings" element={<StyledBox css={{textAlign: 'center', fontSize:'23px',padding:'100px'}}> Settings</StyledBox> }/>
+					<Route path="/notifications" element={<StyledBox css={{textAlign: 'center',fontSize:'23px',padding:'100px'}}> Notifications</StyledBox> } />
 				</Route>
 				<Route path="/login" element={<LoginScreen />} />
 				<Route path="*" element={<Navigate to="/home" replace />} />

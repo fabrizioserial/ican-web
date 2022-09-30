@@ -11,6 +11,8 @@ function HomeScreen() {
 				display: 'flex',
 				width: '100vw',
 				minHeight: '100vh',
+				paddingLeft:'70px',
+				boxSizing:'border-box'
 			}}
 		>
 			<StyledBox
@@ -38,7 +40,9 @@ function HomeScreen() {
 				>
 					<PatientsList />
 				</StyledBox>
+{/*
 				<PatientsInTreatments patientsInTreatment={50} totalPatients={70} />
+*/}
 			</StyledBox>
 		</StyledBox>
 	);
