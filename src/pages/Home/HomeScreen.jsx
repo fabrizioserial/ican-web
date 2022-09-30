@@ -1,7 +1,8 @@
-import React from 'react';
-import { StyledBox } from '../../common/styledCommonComponents';
+import React from 'react'
+import { StyledBox } from "../../common/styledCommonComponents";
 import PatientsList from '../../componenets/PatientsList';
-import WidgetHome from '../../componenets/WidgetHome';
+import WidgetHome from "../../componenets/WidgetHome";
+import PatientsInTreatments from './components/PatientsInTreatments';
 
 function HomeScreen() {
 	return (
@@ -37,6 +38,7 @@ function HomeScreen() {
 				>
 					<PatientsList />
 				</StyledBox>
+				<PatientsInTreatments patientsInTreatment={50} totalPatients={70} />
 			</StyledBox>
 		</StyledBox>
 	);
