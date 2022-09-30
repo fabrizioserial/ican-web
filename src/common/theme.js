@@ -15,6 +15,7 @@ export const theme = {
 	focusable: focusableColor,
 	itemBackground: itemBackgroundColor,
 	OncoPurple: '#AF7EFF',
+	OncoLightPurple: '#E1D1FC',
 	white: '#FFFFFF',
 	oncoBlack: '#5F5F5F',
 
