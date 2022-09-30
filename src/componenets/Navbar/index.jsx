@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { StyledBox } from '../../common/styledCommonComponents';
 import NavItem from './NavItem';
-import HomeIcon from '../../assets/HomeIcon';
-import PatientsListIcon from '../../assets/PatientsListIcon';
-import StatisticsIcon from '../../assets/StatisticsIcon';
 import { useLocation } from 'react-router';
 import { NavbarConfig } from '../../utils/utils';
 import { useTheme } from 'styled-components';
 import BellIcon from "../../assets/BellIcon";
-import {Settings} from "@material-ui/icons";
 import SettingsIcon from "../../assets/SettingsIcon";
 
 const Navbar = () => {
