@@ -16,14 +16,17 @@ const Navbar = () => {
 	return (
 		<StyledBox
 			css={{
-				position:
-					'fixed' /* Fixed Sidebar (stay in place on scroll and position relative to viewport) */,
 				height: '980px',
 				width: '70px' /* Set the width of the sidebar */,
 				zIndex: 1 /* Stay on top of everything */,
 				backgroundColor: theme.white /* Black */,
 				overflowX: 'hidden' /* Disable horizontal scroll */,
 				paddingTop: '10px',
+				borderRight: '1px solid rgba(223, 223, 223, 0.5)',
+				boxShadow: '0 2px 24px rgba(214, 203, 252, 0.3)',
+				left: "0px",
+				top: "2px",
+				position: "absolute",
 			}}
 		>
 			{navbarList.map((item, index) => (

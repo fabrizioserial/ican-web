@@ -1,8 +1,11 @@
 import React from 'react';
 import { StyledBox } from '../../../common/styledCommonComponents';
 import { NavLink } from 'react-router-dom';
+import {useTheme} from "styled-components";
 
 const NavItem = ({ icon, title, pathName, state }) => {
+	const theme = useTheme();
+	const color= state ? theme.oncoNavbarSelection : theme.white
 	return (
 		<StyledBox
 			css={{
@@ -11,7 +14,7 @@ const NavItem = ({ icon, title, pathName, state }) => {
 				textAlign: 'center',
 				marginBottom: 0,
 				fontSize: '2.7em',
-				color: '#9FFFCB',
+				backgroundColor: color,
 			}}
 		>
 			<NavLink to={pathName}>{icon && icon(state)}</NavLink>
