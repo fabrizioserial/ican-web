@@ -9,6 +9,7 @@ export const StyledBox = styled.div`
 
 export const StyledP = styled.p`
 	margin: 0;
+	color: ${(props) => props.theme.oncoBlack};
 	${(props) => styledComponentCss`${props.css}`}
 `;
 
@@ -39,6 +40,13 @@ export const StyledImg = styled.img`
 	&:first-child {
 		${(props) => props.firstChild}
 	}
+`;
+
+export const StyledSelect = styled.select`
+	${(props) => styledComponentCss`${props.css}`}
+`;
+export const StyledOption = styled.option`
+	${(props) => styledComponentCss`${props.css}`}
 `;
 
 /// Custom components

@@ -16,6 +16,7 @@ export const theme = {
 	itemBackground: itemBackgroundColor,
 	OncoPurple: '#AF7EFF',
 	white: '#FFFFFF',
+	oncoGrey: '#F8F9FA',
 	oncoBlack: '#5F5F5F',
 
 	oncoLightBlue: '#DFE8FF',

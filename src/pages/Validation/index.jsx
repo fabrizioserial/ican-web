@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
 import { StyledBox, StyledScreen } from '../../common/styledCommonComponents';
-import FormHeader from '../../componenets/form/FormHeader';
-import { FormHeaders } from '../../utils/utils';
+import { FormsSqueleton, validationFormValues } from '../../utils/utils';
+import { FormBuilder } from '../../componenets/form/InputFields/utils';
 
 const Validation = () => {
+	const [sections] = useState(FormsSqueleton);
+	const [values, setValues] = useState(validationFormValues);
+
+	const handleOnChange = (name, newValue) => {
+		if (!name || newValue === undefined) return;
+		setValues({
+			...values,
+			[name]: newValue,
+		});
+	};
+
 	return (
 		<StyledScreen css={{ display: 'flex', justifyContent: 'center' }}>
 			<StyledBox
@@ -14,10 +25,7 @@ const Validation = () => {
 					margin: '50px 0',
 				}}
 			>
-				<FormHeader
-					title={FormHeaders['patient-data'].title}
-					icon={FormHeaders['patient-data'].icon}
-				/>
+				{FormBuilder(sections, values, handleOnChange)}
 			</StyledBox>
 		</StyledScreen>
 	);
