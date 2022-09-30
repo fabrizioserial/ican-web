@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { homeApi } from '../api/homeApi';
 import { sessionApi } from '../api/sessionApi';
 
 const initialState = {
@@ -7,6 +8,12 @@ const initialState = {
 		name: null,
 		surname: null,
 	},
+	weeklyGeneralPatientsReport: {
+		total: null,
+		active: null,
+		pending: null,
+		inTreatment: null
+	}
 };
 
 export const homeSlice = createSlice({
@@ -14,14 +21,16 @@ export const homeSlice = createSlice({
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
-		builder.addMatcher(
-			sessionApi.endpoints.login.matchFulfilled,
-			(state, { payload }) => {
-				const { avatarId, name, surname } = payload;
+		builder
+			.addMatcher(sessionApi.endpoints.login.matchFulfilled,
+				(state, { payload }) => {
+					const { avatarId, name, surname } = payload;
 
-				state.user = { avatarId, name, surname };
-			},
-		); // Match with the login endpoint
+					state.user = { avatarId, name, surname };
+				})
+			.addMatcher(homeApi.endpoints.weeklyReport.matchFulfilled,
+				(state, { payload }) => { state.weeklyGeneralPatientsReport = payload; }
+			)
 	},
 });
 
