@@ -7,8 +7,8 @@ export const homeApi = api.injectEndpoints({
 			query: () => ({ url: '/api/user/doctor-patients', method: 'GET' }),
 		}),
 		weeklyReport: builder.query({
-			query: () => ({ url: "/api/user/statistics", method: "GET" })
-		})
+			query: () => ({ url: '/api/user/statistics', method: 'GET' }),
+		}),
 	}),
 });
 

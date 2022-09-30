@@ -12,8 +12,8 @@ const initialState = {
 		total: null,
 		active: null,
 		pending: null,
-		inTreatment: null
-	}
+		inTreatment: null,
+	},
 };
 
 export const homeSlice = createSlice({
@@ -22,15 +22,20 @@ export const homeSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder
-			.addMatcher(sessionApi.endpoints.login.matchFulfilled,
+			.addMatcher(
+				sessionApi.endpoints.login.matchFulfilled,
 				(state, { payload }) => {
 					const { avatarId, name, surname } = payload;
 
 					state.user = { avatarId, name, surname };
-				})
-			.addMatcher(homeApi.endpoints.weeklyReport.matchFulfilled,
-				(state, { payload }) => { state.weeklyGeneralPatientsReport = payload; }
+				},
 			)
+			.addMatcher(
+				homeApi.endpoints.weeklyReport.matchFulfilled,
+				(state, { payload }) => {
+					state.weeklyGeneralPatientsReport = payload;
+				},
+			);
 	},
 });
 
