@@ -1,6 +1,6 @@
 import React from 'react';
 import PatientsList from '../../componenets/PatientsList';
-import { StyledBox, StyledScreen } from '../../common/styledCommonComponents';
+import {StyledBox, StyledScreen} from '../../common/styledCommonComponents';
 import WidgetHome from '../../componenets/WidgetHome';
 
 function HomeScreen() {
