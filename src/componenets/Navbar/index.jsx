@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StyledBox } from '../../common/styledCommonComponents';
 import NavItem from './NavItem';
 import { useLocation } from 'react-router';
-import { NavbarConfig } from '../../utils/utils';
+import {NavbarConfig, NavbarConfigBottom} from '../../utils/utils';
 import { useTheme } from 'styled-components';
 import BellIcon from "../../assets/BellIcon";
 import SettingsIcon from "../../assets/SettingsIcon";
@@ -10,6 +10,8 @@ import SettingsIcon from "../../assets/SettingsIcon";
 const Navbar = () => {
 	let location = useLocation();
 	const [navbarList, setNavbarList] = useState(NavbarConfig);
+	const [navbarListBottom, setNavbarListBottom] = useState(NavbarConfigBottom);
+
 	 const theme=useTheme()
 
 	return (
@@ -48,8 +50,15 @@ const Navbar = () => {
 
 
 			<StyledBox >
-				<NavItem icon={()=><BellIcon/>} pathName={"/notifications"} title={"Notificaciones"} state={location.pathname==="/notifications"}/>
-				<NavItem icon={()=><SettingsIcon/>} pathName={"/settings"} title={"Configuración"} state={location.pathname==="/settings"}/>
+				{navbarListBottom.map((item, index) => (
+					<NavItem
+						key={index}
+						icon={item.icon}
+						pathName={item.path}
+						title={item.name}
+						state={location.pathname===item.path}
+					/>
+				))}
 			</StyledBox>
 
 		</StyledBox>

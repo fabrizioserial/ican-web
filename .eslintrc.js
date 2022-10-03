@@ -25,6 +25,7 @@ module.exports = {
 		'react/prop-types': 0,
 		'prefer-const': 0,
 		'react/jsx-key': 0,
+
 	},
 	settings: {
 		react: {
