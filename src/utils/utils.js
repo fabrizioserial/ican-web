@@ -21,6 +21,11 @@ export const validationFormValues = {
 	load_date: '',
 	diagnostic_date: '',
 	tumor: 'gastrico',
+	PDL1_expresion: '',
+	estadio: '',
+	t: '',
+	n: '',
+	m: '',
 };
 
 export const FormsSqueleton = [
@@ -177,6 +182,50 @@ export const FormsSqueleton = [
 					name: 'histology',
 				},
 				{},
+			],
+			[
+				{
+					label: 'Expresión de PDL1',
+					options: {
+						hipertension: 'Hipertensión',
+					},
+					input_type: InputTypeEnum.SELECTOR,
+					name: 'PDL1_expresion',
+				},
+				{
+					label: 'Estadio',
+					options: {
+						ia_1: 'IA1',
+					},
+					input_type: InputTypeEnum.SELECTOR,
+					name: 'estadio',
+				},
+			],
+			[
+				{
+					label: 'T',
+					options: {
+						tx: 'TX',
+					},
+					input_type: InputTypeEnum.SELECTOR,
+					name: 't',
+				},
+				{
+					label: 'N',
+					options: {
+						nx: 'NX',
+					},
+					input_type: InputTypeEnum.SELECTOR,
+					name: 'n',
+				},
+				{
+					label: 'M',
+					options: {
+						mx: 'MX',
+					},
+					input_type: InputTypeEnum.SELECTOR,
+					name: 'm',
+				},
 			],
 			[
 				{
