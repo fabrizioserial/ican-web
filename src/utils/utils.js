@@ -10,6 +10,7 @@ export const InputTypeEnum = {
 	SELECTOR: 'SELECTOR',
 	DATEFIELD: 'DATEFIELD',
 	ACTIONFIELD: 'ACTIONFIELD',
+	CONDITIONAL: 'CONDITIONAL',
 };
 
 export const validationFormValues = {
@@ -204,26 +205,17 @@ export const FormsSqueleton = [
 			[
 				{
 					label: 'T',
-					options: {
-						tx: 'TX',
-					},
-					input_type: InputTypeEnum.SELECTOR,
+					input_type: InputTypeEnum.CONDITIONAL,
 					name: 't',
 				},
 				{
 					label: 'N',
-					options: {
-						nx: 'NX',
-					},
-					input_type: InputTypeEnum.SELECTOR,
+					input_type: InputTypeEnum.CONDITIONAL,
 					name: 'n',
 				},
 				{
 					label: 'M',
-					options: {
-						mx: 'MX',
-					},
-					input_type: InputTypeEnum.SELECTOR,
+					input_type: InputTypeEnum.CONDITIONAL,
 					name: 'm',
 				},
 			],
