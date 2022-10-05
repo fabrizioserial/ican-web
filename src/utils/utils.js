@@ -195,10 +195,7 @@ export const FormsSqueleton = [
 				},
 				{
 					label: 'Estadio',
-					options: {
-						ia_1: 'IA1',
-					},
-					input_type: InputTypeEnum.SELECTOR,
+					input_type: InputTypeEnum.CONDITIONAL,
 					name: 'estadio',
 				},
 			],

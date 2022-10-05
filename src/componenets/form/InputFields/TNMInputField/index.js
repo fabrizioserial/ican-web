@@ -1,31 +1,188 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SelectorInputField from '../SelectorInputField'
 
 const options = {
-    "mama":
-    {
-        TX: 'mama TX',
-        T0: 'T0',
+    "mama": {
+        "t": {
+            TX: 'TX',
+            T0: 'T0',
+        },
+        "n": {
+            NX: 'NX',
+            N0: 'N0',
+        },
+        "m": {
+            MX: 'MX',
+            M0: 'M0',
+        },
+        "estadio": {
+            O: "O",
+            IA: "IA",
+            IB: "IB",
+        }
     },
-    "prostata":
-    {
-        TX: 'prostat TX',
-        T0: 'T0',
-
+    "prostata": {
+        "t": {
+            TX: 'TX',
+            T0: 'T0',
+        },
+        "n": {
+            NX: 'NX',
+            N0: 'N0',
+        },
+        "m": {
+            MX: 'MX',
+            M0: 'M0',
+        },
+        "estadio": {
+            O: "O",
+            IA: "IA",
+            IB: "IB",
+        }
     },
-    "colon":
-    {
-        TX: 'colon TX',
-        T0: 'T0',
+    "pulmon": {
+        "t": {
+            TX: 'TX',
+            T0: 'T0',
+        },
+        "n": {
+            NX: 'NX',
+            N0: 'N0',
+        },
+        "m": {
+            MX: 'MX',
+            M0: 'M0',
+        },
+        "estadio": {
+            O: "O",
+            IA: "IA",
+            IB: "IB",
+        }
     },
-    "pulmon":
-    {
-        TX: 'pulmon TX',
-        T0: 'T0',
+    "colon": {
+        "t": {
+            TX: 'TX',
+            T0: 'T0',
+        },
+        "n": {
+            NX: 'NX',
+            N0: 'N0',
+        },
+        "m": {
+            MX: 'MX',
+            M0: 'M0',
+        },
+        "estadio": {
+            O: "Colon O",
+            IA: "IA",
+            IB: "IB",
+        }
+    },
+    "cervix": {
+        "t": {
+            TX: 'TX',
+            T0: 'T0',
+        },
+        "n": {
+            NX: 'NX',
+            N0: 'N0',
+        },
+        "m": {
+            MX: 'MX',
+            M0: 'M0',
+        },
+        "estadio": {
+            O: "O",
+            IA: "IA",
+            IB: "IB",
+        }
+    },
+    "gastrico": {
+        "t": {
+            TX: 'TX',
+            T0: 'T0',
+        },
+        "n": {
+            NX: 'NX',
+            N0: 'N0',
+        },
+        "m": {
+            MX: 'MX',
+            M0: 'M0',
+        },
+        "estadio": {
+            O: "O",
+            IA: "IA",
+            IB: "IB",
+        }
+    },
+    "higado": {
+        "t": {
+            TX: 'TX',
+            T0: 'T0',
+        },
+        "n": {
+            NX: 'NX',
+            N0: 'N0',
+        },
+        "m": {
+            MX: 'MX',
+            M0: 'M0',
+        },
+        "estadio": {
+            O: "O",
+            IA: "IA",
+            IB: "IB",
+        }
+    },
+    "utero": {
+        "t": {
+            TX: 'TX',
+            T0: 'T0',
+        },
+        "n": {
+            NX: 'NX',
+            N0: 'N0',
+        },
+        "m": {
+            MX: 'MX',
+            M0: 'M0',
+        },
+        "estadio": {
+            O: "O",
+            IA: "IA",
+            IB: "IB",
+        }
+    },
+    "ovario": {
+        "t": {
+            TX: 'TX',
+            T0: 'T0',
+        },
+        "n": {
+            NX: 'NX',
+            N0: 'N0',
+        },
+        "m": {
+            MX: 'MX',
+            M0: 'M0',
+        },
+        "estadio": {
+            O: "O",
+            IA: "IA",
+            IB: "IB",
+        }
     },
 }
 
 const TNMInputField = ({ properties, values, onChange }) => {
+
+    const [currentOption, setCurrentOption] = useState(options[values.tumor] ?? [])
+
+    useEffect(() => {
+        setCurrentOption(options[values.tumor] ?? [])
+    }, [values.tumor])
+
     return (
         <SelectorInputField
             type={properties.type}
@@ -33,7 +190,7 @@ const TNMInputField = ({ properties, values, onChange }) => {
             label={properties.label}
             name={properties.name}
             onChange={onChange}
-            options={options[values.tumor] ?? []}
+            options={currentOption[properties.name]}
         />
     )
 }
