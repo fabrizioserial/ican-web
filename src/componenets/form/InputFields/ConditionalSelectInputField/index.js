@@ -175,7 +175,7 @@ const options = {
     },
 }
 
-const TNMInputField = ({ properties, values, onChange }) => {
+const ConditionalSelectInputField = ({ properties, values, onChange }) => {
 
     const [currentOption, setCurrentOption] = useState(options[values.tumor] ?? [])
 
@@ -196,4 +196,4 @@ const TNMInputField = ({ properties, values, onChange }) => {
 }
 
 
-export default TNMInputField
+export default ConditionalSelectInputField
