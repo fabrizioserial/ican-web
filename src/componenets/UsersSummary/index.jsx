@@ -9,17 +9,21 @@ import {
 import { useTheme } from 'styled-components';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const UsersSummary = () => {
 	const theme = useTheme();
+	const patientsReport = useSelector(state => state.homeSlice.weeklyGeneralPatientsReport);
+	console.log(patientsReport);
+	
 	const [users, setUsers] = useState({
 		activeUsers: {
-			amount: 30,
-			users: ['', '', '', ''],
+			amount: patientsReport.active,
+			users: ['', '', '', ''], // TODO AVATAR
 		},
 		waitingUsers: {
-			amount: 20,
-			users: ['', '', '', ''],
+			amount: patientsReport.pending,
+			users: ['', '', '', ''], // TODO AVATAR
 		},
 	});
 	return (
