@@ -197,6 +197,7 @@ export const FormsSqueleton = [
 					label: 'Estadio',
 					input_type: InputTypeEnum.CONDITIONAL,
 					name: 'estadio',
+					varToEvaluate: ''
 				},
 			],
 			[
@@ -204,16 +205,19 @@ export const FormsSqueleton = [
 					label: 'T',
 					input_type: InputTypeEnum.CONDITIONAL,
 					name: 't',
+					varToEvaluate: ''
 				},
 				{
 					label: 'N',
 					input_type: InputTypeEnum.CONDITIONAL,
 					name: 'n',
+					varToEvaluate: ''
 				},
 				{
 					label: 'M',
 					input_type: InputTypeEnum.CONDITIONAL,
 					name: 'm',
+					varToEvaluate: ''
 				},
 			],
 			[
@@ -264,5 +268,179 @@ export const FormsSqueleton = [
 		fields: [],
 	},
 ];
+
+export const TNMOptions = {
+	"mama": {
+		"t": {
+			TX: 'TX',
+			T0: 'T0',
+		},
+		"n": {
+			NX: 'NX',
+			N0: 'N0',
+		},
+		"m": {
+			MX: 'MX',
+			M0: 'M0',
+		},
+		"estadio": {
+			O: "O",
+			IA: "IA",
+			IB: "IB",
+		}
+	},
+	"prostata": {
+		"t": {
+			TX: 'TX',
+			T0: 'T0',
+		},
+		"n": {
+			NX: 'NX',
+			N0: 'N0',
+		},
+		"m": {
+			MX: 'MX',
+			M0: 'M0',
+		},
+		"estadio": {
+			O: "O",
+			IA: "IA",
+			IB: "IB",
+		}
+	},
+	"pulmon": {
+		"t": {
+			TX: 'TX',
+			T0: 'T0',
+		},
+		"n": {
+			NX: 'NX',
+			N0: 'N0',
+		},
+		"m": {
+			MX: 'MX',
+			M0: 'M0',
+		},
+		"estadio": {
+			O: "O",
+			IA: "IA",
+			IB: "IB",
+		}
+	},
+	"colon": {
+		"t": {
+			TX: 'TX',
+			T0: 'T0',
+		},
+		"n": {
+			NX: 'NX',
+			N0: 'N0',
+		},
+		"m": {
+			MX: 'MX',
+			M0: 'M0',
+		},
+		"estadio": {
+			O: "Colon O",
+			IA: "IA",
+			IB: "IB",
+		}
+	},
+	"cervix": {
+		"t": {
+			TX: 'TX',
+			T0: 'T0',
+		},
+		"n": {
+			NX: 'NX',
+			N0: 'N0',
+		},
+		"m": {
+			MX: 'MX',
+			M0: 'M0',
+		},
+		"estadio": {
+			O: "O",
+			IA: "IA",
+			IB: "IB",
+		}
+	},
+	"gastrico": {
+		"t": {
+			TX: 'TX',
+			T0: 'T0',
+		},
+		"n": {
+			NX: 'NX',
+			N0: 'N0',
+		},
+		"m": {
+			MX: 'MX',
+			M0: 'M0',
+		},
+		"estadio": {
+			O: "O",
+			IA: "IA",
+			IB: "IB",
+		}
+	},
+	"higado": {
+		"t": {
+			TX: 'TX',
+			T0: 'T0',
+		},
+		"n": {
+			NX: 'NX',
+			N0: 'N0',
+		},
+		"m": {
+			MX: 'MX',
+			M0: 'M0',
+		},
+		"estadio": {
+			O: "O",
+			IA: "IA",
+			IB: "IB",
+		}
+	},
+	"utero": {
+		"t": {
+			TX: 'TX',
+			T0: 'T0',
+		},
+		"n": {
+			NX: 'NX',
+			N0: 'N0',
+		},
+		"m": {
+			MX: 'MX',
+			M0: 'M0',
+		},
+		"estadio": {
+			O: "O",
+			IA: "IA",
+			IB: "IB",
+		}
+	},
+	"ovario": {
+		"t": {
+			TX: 'TX',
+			T0: 'T0',
+		},
+		"n": {
+			NX: 'NX',
+			N0: 'N0',
+		},
+		"m": {
+			MX: 'MX',
+			M0: 'M0',
+		},
+		"estadio": {
+			O: "O",
+			IA: "IA",
+			IB: "IB",
+		}
+	},
+};
 
 const FormBuilder = {};
