@@ -24,6 +24,7 @@ module.exports = {
 		'react/react-in-jsx-scope': 0,
 		'react/prop-types': 0,
 		'prefer-const': 0,
+		'react/jsx-key': 0,
 	},
 	settings: {
 		react: {

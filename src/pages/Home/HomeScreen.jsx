@@ -32,6 +32,7 @@ function HomeScreen() {
 				>
 					<PatientsList />
 				</StyledBox>
+
 				<PatientsInTreatments patientsInTreatment={50} totalPatients={70} />
 			</StyledBox>
 		</StyledScreen>
