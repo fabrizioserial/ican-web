@@ -27,7 +27,13 @@
 		"prettier": "npx prettier --write .",
 		"format": "npx prettier --write .",
 		"eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
-		"prepare": "husky install"
+		"prepare": "husky install",
+		"configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\""
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
 	},
 	"eslintConfig": {
 		"extends": [
@@ -62,6 +68,8 @@
 		"react-router-dom": "^6.3.0"
 	},
 	"lint-staged": {
-		"**/*": "prettier --write --ignore-unknown"
+		"**/*.{js,jsx,json}": [
+			"prettier --write ."
+		]
 	}
 }

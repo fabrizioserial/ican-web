@@ -17,6 +17,7 @@ export const theme = {
 	OncoPurple: '#AF7EFF',
 	OncoLightPurple: '#E1D1FC',
 	white: '#FFFFFF',
+	oncoGrey: '#F8F9FA',
 	oncoBlack: '#5F5F5F',
 
 	oncoLightBlue: '#DFE8FF',
@@ -27,7 +28,7 @@ export const theme = {
 
 	oncoLightPurple: '#ECE1FD',
 	oncoLightPurple2: '#E1CEFF',
-	oncoLightPurple3: "#C39EFF",
+	oncoLightPurple3: '#C39EFF',
 	oncoPurpleTitle: '#5D2BAF',
 	oncoPurpleSubtitle: 'rgba(93, 43, 175, 0.4)',
 
@@ -38,5 +39,5 @@ export const theme = {
 	oncoOrangeSubtitle: 'rgba(126, 66, 40, 0.4)',
 
 	oncoGrey: '#555555',
-	oncoNavbarSelection:'rgba(175, 126, 255, 0.08)'
+	oncoNavbarSelection: 'rgba(175, 126, 255, 0.08)',
 };

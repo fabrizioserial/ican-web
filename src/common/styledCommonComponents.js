@@ -9,6 +9,7 @@ export const StyledBox = styled.div`
 
 export const StyledP = styled.p`
 	margin: 0;
+	color: ${(props) => props.theme.oncoBlack};
 	${(props) => styledComponentCss`${props.css}`}
 `;
 
@@ -41,6 +42,13 @@ export const StyledImg = styled.img`
 	}
 `;
 
+export const StyledSelect = styled.select`
+	${(props) => styledComponentCss`${props.css}`}
+`;
+export const StyledOption = styled.option`
+	${(props) => styledComponentCss`${props.css}`}
+`;
+
 /// Custom components
 
 export const StyledCardHome = styled(StyledBox)`
@@ -49,4 +57,11 @@ export const StyledCardHome = styled(StyledBox)`
 	box-shadow: 0 2px 24px rgba(214, 203, 252, 0.3);
 	box-sizing: border-box;
 	padding: 24px 20px;
+`;
+
+export const StyledScreen = styled(StyledBox)`
+	background-color: #fafbfc;
+	display: flex;
+	width: 100vw;
+	min-height: 100vh;
 `;
