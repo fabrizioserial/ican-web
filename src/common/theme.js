@@ -38,6 +38,6 @@ export const theme = {
 	oncoOrangeTitle: '#7E4228',
 	oncoOrangeSubtitle: 'rgba(126, 66, 40, 0.4)',
 
-	oncoGrey: '#555555',
+	oncoDarkGrey: '#555555',
 	oncoNavbarSelection: 'rgba(175, 126, 255, 0.08)',
 };

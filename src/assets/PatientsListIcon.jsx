@@ -2,7 +2,7 @@ import React from 'react';
 import { useTheme } from 'styled-components';
 const PatientsListIcon = ({ active }) => {
 	const theme = useTheme();
-	const color = active ? theme.OncoPurple : theme.oncoGrey;
+	const color = active ? theme.OncoPurple : theme.oncoDarkGrey;
 	return (
 		<svg
 			width="18"
