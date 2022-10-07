@@ -1,10 +1,10 @@
 import FormHeader from '../FormHeader';
-import { StyledContainerForm } from './ContainerInputField/styles';
 import { StyledBox } from '../../../common/styledCommonComponents';
 import { InputTypeEnum } from '../../../utils/utils';
 import TextInputField from './TextInputField';
 import DateInputField from './DateInputField';
 import SelectorInputField from './SelectorInputField';
+import ConditionalSelectInputField from './ConditionalSelectInputField';
 
 export const FormBuilder = (formSqueleton, values, onChangeHandle) => {
 	return formSqueleton?.map((section, index) => (
@@ -72,6 +72,15 @@ const InputTypeBuilder = (type, index, properties, values, onChangeHandle) => {
 					value={values[properties.name]}
 					label={properties.label}
 					name={properties.name}
+					onChange={onChangeHandle}
+				/>
+			);
+		case InputTypeEnum.CONDITIONAL:
+			return (
+				<ConditionalSelectInputField
+					key={index}
+					properties={properties}
+					values={values}
 					onChange={onChangeHandle}
 				/>
 			);

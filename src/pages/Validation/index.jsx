@@ -7,6 +7,7 @@ const Validation = () => {
 	const [sections] = useState(FormsSqueleton);
 	const [values, setValues] = useState(validationFormValues);
 
+	// set values of validationFormValues
 	const handleOnChange = (name, newValue) => {
 		if (!name || newValue === undefined) return;
 		setValues({
