@@ -1,23 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import { TNMOptions } from '../../../../utils/utils'
+import React, {useMemo} from 'react'
+import {TNMOptions} from '../../../../utils/utils'
 import SelectorInputField from '../SelectorInputField'
 
-const ConditionalSelectInputField = ({ properties, values, onChange }) => {
-
-    const [currentOption, setCurrentOption] = useState(TNMOptions[values.tumor] ?? [])
-
-    useEffect(() => {
-        setCurrentOption(TNMOptions[values.tumor] ?? [])
-    }, [values.tumor])
+const ConditionalSelectInputField = ({ properties , values, onChange }) => {
+    const {varToEvaluate,type,name,label}  = properties
+    const currentOption = useMemo(()=> TNMOptions[values[varToEvaluate]] ?? TNMOptions.default ,[values[varToEvaluate]])
 
     return (
         <SelectorInputField
-            type={properties.type}
-            value={values[properties.name]}
-            label={properties.label}
-            name={properties.name}
+            type={type}
+            value={values[name]}
+            label={label}
+            name={name}
             onChange={onChange}
-            options={currentOption[properties.name]}
+            options={currentOption[name]}
         />
     )
 }

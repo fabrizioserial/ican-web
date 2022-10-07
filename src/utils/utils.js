@@ -197,7 +197,7 @@ export const FormsSqueleton = [
 					label: 'Estadio',
 					input_type: InputTypeEnum.CONDITIONAL,
 					name: 'estadio',
-					varToEvaluate: ''
+					varToEvaluate: 'tumor'
 				},
 			],
 			[
@@ -205,19 +205,19 @@ export const FormsSqueleton = [
 					label: 'T',
 					input_type: InputTypeEnum.CONDITIONAL,
 					name: 't',
-					varToEvaluate: ''
+					varToEvaluate: 'tumor'
 				},
 				{
 					label: 'N',
 					input_type: InputTypeEnum.CONDITIONAL,
 					name: 'n',
-					varToEvaluate: ''
+					varToEvaluate: 'tumor'
 				},
 				{
 					label: 'M',
 					input_type: InputTypeEnum.CONDITIONAL,
 					name: 'm',
-					varToEvaluate: ''
+					varToEvaluate: 'tumor'
 				},
 			],
 			[
@@ -441,6 +441,25 @@ export const TNMOptions = {
 			IB: "IB",
 		}
 	},
+	"default":{
+		"t": {
+			TX: 'TX',
+			T0: 'T0',
+		},
+		"n": {
+			NX: 'NX',
+			N0: 'N0',
+		},
+		"m": {
+			MX: 'MX',
+			M0: 'M0',
+		},
+		"estadio": {
+			O: "O",
+			IA: "IA",
+			IB: "IB",
+		}
+	}
 };
 
 const FormBuilder = {};
