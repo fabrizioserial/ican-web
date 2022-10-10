@@ -8,7 +8,7 @@ import DonutChart from './donutChart/DonutChart';
 const DonutWidget = () => {
     const theme = useTheme();
     return (
-        <CardHomeStyled css={{ width: "396px !important", height: "300px !important" }}>
+        <CardHomeStyled lineColor={theme.itemBackground} css={{ width: "396px !important", height: "300px !important" }}>
             <TreatmentsTitleBox>
                 <StyledBox>
                     <TreatmentIcon
