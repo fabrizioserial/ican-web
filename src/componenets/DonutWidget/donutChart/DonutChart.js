@@ -1,6 +1,5 @@
 import React from 'react'
 import Chart from 'react-apexcharts'
-import { useTheme } from 'styled-components';
 import './styles.css'
 
 const DonutChart = () => {
@@ -23,11 +22,20 @@ const DonutChart = () => {
             position: 'right',
             horizontalAlign: 'center',
             fontSize: '11px',
+            formatter: function (seriesName, opts) {
+                return [seriesName, "  ", opts.w.globals.series[opts.seriesIndex] + "%"]
+            },
+            labels: {
+                colors: '#989898',
+            },
             itemMargin: {
-                vertical: 4
+                vertical: 3
             },
             onItemHover: {
-                highlightDataSeries: true
+                highlightDataSeries: false
+            },
+            onItemClick: {
+                toggleDataSeries: false
             },
             markers: {
                 width: 6,
@@ -39,10 +47,10 @@ const DonutChart = () => {
         },
         tooltip: {
             fillSeriesColor: false,
+            followCursor: true,
             y: {
-                formatter: undefined,
                 title: {
-                    formatter: (seriesName) => seriesName,
+                    formatter: (seriesName) => seriesName + ":",
                 },
             },
             marker: {
@@ -53,8 +61,16 @@ const DonutChart = () => {
             pie: {
                 offsetY: 10,
                 customScale: 0.8,
+                expandOnClick: false,
                 donut: {
-                    size: '70%'
+                    size: '70%',
+                }
+            }
+        },
+        yaxis: {
+            labels: {
+                formatter: function (val) {
+                    return val + '%'
                 }
             }
         }
