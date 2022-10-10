@@ -5,12 +5,12 @@ import { Outlet } from 'react-router';
 
 const Wrapper = () => {
 	return (
-		<div css={{ flexDirection: 'row', display: 'flex' }}>
+		<StyledBox css={{ flexDirection: 'row', display: 'flex' }}>
 			<Navbar />
 			<StyledBox css={{ paddingLeft: '70px' }}>
 				<Outlet />
 			</StyledBox>
-		</div>
+		</StyledBox>
 	);
 };
 

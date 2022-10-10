@@ -23,15 +23,14 @@ function HomeScreen() {
 						flexDirection: 'column',
 						flex: 0.6,
 						maxWidth: '760px',
-						rowGap: "35px"
-
+						rowGap: "35px",
 					}}
 				>
 					<WidgetHome />
 					<WidgetPastelStats />
 				</StyledBox>
 				<StyledBox
-					css={{ display: 'flex', flex: 0.4, justifyContent: 'flex-end' }}
+					css={{ display: 'flex', flex: 0.4, justifyContent: 'center' }}
 				>
 					<PatientsList />
 				</StyledBox>

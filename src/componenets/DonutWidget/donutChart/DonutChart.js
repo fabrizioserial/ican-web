@@ -24,7 +24,7 @@ const DonutChart = () => {
             horizontalAlign: 'center',
             fontSize: '11px',
             itemMargin: {
-                vertical: 8 
+                vertical: 4
             },
             onItemHover: {
                 highlightDataSeries: true
@@ -51,6 +51,7 @@ const DonutChart = () => {
         },
         plotOptions: {
             pie: {
+                offsetY: 10,
                 customScale: 0.8,
                 donut: {
                     size: '70%'
