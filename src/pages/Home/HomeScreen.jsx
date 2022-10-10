@@ -3,6 +3,7 @@ import PatientsList from '../../componenets/PatientsList';
 import { StyledBox, StyledScreen } from '../../common/styledCommonComponents';
 import WidgetHome from '../../componenets/WidgetHome';
 import PatientsInTreatments from './components/PatientsInTreatments';
+import WidgetPastelStats from '../../componenets/WidgetPastelStats';
 
 function HomeScreen() {
 	return (
@@ -23,16 +24,18 @@ function HomeScreen() {
 						flexDirection: 'column',
 						flex: 0.6,
 						maxWidth: '760px',
+						rowGap: "35px"
+
 					}}
 				>
 					<WidgetHome />
+					<WidgetPastelStats />
 				</StyledBox>
 				<StyledBox
 					css={{ display: 'flex', flex: 0.4, justifyContent: 'flex-end' }}
 				>
 					<PatientsList />
 				</StyledBox>
-				<PatientsInTreatments patientsInTreatment={50} totalPatients={70} />
 			</StyledBox>
 		</StyledScreen>
 	);
