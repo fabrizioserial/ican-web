@@ -2,7 +2,6 @@ import React from 'react';
 import PatientsList from '../../componenets/PatientsList';
 import { StyledBox, StyledScreen } from '../../common/styledCommonComponents';
 import WidgetHome from '../../componenets/WidgetHome';
-import PatientsInTreatments from './components/PatientsInTreatments';
 import WidgetPastelStats from '../../componenets/WidgetPastelStats';
 
 function HomeScreen() {

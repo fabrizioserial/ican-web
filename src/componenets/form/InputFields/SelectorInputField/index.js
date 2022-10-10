@@ -46,7 +46,7 @@ const SelectorInputField = ({
 				onChange={(e) => onChange(name, e.target.value)}
 				value={value}
 			>
-				{Object.keys(options).map((item, index) => (
+				{Object.keys(options)?.map((item, index) => (
 					<StyledOption key={index} value={item}>
 						{options[item]}
 					</StyledOption>

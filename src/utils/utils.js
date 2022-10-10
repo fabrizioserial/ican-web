@@ -4,6 +4,12 @@ import BiomarkerIcon from '../assets/BiomarkerIcon';
 import HeartIcon from '../assets/HeartIcon';
 import StateIcon from '../assets/StateIcon';
 import TreatmentIcon from '../assets/TreatmentIcon';
+import HomeIcon from '../assets/HomeIcon';
+import React from 'react';
+import PatientsListIcon from '../assets/PatientsListIcon';
+import StatisticsIcon from '../assets/StatisticsIcon';
+import BellIcon from '../assets/BellIcon';
+import SettingsIcon from '../assets/SettingsIcon';
 
 export const InputTypeEnum = {
 	TEXTFIELD: 'TEXTFIELD',
@@ -197,6 +203,7 @@ export const FormsSqueleton = [
 					label: 'Estadio',
 					input_type: InputTypeEnum.CONDITIONAL,
 					name: 'estadio',
+					varToEvaluate: 'tumor',
 				},
 			],
 			[
@@ -204,16 +211,19 @@ export const FormsSqueleton = [
 					label: 'T',
 					input_type: InputTypeEnum.CONDITIONAL,
 					name: 't',
+					varToEvaluate: 'tumor',
 				},
 				{
 					label: 'N',
 					input_type: InputTypeEnum.CONDITIONAL,
 					name: 'n',
+					varToEvaluate: 'tumor',
 				},
 				{
 					label: 'M',
 					input_type: InputTypeEnum.CONDITIONAL,
 					name: 'm',
+					varToEvaluate: 'tumor',
 				},
 			],
 			[
@@ -440,3 +450,34 @@ export const TNMOptions = {
 }
 
 const FormBuilder = {};
+
+export const NavbarConfig = [
+	{
+		name: 'Home',
+		path: '/home',
+		icon: (active) => <HomeIcon active={active} />,
+	},
+	{
+		name: 'Mis Pacientes',
+		path: '/my-patients',
+		icon: (active) => <PatientsListIcon active={active} />,
+	},
+	{
+		name: 'Estadísticas',
+		path: '/statistics',
+		icon: (active) => <StatisticsIcon active={active} />,
+	},
+];
+
+export const NavbarConfigBottom = [
+	{
+		name: 'Notificaciones',
+		path: '/notifications',
+		icon: (active) => <BellIcon active={active} />,
+	},
+	{
+		name: 'Configuración',
+		path: '/settings',
+		icon: (active) => <SettingsIcon active={active} />,
+	},
+];
