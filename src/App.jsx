@@ -7,8 +7,8 @@ import { useSelector } from 'react-redux';
 import { BrowserRouter, Navigate } from 'react-router-dom';
 import { StyledBox } from './common/styledCommonComponents';
 import Wrapper from './componenets/Navbar/Wrapper';
-import Navbar from './componenets/Navbar';
 import Validation from './pages/Validation';
+import PatientProfile from "./pages/PatientProfile";
 
 const App = () => {
 	const accessToken = useSelector((state) => state.authSlice.accessToken);
@@ -80,6 +80,7 @@ const App = () => {
 							}
 						/>
 						<Route path="/validate-patient" element={<Validation />} />
+						<Route path="/patient-profile" element={<PatientProfile/>}/>
 					</Route>
 				</Route>
 				<Route path="/login" element={<LoginScreen />} />
