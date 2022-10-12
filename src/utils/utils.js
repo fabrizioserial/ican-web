@@ -276,178 +276,178 @@ export const FormsSqueleton = [
 ];
 
 export const TNMOptions = {
-	"mama": {
-		"t": {
+	mama: {
+		t: {
 			TX: 'TX',
 			T0: 'T0',
 		},
-		"n": {
+		n: {
 			NX: 'NX',
 			N0: 'N0',
 		},
-		"m": {
+		m: {
 			MX: 'MX',
 			M0: 'M0',
 		},
-		"estadio": {
-			O: "O",
-			IA: "IA",
-			IB: "IB",
-		}
+		estadio: {
+			O: 'O',
+			IA: 'IA',
+			IB: 'IB',
+		},
 	},
-	"prostata": {
-		"t": {
+	prostata: {
+		t: {
 			TX: 'TX',
 			T0: 'T0',
 		},
-		"n": {
+		n: {
 			NX: 'NX',
 			N0: 'N0',
 		},
-		"m": {
+		m: {
 			MX: 'MX',
 			M0: 'M0',
 		},
-		"estadio": {
-			O: "O",
-			IA: "IA",
-			IB: "IB",
-		}
+		estadio: {
+			O: 'O',
+			IA: 'IA',
+			IB: 'IB',
+		},
 	},
-	"pulmon": {
-		"t": {
+	pulmon: {
+		t: {
 			TX: 'TX',
 			T0: 'T0',
 		},
-		"n": {
+		n: {
 			NX: 'NX',
 			N0: 'N0',
 		},
-		"m": {
+		m: {
 			MX: 'MX',
 			M0: 'M0',
 		},
-		"estadio": {
-			O: "O",
-			IA: "IA",
-			IB: "IB",
-		}
+		estadio: {
+			O: 'O',
+			IA: 'IA',
+			IB: 'IB',
+		},
 	},
-	"colon": {
-		"t": {
+	colon: {
+		t: {
 			TX: 'Colon TX',
 			T0: 'T0',
 		},
-		"n": {
+		n: {
 			NX: 'Colon NX',
 			N0: 'N0',
 		},
-		"m": {
+		m: {
 			MX: 'Colon MX',
 			M0: 'M0',
 		},
-		"estadio": {
-			O: "Colon O",
-			IA: "IA",
-			IB: "IB",
-		}
+		estadio: {
+			O: 'Colon O',
+			IA: 'IA',
+			IB: 'IB',
+		},
 	},
-	"cervix": {
-		"t": {
+	cervix: {
+		t: {
 			TX: 'Cer TX',
 			T0: 'T0',
 		},
-		"n": {
+		n: {
 			NX: 'Cer NX',
 			N0: 'N0',
 		},
-		"m": {
+		m: {
 			MX: 'Cer MX',
 			M0: 'M0',
 		},
-		"estadio": {
-			O: "Cer O",
-			IA: "IA",
-			IB: "IB",
-		}
+		estadio: {
+			O: 'Cer O',
+			IA: 'IA',
+			IB: 'IB',
+		},
 	},
-	"gastrico": {
-		"t": {
+	gastrico: {
+		t: {
 			TX: 'TX',
 			T0: 'T0',
 		},
-		"n": {
+		n: {
 			NX: 'NX',
 			N0: 'N0',
 		},
-		"m": {
+		m: {
 			MX: 'MX',
 			M0: 'M0',
 		},
-		"estadio": {
-			O: "O",
-			IA: "IA",
-			IB: "IB",
-		}
+		estadio: {
+			O: 'O',
+			IA: 'IA',
+			IB: 'IB',
+		},
 	},
-	"higado": {
-		"t": {
+	higado: {
+		t: {
 			TX: 'TX',
 			T0: 'T0',
 		},
-		"n": {
+		n: {
 			NX: 'NX',
 			N0: 'N0',
 		},
-		"m": {
+		m: {
 			MX: 'MX',
 			M0: 'M0',
 		},
-		"estadio": {
-			O: "O",
-			IA: "IA",
-			IB: "IB",
-		}
+		estadio: {
+			O: 'O',
+			IA: 'IA',
+			IB: 'IB',
+		},
 	},
-	"utero": {
-		"t": {
+	utero: {
+		t: {
 			TX: 'TX',
 			T0: 'T0',
 		},
-		"n": {
+		n: {
 			NX: 'NX',
 			N0: 'N0',
 		},
-		"m": {
+		m: {
 			MX: 'MX',
 			M0: 'M0',
 		},
-		"estadio": {
-			O: "O",
-			IA: "IA",
-			IB: "IB",
-		}
+		estadio: {
+			O: 'O',
+			IA: 'IA',
+			IB: 'IB',
+		},
 	},
-	"ovario": {
-		"t": {
+	ovario: {
+		t: {
 			TX: 'TX',
 			T0: 'T0',
 		},
-		"n": {
+		n: {
 			NX: 'NX',
 			N0: 'N0',
 		},
-		"m": {
+		m: {
 			MX: 'MX',
 			M0: 'M0',
 		},
-		"estadio": {
-			O: "O",
-			IA: "IA",
-			IB: "IB",
-		}
+		estadio: {
+			O: 'O',
+			IA: 'IA',
+			IB: 'IB',
+		},
 	},
-}
+};
 
 const FormBuilder = {};
 

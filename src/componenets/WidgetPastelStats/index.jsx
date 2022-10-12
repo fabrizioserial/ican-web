@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledBox } from '../../common/styledCommonComponents';
 import PatientsInTreatments from '../../pages/Home/components/PatientsInTreatments';
-import DonutChart from '../DonutWidget/index'
+import DonutChart from '../DonutWidget/index';
 
 const WidgetPastelStats = () => {
 	return (
@@ -15,7 +15,7 @@ const WidgetPastelStats = () => {
 			}}
 		>
 			<PatientsInTreatments patientsInTreatment={50} totalPatients={70} />
-			<DonutChart cancerTypes={["100", "23", "33"]} />
+			<DonutChart cancerTypes={['100', '23', '33']} />
 		</StyledBox>
 	);
 };

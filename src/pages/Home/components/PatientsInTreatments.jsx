@@ -20,7 +20,10 @@ function PatientsInTreatments({ patientsInTreatment, totalPatients }) {
 	const theme = useTheme();
 
 	return (
-		<CardHomeStyled lineColor={theme.itemBackground} css={{ width: "300px !important", height: "300px !important" }}>
+		<CardHomeStyled
+			lineColor={theme.itemBackground}
+			css={{ width: '300px !important', height: '300px !important' }}
+		>
 			<TreatmentsTitleBox>
 				<StyledBox>
 					<TreatmentIcon
