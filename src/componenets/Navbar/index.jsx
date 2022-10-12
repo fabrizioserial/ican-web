@@ -17,7 +17,7 @@ const Navbar = () => {
 	return (
 		<StyledBox
 			css={{
-				width: "80px",
+				width: "73px",
 				backgroundColor: theme.white,
 				overflowX: 'hidden',
 				height: "100vh",
