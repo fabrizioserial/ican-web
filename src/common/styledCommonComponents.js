@@ -62,6 +62,5 @@ export const StyledCardHome = styled(StyledBox)`
 export const StyledScreen = styled(StyledBox)`
 	background-color: #fafbfc;
 	display: flex;
-	width: 100vw;
-	min-height: 100vh;
+	flex: 1;
 `;

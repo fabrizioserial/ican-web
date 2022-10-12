@@ -14,6 +14,24 @@ const initialState = {
 		pending: null,
 		inTreatment: null,
 	},
+	waitingPatients: [
+		{
+			fullName: "Agustin Von Staweksi",
+			dni: "0943892948"
+		},
+		{
+			fullName: "Carlos Gomez",
+			dni: "9124837499"
+		},
+		{
+			fullName: "Elisa Furnari",
+			dni: "3789438384"
+		},
+		{
+			fullName: "Reina Isabel II",
+			dni: "0000000001"
+		}
+	]
 };
 
 export const homeSlice = createSlice({
