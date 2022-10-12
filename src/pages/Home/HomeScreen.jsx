@@ -8,8 +8,6 @@ import { useSelector } from 'react-redux';
 
 function HomeScreen() {
 	const waitingPatients = useSelector(state => state.homeSlice.waitingPatients);
-	console.log(waitingPatients); // DEV
-
 
 	return (
 		<StyledBox
@@ -27,19 +25,16 @@ function HomeScreen() {
 					css={{
 						display: 'flex',
 						flexDirection: 'column',
-						flex: 0.6,
+						flex: 0.5,
 						maxWidth: '760px',
-						rowGap: '35px',
+						rowGap: '35px'
 					}}>
 					<WidgetHome />
 					<WidgetPastelStats />
 				</StyledBox>
 
-				<StyledBox css={{ display: 'flex', flex: 0.4, marginLeft: '50px' }}>
+				<StyledBox css={{ display: 'flex', justifyContent: "space-evenly", flex: 0.5 }}>
 					<PatientsList />
-				</StyledBox>
-
-				<StyledBox css={{ display: 'flex', flex: 0.4 }}>
 					<WaitingList waitingPatients={waitingPatients} />
 				</StyledBox>
 			</StyledBox>

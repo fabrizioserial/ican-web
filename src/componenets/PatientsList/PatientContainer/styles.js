@@ -11,6 +11,7 @@ export const StyledPatientContainer = styled(StyledBox)`
 	border-radius: 20px;
 	box-shadow: 0 2px 24px rgba(214, 203, 252, 0.3);
 	cursor: pointer;
+	
 	&:hover {
 		box-shadow: 0 2px 24px rgba(214, 203, 252, 0.6);
 	}

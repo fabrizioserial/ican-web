@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 import { StyledBox, StyledCardHome } from '../../common/styledCommonComponents';
 
+export const StyledGeneralContainer = styled(StyledBox)`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-start;
+    height: 100%;
+`
+
 export const StyledWaitingListCardHome = styled(StyledCardHome)`
     height: 270px;
     width: 270px;

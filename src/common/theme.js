@@ -34,6 +34,7 @@ export const theme = {
 
 	oncoLightOrange: '#FCEFEA',
 	oncoLightOrange2: 'rgba(236, 164, 133, 0.2)',
+	oncoLightOrange3: "#EA8053",
 	oncoOrange: '#ECA485',
 	oncoOrangeTitle: '#7E4228',
 	oncoOrangeSubtitle: 'rgba(126, 66, 40, 0.4)',
