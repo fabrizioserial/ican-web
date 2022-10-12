@@ -6,7 +6,6 @@ import styled from 'styled-components';
 
 export const StyledPatientContainer = styled(StyledBox)`
 	justify-content: flex-start;
-	padding: 12px;
 	display: flex;
 	flex-direction: row;
 	border-radius: 20px;
