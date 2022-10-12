@@ -14,7 +14,7 @@ function HomeScreen() {
 					margin: '30px 60px',
 					height: 'inherit',
 					width: 'inherit',
-					justifyContent: 'space-between',
+					justifyContent: 'center',
 				}}
 			>
 				<StyledBox
@@ -23,15 +23,13 @@ function HomeScreen() {
 						flexDirection: 'column',
 						flex: 0.6,
 						maxWidth: '760px',
-						rowGap: "35px",
+						rowGap: '35px',
 					}}
 				>
 					<WidgetHome />
 					<WidgetPastelStats />
 				</StyledBox>
-				<StyledBox
-					css={{ display: 'flex', flex: 0.4, justifyContent: 'center' }}
-				>
+				<StyledBox css={{ display: 'flex', flex: 0.4, marginLeft: '50px' }}>
 					<PatientsList />
 				</StyledBox>
 			</StyledBox>
