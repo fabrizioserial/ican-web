@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import {
 	StyledBox,
 	StyledCardHome,
@@ -10,21 +10,29 @@ import { useTheme } from 'styled-components';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { usePatientsReportQuery } from '../../redux/api/homeApi';
 
 const UsersSummary = () => {
 	const theme = useTheme();
-	const patientsReport = useSelector(state => state.homeSlice.weeklyGeneralPatientsReport);
-	
-	const [users, setUsers] = useState({
-		activeUsers: {
-			amount: patientsReport.active,
-			users: ['', '', '', ''], // TODO AVATAR
-		},
-		waitingUsers: {
-			amount: patientsReport.pending,
-			users: ['', '', '', ''], // TODO AVATAR
-		},
-	});
+	const { data } = usePatientsReportQuery();
+	const patientsReport = useSelector(
+		(state) => state.homeSlice.weeklyGeneralPatientsReport,
+	);
+
+	const users = useMemo(
+		() => ({
+			activeUsers: {
+				amount: patientsReport.active,
+				users: ['', '', '', ''], // TODO AVATAR
+			},
+			waitingUsers: {
+				amount: patientsReport.pending,
+				users: ['', '', '', ''], // TODO AVATAR
+			},
+		}),
+		[patientsReport],
+	);
+
 	return (
 		<StyledCardHome
 			css={{
