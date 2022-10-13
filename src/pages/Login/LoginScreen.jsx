@@ -28,8 +28,6 @@ function LoginScreen() {
 		}
 	}, [accessToken]);
 
-	console.log(data);
-
 	const onSubmit = (e) => {
 		e.preventDefault();
 		login({ email: email.trim(), password: password.trim() });
