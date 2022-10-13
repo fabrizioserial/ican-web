@@ -1,18 +1,12 @@
-import React from 'react'
-import { StyledBox } from "../../common/styledCommonComponents";
+import React from 'react';
 import PatientsList from '../../componenets/PatientsList';
-import WidgetHome from "../../componenets/WidgetHome";
-import PatientsInTreatments from './components/PatientsInTreatments';
+import { StyledBox, StyledScreen } from '../../common/styledCommonComponents';
+import WidgetHome from '../../componenets/WidgetHome';
+import WidgetPastelStats from '../../componenets/WidgetPastelStats';
 
 function HomeScreen() {
 	return (
-		<StyledBox
-			css={{
-				display: 'flex',
-				width: '100vw',
-				minHeight: '100vh',
-			}}
-		>
+		<StyledScreen>
 			<StyledBox
 				css={{
 					display: 'flex',
@@ -20,7 +14,7 @@ function HomeScreen() {
 					margin: '30px 60px',
 					height: 'inherit',
 					width: 'inherit',
-					justifyContent: 'space-between',
+					justifyContent: 'center',
 				}}
 			>
 				<StyledBox
@@ -29,18 +23,17 @@ function HomeScreen() {
 						flexDirection: 'column',
 						flex: 0.6,
 						maxWidth: '760px',
+						rowGap: '35px',
 					}}
 				>
 					<WidgetHome />
+					<WidgetPastelStats />
 				</StyledBox>
-				<StyledBox
-					css={{ display: 'flex', flex: 0.4, justifyContent: 'flex-end' }}
-				>
+				<StyledBox css={{ display: 'flex', flex: 0.4, marginLeft: '50px' }}>
 					<PatientsList />
 				</StyledBox>
-				<PatientsInTreatments patientsInTreatment={50} totalPatients={70} />
 			</StyledBox>
-		</StyledBox>
+		</StyledScreen>
 	);
 }
 
