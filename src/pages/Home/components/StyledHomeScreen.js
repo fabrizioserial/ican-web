@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css as styledComponentCss } from 'styled-components';
 import {
 	StyledBox,
 	StyledCardHome,
@@ -85,48 +85,17 @@ export const DateSectionStyled = styled.div`
 	}
 `;
 
-export const CardHomeStyled = styled(StyledCardHome)`
-	width: 260px;
-	height: 230px;
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	padding: 20px;
-
-	&::after {
-		content: '';
-		position: absolute;
-		left: 0;
-		top: 50px;
-		width: 100%;
-		height: 1px;
-		background-color: ${(props) => props.lineColor};
-	}
-`;
+export const CardHomeStyled = styled(StyledCardHome)``;
 
 export const TreatmentsTitleBox = styled(StyledBox)`
 	display: flex;
 	flex-direction: row;
-	height: 20px;
-	padding-top: 0px;
-
-	& > h3 {
-		flex: 0.9;
-		display: flex;
-		flex-direction: column;
-		transform: translateY(-10%);
-		justify-content: center;
-		margin-left: 10px;
-	}
-
-	& > div {
-		flex: 0.1;
-		text-align: center;
-	}
+	height: 50px;
+	padding-top: 0;
+	align-items: center;
 `;
 
 export const TreatmentsContainer = styled(StyledBox)`
-	margin-top: 40px;
 	position: relative;
 	width: 100%;
 	height: 100%;
