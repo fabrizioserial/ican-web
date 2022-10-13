@@ -14,7 +14,6 @@ import { useSelector } from 'react-redux';
 const UsersSummary = () => {
 	const theme = useTheme();
 	const patientsReport = useSelector(state => state.homeSlice.weeklyGeneralPatientsReport);
-	console.log(patientsReport);
 	
 	const [users, setUsers] = useState({
 		activeUsers: {
