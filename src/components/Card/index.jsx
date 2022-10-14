@@ -29,6 +29,7 @@ const Card = ({ icon, title, children, width, height }) => {
 					display: 'flex',
 					flexDirection: 'row',
 					height: '50px',
+					minHeight: '50px',
 					paddingTop: 0,
 					alignItems: 'center',
 					paddingLeft: 25,
