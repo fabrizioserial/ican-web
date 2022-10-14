@@ -3,8 +3,8 @@ import {
 	StyledBox,
 	StyledScreen,
 } from '../../../common/styledCommonComponents';
-import HungerAndThirstChart from '../../../componenets/HungerAndThirstChart';
-import SocialAndPhysicalActivitiesChart from '../../../componenets/SocialAndPhysicalActivitiesChart';
+import HungerAndThirstChart from '../../../components/HungerAndThirstChart';
+import SocialAndPhysicalActivitiesChart from '../../../components/SocialAndPhysicalActivitiesChart';
 
 const ProfileScreen = () => {
 	return (

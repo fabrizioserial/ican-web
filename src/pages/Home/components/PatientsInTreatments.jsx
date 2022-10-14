@@ -13,7 +13,7 @@ import {
 	TreatmentsTitleBox,
 } from './StyledHomeScreen';
 import TreatmentIcon from '../../../assets/TreatmentIcon';
-import Card from '../../../componenets/Card';
+import Card from '../../../components/Card';
 
 // If you want to reduce the size of the component, just modify the "size" of circularProgress
 function PatientsInTreatments({ patientsInTreatment, totalPatients }) {
