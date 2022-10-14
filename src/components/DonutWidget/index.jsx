@@ -8,34 +8,19 @@ import {
 } from '../../pages/Home/components/StyledHomeScreen';
 import { useTheme } from 'styled-components';
 import DonutChart from './donutChart/DonutChart';
+import Card from '../Card';
 
 const DonutWidget = () => {
 	const theme = useTheme();
 	return (
-		<CardHomeStyled
-			lineColor={theme.itemBackground}
-			css={{ width: '396px !important', height: '300px !important' }}
+		<Card
+			icon={
+				<TreatmentIcon color={theme.OncoPurple} width={23} height={19.55} />
+			}
+			title={'Porcentaje de pacientes con tumores'}
+			width={396}
+			height={300}
 		>
-			<TreatmentsTitleBox>
-				<StyledBox>
-					<TreatmentIcon
-						color={theme.OncoPurple}
-						width={23}
-						height={19.55}
-					/>
-				</StyledBox>
-				<StyledH3
-					css={{
-						color: theme.OncoPurple,
-						margin: '0',
-						textAlign: 'left',
-						fontSize: '1rem',
-						fontWeight: 'normal',
-					}}
-				>
-					Porcentaje de pacientes con tumores
-				</StyledH3>
-			</TreatmentsTitleBox>
 			<StyledBox
 				css={{
 					height: '100%',
@@ -45,7 +30,7 @@ const DonutWidget = () => {
 			>
 				<DonutChart />
 			</StyledBox>
-		</CardHomeStyled>
+		</Card>
 	);
 };
 

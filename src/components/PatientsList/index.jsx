@@ -18,6 +18,7 @@ const PatientsList = () => {
 				maxHeight: '100%',
 				width: '380px',
 				color: theme.oncoBlack,
+				padding: '24px 20px',
 			}}
 		>
 			<StyledBox

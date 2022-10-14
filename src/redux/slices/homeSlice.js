@@ -9,10 +9,10 @@ const initialState = {
 		surname: null,
 	},
 	weeklyGeneralPatientsReport: {
-		total: null,
-		active: null,
-		pending: null,
-		inTreatment: null,
+		total: 0,
+		active: 0,
+		pending: 0,
+		inTreatment: 0,
 	},
 };
 
@@ -31,7 +31,7 @@ export const homeSlice = createSlice({
 				},
 			)
 			.addMatcher(
-				homeApi.endpoints.weeklyReport.matchFulfilled,
+				homeApi.endpoints.patientsReport.matchFulfilled,
 				(state, { payload }) => {
 					state.weeklyGeneralPatientsReport = payload;
 				},

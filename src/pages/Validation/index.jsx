@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyledBox, StyledScreen } from '../../common/styledCommonComponents';
 import { FormsSqueleton, validationFormValues } from '../../utils/utils';
-import { FormBuilder } from '../../componenets/form/InputFields/utils';
+import { FormBuilder } from '../../components/form/InputFields/utils';
 
 const Validation = () => {
 	const [sections] = useState(FormsSqueleton);
