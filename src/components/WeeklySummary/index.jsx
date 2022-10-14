@@ -21,6 +21,7 @@ const WeeklySummary = () => {
 				display: 'flex',
 				flexDirection: 'column',
 				color: theme.oncoBlack,
+				padding: '24px 20px',
 			}}
 		>
 			<StyledBox
