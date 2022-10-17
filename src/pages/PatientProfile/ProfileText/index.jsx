@@ -12,7 +12,8 @@ const ProfileDetailText = ({text}) => {
             fontWeight: 300,
             fontSize: "11px",
             lineHeight: "13px",
-            font: 'Roboto',}}>{text}</StyledP>
+            color:theme.textColor
+        }}>{text}</StyledP>
     )
 
 }

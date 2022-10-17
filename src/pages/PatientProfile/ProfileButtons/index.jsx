@@ -21,11 +21,19 @@ const ProfileButton = ({ icon, color, text, textColor }) => {
 				flexDirection: 'row',
 				justifyContent: 'center',
 				alignItems: 'center',
+				columnGap: "10px"
 
 			}}
 		>
-			<StyledBox> {icon}</StyledBox>
-			<StyledP css={{ marginLeft: '9px', color: textColor }}>{text}</StyledP>
+			<StyledBox css={{ display:"flex", flexDirection:"row",columnGap: "10px",alignItems:"center"}}>
+			<StyledBox css={{ marginTop:"4px",alignItems:"center"}}> {icon}</StyledBox>
+			<StyledP css={{ marginLeft: '9px', color: textColor,
+				fontStyle: "normal",
+				fontWeight: 600,
+				fontSize: "14px",
+				lineHeight: "17px",
+			alignItems:"center"}}>{text}</StyledP>
+			</StyledBox>
 		</StyledBox>
 	);
 };

@@ -68,7 +68,6 @@ const PatientProfile = () => {
                 >
                     <StyledH3
                         css={{
-                            font: 'Roboto',
                             fontStyle: 'normal',
                             fontWeight: 400,
                             fontSize: '32px',
@@ -78,7 +77,8 @@ const PatientProfile = () => {
                             justifyContent: 'flex-start',
                             alignSelf:'top',
                             margin:0,
-                            whiteSpace: "nowrap"
+                            whiteSpace: "nowrap",
+                            color:theme.oncoBlack
                         }}
                     >
                         Agustin Von Staweski
