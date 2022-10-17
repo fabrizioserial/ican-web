@@ -25,6 +25,11 @@ const PatientProfile = () => {
 
                 }}
             >
+                <StyledBox css={{ display: "flex",
+                    columnGap: "345px",
+                    flexDirection:"row"}}>
+                <StyledBox css={{ display: "flex",
+                    flexDirection:"row"}}>
                 <StyledBox
                     css={{
                         display: 'flex',
@@ -52,10 +57,8 @@ const PatientProfile = () => {
                 <StyledBox
                     css={{
                         display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'stretch',
+                        flexDirection: 'row',
                         justifyContent: 'flex-start',
-                        boxSizing: "border-box",
                         alignSelf:'top',
                         flexWrap: 'wrap',
                         rowGap: '10px',
@@ -68,13 +71,13 @@ const PatientProfile = () => {
                             fontStyle: 'normal',
                             fontWeight: 400,
                             fontSize: '32px',
-							width: '500px',
                             display: 'flex',
-                            flexDirection: 'column',
+                            flexDirection: 'row',
                             alignItems: 'top',
                             justifyContent: 'flex-start',
                             alignSelf:'top',
-                            margin:0
+                            margin:0,
+                            whiteSpace: "nowrap"
                         }}
                     >
                         Agustin Von Staweski
@@ -103,25 +106,29 @@ const PatientProfile = () => {
                                 fontStyle: "normal",
                                 fontWeight: 300,
                                 fontSize: "11px",
-                                lineHeight: "13px"}}>Edad:</StyledP>
+                                lineHeight: "13px",
+                                font: 'Roboto',}}>Edad:</StyledP>
                             <StyledP css={{
                                 height: "13px",
                                 fontStyle: "normal",
                                 fontWeight: 300,
                                 fontSize: "11px",
-                                lineHeight: "13px"}}>Sexo:</StyledP>
+                                lineHeight: "13px",
+                                font: 'Roboto',}}>Sexo:</StyledP>
                             <StyledP css={{
                                 height: "13px",
                                 fontStyle: "normal",
                                 fontWeight: 300,
                                 fontSize: "11px",
-                                lineHeight: "13px"}}>Nro:</StyledP>
+                                lineHeight: "13px",
+                                font: 'Roboto',}}>Nro:</StyledP>
                             <StyledP css={{
                                 height: "13px",
                                 fontStyle: "normal",
                                 fontWeight: 300,
                                 fontSize: "11px",
-                                lineHeight: "13px"}}>Estado:</StyledP>
+                                lineHeight: "13px",
+                                font: 'Roboto',}}>Estado:</StyledP>
                         </StyledBox>
                         <StyledBox
                             css={{
@@ -135,28 +142,34 @@ const PatientProfile = () => {
                                 fontStyle: "normal",
                                 fontWeight: 300,
                                 fontSize: "11px",
-                                lineHeight: "13px"}}>52 años</StyledP>
+                                lineHeight: "13px",
+                                font: 'Roboto',}}>52 años</StyledP>
                             <StyledP css={{
                                 height: "13px",
                                 fontStyle: "normal",
                                 fontWeight: 300,
                                 fontSize: "11px",
-                                lineHeight: "13px"}}>Masculino</StyledP>
+                                lineHeight: "13px",
+                                font: 'Roboto',}}>Masculino</StyledP>
                             <StyledP css={{
                                 height: "13px",
                                 fontStyle: "normal",
                                 fontWeight: 300,
                                 fontSize: "11px",
-                                lineHeight: "13px"}}>123132424</StyledP>
+                                lineHeight: "13px",
+                                font: 'Roboto',}}>123132424</StyledP>
                             <StyledP css={{
                                 height: "13px",
                                 fontStyle: "normal",
                                 fontWeight: 300,
                                 fontSize: "11px",
-                                lineHeight: "13px"}}>Activo</StyledP>
+                                lineHeight: "13px",
+                                font: 'Roboto',}}>Activo</StyledP>
                         </StyledBox>
                     </StyledBox>
                 </StyledBox>
+                </StyledBox>
+
 
 
                 <StyledBox
@@ -165,6 +178,7 @@ const PatientProfile = () => {
                         flexDirection: 'column',
                         justifyContent: 'center',
                         alignItems: 'center',
+
                     }}
                 >
                     {buttonList.map((item, index) => (
@@ -176,6 +190,7 @@ const PatientProfile = () => {
                             key={index}
                         />
                     ))}
+                </StyledBox>
                 </StyledBox>
             </StyledCardHome>
         </StyledBox>
