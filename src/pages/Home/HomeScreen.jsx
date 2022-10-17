@@ -1,5 +1,5 @@
 import React from 'react';
-import PatientsList from '../../componenets/PatientsList';
+import PatientsList from '../../components/PatientsList';
 import { StyledBox, StyledScreen } from '../../common/styledCommonComponents';
 import WidgetHome from '../../componenets/WidgetHome';
 import WidgetPastelStats from '../../componenets/WidgetPastelStats';

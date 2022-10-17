@@ -13,6 +13,7 @@ import {
 	TreatmentsTitleBox,
 } from './StyledHomeScreen';
 import TreatmentIcon from '../../../assets/TreatmentIcon';
+import Card from '../../../components/Card';
 
 // If you want to reduce the size of the component, just modify the "size" of circularProgress
 function PatientsInTreatments({ patientsInTreatment, totalPatients }) {
@@ -20,33 +21,15 @@ function PatientsInTreatments({ patientsInTreatment, totalPatients }) {
 	const theme = useTheme();
 
 	return (
-		<CardHomeStyled
-			lineColor={theme.itemBackground}
-			css={{ width: '300px !important', height: '300px !important' }}
+		<Card
+			icon={
+				<TreatmentIcon color={theme.OncoPurple} width={23} height={19.55} />
+			}
+			title={'Pacientes en tratamiento'}
+			width={300}
+			height={300}
 		>
-			<TreatmentsTitleBox>
-				<StyledBox>
-					<TreatmentIcon
-						color={theme.OncoPurple}
-						width={23}
-						height={19.55}
-					/>
-				</StyledBox>
-				<StyledH3
-					css={{
-						color: theme.OncoPurple,
-						margin: '0',
-						textAlign: 'left',
-						fontSize: '1rem',
-						fontWeight: 'normal',
-					}}
-				>
-					{' '}
-					Pacientes en tratamiento{' '}
-				</StyledH3>
-			</TreatmentsTitleBox>
-
-			<TreatmentsContainer>
+			<TreatmentsContainer css={{ position: 'relative' }}>
 				<CircularProgress
 					variant="determinate"
 					value="100"
@@ -76,7 +59,7 @@ function PatientsInTreatments({ patientsInTreatment, totalPatients }) {
 					</StyledSpan>
 				</TreatmentsLegendContainer>
 			</TreatmentsContainer>
-		</CardHomeStyled>
+		</Card>
 	);
 }
 

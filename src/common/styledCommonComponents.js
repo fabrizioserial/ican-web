@@ -16,6 +16,9 @@ export const StyledP = styled.p`
 export const StyledSpan = styled.span`
 	${(props) => styledComponentCss`${props.css}`}
 `;
+export const StyledHr = styled.hr`
+	${(props) => styledComponentCss`${props.css}`}
+`;
 
 export const StyledH1 = styled.h1`
 	${(props) => styledComponentCss`${props.css}`}
@@ -56,11 +59,14 @@ export const StyledCardHome = styled(StyledBox)`
 	background-color: white;
 	box-shadow: 0 2px 24px rgba(214, 203, 252, 0.3);
 	box-sizing: border-box;
-	padding: 24px 20px;
+	//padding: 24px 20px;
+	${(props) => styledComponentCss`${props.css}`}
 `;
 
 export const StyledScreen = styled(StyledBox)`
 	background-color: #fafbfc;
 	display: flex;
-	flex: 1;
+	width: calc(100vw - 70px);
+	min-height: 100vh;
+	max-width: 100vw;
 `;
