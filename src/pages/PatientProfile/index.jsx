@@ -27,16 +27,16 @@ const PatientProfile = () => {
                 }}
             >
                 <StyledBox css={{ display: "flex",
-                    columnGap: "345px",
+                    columnGap: "300px",
                     flexDirection:"row"}}>
                 <StyledBox css={{ display: "flex",
-                    flexDirection:"row"}}>
+                    flexDirection:"row",
+                    columnGap:'20px'}}>
                 <StyledBox
                     css={{
                         display: 'flex',
                         flexDirection: 'column',
-                        alignItems: 'top',
-                        columnGap:'20px'
+                        alignItems: 'top'
                     }}
                 >
                     <StyledImg
@@ -111,7 +111,8 @@ const PatientProfile = () => {
                             css={{
                                 display: 'flex',
                                 flexDirection: 'column',
-                                justifyContent: 'space-between',
+                                flexWrap: 'wrap',
+                                rowGap: '12px',
                             }}
                         >
                             <ProfileDetailText text={"52 años"}/>
