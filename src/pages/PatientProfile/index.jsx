@@ -178,6 +178,8 @@ const PatientProfile = () => {
                         flexDirection: 'column',
                         justifyContent: 'center',
                         alignItems: 'center',
+                        flexWrap: 'wrap',
+                        rowGap: '12px',
 
                     }}
                 >

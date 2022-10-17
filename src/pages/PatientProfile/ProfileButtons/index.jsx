@@ -23,7 +23,7 @@ const ProfileButton = ({ icon, color, text, textColor }) => {
 				flexDirection: 'row',
 				justifyContent: 'center',
 				alignItems: 'center',
-				marginBottom: '12px',
+
 			}}
 		>
 			<StyledBox> {icon}</StyledBox>

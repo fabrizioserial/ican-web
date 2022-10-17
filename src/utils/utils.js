@@ -488,15 +488,16 @@ export const NavbarConfigBottom = [
 
 export const ProfileConfigButton = [
 	{
-		text: 'Contactar',
-		icon:<CallIcon/>,
-		color:"#5EC386",
-		textColor:theme.white
-	},
-	{
 		text: 'Formulario',
 		icon: <FormIcon/>,
 		color:"#FFFFFF",
 		textColor:theme.textGrey
 	},
+	{
+		text: 'Contactar',
+		icon:<CallIcon/>,
+		color:"#5EC386",
+		textColor:theme.white
+	}
+
 ];
