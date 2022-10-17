@@ -30,6 +30,7 @@ const PatientProfile = () => {
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'top',
+                        columnGap:'20px'
                     }}
                 >
                     <StyledImg
@@ -55,7 +56,9 @@ const PatientProfile = () => {
                         alignItems: 'stretch',
                         justifyContent: 'flex-start',
                         boxSizing: "border-box",
-                        alignSelf:'top'
+                        alignSelf:'top',
+                        flexWrap: 'wrap',
+                        rowGap: '10px',
 
                     }}
                 >
@@ -82,20 +85,43 @@ const PatientProfile = () => {
                             display: 'flex',
                             flexDirection: 'row',
                             alignItems: 'top',
+                            flexWrap: 'wrap',
+                            rowGap: '10px',
+                            columnGap:'15px'
                         }}
                     >
                         <StyledBox
                             css={{
                                 display: 'flex',
                                 flexDirection: 'column',
-                                justifyContent: 'space-between',
-
+                                flexWrap: 'wrap',
+                                rowGap: '12px',
                             }}
                         >
-                            <StyledP>Edad:</StyledP>
-                            <StyledP>Sexo:</StyledP>
-                            <StyledP>Nro:</StyledP>
-                            <StyledP>Estado:</StyledP>
+                            <StyledP css={{
+                                height: "13px",
+                                fontStyle: "normal",
+                                fontWeight: 300,
+                                fontSize: "11px",
+                                lineHeight: "13px"}}>Edad:</StyledP>
+                            <StyledP css={{
+                                height: "13px",
+                                fontStyle: "normal",
+                                fontWeight: 300,
+                                fontSize: "11px",
+                                lineHeight: "13px"}}>Sexo:</StyledP>
+                            <StyledP css={{
+                                height: "13px",
+                                fontStyle: "normal",
+                                fontWeight: 300,
+                                fontSize: "11px",
+                                lineHeight: "13px"}}>Nro:</StyledP>
+                            <StyledP css={{
+                                height: "13px",
+                                fontStyle: "normal",
+                                fontWeight: 300,
+                                fontSize: "11px",
+                                lineHeight: "13px"}}>Estado:</StyledP>
                         </StyledBox>
                         <StyledBox
                             css={{
@@ -104,10 +130,30 @@ const PatientProfile = () => {
                                 justifyContent: 'space-between',
                             }}
                         >
-                            <StyledP>52 años</StyledP>
-                            <StyledP>Masculino</StyledP>
-                            <StyledP>123132424</StyledP>
-                            <StyledP>Activo</StyledP>
+                            <StyledP css={{
+                                height: "13px",
+                                fontStyle: "normal",
+                                fontWeight: 300,
+                                fontSize: "11px",
+                                lineHeight: "13px"}}>52 años</StyledP>
+                            <StyledP css={{
+                                height: "13px",
+                                fontStyle: "normal",
+                                fontWeight: 300,
+                                fontSize: "11px",
+                                lineHeight: "13px"}}>Masculino</StyledP>
+                            <StyledP css={{
+                                height: "13px",
+                                fontStyle: "normal",
+                                fontWeight: 300,
+                                fontSize: "11px",
+                                lineHeight: "13px"}}>123132424</StyledP>
+                            <StyledP css={{
+                                height: "13px",
+                                fontStyle: "normal",
+                                fontWeight: 300,
+                                fontSize: "11px",
+                                lineHeight: "13px"}}>Activo</StyledP>
                         </StyledBox>
                     </StyledBox>
                 </StyledBox>
