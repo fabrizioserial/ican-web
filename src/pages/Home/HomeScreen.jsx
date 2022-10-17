@@ -3,7 +3,7 @@ import PatientsList from '../../components/PatientsList';
 import { StyledBox, StyledScreen } from '../../common/styledCommonComponents';
 import WidgetHome from '../../componenets/WidgetHome';
 import WidgetPastelStats from '../../componenets/WidgetPastelStats';
-import WaitingList from '../../componenets/WaitingList';
+import WaitingList from '../../components/WaitingList';
 import { useSelector } from 'react-redux';
 
 function HomeScreen() {
