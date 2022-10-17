@@ -3,6 +3,7 @@ import {StyledBox, StyledCardHome, StyledH3, StyledImg, StyledP,} from '../../co
 import {useTheme} from 'styled-components';
 import {ProfileConfigButton} from '../../utils/utils';
 import ProfileButton from './ProfileButtons';
+import ProfileDetailText from "./ProfileText";
 
 const PatientProfile = () => {
     const theme = useTheme();
@@ -101,34 +102,10 @@ const PatientProfile = () => {
                                 rowGap: '12px',
                             }}
                         >
-                            <StyledP css={{
-                                height: "13px",
-                                fontStyle: "normal",
-                                fontWeight: 300,
-                                fontSize: "11px",
-                                lineHeight: "13px",
-                                font: 'Roboto',}}>Edad:</StyledP>
-                            <StyledP css={{
-                                height: "13px",
-                                fontStyle: "normal",
-                                fontWeight: 300,
-                                fontSize: "11px",
-                                lineHeight: "13px",
-                                font: 'Roboto',}}>Sexo:</StyledP>
-                            <StyledP css={{
-                                height: "13px",
-                                fontStyle: "normal",
-                                fontWeight: 300,
-                                fontSize: "11px",
-                                lineHeight: "13px",
-                                font: 'Roboto',}}>Nro:</StyledP>
-                            <StyledP css={{
-                                height: "13px",
-                                fontStyle: "normal",
-                                fontWeight: 300,
-                                fontSize: "11px",
-                                lineHeight: "13px",
-                                font: 'Roboto',}}>Estado:</StyledP>
+                           <ProfileDetailText text={"Edad:"}/>
+                           <ProfileDetailText text={"Sexo:"}/>
+                           <ProfileDetailText text={"Nro:"}/>
+                           <ProfileDetailText text={"Estado:"}/>
                         </StyledBox>
                         <StyledBox
                             css={{
@@ -137,34 +114,10 @@ const PatientProfile = () => {
                                 justifyContent: 'space-between',
                             }}
                         >
-                            <StyledP css={{
-                                height: "13px",
-                                fontStyle: "normal",
-                                fontWeight: 300,
-                                fontSize: "11px",
-                                lineHeight: "13px",
-                                font: 'Roboto',}}>52 años</StyledP>
-                            <StyledP css={{
-                                height: "13px",
-                                fontStyle: "normal",
-                                fontWeight: 300,
-                                fontSize: "11px",
-                                lineHeight: "13px",
-                                font: 'Roboto',}}>Masculino</StyledP>
-                            <StyledP css={{
-                                height: "13px",
-                                fontStyle: "normal",
-                                fontWeight: 300,
-                                fontSize: "11px",
-                                lineHeight: "13px",
-                                font: 'Roboto',}}>123132424</StyledP>
-                            <StyledP css={{
-                                height: "13px",
-                                fontStyle: "normal",
-                                fontWeight: 300,
-                                fontSize: "11px",
-                                lineHeight: "13px",
-                                font: 'Roboto',}}>Activo</StyledP>
+                            <ProfileDetailText text={"52 años"}/>
+                            <ProfileDetailText text={"Masculino"}/>
+                            <ProfileDetailText text={"12353784863"}/>
+                            <ProfileDetailText text={"Activo"}/>
                         </StyledBox>
                     </StyledBox>
                 </StyledBox>

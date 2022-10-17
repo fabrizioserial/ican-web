@@ -79,3 +79,6 @@ export const StyledScreen = styled(StyledBox)`
 	min-height: 100vh;
 	max-width: 100vw;
 `;
+
+
+
