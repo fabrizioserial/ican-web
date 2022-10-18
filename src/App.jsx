@@ -6,12 +6,9 @@ import LoginScreen from './pages/Login/LoginScreen';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Navigate } from 'react-router-dom';
 import { StyledBox } from './common/styledCommonComponents';
-import Wrapper from './componenets/Navbar/Wrapper';
-import Navbar from './componenets/Navbar';
 import Validation from './pages/Validation';
-import ProfileScreen from './pages/Profile/ProfileScreen';
-import Wrapper from './components/Navbar/Wrapper';
 import PatientListScreen from './pages/PatientList/PatientListScreen';
+import Wrapper from './componenets/Navbar/Wrapper';
 
 const App = () => {
 	const accessToken = useSelector((state) => state.authSlice.accessToken);
@@ -82,7 +79,10 @@ const App = () => {
 								</StyledBox>
 							}
 						/>
-						<Route path={'/profile'} element={<ProfileScreen />} />
+						<Route
+							path={'/patient-list'}
+							element={<PatientListScreen />}
+						/>
 						<Route path="/validate-patient" element={<Validation />} />
 					</Route>
 				</Route>
