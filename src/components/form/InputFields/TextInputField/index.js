@@ -27,6 +27,7 @@ const TextInputField = ({
 				display: 'flex',
 				flexDirection: 'column',
 				boxSizing: 'border-box',
+				justifyContent: "flex-end"
 			}}
 		>
 			<StyledP

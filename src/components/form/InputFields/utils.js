@@ -5,6 +5,7 @@ import TextInputField from './TextInputField';
 import DateInputField from './DateInputField';
 import SelectorInputField from './SelectorInputField';
 import ConditionalSelectInputField from './ConditionalSelectInputField';
+import Button from '../../../common/components/button/Button';
 
 export const FormBuilder = (formSqueleton, values, onChangeHandle) => {
 	return formSqueleton?.map((section, index) => (
@@ -39,6 +40,15 @@ export const FormBuilder = (formSqueleton, values, onChangeHandle) => {
 
 const InputTypeBuilder = (type, index, properties, values, onChangeHandle) => {
 	switch (type) {
+		case InputTypeEnum.BUTTON:
+			return (
+				<Button
+					className="bio"
+					key={index}
+					text={properties.label}
+					icon={properties.icon}
+				/>
+			);
 		case InputTypeEnum.TEXTFIELD:
 			return (
 				<TextInputField

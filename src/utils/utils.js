@@ -1,6 +1,7 @@
 import UserIcon from '../assets/UserIcon';
 import CrossIcon from '../assets/CrossIcon';
 import BiomarkerIcon from '../assets/BiomarkerIcon';
+import PlusCircleIcon from '../assets/PlusCircleIcon';
 import HeartIcon from '../assets/HeartIcon';
 import StateIcon from '../assets/StateIcon';
 import TreatmentIcon from '../assets/TreatmentIcon';
@@ -12,6 +13,7 @@ import BellIcon from '../assets/BellIcon';
 import SettingsIcon from '../assets/SettingsIcon';
 
 export const InputTypeEnum = {
+	BUTTON: 'BUTTON',
 	TEXTFIELD: 'TEXTFIELD',
 	SELECTOR: 'SELECTOR',
 	DATEFIELD: 'DATEFIELD',
@@ -256,22 +258,154 @@ export const FormsSqueleton = [
 	{
 		title: 'Biomarcadores',
 		icon: <BiomarkerIcon />,
-		fields: [],
+		fields: [
+			[
+				{
+					label: 'Biomarcador',
+					// placeholder: 'Introduzca nombre',
+					type: 'text',
+					input_type: InputTypeEnum.TEXTFIELD,
+					// name: 'name',
+				},
+				{
+					label: 'Evaluación',
+					// placeholder: 'Introduzca nombre',
+					type: 'text',
+					input_type: InputTypeEnum.TEXTFIELD,
+					// name: 'name',
+				},
+			],
+			[
+				{
+					label: 'Añadir Nuevo Biomarcador',
+					// placeholder: 'Introduzca nombre',
+					type: 'text',
+					input_type: InputTypeEnum.BUTTON,
+					icon: <PlusCircleIcon />
+				}
+			],
+		],
 	},
 	{
 		title: 'Recaidas',
 		icon: <HeartIcon />,
-		fields: [],
+		fields: [
+			[
+				{
+					label: 'Fecha de Recaida',
+					placeholder: 'XX/XX/XX',
+					input_type: InputTypeEnum.DATEFIELD,
+					// name: 'load_date',
+					type: 'text',
+				},
+				{
+					label: 'Fecha del Diagnostico de la Enferemedad Metatistica',
+					placeholder: 'XX/XX/XX',
+					input_type: InputTypeEnum.DATEFIELD,
+					// name: 'load_date',
+					type: 'text',
+				}
+			],
+			[
+				{
+					label: 'Sitio de la Metastasis',
+					// placeholder: 'Introduzca nombre',
+					type: 'text',
+					input_type: InputTypeEnum.TEXTFIELD,
+					// name: 'name',
+				},
+				{
+					label: 'Tratamiento de la Recaida',
+					// placeholder: 'Introduzca nombre',
+					type: 'text',
+					input_type: InputTypeEnum.TEXTFIELD,
+					// name: 'name',
+				},
+			],
+			[
+				{
+					label: 'Añadir Nueva Recaida',
+					// placeholder: 'Introduzca nombre',
+					type: 'text',
+					input_type: InputTypeEnum.BUTTON,
+					icon: <PlusCircleIcon />
+				}
+			],
+		],
 	},
 	{
 		title: 'Estado',
 		icon: <StateIcon />,
-		fields: [],
+		fields: [
+			[
+				{
+					label: 'Números de Lineas de Tratamiento',
+					// placeholder: 'Introduzca nombre',
+					type: 'text',
+					input_type: InputTypeEnum.TEXTFIELD,
+					// name: 'name',
+				},
+				{
+					label: 'Progresión de la Enfermedad',
+					options: {
+						yes: 'Si',
+						no: 'No',
+					},
+					input_type: InputTypeEnum.SELECTOR,
+					name: 'progression',
+				},
+			],
+			[
+				{
+					label: 'Fecha de Progresión',
+					placeholder: 'XX/XX/XX',
+					input_type: InputTypeEnum.DATEFIELD,
+					// name: 'load_date',
+					type: 'text',
+				},
+
+			],
+		],
 	},
 	{
 		title: 'Tratamiento',
-		icon: <TreatmentIcon />,
-		fields: [],
+		icon: <TreatmentIcon width={30} height={25} />,
+		fields: [
+			[
+				{
+					label: 'Medicamento',
+					// placeholder: 'Introduzca nombre',
+					type: 'text',
+					input_type: InputTypeEnum.TEXTFIELD,
+					// name: 'name',
+				},
+				{
+					label: 'Gramaje',
+					// placeholder: 'Introduzca nombre',
+					type: 'text',
+					input_type: InputTypeEnum.TEXTFIELD,
+					// name: 'name',
+				},
+			],
+			[
+				{
+					label: 'Objetivo',
+					// placeholder: 'El objetivo de este tratamiento es reducir los sintomas de caracter cutaneo presentes en el paciente..',
+					type: 'text',
+					input_type: InputTypeEnum.TEXTFIELD,
+					name: 'objective',
+				},
+			],
+			[
+				{
+					label: 'Finalizar Tratamiento',
+					// placeholder: 'Introduzca nombre',
+					type: 'text',
+					input_type: InputTypeEnum.BUTTON,
+					icon: <PlusCircleIcon />
+				}
+			],
+		],
 	},
 ];
 
