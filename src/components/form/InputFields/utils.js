@@ -6,6 +6,7 @@ import DateInputField from './DateInputField';
 import SelectorInputField from './SelectorInputField';
 import ConditionalSelectInputField from './ConditionalSelectInputField';
 import Button from '../../../common/components/button/Button';
+import PlusCircelIcon from '../../../assets/PlusCircleIcon';
 
 export const FormBuilder = (formSqueleton, values, onChangeHandle) => {
 	return formSqueleton?.map((section, index) => (
@@ -43,10 +44,11 @@ const InputTypeBuilder = (type, index, properties, values, onChangeHandle) => {
 		case InputTypeEnum.BUTTON:
 			return (
 				<Button
-					className="bio"
+					className="action"
 					key={index}
 					text={properties.label}
-					icon={properties.icon}
+					disabled={true}
+					icon={ <PlusCircelIcon/>}
 				/>
 			);
 		case InputTypeEnum.TEXTFIELD:

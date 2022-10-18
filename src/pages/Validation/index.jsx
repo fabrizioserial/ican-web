@@ -19,25 +19,6 @@ const Validation = () => {
 
 	return (
 		<StyledScreen css={{ justifyContent: 'center', flexDirection: "column" }}>
-			{/* <StyledBox
-				css={{
-					width: '800px',
-					backgroundColor: 'red',
-					borderRadius: '20px',
-					margin: '50px',
-				}}
-			>
-				{FormBuilder(sections, values, handleOnChange)}
-			</StyledBox>
-			<StyledBox
-				css={{
-					margin: "0 50px",
-					width: '800px',
-					backgroundColor: 'blue',
-				}}
-			>
-				<Button />
-			</StyledBox> */}
 			<StyledBox
 				css={{
 					margin: "50px 0",
@@ -62,7 +43,10 @@ const Validation = () => {
 						margin: "0 50px",
 					}}
 				>
-					<Button className="submit" text={'Guardar cambios'} />
+					<Button
+						text={'Guardar cambios'}
+						className="submit"
+					/>
 				</StyledBox>
 			</StyledBox>
 		</StyledScreen>

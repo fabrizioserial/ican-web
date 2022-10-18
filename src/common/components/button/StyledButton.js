@@ -30,19 +30,26 @@ export const StyledButton = styled.button`
 		color: ${(props) => props.theme.white};
 		background-color: ${(props) => props.theme.OncoPurple};
 		border-radius: 25px;
+
+		span{
+			font-size: 16px;
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
 	}
 
-	&.bio {
+	&.action {
 		width: 100%;
 		color: ${(props) => props.theme.OncoPurple};
 		background-color: ${(props) => props.theme.white};
 		border: 1px solid ${(props) => props.theme.OncoPurple};
 		border-radius: 25px;
+
+		span{
+			color: ${(props) => props.theme.OncoPurple};
+			font-size: 18px;
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
   }
-  
-  /* & > span {
-		color: ${(props) => props.theme.OncoPurple};
-		font-size: 18px;
-		font-weight: 500;
-	} */
 `;
