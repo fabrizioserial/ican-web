@@ -1,0 +1,157 @@
+import React, { useState } from 'react';
+import { TableBody, TableCell, TableRow } from '@material-ui/core';
+import { StyledBodyCell, StyledBodyRow, StyledUserStatus } from './styles';
+import {
+	backgroundColorStatus,
+	getUserStatusLabel,
+	textColorStatus,
+} from '../../../utils/utils';
+import { StyledBox, StyledImg } from '../../../common/styledCommonComponents';
+
+const PatientListBody = () => {
+	const [body, setBody] = useState([
+		{
+			nHistorial: '2141325213235435',
+			nameSurname: 'Agustin VonStaszweski',
+			tumor: 'Prostat',
+			treatment: 'Quimioterapia',
+			treatmentTumor: 'Quimioterapia',
+			treatmentTumorPeri: 'Quimioterapia',
+			state: 'active',
+		},
+		{
+			nHistorial: '2141325213235435',
+			nameSurname: 'Agustin VonStaszweski',
+			tumor: 'Prostat',
+			treatment: 'Quimioterapia',
+			treatmentTumor: 'Quimioterapia',
+			treatmentTumorPeri: 'Quimioterapia',
+			state: 'active',
+		},
+		{
+			nHistorial: '2141325213235435',
+			nameSurname: 'Agustin VonStaszweski',
+			tumor: 'Prostat',
+			treatment: 'Quimioterapia',
+			treatmentTumor: 'Quimioterapia',
+			treatmentTumorPeri: 'Quimioterapia',
+			state: 'active',
+		},
+		{
+			nHistorial: '2141325213235435',
+			nameSurname: 'Agustin VonStaszweski',
+			tumor: 'Prostat',
+			treatment: 'Quimioterapia',
+			treatmentTumor: 'Quimioterapia',
+			treatmentTumorPeri: 'Quimioterapia',
+			state: 'active',
+		},
+		{
+			nHistorial: '2141325213235435',
+			nameSurname: 'Agustin VonStaszweski',
+			tumor: 'Prostat',
+			treatment: 'Quimioterapia',
+			treatmentTumor: 'Quimioterapia',
+			treatmentTumorPeri: 'Quimioterapia',
+			state: 'active',
+		},
+		{
+			nHistorial: '2141325213235435',
+			nameSurname: 'Agustin VonStaszweski',
+			tumor: 'Prostat',
+			treatment: 'Quimioterapia',
+			treatmentTumor: 'Quimioterapia',
+			treatmentTumorPeri: 'Quimioterapia',
+			state: 'active',
+		},
+		{
+			nHistorial: '2141325213235435',
+			nameSurname: 'Agustin VonStaszweski',
+			tumor: 'Prostat',
+			treatment: 'Quimioterapia',
+			treatmentTumor: 'Quimioterapia',
+			treatmentTumorPeri: 'Quimioterapia',
+			state: 'active',
+		},
+	]);
+
+	const renderUserStatus = (type) => {
+		return (
+			<StyledBox
+				css={{
+					color: textColorStatus[type],
+					backgroundColor: backgroundColorStatus[type],
+					borderRadius: '10px',
+					width: '74px',
+					height: '24px',
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}
+			>
+				{getUserStatusLabel(type)}
+			</StyledBox>
+		);
+	};
+
+	return (
+		<TableBody>
+			{body.map((bodyItem) => (
+				<StyledBodyRow>
+					<StyledBodyCell>
+						<StyledBox
+							css={{
+								height: '34px',
+								width: '34px',
+								border: '1px solid #E4E4E4',
+								borderRadius: '50%',
+							}}
+						>
+							{bodyItem.url ? (
+								<StyledImg src={bodyItem.url} />
+							) : (
+								<StyledBox
+									css={{
+										display: 'flex',
+										justifyContent: 'center',
+										alignItems: 'center',
+										height: '100%',
+										width: '100%',
+									}}
+								>
+									{' '}
+									{bodyItem.nameSurname
+										.split(' ')
+										.map((word) => word.charAt(0))
+										.slice(0, 2)
+										.map((w) => w)}{' '}
+								</StyledBox>
+							)}
+						</StyledBox>
+					</StyledBodyCell>
+					<StyledBodyCell width={'16%'}>
+						{bodyItem.nHistorial}
+					</StyledBodyCell>
+					<StyledBodyCell width={'20%'}>
+						{bodyItem.nameSurname}
+					</StyledBodyCell>
+					<StyledBodyCell width={'28%'}>{bodyItem.tumor}</StyledBodyCell>
+					<StyledBodyCell width={'12%'}>
+						{bodyItem.treatment}
+					</StyledBodyCell>
+					<StyledBodyCell width={'14%'}>
+						{bodyItem.treatmentTumor}
+					</StyledBodyCell>
+					<StyledBodyCell width={'12%'}>
+						{bodyItem.treatmentTumorPeri}
+					</StyledBodyCell>
+					<StyledBodyCell>
+						{renderUserStatus(bodyItem.state)}
+					</StyledBodyCell>
+				</StyledBodyRow>
+			))}
+		</TableBody>
+	);
+};
+
+export default PatientListBody;

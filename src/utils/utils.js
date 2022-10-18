@@ -481,3 +481,64 @@ export const NavbarConfigBottom = [
 		icon: (active) => <SettingsIcon active={active} />,
 	},
 ];
+
+// Tables
+
+// Patient list
+
+// Header
+
+export const PatientListHeaderConst = [
+	{
+		label: ' ',
+		sortId: '',
+	},
+	{
+		label: 'Nro de Historial Medico',
+		sortId: '',
+	},
+	{
+		label: 'Nombre y Apellido',
+		sortId: '',
+	},
+	{
+		label: 'Tumor Primario',
+		sortId: '',
+	},
+	{
+		label: 'Tratamiento',
+		sortId: '',
+	},
+	{
+		label: 'Tratamiento de Tumor Primario',
+		sortId: '',
+	},
+	{
+		label: 'Tratamiento Perioperatorio',
+		sortId: '',
+	},
+	{
+		label: 'Estado',
+		sortId: '',
+	},
+];
+
+export const getUserStatusLabel = (type) => {
+	switch (type) {
+		case 'active':
+			return 'Activo';
+		case 'innactive':
+			return 'Inactivo';
+	}
+};
+
+export const textColorStatus = {
+	active: '#1D6535',
+	innactive: '#5F5F5F',
+	in_progress: '#EA8053',
+};
+export const backgroundColorStatus = {
+	active: '#BEE8CF',
+	innactive: '#C4C4C4',
+	in_progress: '#F9E0D6',
+};
