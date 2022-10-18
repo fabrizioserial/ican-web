@@ -12,7 +12,7 @@ const initialState = {
 		total: 0,
 		active: 0,
 		pending: 0,
-		inTreatment: 0
+		inTreatment: 0,
 	},
 };
 
