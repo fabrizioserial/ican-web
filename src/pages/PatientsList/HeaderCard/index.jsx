@@ -22,7 +22,7 @@ function PatientsHeaderCard({text,number,positive,pillText}) {
                             lineHeight: "13px",
                             display: "flex",
                             alignItems: "center",
-                            letterSpacing: "0.05em",}}>{text}</StyledP>
+                            letterSpacing: "0.05em",flexDirection:"row"}}>{text}</StyledP>
                         <StyledP css={{
                             width: "107px",
                             height: "29px",
@@ -35,7 +35,7 @@ function PatientsHeaderCard({text,number,positive,pillText}) {
                             letterSpacing: "0.05em",
                             color: "#5F5F5F",}}>{number}</StyledP>
                     </StyledBox>
-                    <StyledBox css={{alignItems:"flex-end",display:"flex",flexDirection:"column"}}>
+                    <StyledBox css={{alignItems:"flex-end",display:"flex",flexDirection:"column",justifyContent: "flex-end"}}>
                         <StyledBox css={{
                             width: "45px",
                             height: "18px",
