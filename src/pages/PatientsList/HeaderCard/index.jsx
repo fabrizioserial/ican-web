@@ -22,7 +22,7 @@ function PatientsHeaderCard({text,number,positive,pillText}) {
                             lineHeight: "13px",
                             display: "flex",
                             alignItems: "center",
-                            letterSpacing: "0.05em",flexDirection:"row"}}>{text}</StyledP>
+                            letterSpacing: "0.05em",flexDirection:"row", whiteSpace: "nowrap",}}>{text}</StyledP>
                         <StyledP css={{
                             width: "107px",
                             height: "29px",

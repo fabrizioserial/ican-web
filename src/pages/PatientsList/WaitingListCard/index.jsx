@@ -21,7 +21,7 @@ function WaitingListHeaderCard() {
                             lineHeight: "13px",
                             display: "flex",
                             alignItems: "center",
-                            letterSpacing: "0.05em",}}>En espera de aceptacion</StyledP>
+                            letterSpacing: "0.05em",flexDirection:"row", whiteSpace: "nowrap"}}>En espera de aceptacion</StyledP>
                         <StyledP css={{
                             width: "107px",
                             height: "29px",
