@@ -36,6 +36,7 @@ function PatientsListScreen() {
                paddingRight:"29px",
                paddingTop:"22px",
                paddingBottom:"22px",}}>
+               <StyledBox css={{display:"flex",flexDirection:"row",rowGap:"17px",flexWrap: "wrap"}}>
            <StyledBox css={{display:"flex",flexDirection:"column",columnGap:"17px"}}>
           <StyledP css={{
               width: "107px",
@@ -59,16 +60,30 @@ function PatientsListScreen() {
               letterSpacing: "0.05em",
               color: "#5F5F5F",}}>47</StyledP>
            </StyledBox>
-               <StyledBox css={{
-              width: "45px",
-              height: "18px",}}>
+               <StyledBox css={{alignItems:"flex-end"}}>
               <StyledBox css={{
                 width: "45px",
                 height: "18px",
                 background: "rgba(247, 97, 87, 0.42)",
                 boxShadow: "0px 4px 24px rgba(214, 203, 252, 0.3)",
-                borderRadius: "15px",}}/>
+                borderRadius: "15px"}}>
+                <StyledP css={{
+                    width: "12px",
+                    height: "13px",
+                    fontStyle: "normal",
+                    fontWeight: 500,
+                    fontSize: "11px",
+                    lineHeight: "13px",
+                    display: "flex",
+                    alignContent:"center",
+                    color: "#949494",
+                    paddingTop:"2px",
+                    paddingBottom:"3px",
+                    paddingRight:"16px",
+                    paddingLeft:"16px"}}>-2</StyledP>
+              </StyledBox>
           </StyledBox>
+           </StyledBox>
            </StyledBox>
           </StyledPatientsListCard>
           <StyledPatientsListCard/>
