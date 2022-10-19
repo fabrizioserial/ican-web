@@ -36,11 +36,11 @@ function PatientsListScreen() {
             paddingTop:"35px",
             paddingLeft:"46px",
             }}>
-
+            <WaitingListHeaderCard></WaitingListHeaderCard>
             {headerCards.map((item, index) => (
                 <PatientsHeaderCard key={index} text={item.text} number={item.number} positive={item.positive} pillText={item.pillText}/>
             ))}
-            <WaitingListHeaderCard></WaitingListHeaderCard>
+
 
         </StyledBox>
         </StyledBox>
