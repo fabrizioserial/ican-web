@@ -3,6 +3,7 @@ import {
     StyledBox, StyledP,
 } from '../../../common/styledCommonComponents';
 import CalendarIcon from "../../../assets/CalendarIcon";
+import BackIcon from "../../../assets/BackIcon";
 
 
 const WeeklySchedule = () => {
@@ -39,6 +40,48 @@ const WeeklySchedule = () => {
               color: "#AF7EFF",}}> Agenda Semanal
           </StyledP>
         </StyledBox>
+          <StyledBox css={{ display:"flex",
+              flexDirection:"row",
+              columnGap: "123px",
+              padding:"21px 22px"}}>
+              <StyledBox css={{ display:"flex",
+                  flexDirection:"row",
+                  columnGap: "6px"}}>
+              <BackIcon></BackIcon>
+              <StyledP css={{
+                  width: "45px",
+                  height: "13px",
+                  fontStyle: "normal",
+                  fontWeight: 300,
+                  fontSize: "11px",
+                  lineHeight: "13px",
+                  display: "flex",
+                  alignItems: "center",
+                  letterSpacing: "0.05em",
+                  textTransform: "capitalize",
+                  color: "#949494",
+              }}>Anterior</StyledP>
+              </StyledBox>
+              <StyledBox css={{ display:"flex",
+                  flexDirection:"row",
+
+                  }}>
+              <StyledP css={{
+                  width: "74px",
+                  height: "13px",
+                  fontStyle: "normal",
+                  fontWeight: 500,
+                  fontSize: "11px",
+                  lineHeight: "13px",
+                  display: "flex",
+                  alignItems: "center",
+                  letterSpacing: "0.05em",
+                  textTransform: "capitalize",
+                  color: "#AF7EFF",whiteSpace: "nowrap",
+                  justifyContent: "flex-end"}}>Esta Semana</StyledP>
+              </StyledBox>
+
+          </StyledBox>
 
       </StyledBox>
       </StyledBox>
