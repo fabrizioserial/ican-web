@@ -11,7 +11,6 @@ import Validation from './pages/Validation';
 import ProfileScreen from './pages/Profile/ProfileScreen';
 import Wrapper from './components/Navbar/Wrapper';
 import PatientListScreen from './pages/PatientList/PatientListScreen';
-import Wrapper from './componenets/Navbar/Wrapper';
 
 const App = () => {
 	const accessToken = useSelector((state) => state.authSlice.accessToken);
