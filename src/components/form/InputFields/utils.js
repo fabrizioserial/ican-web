@@ -30,6 +30,7 @@ export const FormBuilder = (formSqueleton, values, onChangeHandle) => {
 								component,
 								values,
 								onChangeHandle,
+								component?.handleClick
 							),
 						)}
 					</StyledBox>
@@ -39,7 +40,7 @@ export const FormBuilder = (formSqueleton, values, onChangeHandle) => {
 	));
 };
 
-const InputTypeBuilder = (type, index, properties, values, onChangeHandle, onClick) => {
+const InputTypeBuilder = (type, index, properties, values, onChangeHandle, handleClick) => {
 	switch (type) {
 		case InputTypeEnum.BUTTON:
 			return (
@@ -49,7 +50,7 @@ const InputTypeBuilder = (type, index, properties, values, onChangeHandle, onCli
 					text={properties.label}
 					disabled={true}
 					icon={<PlusCircelIcon />}
-					onClick={onClick}
+					onClick={handleClick}
 				/>
 			);
 		case InputTypeEnum.TEXTFIELD:

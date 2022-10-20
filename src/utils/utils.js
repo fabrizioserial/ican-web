@@ -262,14 +262,12 @@ export const FormsSqueleton = [
 			[
 				{
 					label: 'Biomarcador',
-					// placeholder: 'Introduzca nombre',
 					type: 'text',
 					input_type: InputTypeEnum.TEXTFIELD,
 					// name: 'name',
 				},
 				{
 					label: 'Evaluación',
-					// placeholder: 'Introduzca nombre',
 					type: 'text',
 					input_type: InputTypeEnum.TEXTFIELD,
 					// name: 'name',
@@ -278,7 +276,6 @@ export const FormsSqueleton = [
 			[
 				{
 					label: 'Añadir Nuevo Biomarcador',
-					// placeholder: 'Introduzca nombre',
 					type: 'text',
 					input_type: InputTypeEnum.BUTTON,
 					icon: <PlusCircleIcon />
@@ -309,14 +306,12 @@ export const FormsSqueleton = [
 			[
 				{
 					label: 'Sitio de la Metastasis',
-					// placeholder: 'Introduzca nombre',
 					type: 'text',
 					input_type: InputTypeEnum.TEXTFIELD,
 					// name: 'name',
 				},
 				{
 					label: 'Tratamiento de la Recaida',
-					// placeholder: 'Introduzca nombre',
 					type: 'text',
 					input_type: InputTypeEnum.TEXTFIELD,
 					// name: 'name',
@@ -325,7 +320,6 @@ export const FormsSqueleton = [
 			[
 				{
 					label: 'Añadir Nueva Recaida',
-					// placeholder: 'Introduzca nombre',
 					type: 'text',
 					input_type: InputTypeEnum.BUTTON,
 					icon: <PlusCircleIcon />
@@ -340,7 +334,6 @@ export const FormsSqueleton = [
 			[
 				{
 					label: 'Números de Lineas de Tratamiento',
-					// placeholder: 'Introduzca nombre',
 					type: 'text',
 					input_type: InputTypeEnum.TEXTFIELD,
 					// name: 'name',
@@ -399,11 +392,10 @@ export const FormsSqueleton = [
 			[
 				{
 					label: 'Añadir Nuevo Tratamiento',
-					// placeholder: 'Introduzca nombre',
 					type: 'text',
 					input_type: InputTypeEnum.BUTTON,
 					icon: <PlusCircleIcon />,
-					click: () => {console.log("asd")}
+					handleClick: () => console.log("click")
 				}
 			],
 		],
