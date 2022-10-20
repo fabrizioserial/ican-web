@@ -21,6 +21,15 @@ const PatientListBody = () => {
 		},
 		{
 			nHistorial: '2141325213235435',
+			nameSurname: 'Fabrizio Serial',
+			tumor: 'Prostat',
+			treatment: 'Quimioterapia',
+			treatmentTumor: 'Quimioterapia',
+			treatmentTumorPeri: 'Quimioterapia',
+			state: 'active',
+		},
+		{
+			nHistorial: '2141325213235435',
 			nameSurname: 'Agustin VonStaszweski',
 			tumor: 'Prostat',
 			treatment: 'Quimioterapia',
