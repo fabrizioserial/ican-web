@@ -371,38 +371,39 @@ export const FormsSqueleton = [
 		title: 'Tratamiento',
 		icon: <TreatmentIcon width={30} height={25} />,
 		fields: [
+			// [
+			// 	{
+			// 		label: 'Medicamento',
+			// 		// placeholder: 'Introduzca nombre',
+			// 		type: 'text',
+			// 		input_type: InputTypeEnum.TEXTFIELD,
+			// 		// name: 'name',
+			// 	},
+			// 	{
+			// 		label: 'Gramaje',
+			// 		// placeholder: 'Introduzca nombre',
+			// 		type: 'text',
+			// 		input_type: InputTypeEnum.TEXTFIELD,
+			// 		// name: 'name',
+			// 	},
+			// ],
+			// [
+			// 	{
+			// 		label: 'Objetivo',
+			// 		// placeholder: 'El objetivo de este tratamiento es reducir los sintomas de caracter cutaneo presentes en el paciente..',
+			// 		type: 'text',
+			// 		input_type: InputTypeEnum.TEXTFIELD,
+			// 		name: 'objective',
+			// 	},
+			// ],
 			[
 				{
-					label: 'Medicamento',
-					// placeholder: 'Introduzca nombre',
-					type: 'text',
-					input_type: InputTypeEnum.TEXTFIELD,
-					// name: 'name',
-				},
-				{
-					label: 'Gramaje',
-					// placeholder: 'Introduzca nombre',
-					type: 'text',
-					input_type: InputTypeEnum.TEXTFIELD,
-					// name: 'name',
-				},
-			],
-			[
-				{
-					label: 'Objetivo',
-					// placeholder: 'El objetivo de este tratamiento es reducir los sintomas de caracter cutaneo presentes en el paciente..',
-					type: 'text',
-					input_type: InputTypeEnum.TEXTFIELD,
-					name: 'objective',
-				},
-			],
-			[
-				{
-					label: 'Finalizar Tratamiento',
+					label: 'Añadir Nuevo Tratamiento',
 					// placeholder: 'Introduzca nombre',
 					type: 'text',
 					input_type: InputTypeEnum.BUTTON,
-					icon: <PlusCircleIcon />
+					icon: <PlusCircleIcon />,
+					click: () => {console.log("asd")}
 				}
 			],
 		],

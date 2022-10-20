@@ -12,7 +12,7 @@ export const FormBuilder = (formSqueleton, values, onChangeHandle) => {
 	return formSqueleton?.map((section, index) => (
 		<StyledBox key={index + section.title}>
 			<FormHeader icon={section?.icon} title={section?.title} />
-			<StyledBox css={{ padding: '17px 0 55px' }}>
+			<StyledBox css={{ padding: '17px 0 40px' }}>
 				{section?.fields?.map((field, index) => (
 					<StyledBox
 						key={index + field}
@@ -39,7 +39,7 @@ export const FormBuilder = (formSqueleton, values, onChangeHandle) => {
 	));
 };
 
-const InputTypeBuilder = (type, index, properties, values, onChangeHandle) => {
+const InputTypeBuilder = (type, index, properties, values, onChangeHandle, onClick) => {
 	switch (type) {
 		case InputTypeEnum.BUTTON:
 			return (
@@ -48,7 +48,8 @@ const InputTypeBuilder = (type, index, properties, values, onChangeHandle) => {
 					key={index}
 					text={properties.label}
 					disabled={true}
-					icon={ <PlusCircelIcon/>}
+					icon={<PlusCircelIcon />}
+					onClick={onClick}
 				/>
 			);
 		case InputTypeEnum.TEXTFIELD:
