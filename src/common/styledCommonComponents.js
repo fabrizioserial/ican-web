@@ -34,8 +34,6 @@ export const StyledH4 = styled.h4`
 	${(props) => styledComponentCss`${props.css}`}
 `;
 
-
-
 export const StyledButton = styled.button`
 	${(props) => styledComponentCss`${props.css}`}
 `;
@@ -79,6 +77,3 @@ export const StyledScreen = styled(StyledBox)`
 	min-height: 100vh;
 	max-width: 100vw;
 `;
-
-
-

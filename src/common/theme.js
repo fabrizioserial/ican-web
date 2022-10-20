@@ -42,6 +42,5 @@ export const theme = {
 	oncoDarkGrey: '#555555',
 	oncoNavbarSelection: 'rgba(175, 126, 255, 0.08)',
 
-	textGrey:'#949494'
-
+	textGrey: '#949494',
 };
