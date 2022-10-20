@@ -481,3 +481,50 @@ export const NavbarConfigBottom = [
 		icon: (active) => <SettingsIcon active={active} />,
 	},
 ];
+
+
+export const WeeklySchedule =[
+	{
+		dayNumber:"1",
+		dayName:"L",
+		state:"green",
+		detail:"Completo la encuesta semanal"
+	},
+	{
+		dayNumber:"2",
+		dayName:"M",
+		state:"grey",
+		detail:""
+	},
+	{
+		dayNumber:"3",
+		dayName:"M",
+		state:"green",
+		detail:"Completo la encuesta semanal"
+	},
+	{
+		dayNumber:"4",
+		dayName:"J",
+		state:"green",
+		detail:"Completo la encuesta semanal"
+	},
+	{
+		dayNumber:"5",
+		dayName:"V",
+		state:"grey",
+		detail:""
+	},
+	{
+		dayNumber:"6",
+		dayName:"S",
+		state:"grey",
+		detail:""
+	},
+	{
+		dayNumber:"7",
+		dayName:"D",
+		state:"grey",
+		detail:""
+	}
+
+]
