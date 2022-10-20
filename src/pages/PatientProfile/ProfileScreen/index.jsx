@@ -5,6 +5,7 @@ import {
 } from '../../../common/styledCommonComponents';
 import HungerAndThirstChart from '../../../components/HungerAndThirstChart';
 import SocialAndPhysicalActivitiesChart from '../../../components/SocialAndPhysicalActivitiesChart';
+import PatientProfileCard from '../../../components/PatientProfileCard';
 
 const ProfileScreen = () => {
 	return (
@@ -18,7 +19,14 @@ const ProfileScreen = () => {
 			}}
 		>
 			<StyledBox css={{ display: 'flex', flexDirection: 'column' }}>
-				<StyledBox css={{ display: 'flex', flexDirection: 'row' }}>
+				<PatientProfileCard />
+				<StyledBox
+					css={{
+						display: 'flex',
+						flexDirection: 'row',
+						marginTop: '30px',
+					}}
+				>
 					<HungerAndThirstChart />
 					<SocialAndPhysicalActivitiesChart />
 				</StyledBox>

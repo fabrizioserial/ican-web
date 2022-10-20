@@ -10,6 +10,9 @@ import PatientsListIcon from '../assets/PatientsListIcon';
 import StatisticsIcon from '../assets/StatisticsIcon';
 import BellIcon from '../assets/BellIcon';
 import SettingsIcon from '../assets/SettingsIcon';
+import CallIcon from '../assets/CallIcon';
+import FormIcon from '../assets/FormIcon';
+import { theme } from '../common/theme';
 
 export const InputTypeEnum = {
 	TEXTFIELD: 'TEXTFIELD',
@@ -479,5 +482,20 @@ export const NavbarConfigBottom = [
 		name: 'Configuración',
 		path: '/settings',
 		icon: (active) => <SettingsIcon active={active} />,
+	},
+];
+
+export const ProfileConfigButton = [
+	{
+		text: 'Formulario',
+		icon: <FormIcon />,
+		color: '#FFFFFF',
+		textColor: theme.textGrey,
+	},
+	{
+		text: 'Contactar',
+		icon: <CallIcon />,
+		color: '#5EC386',
+		textColor: theme.white,
 	},
 ];
