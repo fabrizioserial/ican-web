@@ -8,9 +8,8 @@ import { BrowserRouter, Navigate } from 'react-router-dom';
 import { StyledBox } from './common/styledCommonComponents';
 
 import Validation from './pages/Validation';
-import ProfileScreen from './pages/Profile/ProfileScreen';
+import ProfileScreen from './pages/PatientProfile/ProfileScreen';
 import Wrapper from './components/Navbar/Wrapper';
-import PatientProfile from './pages/PatientProfile';
 
 const App = () => {
 	const accessToken = useSelector((state) => state.authSlice.accessToken);
@@ -83,7 +82,6 @@ const App = () => {
 						/>
 						<Route path={'/profile'} element={<ProfileScreen />} />
 						<Route path="/validate-patient" element={<Validation />} />
-						<Route path="/patient-profile" element={<PatientProfile />} />
 					</Route>
 				</Route>
 				<Route path="/login" element={<LoginScreen />} />
