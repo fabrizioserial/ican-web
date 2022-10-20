@@ -30,6 +30,13 @@ export const StyledH3 = styled.h3`
 	${(props) => styledComponentCss`${props.css}`}
 `;
 
+export const StyledH2 = styled.h2`
+	${(props) => styledComponentCss`${props.css}`}
+`;
+export const StyledH4 = styled.h4`
+	${(props) => styledComponentCss`${props.css}`}
+`;
+
 export const StyledButton = styled.button`
 	${(props) => styledComponentCss`${props.css}`}
 `;
