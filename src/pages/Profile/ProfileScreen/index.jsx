@@ -5,6 +5,7 @@ import {
 } from '../../../common/styledCommonComponents';
 import HungerAndThirstChart from '../../../components/HungerAndThirstChart';
 import SocialAndPhysicalActivitiesChart from '../../../components/SocialAndPhysicalActivitiesChart';
+import WeeklySchedule from "../WeeklySchedule";
 
 const ProfileScreen = () => {
 	return (
@@ -23,6 +24,7 @@ const ProfileScreen = () => {
 					<SocialAndPhysicalActivitiesChart />
 				</StyledBox>
 			</StyledBox>
+			<WeeklySchedule/>
 		</StyledScreen>
 	);
 };
