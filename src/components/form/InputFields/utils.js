@@ -7,6 +7,8 @@ import SelectorInputField from './SelectorInputField';
 import ConditionalSelectInputField from './ConditionalSelectInputField';
 import Button from '../../../common/components/button/Button';
 import PlusCircelIcon from '../../../assets/PlusCircleIcon';
+import ActionInputField from './ActionInputField';
+import MedicationField from './MedicationField';
 
 export const FormBuilder = (formSqueleton, values, onChangeHandle) => {
 	return formSqueleton?.map((section, index) => (
@@ -51,6 +53,30 @@ const InputTypeBuilder = (type, index, properties, values, onChangeHandle, handl
 					disabled={true}
 					icon={<PlusCircelIcon />}
 					onClick={handleClick}
+				/>
+			);
+		case InputTypeEnum.ADD_SECTION:
+			return (
+				<ActionInputField
+					index={index}
+					label={properties.label}
+					handleClick={handleClick}
+				/>
+			);
+		case InputTypeEnum.MEDICATION_ROW:
+			return (
+				<MedicationField
+					key={index}
+					id={properties.id}
+					values={{
+						medication: values[`${properties.names[0]}${properties.id}`],
+						gramaje: values[`${properties.names[1]}${properties.id}`]
+					}}
+					names={{
+						medication: `${properties.names[0]}${properties.id}`,
+						gramaje: `${properties.names[1]}${properties.id}`
+					}}
+					onChange={onChangeHandle}
 				/>
 			);
 		case InputTypeEnum.TEXTFIELD:
