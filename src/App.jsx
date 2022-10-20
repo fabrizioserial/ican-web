@@ -6,7 +6,10 @@ import LoginScreen from './pages/Login/LoginScreen';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Navigate } from 'react-router-dom';
 import { StyledBox } from './common/styledCommonComponents';
+
 import Validation from './pages/Validation';
+import ProfileScreen from './pages/Profile/ProfileScreen';
+import Wrapper from './components/Navbar/Wrapper';
 import PatientListScreen from './pages/PatientList/PatientListScreen';
 import Wrapper from './componenets/Navbar/Wrapper';
 
@@ -18,7 +21,7 @@ const App = () => {
 			<Routes>
 				<Route element={<ProtectedRoute accessToken={accessToken} />}>
 					<Route element={<Wrapper />}>
-						<Route path="/home" element={<HomeScreen />} />
+						<Route path="/home" exact element={<HomeScreen />} />
 						<Route
 							path="/statistics"
 							element={
@@ -83,6 +86,7 @@ const App = () => {
 							path={'/patient-list'}
 							element={<PatientListScreen />}
 						/>
+						<Route path={'/profile'} element={<ProfileScreen />} />
 						<Route path="/validate-patient" element={<Validation />} />
 					</Route>
 				</Route>
