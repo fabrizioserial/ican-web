@@ -36,7 +36,7 @@ const PatientListBottom = () => {
 			>
 				<ArrowLeftIcon />
 			</StyledBox>
-			<StyledBox>
+			<StyledBox css={{ fontSize: '11px' }}>
 				Pagina {currentPage} de {maxPages}
 			</StyledBox>
 			<StyledBox

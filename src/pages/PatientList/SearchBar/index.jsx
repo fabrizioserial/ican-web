@@ -28,6 +28,10 @@ const SearchBar = () => {
 					boxSizing: 'border-box',
 					borderStyle: 'none',
 					backgroundColor: 'transparent',
+					margin: '0 10px',
+					outline: 'none',
+					color: 'white',
+					fontSize: '14px',
 				}}
 			/>
 		</StyledBox>

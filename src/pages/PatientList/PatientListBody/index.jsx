@@ -135,8 +135,8 @@ const PatientListBody = () => {
 					<StyledBodyCell width={'20%'}>
 						{bodyItem.nameSurname}
 					</StyledBodyCell>
-					<StyledBodyCell width={'28%'}>{bodyItem.tumor}</StyledBodyCell>
-					<StyledBodyCell width={'12%'}>
+					<StyledBodyCell width={'15%'}>{bodyItem.tumor}</StyledBodyCell>
+					<StyledBodyCell width={'35%'}>
 						{bodyItem.treatment}
 					</StyledBodyCell>
 					<StyledBodyCell width={'14%'}>

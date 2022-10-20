@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import {
 	Box,
 	TableCell,
@@ -9,6 +9,7 @@ import {
 import { visuallyHidden } from '@mui/utils';
 import styled from 'styled-components';
 import { PatientListHeaderConst } from '../../../utils/utils';
+import ArrowOrderIcon from '../../../assets/ArrowOrderIcon';
 
 const StyledTableCellHeader = styled(TableCell)`
 	color: #9357f7 !important;
@@ -53,6 +54,7 @@ const PatientListHeader = () => {
 							active={true}
 							direction={'asc'}
 							onClick={() => sortColumn(headerItem.sortId)}
+							IconComponent={() => <ArrowOrderIcon />}
 						>
 							{headerItem.label}
 							<Box component="span" sx={visuallyHidden}>

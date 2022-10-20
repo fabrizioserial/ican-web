@@ -18,12 +18,20 @@ import PatientListBottom from './PatientListBottom';
 import SearchBar from './SearchBar';
 
 const StyledTableContainer = styled(TableContainer)`
-	max-width: 1350px;
+	max-width: 100vw;
+	width: calc(100vw - 40px);
 `;
 
 const PatientListScreen = () => {
 	return (
-		<StyledScreen>
+		<StyledScreen
+			css={{
+				display: 'flex',
+				flexDirection: 'column',
+				alignItems: 'center',
+				justifyContent: 'center',
+			}}
+		>
 			<StyledBox
 				css={{
 					display: 'flex',
