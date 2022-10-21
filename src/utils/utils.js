@@ -491,13 +491,19 @@ export const PatientsListHeaderConfig = [
 		number: '47',
 		positive: false,
 		pillText: '-2',
+		pillDetail: "4 pacientes que se volvieron inactivos"
 	},
-	{ text: 'Pacientes Totales', number: '55', positive: true, pillText: '+4' },
+	{ text: 'Pacientes Totales',
+		number: '55',
+		positive: true,
+		pillText: '+4',
+		pillDetail: "4 nuevos pacientes" },
 	{
 		text: 'Pacientes en Tratamiento',
 		number: '42',
 		positive: true,
 		pillText: '+4',
+		pillDetail: "4 nuevos pacientes en tratamiento "
 	},
 ];
 

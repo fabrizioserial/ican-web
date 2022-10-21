@@ -65,6 +65,7 @@ function PatientsListScreen() {
 							number={item.number}
 							positive={item.positive}
 							pillText={item.pillText}
+							pillDetail={item.pillDetail}
 						/>
 					))}
 				</StyledBox>
