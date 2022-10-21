@@ -80,7 +80,7 @@ function WaitingListHeaderCard() {
 					display: 'flex',
 					flexDirection: 'column',
 					justifyContent: 'flex-end',
-					boxShadow: '0px 4px 24px rgba(214, 203, 252, 0.3)',
+
 					borderRadius: '15px',
 				}}
 			>
@@ -108,6 +108,7 @@ function WaitingListHeaderCard() {
 						display: 'flex',
 						flexDirection: 'row',
 						marginTop: '10px',
+
 					}}
 				>
 					{users?.waitingUsers?.users?.map((value, index) => (
