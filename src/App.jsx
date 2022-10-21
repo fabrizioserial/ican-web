@@ -10,7 +10,7 @@ import { StyledBox } from './common/styledCommonComponents';
 import Validation from './pages/Validation';
 import ProfileScreen from './pages/Profile/ProfileScreen';
 import Wrapper from './components/Navbar/Wrapper';
-import PatientsListScreen from "./pages/PatientsList";
+import PatientsListScreen from './pages/PatientsList';
 
 const App = () => {
 	const accessToken = useSelector((state) => state.authSlice.accessToken);
@@ -36,10 +36,7 @@ const App = () => {
 								</StyledBox>
 							}
 						/>
-						<Route
-							path="/my-patients"
-							element={<PatientsListScreen/>}
-						/>
+						<Route path="/my-patients" element={<PatientsListScreen />} />
 						<Route
 							path="/settings"
 							element={

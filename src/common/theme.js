@@ -42,6 +42,6 @@ export const theme = {
 	oncoDarkGrey: '#555555',
 	oncoNavbarSelection: 'rgba(175, 126, 255, 0.08)',
 
-	patientListPillNegative:'rgba(247, 97, 87, 0.42)',
-	patientListPillPositive:'rgba(100, 201, 140, 0.42)'
+	patientListPillNegative: 'rgba(247, 97, 87, 0.42)',
+	patientListPillPositive: 'rgba(100, 201, 140, 0.42)',
 };

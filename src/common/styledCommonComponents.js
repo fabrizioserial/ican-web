@@ -72,16 +72,12 @@ export const StyledScreen = styled(StyledBox)`
 `;
 
 export const StyledPatientsListCard = styled(StyledBox)`
-	 box-sizing: border-box;
-	 width: 306px;
-    /* max-width: 306px;
+	box-sizing: border-box;
+	/* max-width: 306px;
      min-width: 206px;
      flex: 1;	*/
-     height: 104px;
-     background: #FFFFFF;
-     box-shadow: 0px 4px 24px rgba(214, 203, 252, 0.3);
-     border-radius: 15px;
-     
+	height: 104px;
+	background: #ffffff;
+	box-shadow: 0px 4px 24px rgba(214, 203, 252, 0.3);
+	border-radius: 15px;
 `;
-
-
