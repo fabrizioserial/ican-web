@@ -32,7 +32,9 @@ const ProfileScreen = () => {
 					<SocialAndPhysicalActivitiesChart />
 				</StyledBox>
 			</StyledBox>
+			<StyledBox css={{paddingLeft:"20px",paddingRight:"20px"}}>
 			<WeeklySchedule/>
+			</StyledBox>
 		</StyledScreen>
 	);
 };
