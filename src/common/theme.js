@@ -55,4 +55,8 @@ export const theme = {
 	oncoGreenTitle: "#1D6535",
 	oncoGreenSubtitle: "#476651",
 
+	patientListPillNegative: 'rgba(247, 97, 87, 0.42)',
+	patientListPillPositive: 'rgba(100, 201, 140, 0.42)',
+
+	textGrey: '#949494'
 };

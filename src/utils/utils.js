@@ -10,6 +10,9 @@ import PatientsListIcon from '../assets/PatientsListIcon';
 import StatisticsIcon from '../assets/StatisticsIcon';
 import BellIcon from '../assets/BellIcon';
 import SettingsIcon from '../assets/SettingsIcon';
+import CallIcon from '../assets/CallIcon';
+import FormIcon from '../assets/FormIcon';
+import { theme } from '../common/theme';
 
 export const InputTypeEnum = {
 	TEXTFIELD: 'TEXTFIELD',
@@ -479,5 +482,42 @@ export const NavbarConfigBottom = [
 		name: 'Configuración',
 		path: '/settings',
 		icon: (active) => <SettingsIcon active={active} />,
+	},
+];
+
+export const PatientsListHeaderConfig = [
+	{
+		text: 'Pacientes Activos',
+		number: '47',
+		positive: false,
+		pillText: '-2',
+		pillDetail: "4 pacientes que se volvieron inactivos"
+	},
+	{ text: 'Pacientes Totales',
+		number: '55',
+		positive: true,
+		pillText: '+4',
+		pillDetail: "4 nuevos pacientes" },
+	{
+		text: 'Pacientes en Tratamiento',
+		number: '42',
+		positive: true,
+		pillText: '+4',
+		pillDetail: "4 nuevos pacientes en tratamiento "
+	},
+];
+
+export const ProfileConfigButton = [
+	{
+		text: 'Formulario',
+		icon: <FormIcon />,
+		color: '#FFFFFF',
+		textColor: theme.textGrey,
+	},
+	{
+		text: 'Contactar',
+		icon: <CallIcon />,
+		color: '#5EC386',
+		textColor: theme.white,
 	},
 ];
