@@ -9,7 +9,7 @@ function WaitingList({ waitingPatients = [] }) {
     const theme = useTheme();
     return <StyledWaitingListCardHome>
         <StyledGeneralContainer>
-            <StyledH1 css={{ display: "flex", margin: 0, justifyContent: "flex-start", alignItems: "center" }}>
+            <StyledH1 css={{ display: "flex", margin: 0, justifyContent: "flex-start", alignItems: "center", padding: "20px 20px 0 20px" }}>
                 <UsersIcon width={"1.1rem"} />
                 <StyledSpan css={{ fontSize: "1rem", paddingLeft: "5px", fontWeight: "normal" }}>
                     <StyledSpan css={{ fontWeight: "bold" }}> {waitingPatients.length} </StyledSpan>

@@ -17,8 +17,10 @@ export const StyledWaitingListCardHome = styled(StyledCardHome)`
 
 export const StyledWaitingListContainer = styled(StyledBox)`
     overflow-y: scroll;
+    margin: 0px 10px 0 20px;
     padding-right: 10px;
     margin-top: 5px;
+    margin-bottom: 20px;
 
     &::-webkit-scrollbar { width: 2px; }
 
