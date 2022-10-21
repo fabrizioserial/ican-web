@@ -24,9 +24,9 @@ const DayCard = ({dayNumber,dayName,state,detail,index}) => {
             padding:"8px 12px",
             border: border}}>
 
-             <ReactTooltip id={"dayTip"+dayNumber} place="top" effect="solid">
+            { state==="green" && <ReactTooltip id={"dayTip"+dayNumber} place="top" effect="solid">
                 {detail}
-            </ReactTooltip>
+            </ReactTooltip>}
 
             <StyledBox css={{display:"flex",
                 flexDirection:"column",
