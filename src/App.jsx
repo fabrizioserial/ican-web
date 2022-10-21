@@ -8,7 +8,7 @@ import { BrowserRouter, Navigate } from 'react-router-dom';
 import { StyledBox } from './common/styledCommonComponents';
 
 import Validation from './pages/Validation';
-import ProfileScreen from './pages/Profile/ProfileScreen';
+import ProfileScreen from './pages/PatientProfile/ProfileScreen';
 import Wrapper from './components/Navbar/Wrapper';
 import PatientsListScreen from './pages/PatientsList';
 
