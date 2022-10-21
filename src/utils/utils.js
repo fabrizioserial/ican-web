@@ -488,43 +488,43 @@ export const WeeklyScheduleConfig =[
 		dayNumber:"1",
 		dayName:"L",
 		state:"green",
-		detail:"Completo la encuesta semanal"
+		detail:"Completo la encuesta semanal 1"
 	},
 	{
 		dayNumber:"2",
 		dayName:"M",
 		state:"grey",
-		detail:""
+		detail:"Nada para reportar 2"
 	},
 	{
 		dayNumber:"3",
 		dayName:"M",
 		state:"green",
-		detail:"Completo la encuesta semanal"
+		detail:"Completo la encuesta semanal 3"
 	},
 	{
 		dayNumber:"4",
 		dayName:"J",
 		state:"green",
-		detail:"Completo la encuesta semanal"
+		detail:"Completo la encuesta semanal 4"
 	},
 	{
 		dayNumber:"5",
 		dayName:"V",
 		state:"grey",
-		detail:""
+		detail:"Nada para reportar 5"
 	},
 	{
 		dayNumber:"6",
 		dayName:"S",
 		state:"grey",
-		detail:""
+		detail:"Nada para reportar 6"
 	},
 	{
 		dayNumber:"7",
 		dayName:"D",
 		state:"grey",
-		detail:""
+		detail:"Nada para reportar 7"
 	}
 
 ]

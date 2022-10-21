@@ -15,7 +15,7 @@ const DayCard = ({dayNumber,dayName,state,detail,index}) => {
 
     return (
 
-        <StyledBox  data-tip data-for="dayTip" css={{boxSizing: "border-box",
+        <StyledBox  data-tip data-for={"dayTip"+dayNumber} css={{boxSizing: "border-box",
             width: "33px",
             height: "52px",
             background: fill,
@@ -24,9 +24,9 @@ const DayCard = ({dayNumber,dayName,state,detail,index}) => {
             padding:"8px 12px",
             border: border}}>
 
-            {state==="green"&& <ReactTooltip id="dayTip" place="top" effect="solid">
+             <ReactTooltip id={"dayTip"+dayNumber} place="top" effect="solid">
                 {detail}
-            </ReactTooltip>}
+            </ReactTooltip>
 
             <StyledBox css={{display:"flex",
                 flexDirection:"column",
