@@ -77,3 +77,14 @@ export const StyledScreen = styled(StyledBox)`
 	min-height: 100vh;
 	max-width: 100vw;
 `;
+
+export const StyledPatientsListCard = styled(StyledBox)`
+	box-sizing: border-box;
+	/* max-width: 306px;
+     min-width: 206px;
+     flex: 1;	*/
+	height: 104px;
+	background: #ffffff;
+	box-shadow: 0px 4px 24px rgba(214, 203, 252, 0.3);
+	border-radius: 15px;
+`;

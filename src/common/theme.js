@@ -44,5 +44,8 @@ export const theme = {
 	calendarPurple:'#9357F7',
 	calendarGrey:'#949494',
 
+	patientListPillNegative: 'rgba(247, 97, 87, 0.42)',
+	patientListPillPositive: 'rgba(100, 201, 140, 0.42)',
+
 	textGrey: '#949494',
 };
