@@ -33,21 +33,21 @@ const WeeklySummary = () => {
 				}}
 			>
 				<StyledP css={{ color: theme.OncoBlack, fontWeight: 500 }}>
-					Encuesta semanal
+					Encuesta Diaria
 				</StyledP>
 				<StyledBox css={{ cursor: 'pointer' }}>
 					<ReloadIcon />
 				</StyledBox>
 			</StyledBox>
 			<TaskContainer
-				color={'blue'}
+				color={'green'}
 				title={'Completado'}
 				quantity={30}
 				progress={50}
 				icon={CheckIcon}
 			/>
 			<TaskContainer
-				color={'purple'}
+				color={'pink'}
 				title={'En proceso'}
 				quantity={30}
 				progress={70}

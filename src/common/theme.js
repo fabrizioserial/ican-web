@@ -42,4 +42,17 @@ export const theme = {
 
 	oncoDarkGrey: '#555555',
 	oncoNavbarSelection: 'rgba(175, 126, 255, 0.08)',
+
+	oncoPink: "#CD7DE3",
+	oncoLightPink: "#F6EAFA",
+	oncoLightPink2: "rgba(205, 125, 227, 0.2)",
+	oncoPinkTitle: "#76288B",
+	oncoPinkSubtitle: "#785582",
+
+	oncoGreen: "#6AD18D",
+	oncoLightGreen: "rgba(220, 245, 229, 1)",
+	oncoLightGreen2: "rgba(106, 209, 141, 0.2)",
+	oncoGreenTitle: "#1D6535",
+	oncoGreenSubtitle: "#476651",
+
 };
