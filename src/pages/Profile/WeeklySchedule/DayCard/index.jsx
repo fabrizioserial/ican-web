@@ -1,6 +1,9 @@
 import React from 'react';
 import {StyledBox, StyledP} from "../../../../common/styledCommonComponents";
 import {useTheme} from "styled-components";
+import ReactTooltip from "react-tooltip";
+
+
 
 
 
@@ -11,7 +14,8 @@ const DayCard = ({dayNumber,dayName,state,detail,index}) => {
     const fontColor= index===6 ? theme.white: theme.calendarGrey
 
     return (
-        <StyledBox css={{boxSizing: "border-box",
+
+        <StyledBox  data-tip data-for="dayTip" css={{boxSizing: "border-box",
             width: "33px",
             height: "52px",
             background: fill,
@@ -19,6 +23,11 @@ const DayCard = ({dayNumber,dayName,state,detail,index}) => {
             borderRadius: "10px",
             padding:"8px 12px",
             border: border}}>
+
+            {state==="green"&& <ReactTooltip id="dayTip" place="top" effect="solid">
+                {detail}
+            </ReactTooltip>}
+
             <StyledBox css={{display:"flex",
                 flexDirection:"column",
                 flexWrap: "wrap",
@@ -53,6 +62,7 @@ const DayCard = ({dayNumber,dayName,state,detail,index}) => {
             </StyledBox>
 
         </StyledBox>
+
     );
 };
 

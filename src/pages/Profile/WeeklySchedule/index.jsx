@@ -110,8 +110,9 @@ const WeeklySchedule = () => {
                         padding: "20px 18px"
                     }}>
                         {dayList.map((item, index) => (
-                            <DayCard key={index} index={index} dayNumber={item.dayNumber}
-                                     dayName={item.dayName} state={item.state} detail={item.detail}/>
+                            <DayCard  key={index} index={index} dayNumber={item.dayNumber}
+                                     dayName={item.dayName} state={item.state} detail={item.detail} />
+
                         ))
                         }
                     </StyledBox>
