@@ -1,20 +1,20 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {StyledBox, StyledP} from "../../../../common/styledCommonComponents";
 import {useTheme} from "styled-components";
 
 
 
-const DayCard = ({dayNumber,dayName,state,detail}) => {
+const DayCard = ({dayNumber,dayName,state,detail,index}) => {
     const theme = useTheme();
     const border = state==="green" ? "1px solid rgba(100, 201, 140, 0.5)" :"1px solid rgba(225, 209, 252, 0.22)" ;
-
-
+    const fill = index===6 ? theme.calendarPurple :theme.white
+    const fontColor= index===6 ? theme.white: theme.calendarGrey
 
     return (
         <StyledBox css={{boxSizing: "border-box",
             width: "33px",
             height: "52px",
-            background: "#FFFFFF",
+            background: fill,
             boxShadow: "0px 4px 24px rgba(214, 203, 252, 0.15)",
             borderRadius: "10px",
             padding:"13px 13px",
@@ -31,7 +31,7 @@ const DayCard = ({dayNumber,dayName,state,detail}) => {
                 alignItems: "center",
                 letterSpacing: "0.01em",
                 textTransform: "uppercase",
-                color: "#949494",}}>{dayNumber}</StyledP>
+                color: fontColor,}}>{dayNumber}</StyledP>
             <StyledP css={{
                 width: "14px",
                 height: "15px",
@@ -43,7 +43,7 @@ const DayCard = ({dayNumber,dayName,state,detail}) => {
                 alignItems: "center",
                 letterSpacing: "0.01em",
                 textTransform: "uppercase",
-                color: "#949494",}}> {dayName}</StyledP>
+                color: fontColor,}}> {dayName}</StyledP>
 
         </StyledBox>
     );

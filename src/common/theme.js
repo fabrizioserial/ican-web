@@ -41,4 +41,6 @@ export const theme = {
 
 	oncoDarkGrey: '#555555',
 	oncoNavbarSelection: 'rgba(175, 126, 255, 0.08)',
+	calendarPurple:'#9357F7',
+	calendarGrey:'#949494',
 };

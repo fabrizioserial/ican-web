@@ -9,6 +9,7 @@ import {WeeklyScheduleConfig} from "../../../utils/utils";
 
 
 const WeeklySchedule = () => {
+
     const [dayList,setDayList]= useState(WeeklyScheduleConfig)
     return (
       <StyledBox>
@@ -89,7 +90,7 @@ const WeeklySchedule = () => {
               columnGap:"7px",
               padding:"21px 22px"}}>
               {dayList.map((item, index) => (
-                  <DayCard key={index} dayNumber={item.dayNumber}
+                  <DayCard key={index} index={index} dayNumber={item.dayNumber}
                            dayName={item.dayName} state={item.state} detail={item.detail}/>
               ))
               }
