@@ -10,8 +10,8 @@ export const StyledGeneralContainer = styled(StyledBox)`
 `
 
 export const StyledWaitingListCardHome = styled(StyledCardHome)`
-    height: 270px;
-    width: 270px;
+    height: 230px;
+    width: 230px;
     overflow: hidden;
 `;
 

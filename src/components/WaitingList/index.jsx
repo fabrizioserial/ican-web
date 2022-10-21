@@ -10,8 +10,8 @@ function WaitingList({ waitingPatients = [] }) {
     return <StyledWaitingListCardHome>
         <StyledGeneralContainer>
             <StyledH1 css={{ display: "flex", margin: 0, justifyContent: "flex-start", alignItems: "center", padding: "20px 20px 0 20px" }}>
-                <UsersIcon width={"1.1rem"} />
-                <StyledSpan css={{ fontSize: "1rem", paddingLeft: "5px", fontWeight: "normal" }}>
+                <UsersIcon width={"0.875rem"} />
+                <StyledSpan css={{ fontSize: "0.875rem", paddingLeft: "5px", fontWeight: "normal" }}>
                     <StyledSpan css={{ fontWeight: "bold" }}> {waitingPatients.length} </StyledSpan>
                     Pacientes en espera
                 </StyledSpan>
@@ -27,6 +27,7 @@ function WaitingList({ waitingPatients = [] }) {
                             marginTop: "15px",
                             padding: "5px 10px"
                         }}
+                        fontSize={0.875}
                     // avatar = {avatarImg} 
                     />
                     )

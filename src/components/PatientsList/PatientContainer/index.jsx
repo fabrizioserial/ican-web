@@ -6,7 +6,7 @@ import {
 } from '../../../common/styledCommonComponents';
 import { StyledPatientContainer } from './styles';
 
-const PatientContainer = ({ fullName, legend, css }) => {
+const PatientContainer = ({ fullName, legend, css, fontSize }) => {
 	return (
 		<StyledPatientContainer css={css || { padding: "12px" }} onClick={() => console.log('asd')}>
 			<StyledBox css = {{ display: "flex", justifyContent: "center", alignItems: "center",  width: 38, paddingRight: "10px" }}>
@@ -33,10 +33,10 @@ const PatientContainer = ({ fullName, legend, css }) => {
 					justifyContent: 'space-around',
 				}}
 			>
-				<StyledP css={{ fontWeight: 500, fontSize: '1rem' }}>
+				<StyledP css={{ fontWeight: 500, fontSize: fontSize ? `${fontSize}rem` : '1rem' }}>
 					{fullName}
 				</StyledP>
-				<StyledP css={{ fontWeight: 200, fontSize: '0.8rem' }}>
+				<StyledP css={{ fontWeight: 200, fontSize: fontSize ? `${fontSize*0.8}rem` : '0.8rem' }}>
 					{legend}
 				</StyledP>
 			</StyledBox>

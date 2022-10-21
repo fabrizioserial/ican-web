@@ -5,10 +5,9 @@ import WidgetHome from '../../components/WidgetHome';
 import WidgetPastelStats from '../../components/WidgetPastelStats';
 import WaitingList from '../../components/WaitingList';
 import { useSelector } from 'react-redux';
+import UsersSummary from '../../components/UsersSummary';
 
 function HomeScreen() {
-	const waitingPatients = useSelector(state => state.homeSlice.waitingPatients);
-
 	return (
 		<StyledBox
 			css={{
@@ -35,7 +34,7 @@ function HomeScreen() {
 
 				<StyledBox css={{ display: 'flex', justifyContent: "space-evenly", flex: 0.5 }}>
 					<PatientsList />
-					<WaitingList waitingPatients={waitingPatients} />
+					<UsersSummary />
 				</StyledBox>
 			</StyledBox>
 		</StyledBox>
