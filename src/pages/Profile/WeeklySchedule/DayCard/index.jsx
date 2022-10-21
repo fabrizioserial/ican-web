@@ -1,8 +1,6 @@
 import React from 'react';
-import {
-    StyledBox,
-} from '../../../common/styledCommonComponents';
-import {StyledP} from "../../../../common/styledCommonComponents";
+import {StyledBox, StyledP} from "../../../../common/styledCommonComponents";
+
 
 
 const DayCard = ({dayNumber,dayName,state,detail}) => {

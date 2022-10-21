@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     StyledBox, StyledP,
 } from '../../../common/styledCommonComponents';
 import CalendarIcon from "../../../assets/CalendarIcon";
 import BackIcon from "../../../assets/BackIcon";
+import DayCard from "./DayCard";
+import {WeeklyScheduleConfig} from "../../../utils/utils";
 
 
 const WeeklySchedule = () => {
+    const [dayList,setDayList]= useState(WeeklyScheduleConfig)
     return (
       <StyledBox>
       <StyledBox css={{
@@ -80,7 +83,16 @@ const WeeklySchedule = () => {
                   color: "#AF7EFF",whiteSpace: "nowrap",
                   justifyContent: "flex-end"}}>Esta Semana</StyledP>
               </StyledBox>
-
+          </StyledBox>
+          <StyledBox css={{display:"flex",
+              flexDirection:"row",
+              columnGap:"7px",
+              padding:"21px 22px"}}>
+              {dayList.map((item, index) => (
+                  <DayCard key={index} dayNumber={item.dayNumber}
+                           dayName={item.dayName} state={item.state} detail={item.detail}/>
+              ))
+              }
           </StyledBox>
 
       </StyledBox>

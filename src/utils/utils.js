@@ -483,7 +483,7 @@ export const NavbarConfigBottom = [
 ];
 
 
-export const WeeklySchedule =[
+export const WeeklyScheduleConfig =[
 	{
 		dayNumber:"1",
 		dayName:"L",
