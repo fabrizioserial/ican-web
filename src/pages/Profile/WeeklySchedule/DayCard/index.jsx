@@ -17,9 +17,14 @@ const DayCard = ({dayNumber,dayName,state,detail,index}) => {
             background: fill,
             boxShadow: "0px 4px 24px rgba(214, 203, 252, 0.15)",
             borderRadius: "10px",
-            padding:"13px 13px",
+            padding:"8px 12px",
             border: border}}>
-
+            <StyledBox css={{display:"flex",
+                flexDirection:"column",
+                flexWrap: "wrap",
+                rowGap: "7px",
+                alignItems:"center"
+            }}>
             <StyledP css={{
                 width: "14px",
                 height: "15px",
@@ -31,12 +36,13 @@ const DayCard = ({dayNumber,dayName,state,detail,index}) => {
                 alignItems: "center",
                 letterSpacing: "0.01em",
                 textTransform: "uppercase",
-                color: fontColor,}}>{dayNumber}</StyledP>
+                color: fontColor,
+            }}>{dayNumber}</StyledP>
             <StyledP css={{
                 width: "14px",
                 height: "15px",
                 fontStyle: "normal",
-                fontWeight: 500,
+                fontWeight: 300,
                 fontSize: "12px",
                 lineHeight: "15px",
                 display: "flex",
@@ -44,6 +50,7 @@ const DayCard = ({dayNumber,dayName,state,detail,index}) => {
                 letterSpacing: "0.01em",
                 textTransform: "uppercase",
                 color: fontColor,}}> {dayName}</StyledP>
+            </StyledBox>
 
         </StyledBox>
     );
