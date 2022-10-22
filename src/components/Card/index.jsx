@@ -57,6 +57,7 @@ const Card = ({ icon, title, children, width, height }) => {
 					alignItems: 'center',
 					borderTop: '1px solid #F0EDED',
 					flex: 1,
+					flexDirection: 'column',
 				}}
 			>
 				{children}
