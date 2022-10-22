@@ -5,6 +5,9 @@ import styled, {
 
 export const StyledBox = styled.div`
 	${(props) => styledComponentCss`${props.css}`}
+	&.withBoxShadow {
+		box-shadow: 0 4px 24px rgba(214, 203, 252, 0.3);
+	}
 `;
 
 export const StyledP = styled.p`
