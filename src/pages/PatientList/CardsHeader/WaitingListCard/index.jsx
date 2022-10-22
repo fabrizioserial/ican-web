@@ -4,9 +4,9 @@ import {
 	StyledImg,
 	StyledP,
 	StyledPatientsListCard,
-} from '../../../common/styledCommonComponents';
+} from '../../../../common/styledCommonComponents';
 import React, { useMemo } from 'react';
-import { patientsReport } from '../../../redux/api/homeApi';
+import { patientsReport } from '../../../../redux/api/homeApi';
 
 function WaitingListHeaderCard() {
 	const theme = useTheme();
@@ -108,7 +108,6 @@ function WaitingListHeaderCard() {
 						display: 'flex',
 						flexDirection: 'row',
 						marginTop: '10px',
-
 					}}
 				>
 					{users?.waitingUsers?.users?.map((value, index) => (
