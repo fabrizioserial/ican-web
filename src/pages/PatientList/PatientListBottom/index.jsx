@@ -4,9 +4,9 @@ import { StyledBox } from '../../../common/styledCommonComponents';
 import ArrowLeftIcon from '../../../assets/ArrowLeftIcon';
 import ArrowRightIcon from '../../../assets/ArrowRightIcon';
 
-const PatientListBottom = () => {
-	const currentPage = 1;
-	const maxPages = 10;
+const PatientListBottom = ({ currentPage = 1, maxPages = 10 }) => {
+	const handleMoveToNextPage = () => {};
+	const handleMoveToPreviousPage = () => {};
 	return (
 		<StyledBox
 			css={{
@@ -32,6 +32,7 @@ const PatientListBottom = () => {
 					justifyContent: 'center',
 					cursor: 'pointer',
 				}}
+				onClick={handleMoveToPreviousPage}
 				className={'withBoxShadow'}
 			>
 				<ArrowLeftIcon />
@@ -50,6 +51,7 @@ const PatientListBottom = () => {
 					justifyContent: 'center',
 					cursor: 'pointer',
 				}}
+				onClick={handleMoveToNextPage}
 				className={'withBoxShadow'}
 			>
 				<ArrowRightIcon />

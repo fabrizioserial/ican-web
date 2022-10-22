@@ -11,7 +11,6 @@ import Validation from './pages/Validation';
 import ProfileScreen from './pages/PatientProfile/ProfileScreen';
 import Wrapper from './components/Navbar/Wrapper';
 import PatientListScreen from './pages/PatientList/PatientListScreen';
-import PatientsListScreen from './pages/PatientsList';
 
 const App = () => {
 	const accessToken = useSelector((state) => state.authSlice.accessToken);
@@ -37,7 +36,7 @@ const App = () => {
 								</StyledBox>
 							}
 						/>
-						<Route path="/my-patients" element={<PatientsListScreen />} />
+						<Route path="/my-patients" element={<PatientListScreen />} />
 						<Route
 							path="/settings"
 							element={
@@ -68,10 +67,7 @@ const App = () => {
 								</StyledBox>
 							}
 						/>
-						<Route
-							path={'/patient-list'}
-							element={<PatientListScreen />}
-						/>
+
 						<Route path={'/profile'} element={<ProfileScreen />} />
 						<Route path="/validate-patient" element={<Validation />} />
 					</Route>

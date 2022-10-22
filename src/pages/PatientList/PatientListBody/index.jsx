@@ -107,7 +107,7 @@ const PatientListBody = () => {
 		<TableBody>
 			{body.map((bodyItem) => (
 				<StyledBodyRow>
-					<StyledBodyCell>
+					<StyledBodyCell with={'5%'} style={{ paddingLeft: '30px' }}>
 						<StyledBox
 							css={{
 								height: '34px',
@@ -138,23 +138,23 @@ const PatientListBody = () => {
 							)}
 						</StyledBox>
 					</StyledBodyCell>
-					<StyledBodyCell width={'16%'}>
+					<StyledBodyCell width={'12%'}>
 						{bodyItem.nHistorial}
 					</StyledBodyCell>
-					<StyledBodyCell width={'20%'}>
+					<StyledBodyCell width={'14%'}>
 						{bodyItem.nameSurname}
 					</StyledBodyCell>
-					<StyledBodyCell width={'15%'}>{bodyItem.tumor}</StyledBodyCell>
-					<StyledBodyCell width={'35%'}>
+					<StyledBodyCell width={'10%'}>{bodyItem.tumor}</StyledBodyCell>
+					<StyledBodyCell width={'26%'}>
 						{bodyItem.treatment}
 					</StyledBodyCell>
 					<StyledBodyCell width={'14%'}>
 						{bodyItem.treatmentTumor}
 					</StyledBodyCell>
-					<StyledBodyCell width={'12%'}>
+					<StyledBodyCell width={'14%'}>
 						{bodyItem.treatmentTumorPeri}
 					</StyledBodyCell>
-					<StyledBodyCell>
+					<StyledBodyCell width={'5%'} style={{ paddingRight: '30px' }}>
 						{renderUserStatus(bodyItem.state)}
 					</StyledBodyCell>
 				</StyledBodyRow>

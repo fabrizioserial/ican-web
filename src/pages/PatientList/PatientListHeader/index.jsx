@@ -10,15 +10,7 @@ import { visuallyHidden } from '@mui/utils';
 import styled from 'styled-components';
 import { PatientListHeaderConst } from '../../../utils/utils';
 import ArrowOrderIcon from '../../../assets/ArrowOrderIcon';
-
-const StyledTableCellHeader = styled(TableCell)`
-	color: #9357f7 !important;
-
-	border-color: #efe8ff;
-	height: 65px;
-	box-sizing: border-box;
-	border-bottom-color: rgba(225, 209, 252, 0.22) !important;
-`;
+import { StyledBox } from '../../../common/styledCommonComponents';
 
 const StyledTableHeader = styled(TableRow)`
 	background-color: #f6f2ff;
@@ -34,11 +26,6 @@ const StyledTableHeader = styled(TableRow)`
 	}
 `;
 
-const StyledTableSortLabel = styled(TableSortLabel)`
-	color: #9357f7 !important;
-	font-size: 12px;
-`;
-
 const PatientListHeader = () => {
 	const sortColumn = () => {};
 
@@ -46,11 +33,31 @@ const PatientListHeader = () => {
 		<TableHead>
 			<StyledTableHeader>
 				{PatientListHeaderConst?.map((headerItem, index) => (
-					<StyledTableCellHeader
+					<StyledBox
+						as={TableCell}
+						css={{
+							color: '#9357f7 !important',
+							borderColor: '#efe8ff',
+							height: '65px',
+							boxSizing: 'border-box',
+							borderBottomColor: 'rgba(225, 209, 252, 0.22) !important',
+						}}
 						sortDirection={'asc'}
 						key={'header-' + index}
+						style={{
+							paddingLeft: index === 0 ? '30px' : 'auto',
+							paddingRight:
+								index === PatientListHeaderConst.length
+									? '30px'
+									: 'auto',
+						}}
 					>
-						<StyledTableSortLabel
+						<StyledBox
+							as={TableSortLabel}
+							css={{
+								color: ' #9357f7 !important',
+								fontSize: '12px',
+							}}
 							active={true}
 							direction={'asc'}
 							onClick={() => sortColumn(headerItem.sortId)}
@@ -60,8 +67,8 @@ const PatientListHeader = () => {
 							<Box component="span" sx={visuallyHidden}>
 								{'sorted ascending'}
 							</Box>
-						</StyledTableSortLabel>
-					</StyledTableCellHeader>
+						</StyledBox>
+					</StyledBox>
 				))}
 			</StyledTableHeader>
 			{}
