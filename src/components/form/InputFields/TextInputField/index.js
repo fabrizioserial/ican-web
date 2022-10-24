@@ -22,8 +22,8 @@ const TextInputField = ({
 	return (
 		<StyledBox
 			css={{
-				width: { width },
-				height: { height },
+				width: width,
+				height: height,
 				display: 'flex',
 				flexDirection: 'column',
 				boxSizing: 'border-box',
