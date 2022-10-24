@@ -4,7 +4,9 @@ import TrashIcon from '../../../../assets/TrashIcon';
 import IconButton from '../../../../common/components/iconButton';
 import { StyledBox } from '../../../../common/styledCommonComponents';
 import { removeRelapses } from '../../../../redux/slices/formSlice';
+import DateInputField from '../DateInputField';
 import SelectorInputField from '../SelectorInputField';
+import TextInputField from '../TextInputField';
 
 const optionsMed =
 {
@@ -23,7 +25,7 @@ const optionsGram =
     4: '4',
 }
 
-const RelapsesField = ({ id, names, values, onChange, type }) => {
+const RelapsesField = ({ id, names, placeholder, values, onChange, type }) => {
     // pegar directo al endpoint que trae la medicacion y el gramaje
 
     // crear funciones 1: onchange para gramaje, 2: onChange para medication
@@ -47,52 +49,111 @@ const RelapsesField = ({ id, names, values, onChange, type }) => {
     return (
         <StyledBox
             css={{
-                width: "100%",
-                columnGap: '30px',
-                display: 'flex',
-                boxSizing: 'border-box',
+                flexDirection: "row",
+                rowGap: "30px",
+                width: "100%"
             }}
         >
             <StyledBox
                 css={{
-                    flex: 0.6,
+                    width: "100%",
+                    columnGap: '30px',
+                    marginBottom: '30px',
+                    display: 'flex',
+                    boxSizing: 'border-box',
                 }}
             >
-
-                <SelectorInputField
-                    type={type}
-                    value={values.medication}
-                    label={"Medicamento"}
-                    name={names.medication}
-                    onChange={onChange} // onChange medicacion
-                    options={optionsMed} // recibe del endpoint
-                />
+                <StyledBox
+                    css={{
+                        flex: 0.5,
+                        display: 'flex',
+                        flexDirection: "row",
+                        alignItems: 'flex-end',
+                        columnGap: '20px'
+                    }}
+                >
+                    <DateInputField
+                        type={type}
+                        placeholder={placeholder}
+                        value={values.relapseDate}
+                        label={"Fecha de Recaida"}
+                        name={names.relapseDate}
+                        onChange={onChange}
+                    />
+                </StyledBox>
+                <StyledBox
+                    css={{
+                        flex: 0.5,
+                        display: 'flex',
+                        flexDirection: "row",
+                        alignItems: 'flex-end',
+                        columnGap: '20px'
+                    }}
+                >
+                    <DateInputField
+                        type={type}
+                        placeholder={placeholder}
+                        value={values.diagnosticDate}
+                        label={"Fecha del Diagnostico de la Enferemedad Metatistica"}
+                        name={names.diagnosticDate}
+                        onChange={onChange}
+                    />
+                    <StyledBox>
+                        <IconButton
+                            icon={<TrashIcon />}
+                            onClick={() => handleDelete(id)}
+                        />
+                    </StyledBox>
+                </StyledBox>
             </StyledBox>
             <StyledBox
                 css={{
-                    flex: 0.4,
+                    width: "100%",
+                    columnGap: '30px',
+                    marginBottom: '30px',
                     display: 'flex',
-                    flexDirection: "row",
-                    alignItems: 'flex-end',
-                    columnGap: '20px'
+                    boxSizing: 'border-box',
                 }}
             >
-                <SelectorInputField
-                    type={type}
-                    value={values.grammage}
-                    label={"Gramaje"}
-                    name={names.grammage}
-                    onChange={onChange} // onChange gramaje
-                    options={optionsGram} // recibe del endpoint
-                />
-                <StyledBox>
-                    <IconButton
-                        icon={<TrashIcon />}
-                        onClick={() => handleDelete(id)}
+                <StyledBox
+                    css={{
+                        flex: 0.5,
+                        display: 'flex',
+                        flexDirection: "row",
+                        alignItems: 'flex-end',
+                        columnGap: '20px'
+                    }}
+                >
+                    <TextInputField
+                        type={type}
+                        placeholder={placeholder}
+                        value={values.metastasisSite}
+                        label={"Sitio de la Metástasis"}
+                        name={values.metastasisSite}
+                        onChange={onChange}
+                    />
+                </StyledBox>
+                <StyledBox
+                    css={{
+                        flex: 0.5,
+                        display: 'flex',
+                        flexDirection: "row",
+                        alignItems: 'flex-end',
+                        columnGap: '20px'
+                    }}
+                >
+                    <TextInputField
+                        type={type}
+                        placeholder={placeholder}
+                        value={values.treatmentRelapse}
+                        label={"Tratamiento de la Recaida"}
+                        name={values.treatmentRelapse}
+                        onChange={onChange}
                     />
                 </StyledBox>
             </StyledBox>
-        </StyledBox >
+
+        </StyledBox>
     )
 }
 

@@ -5,7 +5,6 @@ import IconButton from '../../../../common/components/iconButton';
 import { StyledBox } from '../../../../common/styledCommonComponents';
 import { removeBiomarker } from '../../../../redux/slices/formSlice';
 import SelectorInputField from '../SelectorInputField';
-import TextInputField from '../TextInputField';
 
 const optionsEvaluation =
 {
@@ -48,13 +47,13 @@ const BiomarkerField = ({ id, names, placeholder, values, onChange, type }) => {
                     flex: 0.6,
                 }}
             >
-                <TextInputField
+                <SelectorInputField
                     type={type}
-                    placeholder={placeholder}
                     value={values.biomarker}
                     label={"Biomarcador"}
                     name={names.biomarker}
-                // onChange={onChangeHandle}
+                    onChange={onChange} // onChange gramaje
+                    options={optionsEvaluation} // recibe del endpoint
                 />
             </StyledBox>
             <StyledBox
