@@ -1,7 +1,6 @@
 import React from 'react';
 import {
 	StyledBox,
-	StyledInput,
 	StyledOption,
 	StyledP,
 	StyledSelect,
@@ -22,8 +21,8 @@ const SelectorInputField = ({
 	return (
 		<StyledBox
 			css={{
-				width: width,
-				height: height,
+				width: { width },
+				height: { height },
 				display: 'flex',
 				flexDirection: 'column',
 				boxSizing: 'border-box',
