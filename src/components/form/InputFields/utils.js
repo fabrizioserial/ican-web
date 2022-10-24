@@ -68,13 +68,14 @@ const InputTypeBuilder = (type, index, properties, values, onChangeHandle, handl
 				<MedicationField
 					key={index}
 					id={properties.id}
+					type={properties.type}
 					values={{
 						medication: values[`${properties.names[0]}${properties.id}`],
-						gramaje: values[`${properties.names[1]}${properties.id}`]
+						grammage: values[`${properties.names[1]}${properties.id}`]
 					}}
 					names={{
 						medication: `${properties.names[0]}${properties.id}`,
-						gramaje: `${properties.names[1]}${properties.id}`
+						grammage: `${properties.names[1]}${properties.id}`
 					}}
 					onChange={onChangeHandle}
 				/>

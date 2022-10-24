@@ -441,7 +441,7 @@ export const formSlice = createSlice({
             )
             let auxValues = state.values
             delete auxValues[action.payload.medicationId]
-            delete auxValues[action.payload.gramaje1]
+            delete auxValues[action.payload.grammage1]
             state.values = auxValues
         },
         setValue: (state, action) => {
