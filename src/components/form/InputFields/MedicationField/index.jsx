@@ -37,6 +37,8 @@ const MedicationField = ({ id, names, values, onChange, type }) => {
 
     }
 
+    console.log(id)
+
     // onDelete, usa el dispatch(removeTreatmentMedication(id))
     const dispatch = useDispatch()
 
@@ -85,12 +87,14 @@ const MedicationField = ({ id, names, values, onChange, type }) => {
                     onChange={onChange} // onChange gramaje
                     options={optionsGram} // recibe del endpoint
                 />
-                <StyledBox>
-                    <IconButton
-                        icon={<TrashIcon />}
-                        onClick={() => handleDelete(id)}
-                    />
-                </StyledBox>
+                {id !== 1 &&
+                    <StyledBox>
+                        <IconButton
+                            icon={<TrashIcon />}
+                            onClick={() => handleDelete(id)}
+                        />
+                    </StyledBox>
+                }
             </StyledBox>
         </StyledBox >
     )
