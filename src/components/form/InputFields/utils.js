@@ -9,6 +9,7 @@ import Button from '../../../common/components/button/Button';
 import PlusCircelIcon from '../../../assets/PlusCircleIcon';
 import ActionInputField from './ActionInputField';
 import MedicationField from './MedicationField';
+import BiomarkerField from './BiomarkersField';
 
 export const FormBuilder = (formSqueleton, values, onChangeHandle) => {
 	return formSqueleton?.map((section, index) => (
@@ -58,9 +59,27 @@ const InputTypeBuilder = (type, index, properties, values, onChangeHandle, handl
 		case InputTypeEnum.ADD_SECTION:
 			return (
 				<ActionInputField
+					key={index}
 					index={index}
 					label={properties.label}
 					handleClick={handleClick}
+				/>
+			);
+		case InputTypeEnum.BIOMARKER_ROW:
+			return (
+				<BiomarkerField
+					key={index}
+					id={properties.id}
+					type={properties.type}
+					values={{
+						biomarker: values[`${properties.names[0]}${properties.id}`],
+						evaluation: values[`${properties.names[1]}${properties.id}`]
+					}}
+					names={{
+						biomarker: `${properties.names[0]}${properties.id}`,
+						evaluation: `${properties.names[1]}${properties.id}`
+					}}
+					onChange={onChangeHandle}
 				/>
 			);
 		case InputTypeEnum.MEDICATION_ROW:

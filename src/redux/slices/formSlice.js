@@ -232,24 +232,11 @@ const initialState = {
         fields: [
             [
                 {
-                    label: 'Biomarcador',
-                    type: 'text',
-                    input_type: InputTypeEnum.TEXTFIELD,
-                    // name: 'name',
-                },
-                {
-                    label: 'Evaluación',
-                    type: 'text',
-                    input_type: InputTypeEnum.TEXTFIELD,
-                    // name: 'name',
-                },
-            ],
-            [
-                {
                     label: 'Añadir Nuevo Biomarcador',
                     type: 'text',
-                    input_type: InputTypeEnum.BUTTON,
-                    icon: <PlusCircleIcon />
+                    input_type: InputTypeEnum.ADD_SECTION,
+                    icon: <PlusCircleIcon />,
+                    handleClick: () => actionTypeEnum.ADD_BIOMARKER
                 }
             ],
         ],
@@ -367,6 +354,28 @@ export const formSlice = createSlice({
     name: 'formSlice',
     initialState,
     reducers: {
+        addBiomarkers: (state) => {
+            const biomarkers = state.biomarkers.fields.slice(0, state.biomarkers.fields.length - 1)
+            const fixedRows = state.biomarkers.fields.slice(state.biomarkers.fields.length - 1, state.biomarkers.fields.length)
+
+            const biomarkersToAdd = {
+                id: biomarkers.length + 1,
+                input_type: InputTypeEnum.BIOMARKER_ROW,
+                names: [
+                    "biomarcador", "evaluación"
+                ]
+            }
+
+            state.biomarkers.fields = [...biomarkers, [
+                biomarkersToAdd
+            ],
+            ...fixedRows
+            ]
+
+            state.values = {
+                ...state.values, [`biomarcador${biomarkersToAdd.id}`]: "", [`evaluación${biomarkersToAdd.id}`]: ""
+            }
+        },
         addTreatment: (state) => {
             state.treatment.fields =
                 [[
@@ -435,9 +444,19 @@ export const formSlice = createSlice({
                 ...state.values, [`medicamento${medicationToAdd.id}`]: "", [`gramaje${medicationToAdd.id}`]: ""
             }
         },
+        removeBiomarker: (state, action) => {
+            console.log("pay", action.payload)
+            state.biomarkers.fields = state.biomarkers.fields?.filter(fields =>
+                fields.find(item => (!item?.id || item.id !== action.payload))
+            )
+            let auxValues = state.values
+            delete auxValues[action.payload.biomarkerId]
+            delete auxValues[action.payload.evaluationId]
+            state.values = auxValues
+        },
         removeTreatmentMedication: (state, action) => {
-            state.treatment.fields = state.treatment.fields?.map(fields =>
-                fields.map(item => (!item?.id || item.id !== action.payload) ? item : null)
+            state.treatment.fields = state.treatment.fields?.filter(fields =>
+                fields.find(item => (!item?.id || item.id !== action.payload))
             )
             let auxValues = state.values
             delete auxValues[action.payload.medicationId]
@@ -453,5 +472,5 @@ export const formSlice = createSlice({
     },
 });
 
-export const { addTreatment, addTreatmentMedication, removeTreatmentMedication, setValue } = formSlice.actions;
+export const { addBiomarkers, addTreatment, addTreatmentMedication, removeBiomarker, removeTreatmentMedication, setValue } = formSlice.actions;
 export default formSlice.reducer;

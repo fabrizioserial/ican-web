@@ -3,46 +3,36 @@ import { useDispatch } from 'react-redux';
 import TrashIcon from '../../../../assets/TrashIcon';
 import IconButton from '../../../../common/components/iconButton';
 import { StyledBox } from '../../../../common/styledCommonComponents';
-import { removeTreatmentMedication } from '../../../../redux/slices/formSlice';
+import { removeBiomarker } from '../../../../redux/slices/formSlice';
 import SelectorInputField from '../SelectorInputField';
+import TextInputField from '../TextInputField';
 
-const optionsMed =
+const optionsEvaluation =
 {
-    Aspirina: 'Aspirina',
-    Ribotril: 'Ribotril',
-    Tafirol: 'Tafirol',
-    Actron: 'Actron',
-    Amoxixilina: 'Amoxixilina',
-}
-const optionsGram =
-{
-    0: '0',
-    1: '1',
-    2: '2',
-    3: '3',
-    4: '4',
+    Positiva: "Positiva",
+    Neutro: "Neutro",
+    Negativa: "Negativa",
 }
 
-const MedicationField = ({ id, names, values, onChange, type }) => {
-    // pegar directo al endpoint que trae la medicacion y el gramaje
+const BiomarkerField = ({ id, names, placeholder, values, onChange, type }) => {
+    // pegar directo al endpoint que trae el biomarcardor y la evaluacion
 
-    // crear funciones 1: onchange para gramaje, 2: onChange para medication
+    // crear funciones 1: onchange para evaluacion
     // argumentos para onChange: names y values
 
-    const handleChangeMed = () => {
+    const handleChangeEvaluation = () => {
 
     }
 
-    const handleChangeGram = () => {
-
-    }
-
-    // onDelete, usa el dispatch(removeTreatmentMedication(id))
     const dispatch = useDispatch()
 
     const handleDelete = id => {
-        dispatch(removeTreatmentMedication(id))
+        dispatch(removeBiomarker(id))
     }
+
+    useEffect(() => {
+        console.log(values)
+    })
 
     return (
         <StyledBox
@@ -58,14 +48,13 @@ const MedicationField = ({ id, names, values, onChange, type }) => {
                     flex: 0.6,
                 }}
             >
-
-                <SelectorInputField
+                <TextInputField
                     type={type}
-                    value={values.medication}
-                    label={"Medicamento"}
-                    name={names.medication}
-                    onChange={onChange} // onChange medicacion
-                    options={optionsMed} // recibe del endpoint
+                    placeholder={placeholder}
+                    value={values.biomarker}
+                    label={"Biomarcador"}
+                    name={names.biomarker}
+                // onChange={onChangeHandle}
                 />
             </StyledBox>
             <StyledBox
@@ -79,11 +68,11 @@ const MedicationField = ({ id, names, values, onChange, type }) => {
             >
                 <SelectorInputField
                     type={type}
-                    value={values.grammage}
-                    label={"Gramaje"}
-                    name={names.grammage}
+                    value={values.evaluation}
+                    label={"Evaluación"}
+                    name={names.evaluation}
                     onChange={onChange} // onChange gramaje
-                    options={optionsGram} // recibe del endpoint
+                    options={optionsEvaluation} // recibe del endpoint
                 />
                 <StyledBox>
                     <IconButton
@@ -96,4 +85,4 @@ const MedicationField = ({ id, names, values, onChange, type }) => {
     )
 }
 
-export default MedicationField
+export default BiomarkerField
