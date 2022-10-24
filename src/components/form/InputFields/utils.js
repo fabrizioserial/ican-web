@@ -10,6 +10,7 @@ import PlusCircelIcon from '../../../assets/PlusCircleIcon';
 import ActionInputField from './ActionInputField';
 import MedicationField from './MedicationField';
 import BiomarkerField from './BiomarkersField';
+import RelapsesField from './RelapsesField';
 
 export const FormBuilder = (formSqueleton, values, onChangeHandle) => {
 	return formSqueleton?.map((section, index) => (
@@ -78,6 +79,27 @@ const InputTypeBuilder = (type, index, properties, values, onChangeHandle, handl
 					names={{
 						biomarker: `${properties.names[0]}${properties.id}`,
 						evaluation: `${properties.names[1]}${properties.id}`
+					}}
+					onChange={onChangeHandle}
+				/>
+			);
+		case InputTypeEnum.RELAPSES_ROW:
+			return (
+				<RelapsesField
+					key={index}
+					id={properties.id}
+					type={properties.type}
+					values={{
+						relapseDate: values[`${properties.names[0]}${properties.id}`],
+						diagnosticDate: values[`${properties.names[1]}${properties.id}`],
+						metastasisSite: values[`${properties.names[2]}${properties.id}`],
+						treatmentRelapse: values[`${properties.names[3]}${properties.id}`]
+					}}
+					names={{
+						relapseDate: `${properties.names[0]}${properties.id}`,
+						diagnosticDate: `${properties.names[1]}${properties.id}`,
+						metastasisSite: `${properties.names[2]}${properties.id}`,
+						treatmentRelapse: `${properties.names[3]}${properties.id}`
 					}}
 					onChange={onChangeHandle}
 				/>

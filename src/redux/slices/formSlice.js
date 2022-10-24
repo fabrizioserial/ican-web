@@ -245,42 +245,43 @@ const initialState = {
         title: 'Recaidas',
         icon: <HeartIcon />,
         fields: [
-            [
-                {
-                    label: 'Fecha de Recaida',
-                    placeholder: 'XX/XX/XX',
-                    input_type: InputTypeEnum.DATEFIELD,
-                    // name: 'load_date',
-                    type: 'text',
-                },
-                {
-                    label: 'Fecha del Diagnostico de la Enferemedad Metatistica',
-                    placeholder: 'XX/XX/XX',
-                    input_type: InputTypeEnum.DATEFIELD,
-                    // name: 'load_date',
-                    type: 'text',
-                }
-            ],
-            [
-                {
-                    label: 'Sitio de la Metastasis',
-                    type: 'text',
-                    input_type: InputTypeEnum.TEXTFIELD,
-                    // name: 'name',
-                },
-                {
-                    label: 'Tratamiento de la Recaida',
-                    type: 'text',
-                    input_type: InputTypeEnum.TEXTFIELD,
-                    // name: 'name',
-                },
-            ],
+            // [
+            //     {
+            //         label: 'Fecha de Recaida',
+            //         placeholder: 'XX/XX/XX',
+            //         input_type: InputTypeEnum.DATEFIELD,
+            //         // name: 'load_date',
+            //         type: 'text',
+            //     },
+            //     {
+            //         label: 'Fecha del Diagnostico de la Enferemedad Metatistica',
+            //         placeholder: 'XX/XX/XX',
+            //         input_type: InputTypeEnum.DATEFIELD,
+            //         // name: 'load_date',
+            //         type: 'text',
+            //     }
+            // ],
+            // [
+            //     {
+            //         label: 'Sitio de la Metastasis',
+            //         type: 'text',
+            //         input_type: InputTypeEnum.TEXTFIELD,
+            //         // name: 'name',
+            //     },
+            //     {
+            //         label: 'Tratamiento de la Recaida',
+            //         type: 'text',
+            //         input_type: InputTypeEnum.TEXTFIELD,
+            //         // name: 'name',
+            //     },
+            // ],
             [
                 {
                     label: 'Añadir Nueva Recaida',
                     type: 'text',
-                    input_type: InputTypeEnum.BUTTON,
-                    icon: <PlusCircleIcon />
+                    input_type: InputTypeEnum.ADD_SECTION,
+                    icon: <PlusCircleIcon />,
+                    handleClick: () => actionTypeEnum.ADD_RELAPSES
                 }
             ],
         ],
@@ -376,6 +377,29 @@ export const formSlice = createSlice({
                 ...state.values, [`biomarcador${biomarkersToAdd.id}`]: "", [`evaluación${biomarkersToAdd.id}`]: ""
             }
         },
+        addRelapses: (state) => {
+            const relapses = state.relapses.fields.slice(0, state.relapses.fields.length - 1)
+            const fixedRows = state.relapses.fields.slice(state.relapses.fields.length - 1, state.relapses.fields.length)
+
+            const relapsesToAdd = {
+                id: relapses.length + 1,
+                input_type: InputTypeEnum.RELAPSES_ROW,
+                names: [
+                    "fecha_de_recaída", "fecha_de_diagnostico", "sitio_de_metástasis", "tratamiento_de_recaida"
+                ]
+            }
+
+            state.relapses.fields = [...relapses, [
+                relapsesToAdd
+            ],
+            ...fixedRows
+            ]
+
+            state.values = {
+                ...state.values, [`fecha_de_recaída${relapsesToAdd.id}`]: "", [`fecha_de_diagnostico${relapsesToAdd.id}`]: "",
+                [`sitio_de_metâstasis${relapsesToAdd.id}`]: "", [`tratamiento_de_recaida${relapsesToAdd.id}`]: "",
+            }
+        },
         addTreatment: (state) => {
             state.treatment.fields =
                 [[
@@ -445,13 +469,23 @@ export const formSlice = createSlice({
             }
         },
         removeBiomarker: (state, action) => {
-            console.log("pay", action.payload)
             state.biomarkers.fields = state.biomarkers.fields?.filter(fields =>
                 fields.find(item => (!item?.id || item.id !== action.payload))
             )
             let auxValues = state.values
             delete auxValues[action.payload.biomarkerId]
             delete auxValues[action.payload.evaluationId]
+            state.values = auxValues
+        },
+        removeRelapses: (state, action) => {
+            state.relapses.fields = state.relapses.fields?.filter(fields =>
+                fields.find(item => (!item?.id || item.id !== action.payload))
+            )
+            let auxValues = state.values
+            delete auxValues[action.payload.relapseDateId]
+            delete auxValues[action.payload.diagnosticDate]
+            delete auxValues[action.payload.metastasisSite]
+            delete auxValues[action.payload.treatmentRelapse]
             state.values = auxValues
         },
         removeTreatmentMedication: (state, action) => {
@@ -472,5 +506,5 @@ export const formSlice = createSlice({
     },
 });
 
-export const { addBiomarkers, addTreatment, addTreatmentMedication, removeBiomarker, removeTreatmentMedication, setValue } = formSlice.actions;
+export const { addBiomarkers, removeRelapses, addRelapses, addTreatment, addTreatmentMedication, removeBiomarker, removeTreatmentMedication, setValue } = formSlice.actions;
 export default formSlice.reducer;
