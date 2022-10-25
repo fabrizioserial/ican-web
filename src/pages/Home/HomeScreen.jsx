@@ -3,6 +3,7 @@ import PatientsList from '../../components/PatientsList';
 import { StyledBox, StyledScreen } from '../../common/styledCommonComponents';
 import WidgetHome from '../../components/WidgetHome';
 import WidgetPastelStats from '../../components/WidgetPastelStats';
+import WidgetDailyChart from '../../components/WidgetDailyChart';
 
 function HomeScreen() {
 	return (
@@ -28,6 +29,7 @@ function HomeScreen() {
 				>
 					<WidgetHome />
 					<WidgetPastelStats />
+					<WidgetDailyChart />
 				</StyledBox>
 				<StyledBox css={{ display: 'flex', flex: 0.4, marginLeft: '50px' }}>
 					<PatientsList />
