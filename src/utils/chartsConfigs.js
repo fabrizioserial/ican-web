@@ -346,6 +346,27 @@ export const HungerAndThristConfig = (data) => {
 	};
 };
 export const DailyColumnChartConfig = (data) => {
+	const dataAux = () => {
+		let aux = []
+		let math = Object.values(data).length > 1 ? Object.values(data).length / (Object.values(data).length * 2) : 0.1
+		for (let index = 0; index <= Object.values(data).length; index++) {
+			aux.push({
+				x: Object.keys(data),
+				y: data[index],
+				goals: [
+					{
+						value: -math,
+						strokeHeight: 9,
+						strokeWidth: 0,
+						strokeLineCap: 'round',
+						strokeColor: '#949494'
+					}
+				]
+			})
+		}
+		console.log(aux)
+		return aux
+	}
 	return {
 		// series: [
 		// 	{
@@ -358,7 +379,7 @@ export const DailyColumnChartConfig = (data) => {
 		// 	},
 		// ],
 		series: [{
-			data: Object.values(data).map((a) => a[0] + 1),
+			data: dataAux(),
 		}],
 		options: {
 			chart: {
@@ -439,24 +460,22 @@ export const DailyColumnChartConfig = (data) => {
 			tooltip: {
 				fillSeriesColor: false,
 				followCursor: false,
-				// custom: function ({ series, seriesIndex, dataPointIndex, w }) {
-				// 	const textToAdd = !seriesIndex
-				// 		? transformThirst(series[seriesIndex][dataPointIndex] - 1)
-				// 		: transformHungry(series[seriesIndex][dataPointIndex] - 1);
-				// 	return (
-				// 		'<div style="padding: 5px 20px; ' +
-				// 		'border-radius: 5px; ' +
-				// 		'background-color:#393939 !important;' +
-				// 		'color: white;' +
-				// 		'border-style: none;' +
-				// 		'border-width: 0px;' +
-				// 		'">' +
-				// 		'<span>' +
-				// 		textToAdd +
-				// 		'</span>' +
-				// 		'</div>'
-				// 	);
-				// },
+				custom: function ({ series, dataPointIndex }) {
+					const textToAdd = series[0]
+					return (
+						'<div style="padding: 5px 20px; ' +
+						'border-radius: 5px; ' +
+						'background-color:#393939 !important;' +
+						'color: white;' +
+						'border-style: none;' +
+						'border-width: 0px;' +
+						'">' +
+						'<span>' +
+						textToAdd[dataPointIndex] +
+						'</span>' +
+						'</div>'
+					);
+				},
 				fixed: {
 					position: 'top',
 				},
