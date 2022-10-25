@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledBox} from '../../../common/styledCommonComponents';
+import {StyledBox, StyledP} from '../../../common/styledCommonComponents';
 
 import {useTheme} from "styled-components";
 
@@ -12,6 +12,7 @@ const TreatmentSection = () => {
           background: theme.white,
           borderRadius: "15px",}}>
                 <StyledBox>
+
 
                 </StyledBox>
       </StyledBox>

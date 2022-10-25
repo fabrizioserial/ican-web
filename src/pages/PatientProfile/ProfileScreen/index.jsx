@@ -27,16 +27,25 @@ const ProfileScreen = () => {
 						display: 'flex',
 						flexDirection: 'row',
 						marginTop: '30px',
+
 					}}
 				>
 					<HungerAndThirstChart />
 					<SocialAndPhysicalActivitiesChart />
+
+
+
 				</StyledBox>
 			</StyledBox>
-			<StyledBox css={{ paddingLeft: '59px' }}>
+			<StyledBox css={{ paddingLeft: '59px',
+				display: 'flex',
+				flexDirection: 'column',
+				flexWrap: "wrap",
+				rowGap: "21px",}}>
 				<WeeklySchedule />
+				<TreatmentSection/>
 			</StyledBox>
-			<TreatmentSection/>
+
 		</StyledScreen>
 	);
 };
