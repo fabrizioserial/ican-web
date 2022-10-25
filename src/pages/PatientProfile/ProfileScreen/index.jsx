@@ -7,6 +7,7 @@ import HungerAndThirstChart from '../../../components/HungerAndThirstChart';
 import SocialAndPhysicalActivitiesChart from '../../../components/SocialAndPhysicalActivitiesChart';
 import PatientProfileCard from '../../../components/PatientProfileCard';
 import WeeklySchedule from '../../Profile/WeeklySchedule';
+import TreatmentSection from "../../Profile/TreatmentSection";
 
 const ProfileScreen = () => {
 	return (
@@ -35,6 +36,7 @@ const ProfileScreen = () => {
 			<StyledBox css={{ paddingLeft: '59px' }}>
 				<WeeklySchedule />
 			</StyledBox>
+			<TreatmentSection/>
 		</StyledScreen>
 	);
 };
