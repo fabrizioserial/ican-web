@@ -15,6 +15,7 @@ const WeeklySchedule = () => {
 			icon={<CalendarIcon />}
 			width={305}
 			height={200}
+			align={"center"}
 		>
 			<>
 				<StyledBox>

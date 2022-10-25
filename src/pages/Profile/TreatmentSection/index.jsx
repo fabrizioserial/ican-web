@@ -14,13 +14,16 @@ const TreatmentSection = () => {
             icon={<PillIcon/>}
             width={305}
             height={676}
+           align={"top"}
         >
             <>
                 <StyledBox>
                  <StyledBox css={{display:"flex",
                      flexDirection:"column",
                      justifyContent:"flex-start",
-                     alignItems: 'top'}}>
+                     alignItems: 'top',
+                     marginTop:"0px",
+                    alignSelf:"top"}}>
                      <StyledBox css={{
                          boxSizing: "border-box",
                          width: "255px",
