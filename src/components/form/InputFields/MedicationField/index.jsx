@@ -37,8 +37,6 @@ const MedicationField = ({ id, names, values, onChange, type }) => {
 
     }
 
-    console.log(id)
-
     // onDelete, usa el dispatch(removeTreatmentMedication(id))
     const dispatch = useDispatch()
 

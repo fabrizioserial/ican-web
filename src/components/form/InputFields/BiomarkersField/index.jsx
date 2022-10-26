@@ -29,10 +29,6 @@ const BiomarkerField = ({ id, names, placeholder, values, onChange, type }) => {
         dispatch(removeBiomarker(id))
     }
 
-    useEffect(() => {
-        console.log(values)
-    })
-
     return (
         <StyledBox
             css={{
