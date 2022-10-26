@@ -1,11 +1,11 @@
 import React from 'react'
-import { StyledBox } from '../../styledCommonComponents'
+import { StyledButton } from '../../styledCommonComponents'
 
 const IconButton = ({ icon, onClick }) => {
     return (
-        <StyledBox
+        <StyledButton
             css={{
-                backgroundColor: 'trasnparent',
+                backgroundColor: 'transparent',
                 border: "1px solid #F3888F",
                 padding: "20px 10px",
                 borderRadius: "5px",
@@ -14,7 +14,7 @@ const IconButton = ({ icon, onClick }) => {
             onClick={onClick}
         >
             {icon}
-        </StyledBox>
+        </StyledButton>
     )
 }
 
