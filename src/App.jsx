@@ -11,6 +11,7 @@ import Validation from './pages/Validation';
 import ProfileScreen from './pages/PatientProfile/ProfileScreen';
 import Wrapper from './components/Navbar/Wrapper';
 import PatientListScreen from './pages/PatientList/PatientListScreen';
+import { withModal } from './components/HOC/withModal';
 
 const App = () => {
 	const accessToken = useSelector((state) => state.authSlice.accessToken);
@@ -79,4 +80,4 @@ const App = () => {
 	);
 };
 
-export default App;
+export default withModal(App);

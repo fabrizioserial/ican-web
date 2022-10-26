@@ -39,4 +39,4 @@ function HomeScreen() {
 	);
 }
 
-export default withModal(HomeScreen, { type: ModalTypeEnum.WEEKLY_MODAL });
+export default HomeScreen;
