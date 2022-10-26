@@ -5,7 +5,7 @@ import { Outlet } from 'react-router';
 
 const Wrapper = () => {
 	return (
-		<StyledBox style={{ flexDirection: 'row', display: 'flex' }}>
+		<StyledBox css={{ flexDirection: 'row', display: 'flex' }}>
 			<Navbar />
 			<StyledBox css={{ paddingLeft: '70px' }}>
 				<Outlet />
