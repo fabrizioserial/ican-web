@@ -52,7 +52,7 @@ export const StyledButton = styled.button`
 			padding-right: 1rem;
 		}
 		
-		:hover{
+		&:hover{
 			background-color: ${(props) => props.theme.OncoPurple};
 			span{
 				color: ${(props) => props.theme.white} !important;
