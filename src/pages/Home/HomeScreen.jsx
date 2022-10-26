@@ -3,6 +3,8 @@ import PatientsList from '../../components/PatientsList';
 import { StyledBox, StyledScreen } from '../../common/styledCommonComponents';
 import WidgetHome from '../../components/WidgetHome';
 import WidgetPastelStats from '../../components/WidgetPastelStats';
+import { ModalTypeEnum } from '../../utils/utils';
+import { withModal } from '../../components/HOC/withModal';
 
 function HomeScreen() {
 	return (
@@ -37,4 +39,4 @@ function HomeScreen() {
 	);
 }
 
-export default HomeScreen;
+export default withModal(HomeScreen, { type: ModalTypeEnum.WEEKLY_MODAL });

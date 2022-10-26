@@ -10,9 +10,13 @@ import CheckIcon from '../../assets/CheckIcon';
 import TimeIcon from '../../assets/TimeIcon';
 import MarkIcon from '../../assets/MarkIcon';
 import ReloadIcon from '../../assets/ReloadIcon';
+import { useDispatch } from 'react-redux';
+import { ModalTypeEnum } from '../../utils/utils';
+import { setModalOpen } from '../../redux/slices/utilsSlice';
 
 const WeeklySummary = () => {
 	const theme = useTheme();
+	const dispatch = useDispatch();
 	return (
 		<StyledCardHome
 			css={{
@@ -35,7 +39,17 @@ const WeeklySummary = () => {
 				<StyledP css={{ color: theme.OncoBlack, fontWeight: 500 }}>
 					Encuesta semanal
 				</StyledP>
-				<StyledBox css={{ cursor: 'pointer' }}>
+				<StyledBox
+					css={{ cursor: 'pointer' }}
+					onClick={() =>
+						dispatch(
+							setModalOpen({
+								open: true,
+								type: ModalTypeEnum.WEEKLY_MODAL,
+							}),
+						)
+					}
+				>
 					<ReloadIcon />
 				</StyledBox>
 			</StyledBox>

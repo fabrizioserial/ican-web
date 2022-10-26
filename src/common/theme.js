@@ -20,6 +20,7 @@ export const theme = {
 	oncoGrey: '#F8F9FA',
 	oncoBlack: '#5F5F5F',
 	oncoGrey2: '#A3A3A3',
+	oncoGrey3: '#757575',
 
 	oncoLightBlue: '#DFE8FF',
 	oncoLightBlue2: '#CDDCFF',
@@ -43,6 +44,19 @@ export const theme = {
 	oncoNavbarSelection: 'rgba(175, 126, 255, 0.08)',
 	calendarPurple: '#9357F7',
 	calendarGrey: '#949494',
+	oncoDarkPurple: '#9357f7',
+
+	oncoBluePrimary: '#5784F7',
+	oncoLightBlue3: '#7EA2FF',
+
+	oncoGreenPrimary: '#52BF7E',
+	oncoLightGreen: '#84DF9E',
+
+	oncoPinkPrimary: '#CD7DE3',
+	oncoLightPink: '#dc91f0',
+
+	oncoOrangePrimary: '#ECA485',
+	oncoLightOrange3: '#FBB79B',
 
 	patientListPillNegative: 'rgba(247, 97, 87, 0.42)',
 	patientListPillPositive: 'rgba(100, 201, 140, 0.42)',
