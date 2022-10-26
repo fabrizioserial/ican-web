@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledBox, StyledCardHome } from '../../common/styledCommonComponents';
+import { StyledBox } from '../../common/styledCommonComponents';
 import WeeklySummary from '../WeeklySummary';
 import UsersSummary from '../UsersSummary';
 import WaitingList from '../WaitingList';

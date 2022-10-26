@@ -18,8 +18,8 @@ const Card = ({ icon, title, children, width, height }) => {
 		<StyledCardHome
 			lineColor={theme.itemBackground}
 			css={{
-				width: `${width}px !important`,
-				height: `${height}px !important`,
+				width: `${width} !important`,
+				height: `${height} !important`,
 				display: 'flex',
 				flexDirection: 'column',
 			}}
@@ -57,6 +57,7 @@ const Card = ({ icon, title, children, width, height }) => {
 					alignItems: 'center',
 					borderTop: '1px solid #F0EDED',
 					flex: 1,
+					flexDirection: 'column',
 				}}
 			>
 				{children}

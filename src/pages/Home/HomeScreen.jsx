@@ -30,6 +30,7 @@ function HomeScreen() {
 					}}>
 					<WidgetHome />
 					<WidgetPastelStats />
+					<WidgetDailyChart />
 				</StyledBox>
 
 				<StyledBox css={{ display: 'flex', justifyContent: "space-evenly", flex: 0.5 }}>

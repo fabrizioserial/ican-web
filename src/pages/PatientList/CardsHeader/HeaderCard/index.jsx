@@ -3,9 +3,9 @@ import {
 	StyledBox,
 	StyledP,
 	StyledPatientsListCard,
-} from '../../../common/styledCommonComponents';
+} from '../../../../common/styledCommonComponents';
 import React from 'react';
-import ReactTooltip from "react-tooltip";
+import ReactTooltip from 'react-tooltip';
 
 function PatientsHeaderCard({ text, number, positive, pillText, pillDetail }) {
 	const theme = useTheme();
@@ -66,7 +66,9 @@ function PatientsHeaderCard({ text, number, positive, pillText, pillDetail }) {
 					{number}
 				</StyledP>
 			</StyledBox>
-			<StyledBox  data-tip data-for={"pillTip"+text}
+			<StyledBox
+				data-tip
+				data-for={'pillTip' + text}
 				css={{
 					alignItems: 'end',
 					display: 'flex',
@@ -79,7 +81,7 @@ function PatientsHeaderCard({ text, number, positive, pillText, pillDetail }) {
 					borderRadius: '15px',
 				}}
 			>
-				<ReactTooltip id={"pillTip"+text} place="top" effect="solid">
+				<ReactTooltip id={'pillTip' + text} place="top" effect="solid">
 					{pillDetail}
 				</ReactTooltip>
 

@@ -8,7 +8,7 @@ const WidgetPastelStats = () => {
 		<StyledBox
 			css={{
 				width: 'inherit',
-				height: '230px',
+				height: '300px',
 				display: 'flex',
 				flexDirection: 'row',
 				justifyContent: 'space-between',

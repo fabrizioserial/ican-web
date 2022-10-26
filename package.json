@@ -5,6 +5,7 @@
 	"dependencies": {
 		"@material-ui/core": "^4.12.4",
 		"@material-ui/icons": "^4.11.3",
+		"@mui/utils": "^5.10.9",
 		"@reduxjs/toolkit": "^1.8.3",
 		"apexcharts": "^3.35.5",
 		"classnames": "^2.3.2",
@@ -53,6 +54,7 @@
 		]
 	},
 	"devDependencies": {
+		"@mui/material": "^5.10.10",
 		"eslint": "^8.20.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-config-standard": "^17.0.0",
