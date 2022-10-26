@@ -10,13 +10,14 @@ import CrossIcon from '../../../../../../assets/CrossIcon';
 import WeeklyIcon from '../../../../../../assets/WeeklyIcon';
 import { useTheme } from 'styled-components';
 import {
+	CapitalizeText,
 	getAnswersByType,
 	getIconByCategory,
 	translateQuestion,
 } from '../../../../../../utils/utils';
 
 const CustomAccordionWeekly = ({
-	category = 'Oral',
+	category,
 	endDate = '12 de noviembre de 2022',
 	symptoms,
 }) => {
@@ -55,7 +56,9 @@ const CustomAccordionWeekly = ({
 				{symptoms.map((symp) => {
 					return (
 						<StyledBox css={{ marginLeft: '50px' }}>
-							<StyledP>{symp.symptomName}</StyledP>
+							<StyledP css={{ fontSize: '14px', fontWeight: 500 }}>
+								{CapitalizeText(symp.name)}
+							</StyledP>
 							<StyledBox
 								css={{
 									backgroundColor: '#F8F8F8',
@@ -64,7 +67,7 @@ const CustomAccordionWeekly = ({
 									margin: '10px 0 30px',
 								}}
 							>
-								{symp.answers.map((ans) => (
+								{symp.questions.map((ans) => (
 									<StyledBox
 										css={{
 											display: 'flex',
@@ -72,37 +75,47 @@ const CustomAccordionWeekly = ({
 											padding: '10px 0',
 										}}
 									>
-										<StyledP
-											css={{
-												width: '20%',
-												color: theme.oncoGrey2,
-												fontSize: '16px',
-											}}
-										>
-											{ans.date}
-										</StyledP>
-										<StyledP
-											css={{
-												width: '40%',
-												fontWeight: 500,
-												fontSize: '16px',
-											}}
-										>
-											{translateQuestion(ans.type)}
-										</StyledP>
-										<StyledP
-											css={{
-												width: '40%',
-												fontSize: '16px',
-												color: theme.oncoDarkPurple,
-											}}
-										>
-											{
-												getAnswersByType(ans.type)?.find(
-													(res) => res.value === ans.value,
-												).label
-											}
-										</StyledP>
+										{ans.date ? (
+											<>
+												<StyledP
+													css={{
+														width: '20%',
+														color: theme.oncoGrey2,
+														fontSize: '16px',
+													}}
+												>
+													{ans.date}
+												</StyledP>
+												<StyledP
+													css={{
+														width: '40%',
+														fontWeight: 500,
+														fontSize: '16px',
+													}}
+												>
+													{translateQuestion(ans.type)}
+												</StyledP>
+												<StyledP
+													css={{
+														width: '40%',
+														fontSize: '16px',
+														color: theme.oncoDarkPurple,
+													}}
+												>
+													{
+														getAnswersByType(ans.type)?.find(
+															(res) => res.value === ans.value,
+														).label
+													}
+												</StyledP>
+											</>
+										) : (
+											<>
+												<StyledP css={{ fontSize: '14px' }}>
+													No hay respuesta registrada
+												</StyledP>
+											</>
+										)}
 									</StyledBox>
 								))}
 							</StyledBox>

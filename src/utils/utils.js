@@ -581,3 +581,8 @@ export const translateQuestion = (type) => {
 			return 'Presencia';
 	}
 };
+
+export const CapitalizeText = (text) => {
+	if (!text) return '';
+	return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+};

@@ -5,10 +5,12 @@ import Modal from './components/modals/Modal';
 import WeeklyModal from './components/modals/WeeklyModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../../redux/slices/utilsSlice';
+import { useWeeklyQuestionsQuery } from '../../redux/api/homeApi';
 
 export const withModal = (Component) => (props) => {
 	const open = useSelector((state) => state.utilsSlice.modalOpen);
 	const type = useSelector((state) => state.utilsSlice.modalType);
+	const { data } = useWeeklyQuestionsQuery();
 
 	const dispatch = useDispatch();
 
