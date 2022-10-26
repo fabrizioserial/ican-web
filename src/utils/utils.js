@@ -18,16 +18,16 @@ export const InputTypeEnum = {
 	BIOMARKER_ROW: 'BIOMARKER_ROW',
 	RELAPSES_ROW: 'RELAPSES_ROW',
 	MEDICATION_ROW: 'MEDICATION_ROW',
-	ADD_SECTION: 'ADD_SECTION'
+	ADD_SECTION: 'ADD_SECTION',
 };
 
 export const actionTypeEnum = {
-	ADD_BIOMARKER: "ADD_BIOMARKER",
-	ADD_RELAPSES: "ADD_RELAPSES",
-	ADD_TREATMENT: "ADD_TREATMENT",
-	ADD_MEDICATION: "ADD_MEDICATION",
-	DELETE_MEDICATION: "DELETE_MEDICATION"
-}
+	ADD_BIOMARKER: 'ADD_BIOMARKER',
+	ADD_RELAPSES: 'ADD_RELAPSES',
+	ADD_TREATMENT: 'ADD_TREATMENT',
+	ADD_MEDICATION: 'ADD_MEDICATION',
+	DELETE_MEDICATION: 'DELETE_MEDICATION',
+};
 
 export const TNMOptions = {
 	mama: {
@@ -378,4 +378,9 @@ export const backgroundColorStatus = {
 	active: '#BEE8CF',
 	innactive: '#C4C4C4',
 	in_progress: '#F9E0D6',
+};
+
+export const CapitalizeText = (text) => {
+	if (!text) return '';
+	return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 };
