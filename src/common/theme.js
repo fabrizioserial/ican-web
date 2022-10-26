@@ -38,7 +38,7 @@ export const theme = {
 	oncoOrange: '#ECA485',
 	oncoOrangeTitle: '#7E4228',
 	oncoOrangeSubtitle: 'rgba(126, 66, 40, 0.4)',
-	oncoLightOrange3: '#EA8053',
+	oncoLightOrange3: 'rgba(234,128,83,0.3)',
 
 	oncoDarkGrey: '#555555',
 	oncoNavbarSelection: 'rgba(175, 126, 255, 0.08)',
