@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 import {
 	StyledBox,
 	StyledImg,
@@ -6,9 +7,10 @@ import {
 } from '../../../common/styledCommonComponents';
 import { StyledPatientContainer } from './styles';
 
-const PatientContainer = ({ name, surename, cancerType }) => {
+const PatientContainer = ({ name, surename, cancerType, patientId }) => {
+	const navigate = useNavigate();
 	return (
-		<StyledPatientContainer onClick={() => console.log('asd')}>
+		<StyledPatientContainer onClick={() => navigate(`/profile/${patientId}`)}>
 			<StyledImg
 				css={{
 					width: 38,
@@ -38,7 +40,7 @@ const PatientContainer = ({ name, surename, cancerType }) => {
 					{cancerType}
 				</StyledP>
 			</StyledBox>
-		</StyledPatientContainer>
+		</StyledPatientContainer >
 	);
 };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
 	StyledBox,
 	StyledScreen,
@@ -7,8 +7,13 @@ import HungerAndThirstChart from '../../../components/HungerAndThirstChart';
 import SocialAndPhysicalActivitiesChart from '../../../components/SocialAndPhysicalActivitiesChart';
 import PatientProfileCard from '../../../components/PatientProfileCard';
 import WeeklySchedule from '../../Profile/WeeklySchedule';
+import { useParams } from 'react-router';
 
 const ProfileScreen = () => {
+	const { patientId } = useParams()
+	useEffect(() => {
+		console.log(patientId)
+	}, [])
 	return (
 		<StyledScreen
 			css={{

@@ -65,25 +65,27 @@ const PatientsList = () => {
 				>
 					{patients?.length < 10
 						? patients
-								?.slice(0, 9)
-								.map((patient, index) => (
-									<PatientContainer
-										key={index}
-										name={patient.name}
-										surename={patient.surname}
-										cancerType={patient.cancerType}
-									/>
-								))
+							?.slice(0, 9)
+							.map((patient, index) => (
+								<PatientContainer
+									key={index}
+									patientId={patient.id}
+									name={patient.name}
+									surename={patient.surname}
+									cancerType={patient.cancerType}
+								/>
+							))
 						: patients
-								?.slice(0, 8)
-								.map((patient, index) => (
-									<PatientContainer
-										key={index}
-										name={patient.name}
-										surename={patient.surname}
-										cancerType={patient.cancerType}
-									/>
-								))}
+							?.slice(0, 8)
+							.map((patient, index) => (
+								<PatientContainer
+									key={index}
+									patientId={patient.id}
+									name={patient.name}
+									surename={patient.surname}
+									cancerType={patient.cancerType}
+								/>
+							))}
 				</StyledBox>
 				{patients?.length > 9 && (
 					<StyledButtonMore onClick={() => console.log('asd')}>
