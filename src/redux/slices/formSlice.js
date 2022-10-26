@@ -20,7 +20,7 @@ const initialState = {
                     type: 'text',
                     input_type: InputTypeEnum.TEXTFIELD,
                     name: 'name',
-                    disabled: true
+                    disabled: true,
                 },
                 {
                     label: 'Apellido',
@@ -47,7 +47,7 @@ const initialState = {
                         Femenine: 'Femenino',
                     },
                     input_type: InputTypeEnum.SELECTOR,
-                    name: 'gender',
+                    name: 'sex',
                     disabled: true
                 },
             ],
@@ -57,14 +57,14 @@ const initialState = {
                     placeholder: 'Introduzca numero de historial medico',
                     type: 'text',
                     input_type: InputTypeEnum.TEXTFIELD,
-                    name: 'medical_history_id',
+                    name: 'medicHistoryNumber',
                     disabled: true
                 },
                 {
                     label: 'Fecha de carga',
                     placeholder: 'XX/XX/XX',
                     input_type: InputTypeEnum.DATEFIELD,
-                    name: 'load_date',
+                    name: 'registerDate',
                     type: 'text',
                     disabled: true
                 },
@@ -344,9 +344,9 @@ const initialState = {
         name: '',
         surname: '',
         email: '',
-        gender: '',
-        medical_history_id: '',
-        load_date: '',
+        sex: 'Femenine',
+        medicHistoryNumber: '',
+        registerDate: '',
         diagnostic_date: '',
         tumor: 'gastrico',
         PDL1_expresion: '',
@@ -508,9 +508,19 @@ export const formSlice = createSlice({
                 ...state.values,
                 [action.payload.name]: action.payload.value
             }
+            console.log(state.values)
         }
     },
 });
 
-export const { addBiomarkers, removeRelapses, addRelapses, addTreatment, addTreatmentMedication, removeBiomarker, removeTreatmentMedication, setValue } = formSlice.actions;
+export const {
+    addBiomarkers,
+    removeRelapses,
+    addRelapses,
+    addTreatment,
+    addTreatmentMedication,
+    removeBiomarker,
+    removeTreatmentMedication,
+    setValue,
+} = formSlice.actions;
 export default formSlice.reducer;
