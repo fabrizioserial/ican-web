@@ -1,13 +1,9 @@
 import React from 'react';
 import { StyledBox } from '../../common/styledCommonComponents';
 import WeeklySummary from '../WeeklySummary';
-import UsersSummary from '../UsersSummary';
 import WaitingList from '../WaitingList';
-import { useSelector } from 'react-redux';
 
 const WidgetHome = () => {
-	const waitingPatients = useSelector(state => state.homeSlice.waitingPatients);
-
 	return (
 		<StyledBox
 			css={{
@@ -19,7 +15,7 @@ const WidgetHome = () => {
 			}}
 		>
 			<WeeklySummary />
-			<WaitingList waitingPatients={waitingPatients} />
+			<WaitingList />
 		</StyledBox>
 	);
 };

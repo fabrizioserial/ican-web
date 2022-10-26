@@ -1,15 +1,15 @@
 import React from 'react';
 import Navbar from './index';
-import { StyledBox, StyledScreen } from '../../common/styledCommonComponents';
+import { StyledBox } from '../../common/styledCommonComponents';
 import { Outlet } from 'react-router';
 
 const Wrapper = () => {
 	return (
-		<StyledBox css={{ display: 'flex', flexDirection: 'row', width: "100vw"  }}>
+		<StyledBox css={{ flexDirection: 'row', display: 'flex' }}>
 			<Navbar />
-			<StyledScreen>
+			<StyledBox css={{ paddingLeft: '70px' }}>
 				<Outlet />
-			</StyledScreen>
+			</StyledBox>
 		</StyledBox>
 	);
 };

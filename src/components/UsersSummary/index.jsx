@@ -46,7 +46,7 @@ const UsersSummary = () => {
 			}}
 		>
 			<StyledBox css={{ display: 'flex', flexDirection: 'column' }}>
-				<StyledP css={{ fontWeight: 500, fontSize: '0.875rem' }}>
+				<StyledP css={{ fontWeight: 500, fontSize: '14px' }}>
 					<StyledSpan
 						css={{
 							fontWeight: 700,
@@ -115,7 +115,7 @@ const UsersSummary = () => {
 					marginTop: '20px',
 				}}
 			>
-				<StyledP css={{ fontWeight: 500, fontSize: '0.875rem' }}>
+				<StyledP css={{ fontWeight: 500, fontSize: '14px' }}>
 					<StyledSpan
 						css={{
 							fontWeight: 700,

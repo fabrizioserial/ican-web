@@ -26,8 +26,8 @@ function PatientsInTreatments({ patientsInTreatment, totalPatients }) {
 				<TreatmentIcon color={theme.OncoPurple} width={23} height={19.55} />
 			}
 			title={'Pacientes en tratamiento'}
-			width={310}
-			height={310}
+			width={'300px'}
+			height={'300px'}
 		>
 			<TreatmentsContainer css={{ position: 'relative' }}>
 				<CircularProgress

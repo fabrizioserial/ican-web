@@ -40,7 +40,7 @@ const PatientsList = () => {
                 rowGap: "10px"
             }}>
                 {patients?.map((patient, index) => (
-                    <PatientContainer key={index} fullName={patient.name + " " + patient.surname} legend={patient.cancerType} />
+                    <PatientContainer key={index} name={patient.name} surename={patient.surname} cancerType={patient.cancerType} />
                 ))}
                 <StyledButtonMore
                     onClick={() => console.log("asd")}
@@ -65,23 +65,25 @@ const PatientsList = () => {
 				>
 					{patients?.length < 10
 						? patients
-							?.slice(0, 9)
-							.map((patient, index) => (
-								<PatientContainer
-									key={index}
-									fullName={patient.name + " " + patient.surname}
-									legend={patient.cancerType}
-								/>
-							))
+								?.slice(0, 9)
+								.map((patient, index) => (
+									<PatientContainer
+										key={index}
+										name={patient.name}
+										surename={patient.surname}
+										cancerType={patient.cancerType}
+									/>
+								))
 						: patients
-							?.slice(0, 8)
-							.map((patient, index) => (
-								<PatientContainer
-									key={index}
-									fullName={patient.name + " " + patient.surname}
-									legend={patient.cancerType}
-								/>
-							))}
+								?.slice(0, 8)
+								.map((patient, index) => (
+									<PatientContainer
+										key={index}
+										name={patient.name}
+										surename={patient.surname}
+										cancerType={patient.cancerType}
+									/>
+								))}
 				</StyledBox>
 				{patients?.length > 9 && (
 					<StyledButtonMore onClick={() => console.log('asd')}>
