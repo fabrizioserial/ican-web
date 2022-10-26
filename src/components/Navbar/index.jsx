@@ -17,18 +17,15 @@ const Navbar = () => {
 	return (
 		<StyledBox
 			css={{
-				width: '70px',
-				zIndex: 1,
+				width: "73px",
 				backgroundColor: theme.white,
 				overflowX: 'hidden',
-				minHeight: '100vh',
-				maxHeight: '100vh',
+				height: "100vh",
 				paddingTop: '125px',
 				borderRight: '1px solid rgba(223, 223, 223, 0.5)',
 				boxShadow: '0 2px 24px rgba(214, 203, 252, 0.3)',
 				left: '0px',
 				top: '2px',
-				position: 'absolute',
 				boxSizing: 'border-box',
 				display: 'flex',
 				flexDirection: 'column',
