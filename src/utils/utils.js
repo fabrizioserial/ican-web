@@ -628,3 +628,18 @@ export const backgroundColorStatus = {
 	innactive: '#C4C4C4',
 	in_progress: '#F9E0D6',
 };
+
+export const PollResultsHeaderConst = [
+	{
+		label: ' ',
+		sortId: '',
+	},
+	{
+		label: 'Fecha de Realización',
+		sortId: '',
+	},
+	{
+		label: 'Estado',
+		sortId: '',
+	},
+];

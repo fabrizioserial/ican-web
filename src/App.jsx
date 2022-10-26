@@ -11,6 +11,7 @@ import Validation from './pages/Validation';
 import ProfileScreen from './pages/PatientProfile/ProfileScreen';
 import Wrapper from './components/Navbar/Wrapper';
 import PatientListScreen from './pages/PatientList/PatientListScreen';
+import PollResultsScreen from "./pages/PollResultsTable/PollResultsScreen";
 
 const App = () => {
 	const accessToken = useSelector((state) => state.authSlice.accessToken);
@@ -37,6 +38,7 @@ const App = () => {
 							}
 						/>
 						<Route path="/my-patients" element={<PatientListScreen />} />
+						<Route path="/poll-results" element={<PollResultsScreen />} />
 						<Route
 							path="/settings"
 							element={
