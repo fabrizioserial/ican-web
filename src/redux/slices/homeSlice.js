@@ -14,68 +14,6 @@ const initialState = {
 		pending: 0,
 		inTreatment: 0,
 	},
-	waitingPatients: [
-		{
-			fullName: "Agustin Von Staweksi",
-			dni: "0943892948",
-			avatar: "img"
-		},
-		{
-			fullName: "Carlos Gomez",
-			dni: "9124837499",
-			avatar: "img"
-		},
-		{
-			fullName: "Elisa Furnari",
-			dni: "3789438384",
-			avatar: "img"
-		},
-		{
-			fullName: "Reina Isabel II",
-			dni: "0000000001",
-			avatar: "img"
-		},
-		{
-			fullName: "Agustin Von Staweksi",
-			dni: "0943892948",
-			avatar: "img"
-		},
-		{
-			fullName: "Carlos Gomez",
-			dni: "9124837499",
-			avatar: "img"
-		},
-		{
-			fullName: "Elisa Furnari",
-			dni: "3789438384",
-			avatar: "img"
-		},
-		{
-			fullName: "Reina Isabel II",
-			dni: "0000000001",
-			avatar: "img"
-		},
-		{
-			fullName: "Agustin Von Staweksi",
-			dni: "0943892948",
-			avatar: "img"
-		},
-		{
-			fullName: "Carlos Gomez",
-			dni: "9124837499",
-			avatar: "img"
-		},
-		{
-			fullName: "Elisa Furnari",
-			dni: "3789438384",
-			avatar: "img"
-		},
-		{
-			fullName: "Reina Isabel II",
-			dni: "0000000001",
-			avatar: "img"
-		}
-	]
 };
 
 export const homeSlice = createSlice({

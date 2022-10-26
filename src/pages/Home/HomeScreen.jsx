@@ -3,42 +3,39 @@ import PatientsList from '../../components/PatientsList';
 import { StyledBox, StyledScreen } from '../../common/styledCommonComponents';
 import WidgetHome from '../../components/WidgetHome';
 import WidgetPastelStats from '../../components/WidgetPastelStats';
-import WaitingList from '../../components/WaitingList';
-import { useSelector } from 'react-redux';
-import UsersSummary from '../../components/UsersSummary';
+import WidgetDailyChart from '../../components/WidgetDailyChart';
 
 function HomeScreen() {
 	return (
-		<StyledBox
-			css={{
-				flex: 1,
-				display: 'flex',
-				flexDirection: 'column',
-				paddingTop: '60px',
-				paddingLeft: "60px",
-			}}
-		>
-
-			<StyledBox css={{ display: 'flex' }}>
+		<StyledScreen>
+			<StyledBox
+				css={{
+					display: 'flex',
+					flexDirection: 'row',
+					margin: '30px 60px',
+					height: 'inherit',
+					width: 'inherit',
+					justifyContent: 'center',
+				}}
+			>
 				<StyledBox
 					css={{
 						display: 'flex',
 						flexDirection: 'column',
-						flex: 0.5,
+						flex: 0.6,
 						maxWidth: '760px',
-						rowGap: '35px'
-					}}>
+						rowGap: '35px',
+					}}
+				>
 					<WidgetHome />
 					<WidgetPastelStats />
 					<WidgetDailyChart />
 				</StyledBox>
-
-				<StyledBox css={{ display: 'flex', justifyContent: "space-evenly", flex: 0.5 }}>
+				<StyledBox css={{ display: 'flex', flex: 0.4, marginLeft: '50px' }}>
 					<PatientsList />
-					<UsersSummary />
 				</StyledBox>
 			</StyledBox>
-		</StyledBox>
+		</StyledScreen>
 	);
 }
 
