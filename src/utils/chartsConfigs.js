@@ -347,8 +347,11 @@ export const HungerAndThristConfig = (data) => {
 };
 export const DailyColumnChartConfig = (data) => {
 	const dataAux = () => {
-		let aux = []
-		let math = Object.values(data).length > 1 ? Object.values(data).length / (Object.values(data).length * 2) : 0.1
+		let aux = [];
+		let math =
+			Object.values(data).length > 1
+				? Object.values(data).length / (Object.values(data).length * 2)
+				: 0.1;
 		for (let index = 0; index <= Object.values(data).length; index++) {
 			aux.push({
 				x: Object.keys(data),
@@ -359,14 +362,14 @@ export const DailyColumnChartConfig = (data) => {
 						strokeHeight: 9,
 						strokeWidth: 0,
 						strokeLineCap: 'round',
-						strokeColor: '#949494'
-					}
-				]
-			})
+						strokeColor: '#949494',
+					},
+				],
+			});
 		}
-		console.log(aux)
-		return aux
-	}
+		console.log(aux);
+		return aux;
+	};
 	return {
 		// series: [
 		// 	{
@@ -378,9 +381,11 @@ export const DailyColumnChartConfig = (data) => {
 		// 		data: Object.values(data).map((a) => a[0] + 1),
 		// 	},
 		// ],
-		series: [{
-			data: dataAux(),
-		}],
+		series: [
+			{
+				data: dataAux(),
+			},
+		],
 		options: {
 			chart: {
 				type: 'bar',
@@ -451,7 +456,7 @@ export const DailyColumnChartConfig = (data) => {
 						fontWeight: 400,
 						fontSize: '10px',
 					},
-					offsetY: 3
+					offsetY: 3,
 				},
 			},
 			yaxis: {
@@ -461,7 +466,7 @@ export const DailyColumnChartConfig = (data) => {
 				fillSeriesColor: false,
 				followCursor: false,
 				custom: function ({ series, dataPointIndex }) {
-					const textToAdd = series[0]
+					const textToAdd = series[0];
 					return (
 						'<div style="padding: 5px 20px; ' +
 						'border-radius: 5px; ' +
