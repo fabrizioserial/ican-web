@@ -18,8 +18,8 @@ const DonutWidget = () => {
 				<TreatmentIcon color={theme.OncoPurple} width={23} height={19.55} />
 			}
 			title={'Porcentaje de pacientes con tumores'}
-			width={396}
-			height={300}
+			width={'396px'}
+			height={'300px'}
 		>
 			<StyledBox
 				css={{

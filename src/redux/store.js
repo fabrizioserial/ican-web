@@ -5,6 +5,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { sessionApi } from './api/sessionApi';
 import authSliceReducer from './slices/authSlice';
 import homeSliceReducer from './slices/homeSlice';
+import formSliceReducer from './slices/formSlice';
 import { api } from './api/api';
 import utilsSliceReducer from './slices/utilsSlice';
 // const middlewares = [sessionMiddleware];
@@ -20,6 +21,7 @@ const reducers = combineReducers({
 	[api.reducerPath]: api.reducer,
 	authSlice: authSliceReducer,
 	homeSlice: homeSliceReducer,
+	formSlice: formSliceReducer,
 	utilsSlice: utilsSliceReducer,
 });
 
