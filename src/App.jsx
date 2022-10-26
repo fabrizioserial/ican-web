@@ -81,7 +81,7 @@ const App = () => {
 							}
 						/>
 						<Route path={'/profile'} element={<ProfileScreen />} />
-						<Route path="/validate-patient" element={<Validation />} />
+						<Route path="/validate-patient/:patientId" element={<Validation />} />
 					</Route>
 				</Route>
 				<Route path="/login" element={<LoginScreen />} />

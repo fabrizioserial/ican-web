@@ -16,7 +16,7 @@ const ConditionalSelectInputField = ({ properties, values, onChange }) => {
 			label={label}
 			name={name}
 			onChange={onChange}
-			options={currentOption[name]}
+			options={currentOption[name] ?? []}
 		/>
 	);
 };

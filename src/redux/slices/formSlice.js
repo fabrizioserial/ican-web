@@ -7,6 +7,7 @@ import HeartIcon from '../../assets/HeartIcon';
 import StateIcon from '../../assets/StateIcon';
 import TreatmentIcon from '../../assets/TreatmentIcon';
 import { actionTypeEnum, InputTypeEnum } from '../../utils/utils';
+import { patientApi } from '../api/patientApi';
 
 const initialState = {
     patients: {
@@ -140,7 +141,7 @@ const initialState = {
                         piel_no_melanoma: 'Piel no melanoma',
                     },
                     input_type: InputTypeEnum.SELECTOR,
-                    name: 'tumor',
+                    name: 'organ',
                 },
             ],
             [
@@ -182,27 +183,27 @@ const initialState = {
                     label: 'Estadio',
                     input_type: InputTypeEnum.CONDITIONAL,
                     name: 'estadio',
-                    varToEvaluate: 'tumor',
+                    varToEvaluate: 'organ',
                 },
             ],
             [
                 {
                     label: 'T',
                     input_type: InputTypeEnum.CONDITIONAL,
-                    name: 't',
-                    varToEvaluate: 'tumor',
+                    name: 'tumor',
+                    varToEvaluate: 'organ',
                 },
                 {
                     label: 'N',
                     input_type: InputTypeEnum.CONDITIONAL,
-                    name: 'n',
-                    varToEvaluate: 'tumor',
+                    name: 'nodule',
+                    varToEvaluate: 'organ',
                 },
                 {
                     label: 'M',
                     input_type: InputTypeEnum.CONDITIONAL,
-                    name: 'm',
-                    varToEvaluate: 'tumor',
+                    name: 'metastasis',
+                    varToEvaluate: 'organ',
                 },
             ],
             [
@@ -340,21 +341,7 @@ const initialState = {
             ],
         ],
     },
-    values: {
-        name: '',
-        surname: '',
-        email: '',
-        sex: 'Femenine',
-        medicHistoryNumber: '',
-        registerDate: '',
-        diagnostic_date: '',
-        tumor: 'gastrico',
-        PDL1_expresion: '',
-        estadio: '',
-        t: '',
-        n: '',
-        m: '',
-    }
+    values: undefined
 };
 
 export const formSlice = createSlice({
@@ -508,8 +495,16 @@ export const formSlice = createSlice({
                 ...state.values,
                 [action.payload.name]: action.payload.value
             }
-            console.log(state.values)
         }
+    },
+    extraReducers: (builder) => {
+        builder.addMatcher(
+            patientApi.endpoints.getPatientData.matchFulfilled,
+            (state, action) => {
+                state.values = { ...state.values, ...action.payload }
+                console.log("state", state.values)
+            },
+        );
     },
 });
 

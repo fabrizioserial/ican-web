@@ -29,11 +29,13 @@ export const actionTypeEnum = {
 export const TNMOptions = {
 	mama: {
 		t: {
+			T1: 'T1',
 			TX: 'TX',
 			T0: 'T0',
 		},
 		n: {
 			NX: 'NX',
+			N1: 'N1',
 			N0: 'N0',
 		},
 		m: {
