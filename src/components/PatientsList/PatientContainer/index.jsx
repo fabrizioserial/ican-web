@@ -6,9 +6,9 @@ import {
 } from '../../../common/styledCommonComponents';
 import { StyledPatientContainer } from './styles';
 
-const PatientContainer = ({ name, surename, cancerType }) => {
+const PatientContainer = ({ name, surename, cancerType, css }) => {
 	return (
-		<StyledPatientContainer onClick={() => console.log('asd')}>
+		<StyledPatientContainer css={css} onClick={() => console.log('asd')}>
 			<StyledImg
 				css={{
 					width: 38,
