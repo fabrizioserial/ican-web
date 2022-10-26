@@ -42,9 +42,9 @@ const SelectorInputField = ({
 					boxSizing: 'border-box',
 					width: '100%',
 					// backgroundColor: theme.oncoGrey,
-					backgroundColor: "#fff",
-					border: "1px solid #E5D7FD",
-					borderRadius: "5px"
+					backgroundColor: '#fff',
+					border: '1px solid #E5D7FD',
+					borderRadius: '5px',
 				}}
 				onChange={(e) => onChange(name, e.target.value)}
 				value={value}

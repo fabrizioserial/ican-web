@@ -8,23 +8,31 @@ import { setValue } from '../../redux/slices/formSlice';
 
 const Validation = () => {
 	// const [sections, setSections] = useState(FormsSqueleton);
-	const { patients, hospital, biomarkers, relapses, state, treatment, values } = useSelector(state => state.formSlice)
-	const dispatch = useDispatch()
+	const {
+		patients,
+		hospital,
+		biomarkers,
+		relapses,
+		state,
+		treatment,
+		values,
+	} = useSelector((state) => state.formSlice);
+	const dispatch = useDispatch();
 	// const [values, setValues] = useState(validationFormValues);
 
 	// set values of validationFormValues
 	const handleOnChange = (name, newValue) => {
 		if (!name || newValue === undefined) return;
-		dispatch(setValue({ name, value: newValue }))
+		dispatch(setValue({ name, value: newValue }));
 	};
 
 	return (
-		<StyledScreen css={{ justifyContent: 'center', flexDirection: "column" }}>
+		<StyledScreen css={{ justifyContent: 'center', flexDirection: 'column' }}>
 			<StyledBox
 				css={{
-					margin: "50px 0",
+					margin: '50px 0',
 					display: 'flex',
-					justifyContent: "center",
+					justifyContent: 'center',
 					alignSelf: 'center',
 					flexDirection: 'column',
 				}}
@@ -32,22 +40,23 @@ const Validation = () => {
 				<StyledBox
 					css={{
 						backgroundColor: 'white',
-						width: "800px",
+						width: '800px',
 						borderRadius: '20px',
 						margin: '50px',
 					}}
 				>
-					{FormBuilder([patients, hospital, biomarkers, relapses, state, treatment], values, handleOnChange)}
+					{FormBuilder(
+						[patients, hospital, biomarkers, relapses, state, treatment],
+						values,
+						handleOnChange,
+					)}
 				</StyledBox>
 				<StyledBox
 					css={{
-						margin: "0 50px",
+						margin: '0 50px',
 					}}
 				>
-					<Button
-						text={'Guardar cambios'}
-						className="submit"
-					/>
+					<Button text={'Guardar cambios'} className="submit" />
 				</StyledBox>
 			</StyledBox>
 		</StyledScreen>

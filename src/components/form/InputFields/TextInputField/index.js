@@ -27,7 +27,7 @@ const TextInputField = ({
 				display: 'flex',
 				flexDirection: 'column',
 				boxSizing: 'border-box',
-				justifyContent: "flex-end"
+				justifyContent: 'flex-end',
 			}}
 		>
 			<StyledP
@@ -43,9 +43,9 @@ const TextInputField = ({
 					boxSizing: 'border-box',
 					width: '100%',
 					// backgroundColor: theme.oncoGrey,
-					backgroundColor: "#fff",
-					border: "1px solid #E5D7FD",
-					borderRadius: "5px"
+					backgroundColor: '#fff',
+					border: '1px solid #E5D7FD',
+					borderRadius: '5px',
 				}}
 				type={type}
 				placeholder={placeholder}
