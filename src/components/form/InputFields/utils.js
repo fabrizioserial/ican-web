@@ -125,6 +125,7 @@ const InputTypeBuilder = (type, index, properties, values, onChangeHandle, handl
 			return (
 				<TextInputField
 					key={index}
+					disabled={properties.disabled}
 					type={properties.type}
 					placeholder={properties.placeholder}
 					value={values[properties.name]}
@@ -137,6 +138,7 @@ const InputTypeBuilder = (type, index, properties, values, onChangeHandle, handl
 			return (
 				<SelectorInputField
 					key={index}
+					disabled={properties.disabled}
 					type={properties.type}
 					value={values[properties.name]}
 					label={properties.label}
@@ -148,6 +150,7 @@ const InputTypeBuilder = (type, index, properties, values, onChangeHandle, handl
 		case InputTypeEnum.DATEFIELD:
 			return (
 				<DateInputField
+					disabled={properties.disabled}
 					key={index}
 					type={properties.type}
 					placeholder={properties.placeholder}

@@ -9,6 +9,7 @@ const DateInputField = ({
 	label,
 	onChange,
 	name,
+	disabled,
 }) => {
 	const handleOnChange = (_, newValue) => {
 		if (newValue.length > value?.length) {
@@ -23,6 +24,7 @@ const DateInputField = ({
 	};
 	return (
 		<TextInputField
+			disabled={disabled}
 			type={'date'}
 			maxCharacters={10}
 			label={label}

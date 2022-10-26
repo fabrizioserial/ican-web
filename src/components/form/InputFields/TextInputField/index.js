@@ -15,6 +15,7 @@ const TextInputField = ({
 	onChange,
 	name,
 	type,
+	disabled,
 	maxCharacters,
 }) => {
 	const theme = useTheme();
@@ -27,7 +28,8 @@ const TextInputField = ({
 				display: 'flex',
 				flexDirection: 'column',
 				boxSizing: 'border-box',
-				justifyContent: "flex-end"
+				justifyContent: "flex-end",
+				pointerEvents: disabled && 'none',
 			}}
 		>
 			<StyledP
@@ -42,9 +44,8 @@ const TextInputField = ({
 					fontSize: '16px',
 					boxSizing: 'border-box',
 					width: '100%',
-					// backgroundColor: theme.oncoGrey,
-					backgroundColor: "#fff",
-					border: "1px solid #E5D7FD",
+					backgroundColor: disabled ? theme.oncoGrey : 'transparent',
+					border: !disabled && "1px solid #E5D7FD",
 					borderRadius: "5px"
 				}}
 				type={type}
@@ -52,7 +53,7 @@ const TextInputField = ({
 				value={value}
 				onChange={(e) => handleOnChange(e.target.value)}
 			/>
-		</StyledBox>
+		</StyledBox >
 	);
 };
 

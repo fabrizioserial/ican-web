@@ -20,6 +20,7 @@ const initialState = {
                     type: 'text',
                     input_type: InputTypeEnum.TEXTFIELD,
                     name: 'name',
+                    disabled: true
                 },
                 {
                     label: 'Apellido',
@@ -27,6 +28,7 @@ const initialState = {
                     type: 'text',
                     input_type: InputTypeEnum.TEXTFIELD,
                     name: 'surname',
+                    disabled: true
                 },
             ],
             [
@@ -36,6 +38,7 @@ const initialState = {
                     type: 'email',
                     input_type: InputTypeEnum.TEXTFIELD,
                     name: 'email',
+                    disabled: true
                 },
                 {
                     label: 'Género',
@@ -45,6 +48,7 @@ const initialState = {
                     },
                     input_type: InputTypeEnum.SELECTOR,
                     name: 'gender',
+                    disabled: true
                 },
             ],
             [
@@ -54,6 +58,7 @@ const initialState = {
                     type: 'text',
                     input_type: InputTypeEnum.TEXTFIELD,
                     name: 'medical_history_id',
+                    disabled: true
                 },
                 {
                     label: 'Fecha de carga',
@@ -61,6 +66,7 @@ const initialState = {
                     input_type: InputTypeEnum.DATEFIELD,
                     name: 'load_date',
                     type: 'text',
+                    disabled: true
                 },
             ],
         ],

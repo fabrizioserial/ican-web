@@ -16,6 +16,7 @@ const SelectorInputField = ({
 	onChange,
 	name,
 	options,
+	disabled
 }) => {
 	const theme = useTheme();
 
@@ -27,6 +28,7 @@ const SelectorInputField = ({
 				display: 'flex',
 				flexDirection: 'column',
 				boxSizing: 'border-box',
+				pointerEvents: disabled && 'none',
 			}}
 		>
 			<StyledP
@@ -41,9 +43,8 @@ const SelectorInputField = ({
 					fontSize: '16px',
 					boxSizing: 'border-box',
 					width: '100%',
-					// backgroundColor: theme.oncoGrey,
-					backgroundColor: "#fff",
-					border: "1px solid #E5D7FD",
+					backgroundColor: disabled ? theme.oncoGrey : "transparent",
+					border: !disabled && "1px solid #E5D7FD",
 					borderRadius: "5px"
 				}}
 				onChange={(e) => onChange(name, e.target.value)}
