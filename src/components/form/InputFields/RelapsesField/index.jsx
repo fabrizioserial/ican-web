@@ -5,7 +5,6 @@ import IconButton from '../../../../common/components/iconButton';
 import { StyledBox } from '../../../../common/styledCommonComponents';
 import { removeRelapses } from '../../../../redux/slices/formSlice';
 import DateInputField from '../DateInputField';
-import SelectorInputField from '../SelectorInputField';
 import TextInputField from '../TextInputField';
 
 const optionsMed =
@@ -109,7 +108,6 @@ const RelapsesField = ({ id, names, placeholder, values, onChange, type }) => {
             <StyledBox
                 css={{
                     width: "100%",
-                    columnGap: '30px',
                     marginBottom: '30px',
                     display: 'flex',
                     boxSizing: 'border-box',
@@ -121,7 +119,7 @@ const RelapsesField = ({ id, names, placeholder, values, onChange, type }) => {
                         display: 'flex',
                         flexDirection: "row",
                         alignItems: 'flex-end',
-                        columnGap: '20px'
+                        paddingRight: 30
                     }}
                 >
                     <TextInputField
@@ -130,24 +128,6 @@ const RelapsesField = ({ id, names, placeholder, values, onChange, type }) => {
                         value={values.metastasisSite}
                         label={"Sitio de la Metástasis"}
                         name={values.metastasisSite}
-                        onChange={onChange}
-                    />
-                </StyledBox>
-                <StyledBox
-                    css={{
-                        flex: 0.5,
-                        display: 'flex',
-                        flexDirection: "row",
-                        alignItems: 'flex-end',
-                        columnGap: '20px'
-                    }}
-                >
-                    <TextInputField
-                        type={type}
-                        placeholder={placeholder}
-                        value={values.treatmentRelapse}
-                        label={"Tratamiento de la Recaida"}
-                        name={values.treatmentRelapse}
                         onChange={onChange}
                     />
                 </StyledBox>
