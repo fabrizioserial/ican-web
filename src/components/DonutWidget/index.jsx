@@ -9,9 +9,13 @@ import {
 import { useTheme } from 'styled-components';
 import DonutChart from './donutChart/DonutChart';
 import Card from '../Card';
+import { useCancerStatisticsQuery } from '../../redux/api/homeApi';
+import { StyledCircularProgress } from '../CustomCircularProgress/styles';
 
 const DonutWidget = () => {
 	const theme = useTheme();
+	const { isLoading } = useCancerStatisticsQuery();
+
 	return (
 		<Card
 			icon={
@@ -25,10 +29,12 @@ const DonutWidget = () => {
 				css={{
 					height: '100%',
 					width: '100%',
-					marginTop: '20px',
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'center',
 				}}
 			>
-				<DonutChart />
+				{isLoading ? <StyledCircularProgress size={50} /> : <DonutChart />}
 			</StyledBox>
 		</Card>
 	);
