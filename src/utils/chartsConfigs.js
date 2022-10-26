@@ -367,6 +367,7 @@ export const DailyColumnChartConfig = (data) => {
 				],
 			});
 		}
+		console.log(aux);
 		return aux;
 	};
 	return {
