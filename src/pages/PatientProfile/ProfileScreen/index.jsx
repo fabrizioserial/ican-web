@@ -8,12 +8,20 @@ import SocialAndPhysicalActivitiesChart from '../../../components/SocialAndPhysi
 import PatientProfileCard from '../../../components/PatientProfileCard';
 import WeeklySchedule from '../../Profile/WeeklySchedule';
 import { useParams } from 'react-router';
+import { useLazyGetPatientDataQuery } from '../../../redux/api/patientApi';
 
 const ProfileScreen = () => {
 	const { patientId } = useParams()
+	const [refetch, { data, isSuccess }] = useLazyGetPatientDataQuery()
+
 	useEffect(() => {
-		console.log(patientId)
+		refetch(patientId)
 	}, [])
+
+	useEffect(() => {
+		console.log(data)
+	}, [data, isSuccess])
+
 	return (
 		<StyledScreen
 			css={{
@@ -25,7 +33,7 @@ const ProfileScreen = () => {
 			}}
 		>
 			<StyledBox css={{ display: 'flex', flexDirection: 'column' }}>
-				<PatientProfileCard />
+				<PatientProfileCard profileData={data}/>
 				<StyledBox
 					css={{
 						display: 'flex',

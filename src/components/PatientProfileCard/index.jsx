@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
 import { ProfileConfigButton } from '../../utils/utils';
 import {
@@ -10,9 +10,21 @@ import {
 import ProfileDetailText from '../../pages/PatientProfile/components/ProfileText';
 import ProfileButton from '../../pages/PatientProfile/components/ProfileButtons';
 
-const PatientProfileCard = () => {
+const PatientProfileCard = ({ profileData }) => {
 	const theme = useTheme();
+	const [age, setAge] = useState(new Date())
+	const [birthday, setBirthday] = useState()
 	const [buttonList, setButtonList] = useState(ProfileConfigButton);
+
+	useEffect(() => {
+		setBirthday(new Date(profileData?.birthDate).getTime())
+	}, [profileData])
+
+	useEffect(() => {
+		let aux = Date.now() - birthday
+		setAge(new Date(aux).getFullYear() - 1970)
+	}, [birthday])
+
 	return (
 		<StyledBox>
 			<StyledCardHome
@@ -77,23 +89,27 @@ const PatientProfileCard = () => {
 								rowGap: '10px',
 							}}
 						>
-							<StyledH3
-								css={{
-									fontStyle: 'normal',
-									fontWeight: 400,
-									fontSize: '32px',
-									display: 'flex',
-									flexDirection: 'row',
-									alignItems: 'top',
-									justifyContent: 'flex-start',
-									alignSelf: 'top',
-									margin: 0,
-									whiteSpace: 'nowrap',
-									color: theme.oncoBlack,
-								}}
-							>
-								Agustin Von Staweski
-							</StyledH3>
+							<StyledBox css={{
+								width: "100%"
+							}}>
+								<StyledH3
+									css={{
+										fontStyle: 'normal',
+										fontWeight: 400,
+										fontSize: '32px',
+										display: 'flex',
+										flexDirection: 'row',
+										alignItems: 'top',
+										justifyContent: 'flex-start',
+										alignSelf: 'top',
+										margin: 0,
+										whiteSpace: 'nowrap',
+										color: theme.oncoBlack,
+									}}
+								>
+									{profileData?.name + " " + profileData?.surname}
+								</StyledH3>
+							</StyledBox>
 
 							<StyledBox
 								css={{
@@ -126,10 +142,10 @@ const PatientProfileCard = () => {
 										rowGap: '12px',
 									}}
 								>
-									<ProfileDetailText text={'52 años'} />
-									<ProfileDetailText text={'Masculino'} />
-									<ProfileDetailText text={'12353784863'} />
-									<ProfileDetailText text={'Activo'} />
+									<ProfileDetailText text={age + ' años'} />
+									<ProfileDetailText text={profileData?.sex} />
+									<ProfileDetailText text={profileData?.phoneNumber} />
+									<ProfileDetailText text={profileData?.status} />
 								</StyledBox>
 							</StyledBox>
 						</StyledBox>

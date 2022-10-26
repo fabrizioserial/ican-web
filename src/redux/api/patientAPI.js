@@ -1,6 +1,6 @@
 import { api } from './api';
 
-export const patientAPI = api.injectEndpoints({
+export const patientApi = api.injectEndpoints({
     endpoints: (builder) => ({
         getPatientData: builder.query({
             query: (patientID) => ({
@@ -11,8 +11,8 @@ export const patientAPI = api.injectEndpoints({
     }),
 });
 
-export const { usePatientDataQuery } = patientAPI;
+export const { useLazyGetPatientDataQuery } = patientApi;
 
 export const {
     endpoints: { getPatientData },
-} = patientAPI;
+} = patientApi;
