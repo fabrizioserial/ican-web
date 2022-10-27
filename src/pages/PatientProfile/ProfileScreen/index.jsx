@@ -6,8 +6,8 @@ import {
 import HungerAndThirstChart from '../../../components/HungerAndThirstChart';
 import SocialAndPhysicalActivitiesChart from '../../../components/SocialAndPhysicalActivitiesChart';
 import PatientProfileCard from '../../../components/PatientProfileCard';
-import WeeklySchedule from '../../Profile/WeeklySchedule';
-import TreatmentSection from "../../Profile/TreatmentSection";
+import WeeklySchedule from '../components/WeeklySchedule';
+import TreatmentSection from '../components/TreatmentSection';
 
 const ProfileScreen = () => {
 	return (
@@ -27,25 +27,24 @@ const ProfileScreen = () => {
 						display: 'flex',
 						flexDirection: 'row',
 						marginTop: '30px',
-
 					}}
 				>
 					<HungerAndThirstChart />
 					<SocialAndPhysicalActivitiesChart />
-
-
-
 				</StyledBox>
 			</StyledBox>
-			<StyledBox css={{ paddingLeft: '59px',
-				display: 'flex',
-				flexDirection: 'column',
-				flexWrap: "wrap",
-				rowGap: "21px",}}>
+			<StyledBox
+				css={{
+					paddingLeft: '59px',
+					display: 'flex',
+					flexDirection: 'column',
+					flexWrap: 'wrap',
+					rowGap: '21px',
+				}}
+			>
 				<WeeklySchedule />
-				<TreatmentSection/>
+				<TreatmentSection />
 			</StyledBox>
-
 		</StyledScreen>
 	);
 };
