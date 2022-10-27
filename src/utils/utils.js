@@ -28,6 +28,7 @@ export const ModalTypeEnum = {
 	DAILY_MODAL: 'DAILY_MODAL',
 	TREATMENT_MODAL: 'TREATMENT_MODAL',
 };
+import { StyledBox } from '../common/styledCommonComponents';
 
 export const InputTypeEnum = {
 	BUTTON: 'BUTTON',
@@ -585,4 +586,52 @@ export const translateQuestion = (type) => {
 export const CapitalizeText = (text) => {
 	if (!text) return '';
 	return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+};
+
+export const getProfileImageFromName = (name, surname, size) => {
+	const sumOfChars = (name.length + surname.length) % 5;
+	let color = '';
+	switch (sumOfChars) {
+		case 0:
+			color = '106,209,141';
+			break;
+		case 1:
+			color = '236,164,133';
+			break;
+		case 2:
+			color = '205,125,227';
+			break;
+		case 3:
+			color = '172,122,255';
+			break;
+		case 4:
+			color = '87,132,247';
+			break;
+		default:
+			color = '172,122,255';
+			break;
+	}
+	const letters = [name, surname]
+		.map((word) => word.charAt(0))
+		.slice(0, 2)
+		.map((w) => w);
+
+	return (
+		<StyledBox
+			css={{
+				width: size.width,
+				height: size.height,
+				borderRadius: '50px',
+				backgroundColor: `rgb(${color},0.8)`,
+				display: 'flex',
+				justifyContent: 'center',
+				alignItems: 'center',
+				color: 'white',
+				textTransform: 'uppercase',
+				fontSize: size?.fontSize ?? '16px',
+			}}
+		>
+			{letters}
+		</StyledBox>
+	);
 };
