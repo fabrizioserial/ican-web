@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
-import { ProfileConfigButton } from '../../utils/utils';
+import {
+	getProfileImageFromName,
+	ProfileConfigButton,
+} from '../../utils/utils';
 import {
 	StyledBox,
 	StyledCardHome,
@@ -51,21 +54,11 @@ const PatientProfileCard = () => {
 								alignItems: 'top',
 							}}
 						>
-							<StyledImg
-								css={{
-									width: 79,
-									height: 79,
-									borderRadius: '50px',
-									imageRendering: '',
-									marginRight: '12px',
-								}}
-								firstChild={{
-									marginLeft: '0px',
-								}}
-								src={
-									'https://media.discordapp.net/attachments/411201278031560708/1023937441264054302/default_user.png'
-								}
-							/>
+							{getProfileImageFromName('Agustin', 'Von Staweski', {
+								width: 80,
+								height: 80,
+								fontSize: '25px',
+							})}
 						</StyledBox>
 						<StyledBox
 							css={{
