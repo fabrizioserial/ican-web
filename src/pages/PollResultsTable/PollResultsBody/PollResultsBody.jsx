@@ -12,79 +12,41 @@ const PollResultsBody = () => {
     const [body, setBody] = useState([
         {
             date:" 14 de noviembre 2022" ,
-            nameSurname: 'Agustin VonStaszweski',
-            tumor: 'Prostat',
-            treatment: 'Quimioterapia',
-            treatmentTumor: 'Quimioterapia',
-            treatmentTumorPeri: 'Quimioterapia',
-            state: 'active',
+            status: 'Completed',
+            icon:
+
         },
         {
-            nHistorial: '2141325213235435',
-            nameSurname: 'Fabrizio Serial',
-            tumor: 'Prostat',
-            treatment: 'Quimioterapia',
-            treatmentTumor: 'Quimioterapia',
-            treatmentTumorPeri: 'Quimioterapia',
-            state: 'active',
+            date:" 14 de noviembre 2022" ,
+            status: 'Completed',
         },
         {
-            nHistorial: '2141325213235435',
-            nameSurname: 'Agustin VonStaszweski',
-            tumor: 'Prostat',
-            treatment: 'Quimioterapia',
-            treatmentTumor: 'Quimioterapia',
-            treatmentTumorPeri: 'Quimioterapia',
-            state: 'active',
+            date:" 14 de noviembre 2022" ,
+            status: 'Completed',
         },
         {
-            nHistorial: '2141325213235435',
-            nameSurname: 'Agustin VonStaszweski',
-            tumor: 'Prostat',
-            treatment: 'Quimioterapia',
-            treatmentTumor: 'Quimioterapia',
-            treatmentTumorPeri: 'Quimioterapia',
-            state: 'active',
+            date:" 14 de noviembre 2022" ,
+            status: 'Completed',
         },
         {
-            nHistorial: '2141325213235435',
-            nameSurname: 'Agustin VonStaszweski',
-            tumor: 'Prostat',
-            treatment: 'Quimioterapia',
-            treatmentTumor: 'Quimioterapia',
-            treatmentTumorPeri: 'Quimioterapia',
-            state: 'active',
+            date:" 14 de noviembre 2022" ,
+            status: 'Completed',
         },
         {
-            nHistorial: '2141325213235435',
-            nameSurname: 'Agustin VonStaszweski',
-            tumor: 'Prostat',
-            treatment: 'Quimioterapia',
-            treatmentTumor: 'Quimioterapia',
-            treatmentTumorPeri: 'Quimioterapia',
-            state: 'active',
+            date:" 14 de noviembre 2022" ,
+            status: 'Completed',
         },
         {
-            nHistorial: '2141325213235435',
-            nameSurname: 'Agustin VonStaszweski',
-            tumor: 'Prostat',
-            treatment: 'Quimioterapia',
-            treatmentTumor: 'Quimioterapia',
-            treatmentTumorPeri: 'Quimioterapia',
-            state: 'active',
+            date:" 14 de noviembre 2022" ,
+            status: 'Completed',
         },
         {
-            nHistorial: '2141325213235435',
-            nameSurname: 'Agustin VonStaszweski',
-            tumor: 'Prostat',
-            treatment: 'Quimioterapia',
-            treatmentTumor: 'Quimioterapia',
-            treatmentTumorPeri: 'Quimioterapia',
-            state: 'active',
+            date:" 14 de noviembre 2022" ,
+            status: 'Completed',
         },
     ]);
 
-    const renderUserStatus = (type) => {
+    const PollResultsStatus = (type) => {
         return (
             <StyledBox
                 css={{
@@ -108,55 +70,15 @@ const PollResultsBody = () => {
             {body.map((bodyItem) => (
                 <StyledBodyRow>
                     <StyledBodyCell with={'5%'} style={{ paddingLeft: '30px' }}>
-                        <StyledBox
-                            css={{
-                                height: '34px',
-                                width: '34px',
-                                border: '1px solid #E4E4E4',
-                                borderRadius: '50%',
-                            }}
-                        >
-                            {bodyItem.url ? (
-                                <StyledImg src={bodyItem.url} />
-                            ) : (
-                                <StyledBox
-                                    css={{
-                                        display: 'flex',
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        height: '100%',
-                                        width: '100%',
-                                    }}
-                                >
-                                    {' '}
-                                    {bodyItem.nameSurname
-                                        .split(' ')
-                                        .map((word) => word.charAt(0))
-                                        .slice(0, 2)
-                                        .map((w) => w)}{' '}
-                                </StyledBox>
-                            )}
-                        </StyledBox>
+
                     </StyledBodyCell>
                     <StyledBodyCell width={'12%'}>
-                        {bodyItem.nHistorial}
+                        {bodyItem.status}
                     </StyledBodyCell>
                     <StyledBodyCell width={'14%'}>
-                        {bodyItem.nameSurname}
+                        {bodyItem.date}
                     </StyledBodyCell>
-                    <StyledBodyCell width={'10%'}>{bodyItem.tumor}</StyledBodyCell>
-                    <StyledBodyCell width={'26%'}>
-                        {bodyItem.treatment}
-                    </StyledBodyCell>
-                    <StyledBodyCell width={'14%'}>
-                        {bodyItem.treatmentTumor}
-                    </StyledBodyCell>
-                    <StyledBodyCell width={'14%'}>
-                        {bodyItem.treatmentTumorPeri}
-                    </StyledBodyCell>
-                    <StyledBodyCell width={'5%'} style={{ paddingRight: '30px' }}>
-                        {renderUserStatus(bodyItem.state)}
-                    </StyledBodyCell>
+
                 </StyledBodyRow>
             ))}
         </TableBody>
