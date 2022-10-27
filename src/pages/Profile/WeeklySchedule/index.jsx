@@ -4,11 +4,11 @@ import CalendarIcon from '../../../assets/CalendarIcon';
 import BackIcon from '../../../assets/BackIcon';
 import DayCard from './DayCard';
 import { WeeklyScheduleConfig } from '../../../utils/utils';
-import HungryIcon from '../../../assets/HungryIcon';
 import Card from '../../../components/Card';
 
-const WeeklySchedule = () => {
-	const [dayList, setDayList] = useState(WeeklyScheduleConfig);
+const WeeklySchedule = ({ dayList }) => {
+	// const [dayList, setDayList] = useState(WeeklyScheduleConfig);
+	console.log("day", dayList)
 	return (
 		<Card
 			title={'Agenda Semanal'}

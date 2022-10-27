@@ -19,6 +19,7 @@ const ProfileScreen = () => {
 
 	const [appetiteHydration, setAppetiteHydration] = useState()
 	const [socialPhysical, setSocialPhysical] = useState()
+	const [calendar, setCalendar] = useState()
 
 	useEffect(() => {
 		refetchPatientData(patientId)
@@ -49,8 +50,56 @@ const ProfileScreen = () => {
 		setSocialPhysical(aux)
 	}, [isSuccessSocialPhysical])
 
+	const dayName = (day) => {
+		switch (day) {
+			case 0:
+				return 'L'
+			case 1:
+				return 'M'
+			case 2:
+				return 'M'
+			case 3:
+				return 'J'
+			case 4:
+				return 'V'
+			case 5:
+				return 'S'
+			case 6:
+				return 'D'
+			default:
+				break;
+		}
+	}
+	const dayState = (status) => {
+		switch (status) {
+			case 'Completed':
+				return {
+					state: 'green',
+					detail: 'Completo la encuesta semanal'
+				}
+			default:
+				return {
+					state: 'grey',
+					detail: 'Nada para reportar'
+				}
+		}
+	}
+
 	useEffect(() => {
-		console.log("calendar", dataCalendar)
+		let aux = []
+		console.log(dataCalendar)
+		dataCalendar &&
+			Object.values(dataCalendar).forEach(item => {
+				aux.push({
+					id: item.weeklyId,
+					dayNumber: new Date(item.date).getDay(),
+					dayName: dayName(new Date(item.date).getDay()),
+					state: dayState(item.weeklyStatus).state,
+					detail: dayState(item.weeklyStatus).detail
+				})
+			})
+		setCalendar(aux)
+		console.log(aux)
 	}, [isSuccessCalendar])
 
 	return (
@@ -88,7 +137,7 @@ const ProfileScreen = () => {
 					justifyContent: "center",
 				}}
 			>
-				<WeeklySchedule />
+				<WeeklySchedule dayList={calendar} />
 			</StyledBox>
 		</StyledScreen>
 	);
