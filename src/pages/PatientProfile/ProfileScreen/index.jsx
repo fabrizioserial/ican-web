@@ -8,13 +8,14 @@ import SocialAndPhysicalActivitiesChart from '../../../components/SocialAndPhysi
 import PatientProfileCard from '../../../components/PatientProfileCard';
 import WeeklySchedule from '../../Profile/WeeklySchedule';
 import { useParams } from 'react-router';
-import { useLazyGetAppetiteHydrationQuery, useLazyGetPatientDataQuery, useLazyGetSocialPhysicalQuery } from '../../../redux/api/patientApi';
+import { useLazyGetAppetiteHydrationQuery, useLazyGetCalendarQuery, useLazyGetPatientDataQuery, useLazyGetSocialPhysicalQuery } from '../../../redux/api/patientApi';
 
 const ProfileScreen = () => {
 	const { patientId } = useParams()
 	const [refetchPatientData, { data: dataPatient, isSuccess: isSuccessPatient }] = useLazyGetPatientDataQuery()
 	const [refetchAppetiteHydration, { data: dataAppetiteHydration, isSuccess: isSuccessAppetiteHydration }] = useLazyGetAppetiteHydrationQuery()
 	const [refetchSocialPhysical, { data: dataSocialPhysical, isSuccess: isSuccessSocialPhysical }] = useLazyGetSocialPhysicalQuery()
+	const [refetchCalendar, { data: dataCalendar, isSuccess: isSuccessCalendar }] = useLazyGetCalendarQuery()
 
 	const [appetiteHydration, setAppetiteHydration] = useState()
 	const [socialPhysical, setSocialPhysical] = useState()
@@ -23,6 +24,7 @@ const ProfileScreen = () => {
 		refetchPatientData(patientId)
 		refetchAppetiteHydration(patientId)
 		refetchSocialPhysical(patientId)
+		refetchCalendar(patientId)
 	}, [])
 
 	useEffect(() => {
@@ -47,30 +49,45 @@ const ProfileScreen = () => {
 		setSocialPhysical(aux)
 	}, [isSuccessSocialPhysical])
 
+	useEffect(() => {
+		console.log("calendar", dataCalendar)
+	}, [isSuccessCalendar])
+
 	return (
 		<StyledScreen
 			css={{
 				display: 'flex',
 				flexDirection: 'row',
-				padding: '30px 60px',
-				boxSizing: 'border-box',
-				justifyContent: 'center',
+				columnGap: 40,
+				padding: '30px',
 			}}
 		>
-			<StyledBox css={{ display: 'flex', flexDirection: 'column' }}>
+			<StyledBox
+				css={{
+					flex: 0.7,
+					flexDirection: 'column',
+				}}
+			>
 				<PatientProfileCard profileData={dataPatient} />
 				<StyledBox
 					css={{
 						display: 'flex',
 						flexDirection: 'row',
 						marginTop: '30px',
+						columnGap: 30
 					}}
 				>
 					<HungerAndThirstChart data={appetiteHydration} />
 					<SocialAndPhysicalActivitiesChart data={socialPhysical} />
 				</StyledBox>
 			</StyledBox>
-			<StyledBox css={{ paddingLeft: '59px' }}>
+			<StyledBox
+				css={{
+					flex: 0.2,
+					display: 'flex',
+					justifyContent: "center",
+				}}
+			>
 				<WeeklySchedule />
 			</StyledBox>
 		</StyledScreen>

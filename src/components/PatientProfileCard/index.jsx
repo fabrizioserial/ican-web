@@ -53,7 +53,8 @@ const PatientProfileCard = ({ profileData }) => {
 		<StyledBox>
 			<StyledCardHome
 				css={{
-					width: '1002px',
+					// width: '1002px',
+					width: '100%',
 					height: '193px',
 					background: theme.white,
 					borderRadius: '20px',

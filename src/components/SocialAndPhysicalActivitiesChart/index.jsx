@@ -12,16 +12,6 @@ import { SocialAndPhysicalConfig } from '../../utils/chartsConfigs';
 const SocialAndPhysicalActivitiesChart = ({ data }) => {
 	const theme = useTheme();
 	const [active, setActive] = useState('physical');
-	// const data = {
-	// 	'31/08': [1, 3],
-	// 	'1/09': [0, 1],
-	// 	'2/09': [2, 2],
-	// 	'3/09': [3, 1],
-	// 	'4/09': [1, 0],
-	// 	'5/09': [2, 1],
-	// 	'6/09': [1, 3],
-	// };
-
 	const options = useMemo(() => SocialAndPhysicalConfig(data ?? {}), [data ?? {}]);
 
 	const handleActividadFisica = () => {
@@ -45,9 +35,8 @@ const SocialAndPhysicalActivitiesChart = ({ data }) => {
 				display: 'flex',
 				flexDirection: 'column',
 				height: '270px',
-				width: '352px',
+				// width: '352px',
 				color: theme.oncoBlack,
-				marginLeft: '36px',
 			}}
 		>
 			<StyledBox
