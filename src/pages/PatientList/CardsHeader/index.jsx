@@ -1,12 +1,46 @@
 import WaitingListHeaderCard from './WaitingListCard';
 import PatientsHeaderCard from './HeaderCard';
-import { StyledBox } from '../../../common/styledCommonComponents';
-import React, { useState } from 'react';
+import {
+	StyledBox,
+	StyledPatientsListCard,
+} from '../../../common/styledCommonComponents';
+import React, { useEffect, useState } from 'react';
 import { PatientsListHeaderConfig } from '../../../utils/utils';
+import { usePatientsReportQuery } from '../../../redux/api/homeApi';
+import { StyledCircularProgress } from '../../../components/CustomCircularProgress/styles';
 
 const CardsHeader = () => {
-	const [headerCards, setHeaderCards] = useState(PatientsListHeaderConfig);
+	const [headerCards, setHeaderCards] = useState(['', '', '', '']);
 
+	const { data, isLoading } = usePatientsReportQuery();
+
+	useEffect(() => {
+		data &&
+			setHeaderCards([
+				<WaitingListHeaderCard />,
+				{
+					text: 'Pacientes Activos',
+					number: data?.active,
+					// positive: false,
+					// pillText: '-2',
+					// pillDetail: '4 pacientes que se volvieron inactivos',
+				},
+				{
+					text: 'Pacientes Totales',
+					number: data?.total,
+					// positive: true,
+					// pillText: '+4',
+					// pillDetail: '4 nuevos pacientes',
+				},
+				{
+					text: 'Pacientes en Tratamiento',
+					number: data?.inTreatment,
+					// positive: true,
+					// pillText: '+4',
+					// pillDetail: '4 nuevos pacientes en tratamiento ',
+				},
+			]);
+	}, [data]);
 	return (
 		<StyledBox
 			css={{
@@ -20,17 +54,35 @@ const CardsHeader = () => {
 				rowGap: '30px',
 			}}
 		>
-			<WaitingListHeaderCard />
-			{headerCards.map((item, index) => (
-				<PatientsHeaderCard
-					key={index}
-					text={item.text}
-					number={item.number}
-					positive={item.positive}
-					pillText={item.pillText}
-					pillDetail={item.pillDetail}
-				/>
-			))}
+			{isLoading
+				? headerCards.map((item) => (
+						<StyledPatientsListCard
+							css={{
+								display: 'flex',
+								justifyContent: 'center',
+								alignItems: 'center',
+								padding: '22px 24px',
+								flexDirection: 'row',
+								flex: 1,
+							}}
+						>
+							<StyledCircularProgress />
+						</StyledPatientsListCard>
+				  ))
+				: headerCards.map((item, index) =>
+						item?.text ? (
+							<PatientsHeaderCard
+								key={index}
+								text={item.text}
+								number={item.number}
+								positive={item.positive}
+								pillText={item.pillText}
+								pillDetail={item.pillDetail}
+							/>
+						) : (
+							item
+						),
+				  )}
 		</StyledBox>
 	);
 };
