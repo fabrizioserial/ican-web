@@ -22,13 +22,13 @@ import IconMemory from '../assets/IconMemory';
 import IconMiscellaneous from '../assets/IconMiscellaneous';
 import IconVisual from '../assets/IconVisual';
 import IconLove from '../assets/IconLove';
+import { StyledBox } from '../common/styledCommonComponents';
 
 export const ModalTypeEnum = {
 	WEEKLY_MODAL: 'WEEKLY_MODAL',
 	DAILY_MODAL: 'DAILY_MODAL',
 	TREATMENT_MODAL: 'TREATMENT_MODAL',
 };
-import { StyledBox } from '../common/styledCommonComponents';
 
 export const InputTypeEnum = {
 	BUTTON: 'BUTTON',

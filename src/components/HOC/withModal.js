@@ -30,7 +30,7 @@ export const withModal = (Component) => (props) => {
 			<>
 				<StyledBox
 					css={{
-						position: 'absolute',
+						position: 'fixed',
 						top: 0,
 						left: 0,
 						width: '100vw',
@@ -51,6 +51,7 @@ export const withModal = (Component) => (props) => {
 				display: 'flex',
 				justifyContent: 'center',
 				alignItems: 'center',
+				maxHeight: '100vh',
 			}}
 		>
 			<Component {...props} />

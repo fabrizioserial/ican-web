@@ -8,7 +8,7 @@ const Modal = ({ header, body, onClose }) => {
 	return (
 		<StyledBox
 			css={{
-				position: 'absolute',
+				position: 'fixed',
 				display: 'flex',
 				flexDirection: 'column',
 				width: '850px',
