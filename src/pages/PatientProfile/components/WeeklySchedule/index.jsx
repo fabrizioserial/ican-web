@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { StyledBox, StyledP } from '../../../common/styledCommonComponents';
-import CalendarIcon from '../../../assets/CalendarIcon';
-import BackIcon from '../../../assets/BackIcon';
+import { StyledBox, StyledP } from '../../../../common/styledCommonComponents';
+import CalendarIcon from '../../../../assets/CalendarIcon';
+import BackIcon from '../../../../assets/BackIcon';
 import DayCard from './DayCard';
-import { WeeklyScheduleConfig } from '../../../utils/utils';
-import Card from '../../../components/Card';
+import { WeeklyScheduleConfig } from '../../../../utils/utils';
+import Card from '../../../../components/Card';
 
 const WeeklySchedule = () => {
 	const [dayList, setDayList] = useState(WeeklyScheduleConfig);
@@ -12,8 +12,9 @@ const WeeklySchedule = () => {
 		<Card
 			title={'Agenda Semanal'}
 			icon={<CalendarIcon />}
-			width={'305px'}
-			height={'200px'}
+			width={305}
+			height={200}
+			align={'center'}
 		>
 			<>
 				<StyledBox>

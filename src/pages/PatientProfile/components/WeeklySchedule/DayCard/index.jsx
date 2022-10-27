@@ -1,5 +1,8 @@
 import React from 'react';
-import { StyledBox, StyledP } from '../../../../common/styledCommonComponents';
+import {
+	StyledBox,
+	StyledP,
+} from '../../../../../common/styledCommonComponents';
 import { useTheme } from 'styled-components';
 import ReactTooltip from 'react-tooltip';
 

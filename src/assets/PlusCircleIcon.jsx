@@ -1,6 +1,5 @@
 import React from 'react';
-
-const PlusCircelIcon = () => {
+const PillIcon = () => {
 	return (
 		<svg
 			width="17"
@@ -16,5 +15,4 @@ const PlusCircelIcon = () => {
 		</svg>
 	);
 };
-
-export default PlusCircelIcon;
+export default PillIcon;
