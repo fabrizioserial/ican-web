@@ -14,10 +14,34 @@ const PatientProfileCard = ({ profileData }) => {
 	const theme = useTheme();
 	const [age, setAge] = useState(new Date())
 	const [birthday, setBirthday] = useState()
+	const [gender, setGender] = useState()
+	const [status, setStatus] = useState()
 	const [buttonList, setButtonList] = useState(ProfileConfigButton);
+
+	const genderValue = (sex) => {
+		switch (sex) {
+			case 'Masculine':
+				return 'Masculino'
+			case 'Femenine':
+				return 'Femenino'
+			default:
+				break;
+		}
+	}
+
+	const statusValue = (state) => {
+		switch (state) {
+			case 'Accepted':
+				return 'Aceptado'
+			default:
+				break;
+		}
+	}
 
 	useEffect(() => {
 		setBirthday(new Date(profileData?.birthDate).getTime())
+		setGender(genderValue(profileData?.sex))
+		setStatus(statusValue(profileData?.status))
 	}, [profileData])
 
 	useEffect(() => {
@@ -47,6 +71,8 @@ const PatientProfileCard = ({ profileData }) => {
 						display: 'flex',
 						columnGap: '300px',
 						flexDirection: 'row',
+						width: '100%',
+						justifyContent: "space-between"
 					}}
 				>
 					<StyledBox
@@ -143,9 +169,9 @@ const PatientProfileCard = ({ profileData }) => {
 									}}
 								>
 									<ProfileDetailText text={age + ' años'} />
-									<ProfileDetailText text={profileData?.sex} />
+									<ProfileDetailText text={gender} />
 									<ProfileDetailText text={profileData?.phoneNumber} />
-									<ProfileDetailText text={profileData?.status} />
+									<ProfileDetailText text={status} />
 								</StyledBox>
 							</StyledBox>
 						</StyledBox>
@@ -153,23 +179,30 @@ const PatientProfileCard = ({ profileData }) => {
 
 					<StyledBox
 						css={{
-							display: 'flex',
-							flexDirection: 'column',
-							justifyContent: 'center',
-							alignItems: 'center',
-							flexWrap: 'wrap',
-							rowGap: '12px',
+							display: "flex",
+							justifyContent: 'flex-end'
 						}}
 					>
-						{buttonList.map((item, index) => (
-							<ProfileButton
-								text={item.text}
-								icon={item.icon}
-								color={item.color}
-								textColor={item.textColor}
-								key={index}
-							/>
-						))}
+						<StyledBox
+							css={{
+								display: 'flex',
+								flexDirection: 'column',
+								justifyContent: 'center',
+								alignItems: 'center',
+								flexWrap: 'wrap',
+								rowGap: '12px',
+							}}
+						>
+							{buttonList.map((item, index) => (
+								<ProfileButton
+									text={item.text}
+									icon={item.icon}
+									color={item.color}
+									textColor={item.textColor}
+									key={index}
+								/>
+							))}
+						</StyledBox>
 					</StyledBox>
 				</StyledBox>
 			</StyledCardHome>
