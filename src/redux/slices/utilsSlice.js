@@ -1,9 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ModalTypeEnum } from '../../utils/utils';
 
 const initialState = {
-	modalOpen: true,
-	modalType: ModalTypeEnum.WEEKLY_MODAL,
+	modalOpen: false,
+	modalType: undefined,
 };
 
 export const utilsSlice = createSlice({
