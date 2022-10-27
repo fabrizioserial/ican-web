@@ -8,11 +8,23 @@ export const patientApi = api.injectEndpoints({
                 method: 'GET',
             }),
         }),
+        getAppetiteHydration: builder.query({
+            query: (patientID) => ({
+                url: `/api/log/appetite-hydration/${patientID}`,
+                method: 'GET',
+            }),
+        }),
+        getSocialPhysical: builder.query({
+            query: (patientID) => ({
+                url: `/api/log/social-physical/${patientID}`,
+                method: 'GET',
+            }),
+        }),
     }),
 });
 
-export const { useLazyGetPatientDataQuery } = patientApi;
+export const { useLazyGetPatientDataQuery, useLazyGetAppetiteHydrationQuery, useLazyGetSocialPhysicalQuery } = patientApi;
 
 export const {
-    endpoints: { getPatientData },
+    endpoints: { getPatientData, getAppetiteHydration, getSocialPhysical },
 } = patientApi;
