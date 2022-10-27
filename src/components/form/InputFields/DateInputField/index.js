@@ -29,7 +29,7 @@ const DateInputField = ({
 			maxCharacters={10}
 			label={label}
 			placeholder={placeholder}
-			value={value}
+			value={value ? new Date(value)?.toISOString().split('T')[0] : value}
 			onChange={handleOnChange}
 		/>
 	);

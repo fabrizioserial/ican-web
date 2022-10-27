@@ -18,7 +18,6 @@ const Validation = () => {
 	] = useLazyGetPatientDataQuery()
 
 	useEffect(() => {
-		console.log(patientId)
 		refetch(patientId)
 	}, [])
 
@@ -28,6 +27,21 @@ const Validation = () => {
 		dispatch(setValue({ name, value: newValue }))
 	};
 
+	const handleSubmit = (values) => {
+		console.log(values)
+
+		// let biomarkers = []
+
+		// setPatientForm({
+		// 	userId: patientId,
+		// 	tumor: values.tumor,
+		// 	nodule: values.nodule,
+		// 	metastasis: values.metastasis,
+		// 	risk: values.risk,
+		// 	biomarkers: biomarkers,
+		// 	cancerId: values.cancerId
+		// })
+	};
 
 	return (
 		<StyledScreen css={{ justifyContent: 'center', flexDirection: "column" }}>
@@ -58,6 +72,7 @@ const Validation = () => {
 					<Button
 						text={'Guardar cambios'}
 						className="submit"
+						onClick={() => handleSubmit(values)}
 					/>
 				</StyledBox>
 			</StyledBox>

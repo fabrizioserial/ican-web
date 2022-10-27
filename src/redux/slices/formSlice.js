@@ -300,9 +300,9 @@ const initialState = {
             [
                 {
                     label: 'Números de Lineas de Tratamiento',
-                    type: 'text',
+                    type: 'number',
                     input_type: InputTypeEnum.TEXTFIELD,
-                    // name: 'name',
+                    name: 'treatmentLine',
                 },
                 {
                     label: 'Progresión de la Enfermedad',
@@ -356,7 +356,7 @@ export const formSlice = createSlice({
                 id: biomarkers.length + 1,
                 input_type: InputTypeEnum.BIOMARKER_ROW,
                 names: [
-                    "biomarcador", "evaluación"
+                    "biomarker", "evaluation"
                 ]
             }
 
@@ -366,8 +366,8 @@ export const formSlice = createSlice({
             ...fixedRows
             ]
 
-            state.values = {
-                ...state.values, [`biomarcador${biomarkersToAdd.id}`]: "", [`evaluación${biomarkersToAdd.id}`]: ""
+            state.values.biomarkers = {
+                ...state.values.biomarkers, [biomarkersToAdd.id]: { [`biomarker${biomarkersToAdd.id}`]: "", [`evaluation${biomarkersToAdd.id}`]: "" }
             }
         },
         addRelapses: (state) => {
@@ -502,7 +502,6 @@ export const formSlice = createSlice({
             patientApi.endpoints.getPatientData.matchFulfilled,
             (state, action) => {
                 state.values = { ...state.values, ...action.payload }
-                console.log("state", state.values)
             },
         );
     },
