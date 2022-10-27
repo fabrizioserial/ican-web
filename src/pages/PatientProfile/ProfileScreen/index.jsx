@@ -6,9 +6,10 @@ import {
 import HungerAndThirstChart from '../../../components/HungerAndThirstChart';
 import SocialAndPhysicalActivitiesChart from '../../../components/SocialAndPhysicalActivitiesChart';
 import PatientProfileCard from '../../../components/PatientProfileCard';
-import WeeklySchedule from '../../Profile/WeeklySchedule';
 import { useParams } from 'react-router';
 import { useLazyGetAppetiteHydrationQuery, useLazyGetCalendarQuery, useLazyGetPatientDataQuery, useLazyGetSocialPhysicalQuery } from '../../../redux/api/patientApi';
+import WeeklySchedule from '../components/WeeklySchedule';
+import TreatmentSection from '../components/TreatmentSection';
 
 const ProfileScreen = () => {
 	const { patientId } = useParams()
@@ -130,12 +131,15 @@ const ProfileScreen = () => {
 			</StyledBox>
 			<StyledBox
 				css={{
-					flex: 0.2,
+					paddingLeft: '59px',
 					display: 'flex',
-					justifyContent: "center",
+					flexDirection: 'column',
+					flexWrap: 'wrap',
+					rowGap: '21px',
 				}}
 			>
 				<WeeklySchedule dayList={calendar} />
+				<TreatmentSection />
 			</StyledBox>
 		</StyledScreen>
 	);

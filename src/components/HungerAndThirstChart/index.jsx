@@ -11,7 +11,8 @@ const HungerAndThirstChart = ({ data }) => {
 		<Card
 			title={'Apetito e Hidratación'}
 			icon={<HungryIcon />}
-			height={268}
+			width={'618px'}
+			height={'268px'}
 		>
 			<Chart
 				options={options.options}

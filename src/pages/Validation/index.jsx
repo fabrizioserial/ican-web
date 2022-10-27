@@ -2,31 +2,62 @@ import React, { useState } from 'react';
 import { StyledBox, StyledScreen } from '../../common/styledCommonComponents';
 import { FormsSqueleton, validationFormValues } from '../../utils/utils';
 import { FormBuilder } from '../../components/form/InputFields/utils';
+import Button from '../../common/components/button/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { setValue } from '../../redux/slices/formSlice';
 
 const Validation = () => {
-	const [sections] = useState(FormsSqueleton);
-	const [values, setValues] = useState(validationFormValues);
+	// const [sections, setSections] = useState(FormsSqueleton);
+	const {
+		patients,
+		hospital,
+		biomarkers,
+		relapses,
+		state,
+		treatment,
+		values,
+	} = useSelector((state) => state.formSlice);
+	const dispatch = useDispatch();
+	// const [values, setValues] = useState(validationFormValues);
 
 	// set values of validationFormValues
 	const handleOnChange = (name, newValue) => {
 		if (!name || newValue === undefined) return;
-		setValues({
-			...values,
-			[name]: newValue,
-		});
+		dispatch(setValue({ name, value: newValue }));
 	};
 
 	return (
-		<StyledScreen css={{ display: 'flex', justifyContent: 'center' }}>
+		<StyledScreen css={{ justifyContent: 'center', flexDirection: 'column' }}>
 			<StyledBox
 				css={{
-					width: '800px',
-					backgroundColor: 'white',
-					borderRadius: '20px',
 					margin: '50px 0',
+					display: 'flex',
+					justifyContent: 'center',
+					alignSelf: 'center',
+					flexDirection: 'column',
 				}}
 			>
-				{FormBuilder(sections, values, handleOnChange)}
+				<StyledBox
+					css={{
+						backgroundColor: 'white',
+						width: '800px',
+						borderRadius: '20px',
+						margin: '50px',
+					}}
+				>
+					{FormBuilder(
+						[patients, hospital, biomarkers, relapses, state, treatment],
+						values,
+						handleOnChange,
+					)}
+				</StyledBox>
+				<StyledBox
+					css={{
+						margin: '0 50px',
+					}}
+				>
+					<Button text={'Guardar cambios'} className="submit" />
+				</StyledBox>
 			</StyledBox>
 		</StyledScreen>
 	);

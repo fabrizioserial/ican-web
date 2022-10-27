@@ -8,22 +8,22 @@ const TaskContainer = ({ quantity, title, color, progress = 0, icon }) => {
 
 	useEffect(() => {
 		switch (color) {
-			case 'blue':
+			case 'green':
 				setColors({
-					background: 'oncoLightBlue',
-					colorBar: 'oncoLightBlue2',
-					mainColor: 'oncoBlue',
-					titleColor: 'oncoBlueTitle',
-					subtitleColor: 'oncoBlueSubtitle',
+					background: 'oncoLightGreen',
+					colorBar: 'oncoLightGreen2',
+					mainColor: 'oncoGreen',
+					titleColor: 'oncoGreenTitle',
+					subtitleColor: 'oncoGreenSubtitle',
 				});
 				break;
-			case 'purple':
+			case 'pink':
 				setColors({
-					background: 'oncoLightPurple',
-					colorBar: 'oncoLightPurple2',
-					mainColor: 'OncoPurple',
-					titleColor: 'oncoPurpleTitle',
-					subtitleColor: 'oncoPurpleSubtitle',
+					background: 'oncoLightPink',
+					colorBar: 'oncoLightPink2',
+					mainColor: 'oncoPink',
+					titleColor: 'oncoPinkTitle',
+					subtitleColor: 'oncoPinkSubtitle',
 				});
 				break;
 			case 'orange':

@@ -20,6 +20,7 @@ export const theme = {
 	oncoGrey: '#F8F9FA',
 	oncoBlack: '#5F5F5F',
 	oncoGrey2: '#A3A3A3',
+	oncoGrey3: '#e5e5e5',
 
 	oncoLightBlue: '#DFE8FF',
 	oncoLightBlue2: '#CDDCFF',
@@ -38,6 +39,19 @@ export const theme = {
 	oncoOrange: '#ECA485',
 	oncoOrangeTitle: '#7E4228',
 	oncoOrangeSubtitle: 'rgba(126, 66, 40, 0.4)',
+	oncoLightOrange3: 'rgba(234,128,83,0.3)',
+
+	oncoPink: '#CD7DE3',
+	oncoLightPink: '#F6EAFA',
+	oncoLightPink2: 'rgba(205, 125, 227, 0.2)',
+	oncoPinkTitle: '#76288B',
+	oncoPinkSubtitle: '#785582',
+
+	oncoGreen: '#6AD18D',
+	oncoLightGreen: 'rgba(220, 245, 229, 1)',
+	oncoLightGreen2: 'rgba(106, 209, 141, 0.2)',
+	oncoGreenTitle: '#1D6535',
+	oncoGreenSubtitle: '#476651',
 
 	oncoDarkGrey: '#555555',
 	oncoNavbarSelection: 'rgba(175, 126, 255, 0.08)',
