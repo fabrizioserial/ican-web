@@ -44,7 +44,7 @@ const CustomAccordionWeekly = ({
 					<StyledP
 						css={{
 							fontSize: '12px',
-							color: theme.oncoGrey3,
+							color: theme.oncoGrey4,
 							fontWeight: 400,
 						}}
 					>
