@@ -87,7 +87,6 @@ const ProfileScreen = () => {
 
 	useEffect(() => {
 		let aux = []
-		console.log(dataCalendar)
 		dataCalendar &&
 			Object.values(dataCalendar).forEach(item => {
 				aux.push({
@@ -99,7 +98,6 @@ const ProfileScreen = () => {
 				})
 			})
 		setCalendar(aux)
-		console.log(aux)
 	}, [isSuccessCalendar])
 
 	return (

@@ -7,8 +7,6 @@ import { WeeklyScheduleConfig } from '../../../utils/utils';
 import Card from '../../../components/Card';
 
 const WeeklySchedule = ({ dayList }) => {
-	// const [dayList, setDayList] = useState(WeeklyScheduleConfig);
-	console.log("day", dayList)
 	return (
 		<Card
 			title={'Agenda Semanal'}
@@ -90,7 +88,7 @@ const WeeklySchedule = ({ dayList }) => {
 						padding: '20px 18px',
 					}}
 				>
-					{dayList.map((item, index) => (
+					{dayList?.map((item, index) => (
 						<DayCard
 							key={index}
 							index={index}
