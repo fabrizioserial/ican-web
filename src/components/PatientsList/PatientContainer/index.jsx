@@ -8,11 +8,12 @@ import {
 import { StyledPatientContainer } from './styles';
 import { getProfileImageFromName } from '../../../utils/utils';
 
-const PatientContainer = ({ name, surename, cancerType, css }) => {
+const PatientContainer = ({ name, surename, cancerType, css, patientId }) => {
+	const navigate = useNavigate()
 	return (
-		<StyledPatientContainer css={css} onClick={() => console.log('asd')}>
+		< StyledPatientContainer css={css} onClick={() => navigate(`/profile/${patientId}`)}>
 			{getProfileImageFromName(name, surename, { width: 38, height: 38 })}
-			<StyledBox
+			< StyledBox
 				css={{
 					display: 'flex',
 					flexDirection: 'column',
@@ -38,7 +39,7 @@ const PatientContainer = ({ name, surename, cancerType, css }) => {
 				>
 					{cancerType}
 				</StyledP>
-			</StyledBox>
+			</StyledBox >
 		</StyledPatientContainer >
 	);
 };

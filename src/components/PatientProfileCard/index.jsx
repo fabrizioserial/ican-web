@@ -86,19 +86,20 @@ const PatientProfileCard = ({ profileData }) => {
 							columnGap: '20px',
 						}}
 					>
-						<StyledBox
-							css={{
-								display: 'flex',
-								flexDirection: 'column',
-								alignItems: 'top',
-							}}
-						>
-							{getProfileImageFromName('Agustin', 'Von Staweski', {
-								width: 80,
-								height: 80,
-								fontSize: '25px',
-							})}
-						</StyledBox>
+						{profileData &&
+							<StyledBox
+								css={{
+									display: 'flex',
+									flexDirection: 'column',
+									alignItems: 'top',
+								}}
+							>
+								{getProfileImageFromName(profileData.name, profileData.surname, {
+									width: 80,
+									height: 80,
+									fontSize: '25px',
+								})}
+							</StyledBox>}
 						<StyledBox
 							css={{
 								display: 'flex',
