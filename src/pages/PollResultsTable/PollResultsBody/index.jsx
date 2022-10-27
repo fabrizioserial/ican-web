@@ -12,43 +12,43 @@ const PollResultsBody = () => {
         {
             date:" 14 de noviembre 2022" ,
             status: 'Completed',
-            icon: () => <DailyIcon/>,
+            icon: <DailyIcon/>,
 
         },
         {
             date:" 14 de noviembre 2022" ,
             status: 'Completed',
-            icon: () => <WeeklyIcon/>,
+            icon: <WeeklyIcon/>,
         },
         {
             date:" 14 de noviembre 2022" ,
             status: 'Completed',
-            icon: () => <DailyIcon/>,
+            icon: <DailyIcon/>,
         },
         {
             date:" 14 de noviembre 2022" ,
             status: 'Completed',
-            icon: () => <WeeklyIcon/>,
+            icon:  <WeeklyIcon/>,
         },
         {
             date:" 14 de noviembre 2022" ,
             status: 'Completed',
-            icon: () => <DailyIcon/>,
+            icon: <DailyIcon/>,
         },
         {
             date:" 14 de noviembre 2022" ,
             status: 'Completed',
-            icon: () => <WeeklyIcon/>,
+            icon: <WeeklyIcon/>,
         },
         {
             date:" 14 de noviembre 2022" ,
             status: 'Completed',
-            icon: () => <WeeklyIcon/>,
+            icon: <WeeklyIcon/>,
         },
         {
             date:" 14 de noviembre 2022" ,
             status: 'Completed',
-            icon: () => <DailyIcon/>,
+            icon:  <DailyIcon/>,
         },
     ]);
 
@@ -58,13 +58,13 @@ const PollResultsBody = () => {
         <TableBody>
             {body.map((bodyItem) => (
                 <StyledBodyRow>
-                    <StyledBodyCell with={'5%'} style={{ paddingLeft: '30px' }}>
+                    <StyledBodyCell with={'20%'} style={{ paddingLeft: '30px' }}>
                         {bodyItem.icon}
                     </StyledBodyCell>
-                    <StyledBodyCell width={'12%'}>
+                    <StyledBodyCell width={'40%'}>
                         {bodyItem.status}
                     </StyledBodyCell>
-                    <StyledBodyCell width={'14%'}>
+                    <StyledBodyCell width={'40%'}>
                         {bodyItem.date}
                     </StyledBodyCell>
 

@@ -18,6 +18,7 @@ import SearchBar from "../PatientList/SearchBar";
 import CardsHeader from "../PatientList/CardsHeader";
 import PollResultsHeader from "./PollResultsHeader";
 import PollResultsBody from "./PollResultsBody";
+import PollResultsBottom from "./PollResultsBottom";
 
 const PollResultsScreen = () => {
     return (
@@ -62,7 +63,7 @@ const PollResultsScreen = () => {
                         <PollResultsHeader />
                         <PollResultsBody />
                     </Table>
-                    <PatientListBottom />
+                    <PollResultsBottom />
                 </StyledBox>
             </StyledBox>
         </StyledScreen>

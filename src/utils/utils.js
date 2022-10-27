@@ -13,6 +13,7 @@ import SettingsIcon from '../assets/SettingsIcon';
 import CallIcon from '../assets/CallIcon';
 import FormIcon from '../assets/FormIcon';
 import { theme } from '../common/theme';
+import {StyledBox} from "../common/styledCommonComponents";
 
 export const InputTypeEnum = {
 	TEXTFIELD: 'TEXTFIELD',
@@ -623,10 +624,32 @@ export const textColorStatus = {
 	innactive: '#5F5F5F',
 	in_progress: '#EA8053',
 };
+
+
 export const backgroundColorStatus = {
 	active: '#BEE8CF',
 	innactive: '#C4C4C4',
 	in_progress: '#F9E0D6',
+};
+
+
+ export const renderStatusPill = (type) => {
+	return (
+		<StyledBox
+			css={{
+				color: textColorStatus[type],
+				backgroundColor: backgroundColorStatus[type],
+				borderRadius: '10px',
+				width: '74px',
+				height: '24px',
+				display: 'flex',
+				justifyContent: 'center',
+				alignItems: 'center',
+			}}
+		>
+			{getUserStatusLabel(type)}
+		</StyledBox>
+	);
 };
 
 export const PollResultsHeaderConst = [

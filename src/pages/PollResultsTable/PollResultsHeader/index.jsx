@@ -1,6 +1,6 @@
 import {Box, TableCell, TableHead, TableRow, TableSortLabel} from "@material-ui/core";
 import {PollResultsHeaderConst} from "../../../utils/utils";
-import {StyledBox} from "../../../common/styledCommonComponents";
+import {StyledBox, StyledP} from "../../../common/styledCommonComponents";
 import ArrowOrderIcon from "../../../assets/ArrowOrderIcon";
 import {visuallyHidden} from "@mui/utils";
 import React from "react";
@@ -27,15 +27,40 @@ const PollResultsHeader = () => {
     return (
         <TableHead>
             <StyledTableHeader>
+                <StyledBox as={TableCell}/>
+                <StyledBox as={TableCell}>
 
-                    <StyledBox
-    as={TableCell}
+                        <StyledP css={{
+                            width: "108px",
+                            height: "13px",
+                            fontStyle: "normal",
+                            fontWeight: 500,
+                            fontSize: "11px",
+                            lineHeight: "13px",
+                            display: "flex",
+                            alignItems: "center",
+                            color: "#9357F7",
+                        }}> Fecha de realización</StyledP>
 
-    />
-
+                    </StyledBox>
+                <StyledBox as={TableCell}>
+                    <StyledP   css={{
+                        width: "37px",
+                        height: "13px",
+                        left: "1352px",
+                        top: "166px",
+                        fontStyle: "normal",
+                        fontWeight: "500",
+                        fontSize: "11px",
+                        lineHeight: "13px",
+                        display: "flex",
+                        alignItems: "center",
+                        color: "#9357F7",
+                    }}>estado</StyledP>
+                </StyledBox>
 
             </StyledTableHeader>
-            {}
+
         </TableHead>
     );
 };

@@ -11,7 +11,7 @@ import Validation from './pages/Validation';
 import ProfileScreen from './pages/PatientProfile/ProfileScreen';
 import Wrapper from './components/Navbar/Wrapper';
 import PatientListScreen from './pages/PatientList/PatientListScreen';
-import PollResultsScreen from "./pages/PollResultsTable/PollResultsScreen";
+import PollResultsScreen from "./pages/PollResultsTable";
 
 const App = () => {
 	const accessToken = useSelector((state) => state.authSlice.accessToken);
