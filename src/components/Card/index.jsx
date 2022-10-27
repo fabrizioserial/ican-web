@@ -12,14 +12,14 @@ import Chart from 'react-apexcharts';
 import React from 'react';
 import { useTheme } from 'styled-components';
 
-const Card = ({ icon, title, children, width, height,align }) => {
+const Card = ({ icon, title, children, width, height, align }) => {
 	const theme = useTheme();
 	return (
 		<StyledCardHome
 			lineColor={theme.itemBackground}
 			css={{
-				width: `${width}px !important`,
-				height: `${height}px !important`,
+				width: `${width} !important`,
+				height: `${height} !important`,
 				display: 'flex',
 				flexDirection: 'column',
 			}}
@@ -54,7 +54,7 @@ const Card = ({ icon, title, children, width, height,align }) => {
 					height: 'inherit',
 					display: 'flex',
 					justifyContent: align,
-					alignItems: "center",
+					alignItems: 'center',
 					borderTop: '1px solid #F0EDED',
 					flex: 1,
 					flexDirection: 'column',

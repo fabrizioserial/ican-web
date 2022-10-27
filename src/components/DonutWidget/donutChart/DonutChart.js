@@ -1,20 +1,16 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 import { StyledBox } from '../../../common/styledCommonComponents';
+import { useCancerStatisticsQuery } from '../../../redux/api/homeApi';
+import { CapitalizeText } from '../../../utils/utils';
 
 const DonutChart = () => {
-	const series = [54, 40, 30, 23, 16, 11, 10];
+	const { data } = useCancerStatisticsQuery();
+
+	const series = data?.tumors.map((tum) => tum.amount) ?? [];
 
 	const options = {
-		labels: [
-			'Mamas',
-			'Colon',
-			'Prostata',
-			'Pulmon',
-			'Cervix',
-			'Estomago',
-			'Otros',
-		],
+		labels: data?.tumors.map((tum) => CapitalizeText(tum.organ)) ?? [],
 		colors: [
 			'#80A2F9',
 			'#86D3A5',
@@ -29,6 +25,8 @@ const DonutChart = () => {
 		},
 		chart: {
 			background: '#fff',
+			height: '180px',
+			width: '180px',
 		},
 		legend: {
 			show: true,
@@ -42,7 +40,8 @@ const DonutChart = () => {
 				return [
 					seriesName,
 					'  ',
-					opts.w.globals.series[opts.seriesIndex] + '%',
+					(opts.w.globals.series[opts.seriesIndex] / data.total) * 100 +
+						'%',
 				];
 			},
 			labels: {
@@ -90,7 +89,7 @@ const DonutChart = () => {
 		yaxis: {
 			labels: {
 				formatter: function (val) {
-					return val + '%';
+					return (val / data?.total) * 100 + '%';
 				},
 			},
 		},
@@ -103,7 +102,7 @@ const DonutChart = () => {
 				color: '#fff !important',
 			}}
 		>
-			<Chart options={options} series={series} type="donut" />
+			<Chart options={options} series={series} type="donut" width={350} />
 		</StyledBox>
 	);
 };

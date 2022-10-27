@@ -9,11 +9,20 @@ export const homeApi = api.injectEndpoints({
 		patientsReport: builder.query({
 			query: () => ({ url: '/api/home/patients-statistics', method: 'GET' }),
 		}),
+		cancerStatistics: builder.query({
+			query: () => ({
+				url: '/api/cancer/statistics',
+			}),
+		}),
 	}),
 });
 
-export const { usePatientsQuery, usePatientsReportQuery } = homeApi;
+export const {
+	usePatientsQuery,
+	usePatientsReportQuery,
+	useCancerStatisticsQuery,
+} = homeApi;
 
 export const {
-	endpoints: { patients, patientsReport },
+	endpoints: { patients, patientsReport, cancerStatistics },
 } = homeApi;

@@ -20,6 +20,7 @@ export const theme = {
 	oncoGrey: '#F8F9FA',
 	oncoBlack: '#5F5F5F',
 	oncoGrey2: '#A3A3A3',
+	oncoGrey3: '#e5e5e5',
 
 	oncoLightBlue: '#DFE8FF',
 	oncoLightBlue2: '#CDDCFF',
@@ -38,6 +39,7 @@ export const theme = {
 	oncoOrange: '#ECA485',
 	oncoOrangeTitle: '#7E4228',
 	oncoOrangeSubtitle: 'rgba(126, 66, 40, 0.4)',
+	oncoLightOrange3: 'rgba(234,128,83,0.3)',
 
 	oncoDarkGrey: '#555555',
 	oncoNavbarSelection: 'rgba(175, 126, 255, 0.08)',
