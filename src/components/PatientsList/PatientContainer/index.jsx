@@ -31,10 +31,22 @@ const PatientContainer = ({ name, surename, cancerType, css }) => {
 					justifyContent: 'space-around',
 				}}
 			>
-				<StyledP css={{ fontWeight: 500, fontSize: '16px' }}>
+				<StyledP
+					css={{
+						fontWeight: 500,
+						fontSize: '16px',
+						textTransform: 'capitalize',
+					}}
+				>
 					{name + ' ' + surename}
 				</StyledP>
-				<StyledP css={{ fontWeight: 200, fontSize: '10px' }}>
+				<StyledP
+					css={{
+						fontWeight: 200,
+						fontSize: '10px',
+						textTransform: 'capitalize',
+					}}
+				>
 					{cancerType}
 				</StyledP>
 			</StyledBox>
