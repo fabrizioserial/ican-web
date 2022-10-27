@@ -1,76 +1,65 @@
-import React, { useState } from 'react';
-import { TableBody, TableCell, TableRow } from '@material-ui/core';
-import { StyledBodyCell, StyledBodyRow, StyledUserStatus } from './styles';
-import {
-    backgroundColorStatus,
-    getUserStatusLabel,
-    textColorStatus,
-} from '../../../utils/utils';
-import { StyledBox, StyledImg } from '../../../common/styledCommonComponents';
+import React, {useState} from "react";
+import DailyIcon from "../../../assets/DailyIcon";
+import WeeklyIcon from "../../../assets/WeeklyIcon";
+import {StyledBox} from "../../../common/styledCommonComponents";
+import {backgroundColorStatus, textColorStatus} from "../../../utils/utils";
+import TableBody from "@material-ui/core/TableBody";
+import {StyledBodyCell, StyledBodyRow} from "../../PatientList/PatientListBody/styles";
+
 
 const PollResultsBody = () => {
     const [body, setBody] = useState([
         {
             date:" 14 de noviembre 2022" ,
             status: 'Completed',
-            icon:
+            icon: () => <DailyIcon/>,
 
         },
         {
             date:" 14 de noviembre 2022" ,
             status: 'Completed',
+            icon: () => <WeeklyIcon/>,
         },
         {
             date:" 14 de noviembre 2022" ,
             status: 'Completed',
+            icon: () => <DailyIcon/>,
         },
         {
             date:" 14 de noviembre 2022" ,
             status: 'Completed',
+            icon: () => <WeeklyIcon/>,
         },
         {
             date:" 14 de noviembre 2022" ,
             status: 'Completed',
+            icon: () => <DailyIcon/>,
         },
         {
             date:" 14 de noviembre 2022" ,
             status: 'Completed',
+            icon: () => <WeeklyIcon/>,
         },
         {
             date:" 14 de noviembre 2022" ,
             status: 'Completed',
+            icon: () => <WeeklyIcon/>,
         },
         {
             date:" 14 de noviembre 2022" ,
             status: 'Completed',
+            icon: () => <DailyIcon/>,
         },
     ]);
 
-    const PollResultsStatus = (type) => {
-        return (
-            <StyledBox
-                css={{
-                    color: textColorStatus[type],
-                    backgroundColor: backgroundColorStatus[type],
-                    borderRadius: '10px',
-                    width: '74px',
-                    height: '24px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-            >
-                {getUserStatusLabel(type)}
-            </StyledBox>
-        );
-    };
+
 
     return (
         <TableBody>
             {body.map((bodyItem) => (
                 <StyledBodyRow>
                     <StyledBodyCell with={'5%'} style={{ paddingLeft: '30px' }}>
-
+                        {bodyItem.icon}
                     </StyledBodyCell>
                     <StyledBodyCell width={'12%'}>
                         {bodyItem.status}
@@ -85,4 +74,4 @@ const PollResultsBody = () => {
     );
 };
 
-export default PatientListBody;
+export default PollResultsBody;

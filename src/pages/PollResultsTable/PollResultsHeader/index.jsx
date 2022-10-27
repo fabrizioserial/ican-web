@@ -9,7 +9,7 @@ import styled from "styled-components";
 
 
 const PollResultsHeader = () => {
-    const sortColumn = () => {};
+
 
     const StyledTableHeader = styled(TableRow)`
 	background-color: #f6f2ff;
@@ -30,22 +30,7 @@ const PollResultsHeader = () => {
 
                     <StyledBox
     as={TableCell}
-    css={{
-        color: '#9357f7 !important',
-        borderColor: '#efe8ff',
-        height: '65px',
-        boxSizing: 'border-box',
-        borderBottomColor: 'rgba(225, 209, 252, 0.22) !important',
-    }}
-    sortDirection={'asc'}
-    key={'header-' + index}
-    style={{
-        paddingLeft: index === 0 ? '30px' : 'auto',
-        paddingRight:
-            index === PollResultsHeaderConst.length
-                ? '30px'
-                : 'auto',
-    }}
+
     />
 
 
