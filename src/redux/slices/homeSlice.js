@@ -14,6 +14,7 @@ const initialState = {
 		pending: 0,
 		inTreatment: 0,
 	},
+	weekly: [],
 };
 
 export const homeSlice = createSlice({
@@ -34,6 +35,26 @@ export const homeSlice = createSlice({
 				homeApi.endpoints.patientsReport.matchFulfilled,
 				(state, { payload }) => {
 					state.weeklyGeneralPatientsReport = payload;
+				},
+			)
+
+			.addMatcher(
+				homeApi.endpoints.weeklyQuestions.matchFulfilled,
+				(state, action) => {
+					const newWeekly = action.payload.map((category) => ({
+						id: category.id,
+						name: category.name,
+						symptoms: category.weeklySubCategories.map((symp) => ({
+							id: symp.id,
+							name: symp.name,
+							questions: symp.weeklyQuestions.map((question) => ({
+								id: question.id,
+								type: question.type,
+								value: undefined,
+							})),
+						})),
+					}));
+					state.weekly = newWeekly;
 				},
 			);
 	},

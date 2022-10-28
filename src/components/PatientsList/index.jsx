@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTheme } from 'styled-components';
 import {
 	StyledBox,
@@ -13,6 +13,7 @@ import { StyledCircularProgress } from '../CustomCircularProgress/styles';
 const PatientsList = () => {
 	const theme = useTheme();
 	const { data, isLoading } = usePatientsListQuery();
+
 	return (
 		<StyledCardHome
 			css={{
@@ -87,6 +88,7 @@ const PatientsList = () => {
 											name={patient.name}
 											surename={patient.surname}
 											cancerType={patient.organ}
+											patientId={patient.id}
 										/>
 									))
 							: data?.patients
@@ -97,6 +99,7 @@ const PatientsList = () => {
 											name={patient.name}
 											surename={patient.surname}
 											cancerType={patient.organ}
+											patientId={patient.id}
 										/>
 									))}
 					</StyledBox>

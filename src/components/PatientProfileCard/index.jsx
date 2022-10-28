@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
 import {
 	getProfileImageFromName,
@@ -12,15 +12,57 @@ import {
 } from '../../common/styledCommonComponents';
 import ProfileDetailText from '../../pages/PatientProfile/components/ProfileText';
 import ProfileButton from '../../pages/PatientProfile/components/ProfileButtons';
+import { useParams } from 'react-router';
+import { useLazyGetPatientDataQuery } from '../../redux/api/patientApi';
+import { StyledCircularProgress } from '../CustomCircularProgress/styles';
 
 const PatientProfileCard = () => {
 	const theme = useTheme();
-	const [buttonList, setButtonList] = useState(ProfileConfigButton);
+	const [age, setAge] = useState(new Date());
+	const [birthday, setBirthday] = useState();
+	const [buttonList] = useState(ProfileConfigButton);
+	const { patientId } = useParams();
+	const [refetchPatientData, { data: dataPatient, isSuccess, isLoading }] =
+		useLazyGetPatientDataQuery();
+
+	const genderValue = (sex) => {
+		switch (sex) {
+			case 'Masculine':
+				return 'Masculino';
+			case 'Femenine':
+				return 'Femenino';
+			default:
+				break;
+		}
+	};
+
+	const statusValue = (state) => {
+		switch (state) {
+			case 'Accepted':
+				return 'Aceptado';
+			default:
+				break;
+		}
+	};
+
+	useEffect(() => {
+		refetchPatientData(patientId);
+	}, [patientId]);
+
+	useEffect(() => {
+		setBirthday(new Date(dataPatient?.birthDate).getTime());
+	}, [dataPatient]);
+
+	useEffect(() => {
+		let aux = Date.now() - birthday;
+		setAge(new Date(aux).getFullYear() - 1970);
+	}, [birthday]);
+
 	return (
-		<StyledBox>
+		<StyledBox css={{ maxWidth: '948px' }}>
 			<StyledCardHome
 				css={{
-					width: '1002px',
+					width: '100%',
 					height: '193px',
 					background: theme.white,
 					borderRadius: '20px',
@@ -33,122 +75,163 @@ const PatientProfileCard = () => {
 					boxSizing: 'border-box',
 				}}
 			>
-				<StyledBox
-					css={{
-						display: 'flex',
-						columnGap: '300px',
-						flexDirection: 'row',
-					}}
-				>
+				{isLoading ? (
 					<StyledBox
 						css={{
 							display: 'flex',
-							flexDirection: 'row',
-							columnGap: '20px',
+							justifyContent: 'center',
+							alignItems: 'center',
+							height: '100%',
+							width: '100%',
 						}}
 					>
-						<StyledBox
-							css={{
-								display: 'flex',
-								flexDirection: 'column',
-								alignItems: 'top',
-							}}
-						>
-							{getProfileImageFromName('Agustin', 'Von Staweski', {
-								width: 80,
-								height: 80,
-								fontSize: '25px',
-							})}
-						</StyledBox>
+						<StyledCircularProgress />
+					</StyledBox>
+				) : (
+					<StyledBox
+						css={{
+							display: 'flex',
+							columnGap: '300px',
+							flexDirection: 'row',
+							width: '100%',
+							justifyContent: 'space-between',
+						}}
+					>
 						<StyledBox
 							css={{
 								display: 'flex',
 								flexDirection: 'row',
-								justifyContent: 'flex-start',
-								alignSelf: 'top',
-								flexWrap: 'wrap',
-								rowGap: '10px',
+								columnGap: '20px',
 							}}
 						>
-							<StyledH3
-								css={{
-									fontStyle: 'normal',
-									fontWeight: 400,
-									fontSize: '32px',
-									display: 'flex',
-									flexDirection: 'row',
-									alignItems: 'top',
-									justifyContent: 'flex-start',
-									alignSelf: 'top',
-									margin: 0,
-									whiteSpace: 'nowrap',
-									color: theme.oncoBlack,
-								}}
-							>
-								Agustin Von Staweski
-							</StyledH3>
-
+							{dataPatient && (
+								<StyledBox
+									css={{
+										display: 'flex',
+										flexDirection: 'column',
+										alignItems: 'top',
+									}}
+								>
+									{getProfileImageFromName(
+										dataPatient.name,
+										dataPatient.surname,
+										{
+											width: 80,
+											height: 80,
+											fontSize: '25px',
+										},
+									)}
+								</StyledBox>
+							)}
 							<StyledBox
 								css={{
 									display: 'flex',
 									flexDirection: 'row',
-									alignItems: 'top',
+									justifyContent: 'flex-start',
+									alignSelf: 'top',
 									flexWrap: 'wrap',
 									rowGap: '10px',
-									columnGap: '15px',
 								}}
 							>
 								<StyledBox
 									css={{
-										display: 'flex',
-										flexDirection: 'column',
-										flexWrap: 'wrap',
-										rowGap: '12px',
+										width: '100%',
 									}}
 								>
-									<ProfileDetailText text={'Edad:'} />
-									<ProfileDetailText text={'Sexo:'} />
-									<ProfileDetailText text={'Nro:'} />
-									<ProfileDetailText text={'Estado:'} />
+									<StyledH3
+										css={{
+											fontStyle: 'normal',
+											fontWeight: 400,
+											fontSize: '32px',
+											display: 'flex',
+											flexDirection: 'row',
+											alignItems: 'top',
+											justifyContent: 'flex-start',
+											alignSelf: 'top',
+											margin: 0,
+											whiteSpace: 'nowrap',
+											color: theme.oncoBlack,
+										}}
+									>
+										{dataPatient?.name + ' ' + dataPatient?.surname}
+									</StyledH3>
 								</StyledBox>
+
 								<StyledBox
 									css={{
 										display: 'flex',
-										flexDirection: 'column',
+										flexDirection: 'row',
+										alignItems: 'top',
 										flexWrap: 'wrap',
-										rowGap: '12px',
+										rowGap: '10px',
+										columnGap: '15px',
 									}}
 								>
-									<ProfileDetailText text={'52 años'} />
-									<ProfileDetailText text={'Masculino'} />
-									<ProfileDetailText text={'12353784863'} />
-									<ProfileDetailText text={'Activo'} />
+									<StyledBox
+										css={{
+											display: 'flex',
+											flexDirection: 'column',
+											flexWrap: 'wrap',
+											rowGap: '12px',
+										}}
+									>
+										<ProfileDetailText text={'Edad:'} />
+										<ProfileDetailText text={'Sexo:'} />
+										<ProfileDetailText text={'Nro:'} />
+										<ProfileDetailText text={'Estado:'} />
+									</StyledBox>
+									<StyledBox
+										css={{
+											display: 'flex',
+											flexDirection: 'column',
+											flexWrap: 'wrap',
+											rowGap: '12px',
+										}}
+									>
+										<ProfileDetailText text={age + ' años'} />
+										<ProfileDetailText
+											text={genderValue(dataPatient?.sex)}
+										/>
+										<ProfileDetailText
+											text={dataPatient?.phoneNumber}
+										/>
+										<ProfileDetailText
+											text={statusValue(dataPatient?.status)}
+										/>
+									</StyledBox>
 								</StyledBox>
 							</StyledBox>
 						</StyledBox>
-					</StyledBox>
 
-					<StyledBox
-						css={{
-							display: 'flex',
-							flexDirection: 'column',
-							justifyContent: 'center',
-							alignItems: 'center',
-							flexWrap: 'wrap',
-							rowGap: '12px',
-						}}
-					>
-						{buttonList.map((item, index) => (
-							<ProfileButton
-								text={item.text}
-								icon={item.icon}
-								color={item.color}
-								textColor={item.textColor}
-								key={index}
-							/>
-						))}
+						<StyledBox
+							css={{
+								display: 'flex',
+								justifyContent: 'flex-end',
+							}}
+						>
+							<StyledBox
+								css={{
+									display: 'flex',
+									flexDirection: 'column',
+									justifyContent: 'center',
+									alignItems: 'center',
+									flexWrap: 'wrap',
+									rowGap: '12px',
+								}}
+							>
+								{buttonList.map((item, index) => (
+									<ProfileButton
+										text={item.text}
+										icon={item.icon}
+										color={item.color}
+										textColor={item.textColor}
+										key={index}
+									/>
+								))}
+							</StyledBox>
+						</StyledBox>
 					</StyledBox>
-				</StyledBox>
+				)}
 			</StyledCardHome>
 		</StyledBox>
 	);

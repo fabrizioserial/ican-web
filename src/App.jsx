@@ -11,6 +11,7 @@ import Validation from './pages/Validation';
 import ProfileScreen from './pages/PatientProfile/ProfileScreen';
 import Wrapper from './components/Navbar/Wrapper';
 import PatientListScreen from './pages/PatientList/PatientListScreen';
+import { withModal } from './components/HOC/withModal';
 import PollResultsScreen from "./pages/PollResultsTable";
 import StatisticsScreen from './pages/Statistics/StatisticsScreen';
 
@@ -57,7 +58,10 @@ const App = () => {
 							}
 						/>
 
-						<Route path={'/profile'} element={<ProfileScreen />} />
+						<Route
+							path={'/profile/:patientId'}
+							element={<ProfileScreen />}
+						/>
 						<Route path="/validate-patient" element={<Validation />} />
 					</Route>
 				</Route>
@@ -68,4 +72,4 @@ const App = () => {
 	);
 };
 
-export default App;
+export default withModal(App);

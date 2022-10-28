@@ -7,8 +7,29 @@ import SettingsIcon from '../assets/SettingsIcon';
 import CallIcon from '../assets/CallIcon';
 import FormIcon from '../assets/FormIcon';
 import { theme } from '../common/theme';
+import IconLung from '../assets/IconLung';
+import IconSmile from '../assets/IconSmile';
+import IconOral from '../assets/IconOral';
+import WeeklyIcon from '../assets/WeeklyIcon';
+import IconSad from '../assets/IconSad';
+import IconSkin from '../assets/IconSkin';
+import IconHeart from '../assets/IconHeart';
+import IconStomach from '../assets/IconStomach';
+import IconUnderWear from '../assets/IconUnderWear';
+import IconBrain from '../assets/IconBrain';
+import IconSleep from '../assets/IconSleep';
+import IconMemory from '../assets/IconMemory';
+import IconMiscellaneous from '../assets/IconMiscellaneous';
+import IconVisual from '../assets/IconVisual';
+import IconLove from '../assets/IconLove';
 import { StyledBox } from '../common/styledCommonComponents';
 
+
+export const ModalTypeEnum = {
+	WEEKLY_MODAL: 'WEEKLY_MODAL',
+	DAILY_MODAL: 'DAILY_MODAL',
+	TREATMENT_MODAL: 'TREATMENT_MODAL',
+};
 
 export const InputTypeEnum = {
 	BUTTON: 'BUTTON',
@@ -210,17 +231,17 @@ const FormBuilder = {};
 export const NavbarConfig = [
 	{
 		name: 'Home',
-		path: '/home',
+		path: ['/home'],
 		icon: (active) => <HomeIcon active={active} />,
 	},
 	{
 		name: 'Mis Pacientes',
-		path: '/my-patients',
+		path: ['/my-patients', '/profile'],
 		icon: (active) => <PatientsListIcon active={active} />,
 	},
 	{
 		name: 'Estadísticas',
-		path: '/statistics',
+		path: ['/statistics'],
 		icon: (active) => <StatisticsIcon active={active} />,
 	},
 ];
@@ -228,12 +249,12 @@ export const NavbarConfig = [
 export const NavbarConfigBottom = [
 	{
 		name: 'Notificaciones',
-		path: '/notifications',
+		path: ['/notifications'],
 		icon: (active) => <BellIcon active={active} />,
 	},
 	{
 		name: 'Configuración',
-		path: '/settings',
+		path: ['/settings'],
 		icon: (active) => <SettingsIcon active={active} />,
 	},
 ];
@@ -381,6 +402,58 @@ export const getPollStatusLabel = (type) => {
 	}
 };
 
+export const CategoryList = {
+	Respiratorio: 'Respiratorio',
+	Oral: 'Oral',
+	Neurologico: 'Neurologico',
+	Sueño: 'Sueño',
+	Sexual: 'Sexual',
+	Gastrointestinal: 'Gastrointestinal',
+	Cardiaco: 'Cardiaco',
+	Cutaneo: 'Cutaneo',
+	Ánimo: 'Ánimo',
+	Visual: 'Visual',
+	Memoria: 'Memoria',
+	Dolor: 'Dolor',
+	Genital: 'Genital',
+	Miscelaneo: 'Miscelaneo',
+};
+
+export const getIconByCategory = (category) => {
+	switch (category) {
+		case CategoryList.Respiratorio:
+			return <IconLung />;
+		case CategoryList.Oral:
+			return <IconOral />;
+		case CategoryList.Dolor:
+			return <IconSad />;
+		case CategoryList.Cutaneo:
+			return <IconSkin />;
+		case CategoryList.Cardiaco:
+			return <IconHeart />;
+		case CategoryList.Gastrointestinal:
+			return <IconStomach />;
+		case CategoryList.Genital:
+			return <IconUnderWear />;
+		case CategoryList.Neurologico:
+			return <IconBrain />;
+		case CategoryList.Sueño:
+			return <IconSleep />;
+		case CategoryList.Memoria:
+			return <IconMemory />;
+		case CategoryList.Miscelaneo:
+			return <IconMiscellaneous />;
+		case CategoryList.Visual:
+			return <IconVisual />;
+		case CategoryList.Sexual:
+			return <IconLove />;
+		case CategoryList.Ánimo:
+			return <IconSmile />;
+		default:
+			return <WeeklyIcon />;
+	}
+};
+
 export const textColorStatus = {
 	active: '#1D6535',
 	inactive: '#5F5F5F',
@@ -400,6 +473,135 @@ export const backgroundColorStatus = {
 	active: '#BEE8CF',
 	innactive: '#C4C4C4',
 	in_progress: '#F9E0D6',
+};
+
+export const FrequencyAnswers = [
+	{
+		label: 'Nunca',
+		value: 0,
+	},
+	{
+		label: 'Raramente',
+		value: 1,
+	},
+	{
+		label: 'Ocasionalmente',
+		value: 2,
+	},
+	{
+		label: 'Frecuentemente',
+		value: 3,
+	},
+	{
+		label: 'Constantemente',
+		value: 4,
+	},
+];
+export const SeverityAnswers = [
+	{
+		label: 'Ninguna',
+		value: 0,
+	},
+	{
+		label: 'Leve',
+		value: 1,
+	},
+	{
+		label: 'Moderado',
+		value: 2,
+	},
+	{
+		label: 'Severo',
+		value: 3,
+	},
+	{
+		label: 'Muy severo',
+		value: 4,
+	},
+];
+export const InterferenceAnswers = [
+	{
+		label: 'No del todo',
+		value: 0,
+	},
+	{
+		label: 'Un poco',
+		value: 1,
+	},
+	{
+		label: 'Moderada',
+		value: 2,
+	},
+	{
+		label: 'Bastante',
+		value: 3,
+	},
+	{
+		label: 'Mucho',
+		value: 4,
+	},
+];
+export const AmountAnswers = [
+	{
+		label: 'No del todo',
+		value: 0,
+	},
+	{
+		label: 'Un poco',
+		value: 1,
+	},
+	{
+		label: 'Un poco',
+		value: 2,
+	},
+	{
+		label: 'Bastante',
+		value: 3,
+	},
+	{
+		label: 'Mucho',
+		value: 4,
+	},
+];
+export const PresenceAnswers = [
+	{
+		label: 'No',
+		value: 0,
+	},
+	{
+		label: 'Si',
+		value: 1,
+	},
+];
+
+export const getAnswersByType = (type) => {
+	switch (type) {
+		case 'Severity':
+			return SeverityAnswers;
+		case 'Frequency':
+			return FrequencyAnswers;
+		case 'Interference':
+			return InterferenceAnswers;
+		case 'Amount':
+			return AmountAnswers;
+		case 'Presence':
+			return PresenceAnswers;
+	}
+};
+
+export const translateQuestion = (type) => {
+	switch (type) {
+		case 'Severity':
+			return 'Severidad';
+		case 'Frequency':
+			return 'Frecuencia';
+		case 'Interference':
+			return 'Interferencia';
+		case 'Amount':
+			return 'Cantidad';
+		case 'Presence':
+			return 'Presencia';
+	}
 };
 
 
@@ -515,4 +717,21 @@ export const getProfileImageFromName = (name, surname, size) => {
 		</StyledBox>
 	);
 };
-
+export const renderStatusPill = (type) => {
+	return (
+		<StyledBox
+			css={{
+				color: textColorStatus[type],
+				backgroundColor: backgroundColorStatus[type],
+				borderRadius: '10px',
+				width: '74px',
+				height: '24px',
+				display: 'flex',
+				justifyContent: 'center',
+				alignItems: 'center',
+			}}
+		>
+			{getUserStatusLabel(type)}
+		</StyledBox>
+	);
+};
