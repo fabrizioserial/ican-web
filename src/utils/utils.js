@@ -653,4 +653,3 @@ export const renderStatusPill = (type) => {
 		</StyledBox>
 	);
 };
-
