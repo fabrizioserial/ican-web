@@ -8,7 +8,7 @@ import CallIcon from '../assets/CallIcon';
 import FormIcon from '../assets/FormIcon';
 import { theme } from '../common/theme';
 import { StyledBox } from '../common/styledCommonComponents';
-import {StyledBox} from "../common/styledCommonComponents";
+
 
 export const InputTypeEnum = {
 	BUTTON: 'BUTTON',
