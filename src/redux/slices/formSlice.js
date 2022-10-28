@@ -367,7 +367,7 @@ export const formSlice = createSlice({
             ]
 
             state.values.biomarkers = {
-                ...state.values.biomarkers, [biomarkersToAdd.id]: { [`biomarker${biomarkersToAdd.id}`]: "", [`evaluation${biomarkersToAdd.id}`]: "" }
+                ...state.values.biomarkers, [`biomarker${biomarkersToAdd.id}`]: { [`biomarker${biomarkersToAdd.id}`]: "", [`evaluation${biomarkersToAdd.id}`]: "" }
             }
         },
         addRelapses: (state) => {
