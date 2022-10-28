@@ -44,9 +44,13 @@ const DailyBody = () => {
                     height: "60px",
                     borderBottom:"1px solid #DEDEDE",
                     display:"flex",
-                    flexDirection:"row"
+                    flexDirection:"row",
+                    columnGap: "136px"
+
                 }}>
-                <StyledBox>{item.icon}</StyledBox>
+                <StyledBox css={{ display:"flex",
+                    flexDirection:"row",columnGap: "18px"}}>
+                <StyledBox css={{marginTop:"5px"}}>{item.icon}</StyledBox>
                     <StyledBox>
                         <StyledP css={{
                         width: "154px",
@@ -57,8 +61,10 @@ const DailyBody = () => {
                         lineHeight: "24px",
                         display: "flex",
                         alignItems: "center",
-                        color: "#333333"}}>{item.category} </StyledP>
+                        color: "#333333",
+                        marginTop:"16px"}}>{item.category} </StyledP>
                     </StyledBox>
+                </StyledBox>
                     <StyledBox> <StyledP css={{
                         width: "414px",
                         height: "24px",
@@ -68,7 +74,9 @@ const DailyBody = () => {
                         lineHeight: "24px",
                         display: "flex",
                         alignItems: "center",
-                        color: "#9357F7"}}>{item.text}</StyledP>
+                        color: "#9357F7",
+                        marginTop:"16px",
+                    justifyContent:"flex-end"}}>{item.text}</StyledP>
                     </StyledBox>
                 </StyledBox>
 
