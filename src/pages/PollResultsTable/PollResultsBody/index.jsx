@@ -61,11 +61,12 @@ const PollResultsBody = () => {
                     <StyledBodyCell with={'20%'} style={{ paddingLeft: '30px' }}>
                         {bodyItem.icon}
                     </StyledBodyCell>
-                    <StyledBodyCell width={'40%'}>
-                        {bodyItem.status}
-                    </StyledBodyCell>
-                    <StyledBodyCell width={'40%'}>
+
+                    <StyledBodyCell width={'90%'}>
                         {bodyItem.date}
+                    </StyledBodyCell>
+                    <StyledBodyCell width={'10%'}>
+                        {bodyItem.status}
                     </StyledBodyCell>
 
                 </StyledBodyRow>
