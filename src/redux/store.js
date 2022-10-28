@@ -7,6 +7,7 @@ import authSliceReducer from './slices/authSlice';
 import homeSliceReducer from './slices/homeSlice';
 import formSliceReducer from './slices/formSlice';
 import { api } from './api/api';
+import utilsSliceReducer from './slices/utilsSlice';
 // const middlewares = [sessionMiddleware];
 
 // const persistConfig = {
@@ -21,6 +22,7 @@ const reducers = combineReducers({
 	authSlice: authSliceReducer,
 	homeSlice: homeSliceReducer,
 	formSlice: formSliceReducer,
+	utilsSlice: utilsSliceReducer,
 });
 
 export const store = configureStore({

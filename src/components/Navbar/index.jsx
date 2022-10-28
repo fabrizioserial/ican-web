@@ -28,7 +28,7 @@ const Navbar = () => {
 				boxShadow: '0 2px 24px rgba(214, 203, 252, 0.3)',
 				left: '0px',
 				top: '2px',
-				position: 'absolute',
+				position: 'fixed',
 				boxSizing: 'border-box',
 				display: 'flex',
 				flexDirection: 'column',

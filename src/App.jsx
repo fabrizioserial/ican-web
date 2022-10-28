@@ -11,6 +11,7 @@ import Validation from './pages/Validation';
 import ProfileScreen from './pages/PatientProfile/ProfileScreen';
 import Wrapper from './components/Navbar/Wrapper';
 import PatientListScreen from './pages/PatientList/PatientListScreen';
+import { withModal } from './components/HOC/withModal';
 import StatisticsScreen from './pages/Statistics/StatisticsScreen';
 
 const App = () => {
@@ -66,4 +67,4 @@ const App = () => {
 	);
 };
 
-export default App;
+export default withModal(App);
