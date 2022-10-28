@@ -635,3 +635,22 @@ export const getProfileImageFromName = (name, surname, size) => {
 		</StyledBox>
 	);
 };
+export const renderStatusPill = (type) => {
+	return (
+		<StyledBox
+			css={{
+				color: textColorStatus[type],
+				backgroundColor: backgroundColorStatus[type],
+				borderRadius: '10px',
+				width: '74px',
+				height: '24px',
+				display: 'flex',
+				justifyContent: 'center',
+				alignItems: 'center',
+			}}
+		>
+			{getUserStatusLabel(type)}
+		</StyledBox>
+	);
+};
+
