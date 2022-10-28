@@ -8,21 +8,14 @@ import {
 import { useTheme } from 'styled-components';
 import Chart from 'react-apexcharts';
 import { SocialAndPhysicalConfig } from '../../utils/chartsConfigs';
+import { StyledCircularProgress } from '../CustomCircularProgress/styles';
 
-const SocialAndPhysicalActivitiesChart = () => {
+const SocialAndPhysicalActivitiesChart = ({ data }) => {
 	const theme = useTheme();
 	const [active, setActive] = useState('physical');
-	const data = {
-		'31/08': [1, 3],
-		'1/09': [0, 1],
-		'2/09': [2, 2],
-		'3/09': [3, 1],
-		'4/09': [1, 0],
-		'5/09': [2, 1],
-		'6/09': [1, 3],
-	};
+	const options = useMemo(() => SocialAndPhysicalConfig(data ?? {}), [data]);
 
-	const options = useMemo(() => SocialAndPhysicalConfig(data), [data]);
+	console.log(data);
 
 	const handleActividadFisica = () => {
 		ApexCharts.exec('mychart', 'hideSeries', ['social']);
@@ -36,8 +29,8 @@ const SocialAndPhysicalActivitiesChart = () => {
 	};
 
 	useEffect(() => {
-		handleActividadFisica();
-	}, []);
+		data && handleActividadFisica();
+	}, [data]);
 
 	return (
 		<StyledCardHome
@@ -45,9 +38,8 @@ const SocialAndPhysicalActivitiesChart = () => {
 				display: 'flex',
 				flexDirection: 'column',
 				height: '270px',
-				width: '352px',
+				// width: '352px',
 				color: theme.oncoBlack,
-				marginLeft: '36px',
 			}}
 		>
 			<StyledBox
@@ -134,23 +126,37 @@ const SocialAndPhysicalActivitiesChart = () => {
 					/>
 				</StyledBox>
 			</StyledBox>
-			<StyledBox
-				css={{
-					display: 'flex',
-					flex: 1,
-					alignItems: 'center',
-					justifyContent: 'center',
-				}}
-			>
-				<Chart
-					options={options.options}
-					series={options.series}
-					type="bar"
-					width={300}
-					toggleSeries={'physical'}
-					height={180}
-				/>
-			</StyledBox>
+			{!data ? (
+				<StyledBox
+					css={{
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+						height: '180px',
+						width: '300px',
+					}}
+				>
+					<StyledCircularProgress />
+				</StyledBox>
+			) : (
+				<StyledBox
+					css={{
+						display: 'flex',
+						flex: 1,
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}
+				>
+					<Chart
+						options={options.options}
+						series={options.series}
+						type="bar"
+						width={300}
+						toggleSeries={'physical'}
+						height={180}
+					/>
+				</StyledBox>
+			)}
 		</StyledCardHome>
 	);
 };
