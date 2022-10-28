@@ -6,14 +6,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setValue } from '../../redux/slices/formSlice';
 import { useLazyGetPatientDataQuery } from '../../redux/api/patientApi';
 import { useParams } from 'react-router';
-import { useSetPatientFormMutation } from '../../redux/api/validateFormApi';
+import { useSetPatientFormMutation, useSetTreatmentFormMutation, useUpdateValidatePatientMutation } from '../../redux/api/validateFormApi';
 
 const Validation = () => {
 	// const [sections, setSections] = useState(FormsSqueleton);
-	const { patients, hospital, biomarkers, relapses, state, treatment, values } = useSelector(state => state.formSlice)
-	const dispatch = useDispatch()
-	const { patientId } = useParams()
-	const [setPatientForm, { result: resultPostPatient, isSuccess: successPostPatient }] = useSetPatientFormMutation()
+	const { patients, hospital, biomarkers, relapses, state, treatment, values } = useSelector(state => state.formSlice);
+	const dispatch = useDispatch();
+	const { patientId } = useParams();
+	const [setPatientForm, { result: resultPostPatient, isSuccess: successPostPatient }] = useSetPatientFormMutation();
+	const [setTreatmentForm, { result: resultPostTreatment, isSuccess: successPostTreatment }] = useSetTreatmentFormMutation();
+	const [updateValidatePatient, { result: resultUpdateValidation, isSuccess: succesUpdateValidation }] = useUpdateValidatePatientMutation();
+
 	// const [values, setValues] = useState(validationFormValues);
 	const [
 		refetch, { data, isSuccess }
@@ -23,8 +26,13 @@ const Validation = () => {
 		refetch(patientId)
 	}, [])
 	useEffect(() => {
-		console.log(resultPostPatient)
-	}, [successPostPatient])
+		(successPostPatient && successPostTreatment) === true &&
+			updateValidatePatient({ userId: patientId, status: "Accepted" })
+	}, [resultPostPatient, successPostPatient, resultPostTreatment, successPostTreatment])
+
+	useEffect(() => {
+		succesUpdateValidation && console.log("update", resultUpdateValidation)
+	}, [succesUpdateValidation, resultUpdateValidation])
 
 	// set values of validationFormValues
 	const handleOnChange = (name, newValue) => {
@@ -33,9 +41,7 @@ const Validation = () => {
 	};
 
 	const handleSubmit = (values) => {
-
 		let biomarkers = []
-		let medications = []
 
 		// let medication = {
 		// 	medicationId: values.medicationId,
@@ -52,31 +58,58 @@ const Validation = () => {
 					metastasis: values.metastasis,
 					risk: values.risk,
 					biomarkers: biomarkers,
-					cancerId: values.cancerId
+					cancerId: values.cancerId ?? "5e368c9c-ad26-480f-8309-5a45ac9e0093"
 				}
-				console.log("medical", medicalHistory)
-
-				for (let indexMed = 1; indexMed < 16; indexMed++) {
-					if (!values['medication'.concat(index)]) {
-						indexMed = 16
-
-						let treatment = {
-							medicalHistoryId: values.medicHistoryNumber,
-							objective: values.treatmentObjective,
-							tumorTreatment: values.tumor,
-							treatmentLine: values.treatmentLine,
-							medications: values.medications,
-							startDate: values.treatmentStartDate,
-							estimateFinishDate: values.estimateFinishDate
-						}
-						setPatientForm(medicalHistory)
-						// setTreatmentForm(treatment)
+				let medications = [
+					{
+						medicationId: "d426e95a-dcd1-4747-8df0-facf2c0bbabf",
+						grammageId: "4a79d71a-a534-489c-9547-2784a64cfc8b",
+						intention: "Adjuvant"
+					},
+					{
+						medicationId: "1c78d303-2211-4abc-9545-30e3a313018f",
+						grammageId: "e42341aa-eacd-4a24-954e-7fb213f93b87",
+						intention: "Adjuvant"
 					}
-					// medications = [
-					// 	// ...medications,
-					// 	// [values['medication'.concat(index)], values['grammage'.concat(index)]],
-					// ]
+				]
+
+				let treatment = {
+					// medicalHistoryId: values.medicHistoryNumber,
+					medicalHistoryId: "46f50029-2f68-470b-9dda-d96da0b03dcb",
+					objective: "",
+					tumorTreatment: "Surgery",
+					treatmentLine: 1,
+					startDate: "2022-11-27 00:00:00.000",
+					estimateFinishDate: "2022-10-27 00:00:00.000",
+					medications: medications
 				}
+				console.log("treatment", treatment)
+				setPatientForm(medicalHistory)
+				setTreatmentForm(treatment)
+
+				// for (let indexMed = 1; indexMed < 16; indexMed++) {
+				// 	if (!values['medication'.concat(index)]) {
+				// 		indexMed = 16
+
+				// 		let treatment = {
+				// 			// medicalHistoryId: values.medicHistoryNumber,
+				// 			medicalHistoryId: "46f50029-2f68-470b-9dda-d96da0b03dcb",
+				// 			objective: values.treatmentObjective ?? '',
+				// 			tumorTreatment: values.tumor,
+				// 			treatmentLine: values.treatmentLine,
+				// 			medications: medications,
+				// 			startDate: values.treatmentStartDate,
+				// 			estimateFinishDate: values.estimateFinishDate
+				// 		}
+				// 		console.log("treatment", treatment)
+				// 		// setPatientForm(medicalHistory)
+				// 		setTreatmentForm(treatment)
+				// 	}
+				// 	// medications = [
+				// 	// 	// ...medications,
+				// 	// 	// [values['medication'.concat(index)], values['grammage'.concat(index)]],
+				// 	// ]
+				// }
 
 			}
 			biomarkers = [
