@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 import {
 	StyledBox,
 	StyledImg,
@@ -7,9 +8,13 @@ import {
 import { StyledPatientContainer } from './styles';
 import { getProfileImageFromName } from '../../../utils/utils';
 
-const PatientContainer = ({ name, surename, cancerType, css }) => {
+const PatientContainer = ({ name, surename, cancerType, css, patientId }) => {
+	const navigate = useNavigate();
 	return (
-		<StyledPatientContainer css={css} onClick={() => console.log('asd')}>
+		<StyledPatientContainer
+			css={css}
+			onClick={() => navigate(`/profile/${patientId}`)}
+		>
 			{getProfileImageFromName(name, surename, { width: 38, height: 38 })}
 			<StyledBox
 				css={{

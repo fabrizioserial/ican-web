@@ -230,17 +230,17 @@ const FormBuilder = {};
 export const NavbarConfig = [
 	{
 		name: 'Home',
-		path: '/home',
+		path: ['/home'],
 		icon: (active) => <HomeIcon active={active} />,
 	},
 	{
 		name: 'Mis Pacientes',
-		path: '/my-patients',
+		path: ['/my-patients', '/profile'],
 		icon: (active) => <PatientsListIcon active={active} />,
 	},
 	{
 		name: 'Estadísticas',
-		path: '/statistics',
+		path: ['/statistics'],
 		icon: (active) => <StatisticsIcon active={active} />,
 	},
 ];
@@ -248,12 +248,12 @@ export const NavbarConfig = [
 export const NavbarConfigBottom = [
 	{
 		name: 'Notificaciones',
-		path: '/notifications',
+		path: ['/notifications'],
 		icon: (active) => <BellIcon active={active} />,
 	},
 	{
 		name: 'Configuración',
-		path: '/settings',
+		path: ['/settings'],
 		icon: (active) => <SettingsIcon active={active} />,
 	},
 ];
@@ -653,4 +653,3 @@ export const renderStatusPill = (type) => {
 		</StyledBox>
 	);
 };
-

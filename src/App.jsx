@@ -56,7 +56,10 @@ const App = () => {
 							}
 						/>
 
-						<Route path={'/profile'} element={<ProfileScreen />} />
+						<Route
+							path={'/profile/:patientId'}
+							element={<ProfileScreen />}
+						/>
 						<Route path="/validate-patient" element={<Validation />} />
 					</Route>
 				</Route>
