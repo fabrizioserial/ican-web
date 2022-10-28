@@ -26,7 +26,7 @@ const App = () => {
 						<Route path="/home" exact element={<HomeScreen />} />
 						<Route path="/statistics" element={<StatisticsScreen />} />
 						<Route path="/my-patients" element={<PatientListScreen />} />
-						<Route path="/poll-results" element={<PollResultsScreen />} />
+						<Route path="/poll-results/:patientId" element={<PollResultsScreen />} />
 						<Route
 							path="/settings"
 							element={

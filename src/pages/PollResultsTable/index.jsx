@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     StyledBox,
     StyledH3,
@@ -13,8 +13,27 @@ import {
 import PollResultsHeader from "./PollResultsHeader";
 import PollResultsBody from "./PollResultsBody";
 import PollResultsBottom from "./PollResultsBottom";
+import {useParams} from "react-router";
+import {useLazyGetPollResultsQuery} from "../../redux/api/patientApi";
 
 const PollResultsScreen = () => {
+    const { patientId } = useParams();
+    const [
+        refetchPollResults,
+        { data: dataPollResults, isSuccess: isSuccessPollResults },
+    ] = useLazyGetPollResultsQuery();
+    const [pollResults, setPollResults] = useState(undefined);
+
+    useEffect(() => {
+        refetchPollResults(patientId);
+    }, []);
+
+    useEffect(() => {
+        if (dataPollResults)     {
+
+            setPollResults(dataPollResults);
+        }
+    }, [isSuccessPollResults]);
     return (
         <StyledScreen
             css={{
