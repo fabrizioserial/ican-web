@@ -8,6 +8,7 @@ import {
 import { useTheme } from 'styled-components';
 import DailyBody from "./DailyBody";
 import WeeklyIcon from "../../../../../assets/WeeklyIcon";
+import DailyModalIcon from "../../../../../assets/DailyModalIcon";
 
 
 const DailyModal = ({
@@ -41,7 +42,7 @@ const DailyModal = ({
             onClose={handleOnClose}
             header={
                 <StyledBox css={{ display: 'flex', flexDirection: 'row' }}>
-                    <WeeklyIcon />
+                    <DailyModalIcon />
                     <StyledBox
                         css={{
                             marginLeft: '15px',

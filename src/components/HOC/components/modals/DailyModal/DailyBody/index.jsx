@@ -1,6 +1,11 @@
 import React, {useState} from 'react';
 import {StyledBox, StyledP} from '../../../../../../common/styledCommonComponents';
 import WeeklyIcon from "../../../../../../assets/WeeklyIcon";
+import MoodIcon from "../../../../../../assets/MoodIcon";
+import PainIcon from "../../../../../../assets/PainIcon";
+import ApetiteIcon from "../../../../../../assets/ApetiteIcon";
+import HidrationIcon from "../../../../../../assets/HidrationIcon";
+import SocialActivityIcon from "../../../../../../assets/SocialActivityIcon";
 
 
 const DailyBody = () => {
@@ -9,28 +14,28 @@ const DailyBody = () => {
         {
             category:"Animo" ,
             text: '5 de 10',
-            icon: <WeeklyIcon/>
+            icon: <MoodIcon/>
 
         },
         {
             category:"Dolor" ,
             text: '7 de 10',
-            icon: <WeeklyIcon/>,
+            icon: <PainIcon/>,
         },
         {
             category:"Apetito" ,
             text: 'Menos de lo normal',
-            icon: <WeeklyIcon/>,
+            icon: <ApetiteIcon/>,
         },
         {
             category:"Hidratación" ,
             text: 'Mas de 2 litros',
-            icon: <WeeklyIcon/>,
+            icon: <HidrationIcon/>,
         },
         {
             category:"Actividad Social" ,
             text: 'Vi a amigos y conocidos por mas de una hora',
-            icon: <WeeklyIcon/>,
+            icon: <SocialActivityIcon/>,
         },
 
     ]);
@@ -50,7 +55,7 @@ const DailyBody = () => {
                 }}>
                 <StyledBox css={{ display:"flex",
                     flexDirection:"row",columnGap: "18px"}}>
-                <StyledBox css={{marginTop:"5px"}}>{item.icon}</StyledBox>
+                <StyledBox css={{marginTop:"14px"}}>{item.icon}</StyledBox>
                     <StyledBox>
                         <StyledP css={{
                         width: "154px",
