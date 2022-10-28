@@ -12,6 +12,7 @@ import ProfileScreen from './pages/PatientProfile/ProfileScreen';
 import Wrapper from './components/Navbar/Wrapper';
 import PatientListScreen from './pages/PatientList/PatientListScreen';
 import PollResultsScreen from "./pages/PollResultsTable";
+import StatisticsScreen from './pages/Statistics/StatisticsScreen';
 
 const App = () => {
 	const accessToken = useSelector((state) => state.authSlice.accessToken);
@@ -22,21 +23,7 @@ const App = () => {
 				<Route element={<ProtectedRoute accessToken={accessToken} />}>
 					<Route element={<Wrapper />}>
 						<Route path="/home" exact element={<HomeScreen />} />
-						<Route
-							path="/statistics"
-							element={
-								<StyledBox
-									css={{
-										textAlign: 'center',
-										fontSize: '23px',
-										padding: '100px',
-									}}
-								>
-									{' '}
-									Statistics
-								</StyledBox>
-							}
-						/>
+						<Route path="/statistics" element={<StatisticsScreen />} />
 						<Route path="/my-patients" element={<PatientListScreen />} />
 						<Route path="/poll-results" element={<PollResultsScreen />} />
 						<Route

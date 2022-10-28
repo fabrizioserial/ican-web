@@ -66,42 +66,44 @@ function PatientsHeaderCard({ text, number, positive, pillText, pillDetail }) {
 					{number}
 				</StyledP>
 			</StyledBox>
-			<StyledBox
-				data-tip
-				data-for={'pillTip' + text}
-				css={{
-					alignItems: 'end',
-					display: 'flex',
-					flexDirection: 'column',
-					justifyContent: 'flex-end',
-					width: '45px',
-					height: '18px',
-					background: color,
-					boxShadow: '0px 4px 24px rgba(214, 203, 252, 0.3)',
-					borderRadius: '15px',
-				}}
-			>
-				<ReactTooltip id={'pillTip' + text} place="top" effect="solid">
-					{pillDetail}
-				</ReactTooltip>
-
-				<StyledP
+			{pillText && (
+				<StyledBox
+					data-tip
+					data-for={'pillTip' + text}
 					css={{
-						width: '12px',
-						height: '13px',
-						fontStyle: 'normal',
-						fontWeight: 500,
-						fontSize: '11px',
-						lineHeight: '13px',
+						alignItems: 'end',
 						display: 'flex',
-						alignContent: 'center',
-						color: '#949494',
-						padding: '2px 16px',
+						flexDirection: 'column',
+						justifyContent: 'flex-end',
+						width: '45px',
+						height: '18px',
+						background: color,
+						boxShadow: '0px 4px 24px rgba(214, 203, 252, 0.3)',
+						borderRadius: '15px',
 					}}
 				>
-					{pillText}
-				</StyledP>
-			</StyledBox>
+					<ReactTooltip id={'pillTip' + text} place="top" effect="solid">
+						{pillDetail}
+					</ReactTooltip>
+
+					<StyledP
+						css={{
+							width: '12px',
+							height: '13px',
+							fontStyle: 'normal',
+							fontWeight: 500,
+							fontSize: '11px',
+							lineHeight: '13px',
+							display: 'flex',
+							alignContent: 'center',
+							color: '#949494',
+							padding: '2px 16px',
+						}}
+					>
+						{pillText}
+					</StyledP>
+				</StyledBox>
+			)}
 		</StyledPatientsListCard>
 	);
 }

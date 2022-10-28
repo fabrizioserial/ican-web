@@ -6,18 +6,19 @@ import {
 	StyledPatientsListCard,
 } from '../../../../common/styledCommonComponents';
 import React, { useMemo } from 'react';
-import { patientsReport } from '../../../../redux/api/homeApi';
+import { usePatientsReportQuery } from '../../../../redux/api/homeApi';
 
 function WaitingListHeaderCard() {
+	const { data } = usePatientsReportQuery();
 	const theme = useTheme();
 	const users = useMemo(
 		() => ({
 			waitingUsers: {
-				amount: patientsReport.pending,
+				amount: data?.pending,
 				users: ['', '', '', ''], // TODO AVATAR
 			},
 		}),
-		[patientsReport],
+		[data],
 	);
 
 	return (
