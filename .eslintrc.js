@@ -28,6 +28,8 @@ module.exports = {
 		'react/no-unknown-property':0,
 
 		'react/display-name': 0,
+		'react/no-unknown-property':0
+
 	},
 	settings: {
 		react: {

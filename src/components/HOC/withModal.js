@@ -6,6 +6,7 @@ import WeeklyModal from './components/modals/WeeklyModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../../redux/slices/utilsSlice';
 import { useWeeklyQuestionsQuery } from '../../redux/api/homeApi';
+import DailyModal from "./components/modals/DailyModal";
 
 export const withModal = (Component) => (props) => {
 	const open = useSelector((state) => state.utilsSlice.modalOpen);
@@ -22,6 +23,8 @@ export const withModal = (Component) => (props) => {
 		switch (type) {
 			case ModalTypeEnum.WEEKLY_MODAL:
 				return <WeeklyModal handleOnClose={handleOnClose} />;
+			case ModalTypeEnum.DAILY_MODAL:
+				return <DailyModal handleOnClose={handleOnClose} />;
 		}
 	};
 
