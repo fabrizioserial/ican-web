@@ -55,8 +55,9 @@ const PollResultsHeader = () => {
                         lineHeight: "13px",
                         display: "flex",
                         alignItems: "center",
+                        paddingLeft:"40px",
                         color: "#9357F7",
-                    }}>estado</StyledP>
+                    }}>Estado</StyledP>
                 </StyledBox>
 
             </StyledTableHeader>

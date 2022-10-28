@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import DailyIcon from "../../../assets/DailyIcon";
 import WeeklyIcon from "../../../assets/WeeklyIcon";
 import {StyledBox} from "../../../common/styledCommonComponents";
-import {backgroundColorStatus, textColorStatus} from "../../../utils/utils";
+import {backgroundColorStatus, renderPollPill, renderStatusPill, textColorStatus} from "../../../utils/utils";
 import TableBody from "@material-ui/core/TableBody";
 import {StyledBodyCell, StyledBodyRow} from "../../PatientList/PatientListBody/styles";
 
@@ -11,43 +11,43 @@ const PollResultsBody = () => {
     const [body, setBody] = useState([
         {
             date:" 14 de noviembre 2022" ,
-            status: 'Completed',
+            status: 'completed',
             icon: <DailyIcon/>,
 
         },
         {
             date:" 14 de noviembre 2022" ,
-            status: 'Completed',
+            status: 'completed',
             icon: <WeeklyIcon/>,
         },
         {
             date:" 14 de noviembre 2022" ,
-            status: 'Completed',
+            status: 'completed',
             icon: <DailyIcon/>,
         },
         {
             date:" 14 de noviembre 2022" ,
-            status: 'Completed',
+            status: 'completed',
             icon:  <WeeklyIcon/>,
         },
         {
             date:" 14 de noviembre 2022" ,
-            status: 'Completed',
+            status: 'completed',
             icon: <DailyIcon/>,
         },
         {
             date:" 14 de noviembre 2022" ,
-            status: 'Completed',
+            status: 'completed',
             icon: <WeeklyIcon/>,
         },
         {
             date:" 14 de noviembre 2022" ,
-            status: 'Completed',
+            status: 'incomplete',
             icon: <WeeklyIcon/>,
         },
         {
             date:" 14 de noviembre 2022" ,
-            status: 'Completed',
+            status: 'incomplete',
             icon:  <DailyIcon/>,
         },
     ]);
@@ -56,8 +56,8 @@ const PollResultsBody = () => {
 
     return (
         <TableBody>
-            {body.map((bodyItem) => (
-                <StyledBodyRow>
+            {body.map((bodyItem,index) => (
+                <StyledBodyRow key={index}>
                     <StyledBodyCell with={'20%'} style={{ paddingLeft: '30px' }}>
                         {bodyItem.icon}
                     </StyledBodyCell>
@@ -65,9 +65,10 @@ const PollResultsBody = () => {
                     <StyledBodyCell width={'90%'}>
                         {bodyItem.date}
                     </StyledBodyCell>
-                    <StyledBodyCell width={'10%'}>
-                        {bodyItem.status}
+                    <StyledBodyCell  width={'10%'} >
+                        {renderPollPill(bodyItem.status)}
                     </StyledBodyCell>
+
 
                 </StyledBodyRow>
             ))}

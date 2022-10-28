@@ -10,12 +10,6 @@ import {
 } from '@material-ui/core';
 
 
-
-import PatientListHeader from "../PatientList/PatientListHeader";
-import PatientListBody from "../PatientList/PatientListBody";
-import PatientListBottom from "../PatientList/PatientListBottom";
-import SearchBar from "../PatientList/SearchBar";
-import CardsHeader from "../PatientList/CardsHeader";
 import PollResultsHeader from "./PollResultsHeader";
 import PollResultsBody from "./PollResultsBody";
 import PollResultsBottom from "./PollResultsBottom";
@@ -49,6 +43,8 @@ const PollResultsScreen = () => {
                         width: '100%',
                         height: '16px',
                         borderBottom: '1px solid #E1D1FC',
+                        marginBottom:"43px",
+                        paddingBottom:"16px"
                     }}
                 />
 

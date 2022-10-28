@@ -618,11 +618,29 @@ export const getUserStatusLabel = (type) => {
 			return 'Inactivo';
 	}
 };
+export const getPollStatusLabel = (type) => {
+	switch (type) {
+		case 'completed':
+			return 'Completado';
+		case 'incomplete':
+			return 'Incomplete';
+		case 'unstarted':
+			return 'Sin Arrancar';
+	}
+};
 
 export const textColorStatus = {
 	active: '#1D6535',
-	innactive: '#5F5F5F',
+	inactive: '#5F5F5F',
 	in_progress: '#EA8053',
+
+};
+
+export const pollTextColorStatus = {
+	completed: '#1D6535',
+	incomplete: '#5F5F5F',
+	unstarted: '#EA8053',
+
 };
 
 
@@ -630,6 +648,13 @@ export const backgroundColorStatus = {
 	active: '#BEE8CF',
 	innactive: '#C4C4C4',
 	in_progress: '#F9E0D6',
+};
+
+
+export const pollBackgroundColorStatus = {
+	completed: '#BEE8CF',
+	incomplete: '#C4C4C4',
+	unstarted: '#F9E0D6',
 };
 
 
@@ -648,6 +673,26 @@ export const backgroundColorStatus = {
 			}}
 		>
 			{getUserStatusLabel(type)}
+		</StyledBox>
+	);
+};
+
+export const renderPollPill = (type) => {
+	console.log(type)
+	return (
+		<StyledBox
+			css={{
+				color: pollTextColorStatus[type],
+				backgroundColor: pollBackgroundColorStatus[type],
+				borderRadius: '10px',
+				width: '120px',
+				height: '24px',
+				display: 'flex',
+				justifyContent: 'center',
+				alignItems: 'center',
+			}}
+		>
+			{getPollStatusLabel(type)}
 		</StyledBox>
 	);
 };
