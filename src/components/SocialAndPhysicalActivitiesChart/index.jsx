@@ -8,14 +8,14 @@ import {
 import { useTheme } from 'styled-components';
 import Chart from 'react-apexcharts';
 import { SocialAndPhysicalConfig } from '../../utils/chartsConfigs';
+import { StyledCircularProgress } from '../CustomCircularProgress/styles';
 
 const SocialAndPhysicalActivitiesChart = ({ data }) => {
 	const theme = useTheme();
 	const [active, setActive] = useState('physical');
-	const options = useMemo(
-		() => SocialAndPhysicalConfig(data ?? {}),
-		[data ?? {}],
-	);
+	const options = useMemo(() => SocialAndPhysicalConfig(data ?? {}), [data]);
+
+	console.log(data);
 
 	const handleActividadFisica = () => {
 		ApexCharts.exec('mychart', 'hideSeries', ['social']);
@@ -29,8 +29,8 @@ const SocialAndPhysicalActivitiesChart = ({ data }) => {
 	};
 
 	useEffect(() => {
-		handleActividadFisica();
-	}, []);
+		data && handleActividadFisica();
+	}, [data]);
 
 	return (
 		<StyledCardHome
@@ -126,23 +126,37 @@ const SocialAndPhysicalActivitiesChart = ({ data }) => {
 					/>
 				</StyledBox>
 			</StyledBox>
-			<StyledBox
-				css={{
-					display: 'flex',
-					flex: 1,
-					alignItems: 'center',
-					justifyContent: 'center',
-				}}
-			>
-				<Chart
-					options={options.options}
-					series={options.series}
-					type="bar"
-					width={300}
-					toggleSeries={'physical'}
-					height={180}
-				/>
-			</StyledBox>
+			{!data ? (
+				<StyledBox
+					css={{
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+						height: '180px',
+						width: '300px',
+					}}
+				>
+					<StyledCircularProgress />
+				</StyledBox>
+			) : (
+				<StyledBox
+					css={{
+						display: 'flex',
+						flex: 1,
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}
+				>
+					<Chart
+						options={options.options}
+						series={options.series}
+						type="bar"
+						width={300}
+						toggleSeries={'physical'}
+						height={180}
+					/>
+				</StyledBox>
+			)}
 		</StyledCardHome>
 	);
 };

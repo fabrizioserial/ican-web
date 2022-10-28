@@ -19,10 +19,6 @@ import TreatmentSection from '../components/TreatmentSection';
 const ProfileScreen = () => {
 	const { patientId } = useParams();
 	const [
-		refetchPatientData,
-		{ data: dataPatient, isSuccess: isSuccessPatient },
-	] = useLazyGetPatientDataQuery();
-	const [
 		refetchAppetiteHydration,
 		{ data: dataAppetiteHydration, isSuccess: isSuccessAppetiteHydration },
 	] = useLazyGetAppetiteHydrationQuery();
@@ -35,21 +31,20 @@ const ProfileScreen = () => {
 		{ data: dataCalendar, isSuccess: isSuccessCalendar },
 	] = useLazyGetCalendarQuery();
 
-	const [appetiteHydration, setAppetiteHydration] = useState();
-	const [socialPhysical, setSocialPhysical] = useState();
-	const [calendar, setCalendar] = useState();
+	const [appetiteHydration, setAppetiteHydration] = useState(undefined);
+	const [socialPhysical, setSocialPhysical] = useState(undefined);
+	const [calendar, setCalendar] = useState(undefined);
 
 	useEffect(() => {
-		refetchPatientData(patientId);
 		refetchAppetiteHydration(patientId);
 		refetchSocialPhysical(patientId);
 		refetchCalendar(patientId);
 	}, []);
 
 	useEffect(() => {
-		let aux = {};
-		let day = '';
-		dataAppetiteHydration &&
+		if (dataAppetiteHydration) {
+			let aux = {};
+			let day = '';
 			Object.values(dataAppetiteHydration).forEach((item) => {
 				day =
 					new Date(item.date).getDate() +
@@ -57,13 +52,14 @@ const ProfileScreen = () => {
 					new Date(item.date).getMonth();
 				aux[day] = [item.apettite, item.hydration];
 			});
-		setAppetiteHydration(aux);
+			setAppetiteHydration(aux);
+		}
 	}, [isSuccessAppetiteHydration]);
 
 	useEffect(() => {
-		let aux = {};
-		let day = '';
-		dataSocialPhysical &&
+		if (dataSocialPhysical) {
+			let aux = {};
+			let day = '';
 			Object.values(dataSocialPhysical).forEach((item) => {
 				day =
 					new Date(item.date).getDate() +
@@ -71,7 +67,8 @@ const ProfileScreen = () => {
 					new Date(item.date).getMonth();
 				aux[day] = [item.social, item.physical];
 			});
-		setSocialPhysical(aux);
+			setSocialPhysical(aux);
+		}
 	}, [isSuccessSocialPhysical]);
 
 	const dayName = (day) => {
@@ -129,17 +126,16 @@ const ProfileScreen = () => {
 			css={{
 				display: 'flex',
 				flexDirection: 'row',
-				columnGap: 40,
 				padding: '30px',
+				justifyContent: 'center',
 			}}
 		>
 			<StyledBox
 				css={{
-					flex: 0.7,
 					flexDirection: 'column',
 				}}
 			>
-				<PatientProfileCard profileData={dataPatient} />
+				<PatientProfileCard />
 				<StyledBox
 					css={{
 						display: 'flex',
@@ -154,7 +150,7 @@ const ProfileScreen = () => {
 			</StyledBox>
 			<StyledBox
 				css={{
-					paddingLeft: '59px',
+					paddingLeft: '30px',
 					display: 'flex',
 					flexDirection: 'column',
 					flexWrap: 'wrap',
