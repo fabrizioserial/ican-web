@@ -8,6 +8,7 @@ import {
     Table,
     TableContainer,
 } from '@material-ui/core';
+import _ from "lodash"
 
 
 import PollResultsHeader from "./PollResultsHeader";
@@ -30,7 +31,15 @@ const PollResultsScreen = () => {
 
     useEffect(() => {
         if (dataPollResults)     {
-
+            let finalArray=[]
+            finalArray= finalArray.concat(dataPollResults.dailyReports.map((item)=>({...item, type:"daily"})),dataPollResults.weeklyReports.map(item =>({
+                id: item.id,
+                status: item.status,
+                date: item.endDate,
+                type:"weekly",
+            })).filter(item => item.id))
+            finalArray = _.orderBy(finalArray,"date",'desc')
+            console.log(finalArray)
             setPollResults(dataPollResults);
         }
     }, [isSuccessPollResults]);
@@ -76,7 +85,7 @@ const PollResultsScreen = () => {
                 >
                     <Table>
                         <PollResultsHeader />
-                        <PollResultsBody />
+                        <PollResultsBody data={pollResults} />
                     </Table>
                     <PollResultsBottom />
                 </StyledBox>

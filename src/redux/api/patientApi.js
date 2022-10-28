@@ -26,7 +26,7 @@ export const patientApi = api.injectEndpoints({
 				method: 'GET',
 			}),
 		}),
-		pollResults: builder.query({
+		getPollResults: builder.query({
 			query: (userId) => ({ url: '/api/home/patient-reports/'+userId, method: 'GET' }),
 		}),
 	}),
