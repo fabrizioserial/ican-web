@@ -12,7 +12,10 @@ import { SocialAndPhysicalConfig } from '../../utils/chartsConfigs';
 const SocialAndPhysicalActivitiesChart = ({ data }) => {
 	const theme = useTheme();
 	const [active, setActive] = useState('physical');
-	const options = useMemo(() => SocialAndPhysicalConfig(data ?? {}), [data ?? {}]);
+	const options = useMemo(
+		() => SocialAndPhysicalConfig(data ?? {}),
+		[data ?? {}],
+	);
 
 	const handleActividadFisica = () => {
 		ApexCharts.exec('mychart', 'hideSeries', ['social']);

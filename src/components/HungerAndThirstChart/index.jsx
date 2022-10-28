@@ -5,7 +5,10 @@ import Card from '../Card';
 import { HungerAndThristConfig } from '../../utils/chartsConfigs';
 
 const HungerAndThirstChart = ({ data }) => {
-	const options = useMemo(() => HungerAndThristConfig(data ?? {}), [data ?? {}]);
+	const options = useMemo(
+		() => HungerAndThristConfig(data ?? {}),
+		[data ?? {}],
+	);
 
 	return (
 		<Card

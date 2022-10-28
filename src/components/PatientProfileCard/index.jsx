@@ -15,42 +15,42 @@ import ProfileButton from '../../pages/PatientProfile/components/ProfileButtons'
 
 const PatientProfileCard = ({ profileData }) => {
 	const theme = useTheme();
-	const [age, setAge] = useState(new Date())
-	const [birthday, setBirthday] = useState()
-	const [gender, setGender] = useState()
-	const [status, setStatus] = useState()
+	const [age, setAge] = useState(new Date());
+	const [birthday, setBirthday] = useState();
+	const [gender, setGender] = useState();
+	const [status, setStatus] = useState();
 	const [buttonList, setButtonList] = useState(ProfileConfigButton);
 
 	const genderValue = (sex) => {
 		switch (sex) {
 			case 'Masculine':
-				return 'Masculino'
+				return 'Masculino';
 			case 'Femenine':
-				return 'Femenino'
+				return 'Femenino';
 			default:
 				break;
 		}
-	}
+	};
 
 	const statusValue = (state) => {
 		switch (state) {
 			case 'Accepted':
-				return 'Aceptado'
+				return 'Aceptado';
 			default:
 				break;
 		}
-	}
+	};
 
 	useEffect(() => {
-		setBirthday(new Date(profileData?.birthDate).getTime())
-		setGender(genderValue(profileData?.sex))
-		setStatus(statusValue(profileData?.status))
-	}, [profileData])
+		setBirthday(new Date(profileData?.birthDate).getTime());
+		setGender(genderValue(profileData?.sex));
+		setStatus(statusValue(profileData?.status));
+	}, [profileData]);
 
 	useEffect(() => {
-		let aux = Date.now() - birthday
-		setAge(new Date(aux).getFullYear() - 1970)
-	}, [birthday])
+		let aux = Date.now() - birthday;
+		setAge(new Date(aux).getFullYear() - 1970);
+	}, [birthday]);
 
 	return (
 		<StyledBox>
@@ -76,7 +76,7 @@ const PatientProfileCard = ({ profileData }) => {
 						columnGap: '300px',
 						flexDirection: 'row',
 						width: '100%',
-						justifyContent: "space-between"
+						justifyContent: 'space-between',
 					}}
 				>
 					<StyledBox
@@ -86,7 +86,7 @@ const PatientProfileCard = ({ profileData }) => {
 							columnGap: '20px',
 						}}
 					>
-						{profileData &&
+						{profileData && (
 							<StyledBox
 								css={{
 									display: 'flex',
@@ -94,12 +94,17 @@ const PatientProfileCard = ({ profileData }) => {
 									alignItems: 'top',
 								}}
 							>
-								{getProfileImageFromName(profileData.name, profileData.surname, {
-									width: 80,
-									height: 80,
-									fontSize: '25px',
-								})}
-							</StyledBox>}
+								{getProfileImageFromName(
+									profileData.name,
+									profileData.surname,
+									{
+										width: 80,
+										height: 80,
+										fontSize: '25px',
+									},
+								)}
+							</StyledBox>
+						)}
 						<StyledBox
 							css={{
 								display: 'flex',
@@ -110,9 +115,11 @@ const PatientProfileCard = ({ profileData }) => {
 								rowGap: '10px',
 							}}
 						>
-							<StyledBox css={{
-								width: "100%"
-							}}>
+							<StyledBox
+								css={{
+									width: '100%',
+								}}
+							>
 								<StyledH3
 									css={{
 										fontStyle: 'normal',
@@ -128,7 +135,7 @@ const PatientProfileCard = ({ profileData }) => {
 										color: theme.oncoBlack,
 									}}
 								>
-									{profileData?.name + " " + profileData?.surname}
+									{profileData?.name + ' ' + profileData?.surname}
 								</StyledH3>
 							</StyledBox>
 
@@ -174,8 +181,8 @@ const PatientProfileCard = ({ profileData }) => {
 
 					<StyledBox
 						css={{
-							display: "flex",
-							justifyContent: 'flex-end'
+							display: 'flex',
+							justifyContent: 'flex-end',
 						}}
 					>
 						<StyledBox
