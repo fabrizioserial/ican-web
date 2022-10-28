@@ -499,7 +499,7 @@ export const formSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addMatcher(
-            patientApi.endpoints.getPatientData.matchFulfilled,
+            patientApi.endpoints.getPatientDataForm.matchFulfilled,
             (state, action) => {
                 state.values = { ...state.values, ...action.payload }
             },

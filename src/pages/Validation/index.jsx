@@ -4,9 +4,9 @@ import { FormBuilder } from '../../components/form/InputFields/utils';
 import Button from '../../common/components/button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { setValue } from '../../redux/slices/formSlice';
-import { useLazyGetPatientDataQuery } from '../../redux/api/patientApi';
 import { useParams } from 'react-router';
 import { useSetPatientFormMutation, useSetTreatmentFormMutation, useUpdateValidatePatientMutation } from '../../redux/api/validateFormApi';
+import { useLazyGetPatientDataFormQuery } from '../../redux/api/patientApi';
 
 const Validation = () => {
 	// const [sections, setSections] = useState(FormsSqueleton);
@@ -20,7 +20,7 @@ const Validation = () => {
 	// const [values, setValues] = useState(validationFormValues);
 	const [
 		refetch, { data, isSuccess }
-	] = useLazyGetPatientDataQuery()
+	] = useLazyGetPatientDataFormQuery()
 
 	useEffect(() => {
 		refetch(patientId)
