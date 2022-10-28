@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {ModalTypeEnum} from "../../utils/utils";
+import { ModalTypeEnum } from '../../utils/utils';
 
 const initialState = {
-	modalOpen: true,
-	modalType: ModalTypeEnum.DAILY_MODAL,
+	modalOpen: false,
+	modalType: undefined,
 };
 
 export const utilsSlice = createSlice({
@@ -15,7 +15,7 @@ export const utilsSlice = createSlice({
 			state.modalType = action.payload.type;
 		},
 		closeModal: (state) => {
-			state.modalOpen = true;
+			state.modalOpen = false;
 		},
 	},
 });
