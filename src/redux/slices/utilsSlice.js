@@ -3,8 +3,8 @@ import { ModalTypeEnum } from '../../utils/utils';
 
 const initialState = {
 	modalOpen: true,
-	modalType: ModalTypeEnum.DAILY_MODAL,
-	reportId: '8330c74a-1693-4fc0-9a24-37fd70bb30cb',
+	modalType: ModalTypeEnum.WEEKLY_MODAL,
+	reportId: 'c36c2351-d835-493a-a513-7590b97d9e8e',
 };
 
 export const utilsSlice = createSlice({
