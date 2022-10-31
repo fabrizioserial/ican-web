@@ -151,6 +151,7 @@ const PatientProfileCard = () => {
 											margin: 0,
 											whiteSpace: 'nowrap',
 											color: theme.oncoBlack,
+											textTransform: 'capitalize',
 										}}
 									>
 										{dataPatient?.name + ' ' + dataPatient?.surname}

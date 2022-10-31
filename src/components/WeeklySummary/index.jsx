@@ -12,26 +12,40 @@ import MarkIcon from '../../assets/MarkIcon';
 import ReloadIcon from '../../assets/ReloadIcon';
 import { useDailySummaryStatisticsQuery } from '../../redux/api/homeApi';
 import { StyledCircularProgress } from '../CustomCircularProgress/styles';
+import { useFilterPatientQuery } from '../../redux/api/listApi';
 
 const WeeklySummary = () => {
 	const theme = useTheme();
 	const { data, isLoading, refetch, isFetching } =
-		useDailySummaryStatisticsQuery();
+		useDailySummaryStatisticsQuery({ status: 'Pending', skip: 0, take: 10 });
 	const totalAmount = useMemo(
 		() =>
 			Object.values(data ?? {})?.reduce((prev, actual) => prev + actual, 0),
 		[data],
 	);
+	const { data: otherComponentData, isLoading: otherComponentLoading } =
+		useFilterPatientQuery();
+	console.log('hola', otherComponentData);
+
 	return (
 		<StyledCardHome
+			width={'500px'}
+			heigth={'230px'}
 			css={{
-				width: '500px',
+				width: '740px',
 				height: '230px',
 				display: 'flex',
 				flexDirection: 'column',
 				color: theme.oncoBlack,
 				padding: '24px 20px',
 			}}
+			className={
+				otherComponentData?.patients?.length === 0 ||
+				otherComponentData === undefined ||
+				otherComponentLoading
+					? ''
+					: 'open'
+			}
 		>
 			<StyledBox
 				css={{

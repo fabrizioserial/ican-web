@@ -1,28 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
 	StyledBox,
 	StyledH3,
 	StyledScreen,
 } from '../../common/styledCommonComponents';
-import {
-	Box,
-	Table,
-	TableBody,
-	TableCell,
-	TableContainer,
-	TableHead,
-	TableRow,
-	TableSortLabel,
-} from '@material-ui/core';
-import styled from 'styled-components';
-import { visuallyHidden } from '@mui/utils';
+import { Table, TableContainer } from '@material-ui/core';
 import PatientListHeader from './PatientListHeader';
 import PatientListBody from './PatientListBody';
 import PatientListBottom from './PatientListBottom';
 import SearchBar from './SearchBar';
-import WaitingListHeaderCard from './CardsHeader/WaitingListCard';
-import PatientsHeaderCard from './CardsHeader/HeaderCard';
-import { PatientsListHeaderConfig } from '../../utils/utils';
 import CardsHeader from './CardsHeader';
 
 const PatientListScreen = () => {

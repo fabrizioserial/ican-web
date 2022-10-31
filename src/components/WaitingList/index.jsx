@@ -8,9 +8,9 @@ import {
 } from '../../common/styledCommonComponents';
 import UsersIcon from '../../assets/UsersIcon';
 import { useTheme } from 'styled-components';
-import PatientContainer from '../PatientsList/PatientContainer';
 import { StyledWaitingListContainer } from './style';
 import PatientWaitingItem from './components/PatientWaitingItem';
+import { useFilterPatientQuery } from '../../redux/api/listApi';
 
 function WaitingList() {
 	const [waitingPatients, setWaitingPatients] = useState([
@@ -63,13 +63,25 @@ function WaitingList() {
 			avatar: 'img',
 		},
 	]);
+	const { data, isLoading } = useFilterPatientQuery({
+		status: 'Pending',
+		skip: 0,
+		take: 10,
+	});
 	const theme = useTheme();
+
 	return (
 		<StyledCardHome
+			width={'0'}
+			height={'230px'}
 			css={{
-				width: '230px',
-				height: '230px',
+				opacity: '0 !important',
 			}}
+			className={
+				data?.patients?.length === 0 || data === undefined
+					? 'close'
+					: 'open'
+			}
 		>
 			<StyledBox
 				css={{
