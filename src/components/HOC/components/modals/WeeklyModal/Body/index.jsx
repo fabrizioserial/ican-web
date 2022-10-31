@@ -8,9 +8,6 @@ import { useGetWeeklyReportQuery } from '../../../../../../redux/api/patientApi'
 const Body = () => {
 	const weekly = useSelector((state) => state.homeSlice.weekly);
 
-	const reportId = useSelector((state) => state.utilsSlice.reportId);
-	const { data } = useGetWeeklyReportQuery(reportId);
-
 	return (
 		<StyledBox css={{ padding: '30px 30px 40px' }}>
 			{weekly.map((cat) => (
