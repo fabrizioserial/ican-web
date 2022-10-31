@@ -67,7 +67,9 @@ const WeeklyModal = ({
 							</StyledP>
 							{renderState()}
 						</StyledBox>
-						<StyledP>12 de semptiembre de 2022</StyledP>
+						<StyledP css={{ marginTop: '5px' }}>
+							12 de semptiembre de 2022
+						</StyledP>
 					</StyledBox>
 				</StyledBox>
 			}

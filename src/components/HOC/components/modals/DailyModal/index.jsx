@@ -69,7 +69,7 @@ const DailyModal = ({ date, weeklyData, handleOnClose }) => {
 							</StyledP>
 							{renderState(data?.status)}
 						</StyledBox>
-						<StyledP>{data?.date}</StyledP>
+						<StyledP css={{ marginTop: '5px' }}>{data?.date}</StyledP>
 					</StyledBox>
 				</StyledBox>
 			}
