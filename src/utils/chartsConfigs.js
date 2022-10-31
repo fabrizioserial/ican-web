@@ -348,10 +348,15 @@ export const HungerAndThristConfig = (data) => {
 export const DailyColumnChartConfig = (data) => {
 	const dataAux = () => {
 		let aux = [];
-		let math =
-			Object.values(data).length > 1
-				? Object.values(data).length / (Object.values(data).length * 2)
-				: 0.1;
+		let maxValue = 0;
+
+		Object.values(data).forEach(item => {
+			if (item > maxValue) {
+				maxValue = item
+			}
+		});
+		let math = maxValue / 10
+
 		for (let index = 0; index <= Object.values(data).length; index++) {
 			aux.push({
 				x: Object.keys(data),
@@ -370,16 +375,6 @@ export const DailyColumnChartConfig = (data) => {
 		return aux;
 	};
 	return {
-		// series: [
-		// 	{
-		// 		name: 'Hidratación',
-		// 		data: Object.values(data).map((a) => a[1] + 1),
-		// 	},
-		// 	{
-		// 		name: 'Apetito',
-		// 		data: Object.values(data).map((a) => a[0] + 1),
-		// 	},
-		// ],
 		series: [
 			{
 				data: dataAux(),

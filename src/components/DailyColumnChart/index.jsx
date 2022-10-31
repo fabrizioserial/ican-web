@@ -4,11 +4,12 @@ import ExclamamtionIcon from '../../assets/ExclamamtionIcon';
 import { StyledBox, StyledH3 } from '../../common/styledCommonComponents';
 import { DailyColumnChartConfig } from '../../utils/chartsConfigs';
 import Card from '../Card';
+import { StyledCircularProgress } from '../CustomCircularProgress/styles';
 
-const DailyColumnChart = ({ data }) => {
+const DailyColumnChart = ({ data, isLoading }) => {
 	const options = useMemo(
-		() => DailyColumnChartConfig(data.data),
-		[data.data],
+		() => DailyColumnChartConfig(data.data ?? {}),
+		[data.data ?? {}],
 	);
 	const height = '90%';
 
@@ -19,7 +20,7 @@ const DailyColumnChart = ({ data }) => {
 			width="100%"
 			height="268px"
 		>
-			<StyledBox
+			{isLoading ? <StyledCircularProgress size={50} /> : <StyledBox
 				css={{
 					display: 'flex',
 					flexDirection: 'row',
@@ -64,7 +65,7 @@ const DailyColumnChart = ({ data }) => {
 								fontWeight: 'normal',
 							}}
 						>
-							{data.mounth}
+							{data.month}
 						</StyledH3>
 					</StyledBox>
 					<StyledBox
@@ -84,7 +85,7 @@ const DailyColumnChart = ({ data }) => {
 						width="100%"
 					/>
 				</StyledBox>
-			</StyledBox>
+			</StyledBox>}
 			{/* <StyledBox
                 css={{
                     display: "flex",
