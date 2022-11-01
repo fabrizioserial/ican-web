@@ -345,17 +345,23 @@ export const HungerAndThristConfig = (data) => {
 		},
 	};
 };
+
 export const DailyColumnChartConfig = (data) => {
 	const dataAux = () => {
 		let aux = [];
-		let math =
-			Object.values(data).length > 1
-				? Object.values(data).length / (Object.values(data).length * 2)
-				: 0.1;
-		for (let index = 0; index <= Object.values(data).length; index++) {
+		let maxValue = 0;
+
+		Object.values(data).forEach((item) => {
+			if (item > maxValue) {
+				maxValue = item;
+			}
+		});
+		let math = maxValue / 10;
+
+		Object.keys(data).forEach((dat) => {
 			aux.push({
-				x: Object.keys(data),
-				y: data[index],
+				x: dat,
+				y: data[dat][0],
 				goals: [
 					{
 						value: -math,
@@ -363,23 +369,14 @@ export const DailyColumnChartConfig = (data) => {
 						strokeWidth: 0,
 						strokeLineCap: 'round',
 						strokeColor: '#949494',
+						top: -10,
 					},
 				],
 			});
-		}
+		});
 		return aux;
 	};
 	return {
-		// series: [
-		// 	{
-		// 		name: 'Hidratación',
-		// 		data: Object.values(data).map((a) => a[1] + 1),
-		// 	},
-		// 	{
-		// 		name: 'Apetito',
-		// 		data: Object.values(data).map((a) => a[0] + 1),
-		// 	},
-		// ],
 		series: [
 			{
 				data: dataAux(),
@@ -441,7 +438,7 @@ export const DailyColumnChartConfig = (data) => {
 				colors: ['transparent'],
 			},
 			xaxis: {
-				categories: Object.values(data).map((a, index) => index + 1),
+				categories: Object.keys(data).map((a) => a),
 				axisBorder: {
 					show: false,
 				},
@@ -455,7 +452,7 @@ export const DailyColumnChartConfig = (data) => {
 						fontWeight: 400,
 						fontSize: '10px',
 					},
-					offsetY: 3,
+					offsetY: 10,
 				},
 			},
 			yaxis: {
