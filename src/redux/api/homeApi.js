@@ -44,7 +44,7 @@ export const {
 	useCancerStatisticsQuery,
 	useDailySummaryStatisticsQuery,
 	usePatientsListQuery,
-	useWeeklyStatisticsQuery
+	useWeeklyStatisticsQuery,
 } = homeApi;
 
 export const {
@@ -55,6 +55,6 @@ export const {
 		cancerStatistics,
 		dailySummaryStatistics,
 		patientsList,
-		weeklyStatistics
+		weeklyStatistics,
 	},
 } = homeApi;

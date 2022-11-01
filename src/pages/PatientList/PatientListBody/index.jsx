@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
-import { TableBody, TableCell, TableRow } from '@material-ui/core';
-import { StyledBodyCell, StyledBodyRow, StyledUserStatus } from './styles';
-import {
-	backgroundColorStatus,
-	getUserStatusLabel,
-	textColorStatus,
-} from '../../../utils/utils';
+import { TableBody } from '@material-ui/core';
+import { StyledBodyCell, StyledBodyRow } from './styles';
+import { renderStatusPill } from '../../../utils/utils';
 import { StyledBox, StyledImg } from '../../../common/styledCommonComponents';
 
 const PatientListBody = () => {
@@ -31,7 +27,7 @@ const PatientListBody = () => {
 		{
 			nHistorial: '2141325213235435',
 			nameSurname: 'Agustin VonStaszweski',
-			tumor: 'Prostat',
+			tumor: 'Prostata',
 			treatment: 'Quimioterapia',
 			treatmentTumor: 'Quimioterapia',
 			treatmentTumorPeri: 'Quimioterapia',
@@ -83,25 +79,6 @@ const PatientListBody = () => {
 			state: 'active',
 		},
 	]);
-
-	const renderUserStatus = (type) => {
-		return (
-			<StyledBox
-				css={{
-					color: textColorStatus[type],
-					backgroundColor: backgroundColorStatus[type],
-					borderRadius: '10px',
-					width: '74px',
-					height: '24px',
-					display: 'flex',
-					justifyContent: 'center',
-					alignItems: 'center',
-				}}
-			>
-				{getUserStatusLabel(type)}
-			</StyledBox>
-		);
-	};
 
 	return (
 		<TableBody>
@@ -155,7 +132,7 @@ const PatientListBody = () => {
 						{bodyItem.treatmentTumorPeri}
 					</StyledBodyCell>
 					<StyledBodyCell width={'5%'} style={{ paddingRight: '30px' }}>
-						{renderUserStatus(bodyItem.state)}
+						{renderStatusPill(bodyItem.state)}
 					</StyledBodyCell>
 				</StyledBodyRow>
 			))}

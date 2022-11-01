@@ -115,7 +115,7 @@ function WaitingList() {
 							name={name}
 							surename={surname}
 							dni={dni}
-						// avatar = {avatarImg}
+							// avatar = {avatarImg}
 						/>
 					))}
 				</StyledWaitingListContainer>

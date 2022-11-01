@@ -390,6 +390,16 @@ export const getUserStatusLabel = (type) => {
 			return 'Inactivo';
 	}
 };
+export const getPollStatusLabel = (type) => {
+	switch (type) {
+		case 'Completed':
+			return 'Completado';
+		case 'Incomplete':
+			return 'Incomplete';
+		case 'Empty':
+			return 'Sin Arrancar';
+	}
+};
 
 export const CategoryList = {
 	Respiratorio: 'Respiratorio',
@@ -445,9 +455,22 @@ export const getIconByCategory = (category) => {
 
 export const textColorStatus = {
 	active: '#1D6535',
-	innactive: '#5F5F5F',
+	inactive: '#5F5F5F',
 	in_progress: '#EA8053',
 };
+
+export const pollTextColorStatus = {
+	Completed: '#1D6535',
+	Incomplete: '#EA8053',
+	Empty: '#5F5F5F',
+};
+
+export const backgroundPollColorStatus = {
+	Completed: '#BEE8CF',
+	Empty: '#C4C4C4',
+	Incomplete: '#F9E0D6',
+};
+
 export const backgroundColorStatus = {
 	active: '#BEE8CF',
 	innactive: '#C4C4C4',
@@ -583,6 +606,65 @@ export const translateQuestion = (type) => {
 	}
 };
 
+export const pollBackgroundColorStatus = {
+	completed: '#BEE8CF',
+	incomplete: '#C4C4C4',
+	unstarted: '#F9E0D6',
+};
+
+export const renderStatusPill = (type) => {
+	return (
+		<StyledBox
+			css={{
+				color: textColorStatus[type],
+				backgroundColor: backgroundColorStatus[type],
+				borderRadius: '10px',
+				width: '74px',
+				height: '24px',
+				display: 'flex',
+				justifyContent: 'center',
+				alignItems: 'center',
+			}}
+		>
+			{getUserStatusLabel(type)}
+		</StyledBox>
+	);
+};
+
+export const renderPollPill = (type) => {
+	console.log(type);
+	return (
+		<StyledBox
+			css={{
+				color: pollTextColorStatus[type],
+				backgroundColor: backgroundPollColorStatus[type],
+				borderRadius: '10px',
+				width: '120px',
+				height: '24px',
+				display: 'flex',
+				justifyContent: 'center',
+				alignItems: 'center',
+			}}
+		>
+			{getPollStatusLabel(type)}
+		</StyledBox>
+	);
+};
+
+export const PollResultsHeaderConst = [
+	{
+		label: ' ',
+		sortId: '',
+	},
+	{
+		label: 'Fecha de Realización',
+		sortId: '',
+	},
+	{
+		label: 'Estado',
+		sortId: '',
+	},
+];
 export const CapitalizeText = (text) => {
 	if (!text) return '';
 	return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
@@ -632,24 +714,6 @@ export const getProfileImageFromName = (name, surname, size) => {
 			}}
 		>
 			{letters}
-		</StyledBox>
-	);
-};
-export const renderStatusPill = (type) => {
-	return (
-		<StyledBox
-			css={{
-				color: textColorStatus[type],
-				backgroundColor: backgroundColorStatus[type],
-				borderRadius: '10px',
-				width: '74px',
-				height: '24px',
-				display: 'flex',
-				justifyContent: 'center',
-				alignItems: 'center',
-			}}
-		>
-			{getUserStatusLabel(type)}
 		</StyledBox>
 	);
 };

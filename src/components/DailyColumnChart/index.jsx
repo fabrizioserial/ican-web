@@ -29,9 +29,9 @@ const DailyColumnChart = ({ data, isLoading }) => {
 					justifyContent: 'center',
 				}}
 			>
-				{isLoading ?
+				{isLoading ? (
 					<StyledCircularProgress size={50} />
-					:
+				) : (
 					<StyledBox
 						css={{
 							display: 'flex',
@@ -88,7 +88,9 @@ const DailyColumnChart = ({ data, isLoading }) => {
 								}}
 							/>
 						</StyledBox>
-						<StyledBox css={{ flex: 0.9, paddingRight: 15, paddingBottom: 15 }}>
+						<StyledBox
+							css={{ flex: 0.9, paddingRight: 15, paddingBottom: 15 }}
+						>
 							<Chart
 								options={options.options}
 								series={options.series}
@@ -97,7 +99,8 @@ const DailyColumnChart = ({ data, isLoading }) => {
 								width="100%"
 							/>
 						</StyledBox>
-					</StyledBox>}
+					</StyledBox>
+				)}
 			</StyledBox>
 		</Card>
 	);
