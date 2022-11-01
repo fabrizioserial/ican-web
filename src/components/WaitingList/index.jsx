@@ -109,12 +109,13 @@ function WaitingList() {
 				</StyledH1>
 
 				<StyledWaitingListContainer>
-					{waitingPatients.map(({ name, surname, dni, avatar }) => (
+					{waitingPatients.map(({ name, surname, dni, avatar }, index) => (
 						<PatientWaitingItem
+							key={index}
 							name={name}
 							surename={surname}
 							dni={dni}
-							// avatar = {avatarImg}
+						// avatar = {avatarImg}
 						/>
 					))}
 				</StyledWaitingListContainer>
