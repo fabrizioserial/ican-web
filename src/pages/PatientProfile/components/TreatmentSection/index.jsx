@@ -9,6 +9,7 @@ import TreatmentItem from './TreatmentItem';
 import {useParams} from "react-router";
 import { useGetPatientTreatmetsQuery} from "../../../../redux/api/patientApi";
 import _ from "lodash"
+import {StyledTreatmentItemContainer} from "./TreatmentItemContainer";
 
 const TreatmentSection = () => {
 	const theme = useTheme();
@@ -73,6 +74,7 @@ const TreatmentSection = () => {
 					paddingBottom: '20px',
 				}}
 			>
+				<StyledTreatmentItemContainer>
 				{treatmentsResults?.map((treatment,index) => (
 				<TreatmentItem
 					medications={parseMedicationList(treatment.treatment)}
@@ -82,6 +84,7 @@ const TreatmentSection = () => {
 					finishDate={parseDate(treatment.finishDate)}
 				/>
 				))}
+				</StyledTreatmentItemContainer>
 				<StyledBox
 					css={{
 						boxSizing: 'border-box',

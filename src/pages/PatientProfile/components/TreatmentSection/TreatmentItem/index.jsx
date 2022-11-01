@@ -78,6 +78,7 @@ const TreatmentItem = ({
 							textTransform: 'capitalize',
 							color: theme.OncoPurple,
 							justifyContent: 'flexEnd',
+							whiteSpace: 'nowrap',
 						}}
 					>
 						+ {medications.length > 1 && medications.length - 1}
@@ -95,7 +96,7 @@ const TreatmentItem = ({
 						alignItems: 'center',
 						letterSpacing: '0.05em',
 						textTransform: 'capitalize',
-						color: '#AF7EFF',
+						color: status === "current" ? '#AF7EFF' : theme.red,
 						whiteSpace: 'nowrap',
 					}}
 				>
