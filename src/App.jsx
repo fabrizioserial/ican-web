@@ -12,6 +12,7 @@ import ProfileScreen from './pages/PatientProfile/ProfileScreen';
 import Wrapper from './components/Navbar/Wrapper';
 import PatientListScreen from './pages/PatientList/PatientListScreen';
 import { withModal } from './components/HOC/withModal';
+import PollResultsScreen from './pages/PollResultsTable';
 import StatisticsScreen from './pages/Statistics/StatisticsScreen';
 
 const App = () => {
@@ -25,6 +26,10 @@ const App = () => {
 						<Route path="/home" exact element={<HomeScreen />} />
 						<Route path="/statistics" element={<StatisticsScreen />} />
 						<Route path="/my-patients" element={<PatientListScreen />} />
+						<Route
+							path="/poll-results/:patientId"
+							element={<PollResultsScreen />}
+						/>
 						<Route
 							path="/settings"
 							element={

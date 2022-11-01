@@ -29,6 +29,11 @@ export const homeApi = api.injectEndpoints({
 				url: '/api/home/patients-table',
 			}),
 		}),
+		weeklyStatistics: builder.query({
+			query: () => ({
+				url: '/api/weekly/statistics',
+			}),
+		}),
 	}),
 });
 
@@ -39,6 +44,7 @@ export const {
 	useCancerStatisticsQuery,
 	useDailySummaryStatisticsQuery,
 	usePatientsListQuery,
+	useWeeklyStatisticsQuery,
 } = homeApi;
 
 export const {
@@ -49,5 +55,6 @@ export const {
 		cancerStatistics,
 		dailySummaryStatistics,
 		patientsList,
+		weeklyStatistics,
 	},
 } = homeApi;
