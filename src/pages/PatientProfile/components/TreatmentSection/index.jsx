@@ -85,6 +85,7 @@ const TreatmentSection = () => {
 				/>
 				))}
 				</StyledTreatmentItemContainer>
+				<StyledBox css={{ display:'flex',flexDirection:"column",alignItems: 'center',}}>
 				<StyledBox
 					css={{
 						boxSizing: 'border-box',
@@ -103,6 +104,7 @@ const TreatmentSection = () => {
 							boxShadow: '0px 4px 24px rgba(214, 203, 252, 0.3)',
 							transition: 'all 0.2s ease-out',
 						},
+
 					}}
 				>
 					<PlusCircleIcon />
@@ -120,10 +122,12 @@ const TreatmentSection = () => {
 							textTransform: 'capitalize',
 							color: '#AF7EFF',
 							whiteSpace: 'nowrap',
+
 						}}
 					>
 						Nuevo Tratamiento
 					</StyledP>
+				</StyledBox>
 				</StyledBox>
 			</StyledBox>
 		</Card>
