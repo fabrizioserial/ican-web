@@ -74,6 +74,7 @@ const TreatmentSection = () => {
 					paddingBottom: '20px',
 				}}
 			>
+				{ treatmentsResults.length!==1?
 				<StyledTreatmentItemContainer>
 				{treatmentsResults?.map((treatment,index) => (
 				<TreatmentItem
@@ -83,8 +84,15 @@ const TreatmentSection = () => {
 					startedDate={parseDate(treatment.startDate)}
 					finishDate={parseDate(treatment.finishDate)}
 				/>
-				))}
-				</StyledTreatmentItemContainer>
+				))
+				}
+				</StyledTreatmentItemContainer> :<TreatmentItem
+						medications={parseMedicationList(treatmentsResults[0].treatment)}
+						id={0}
+						status={treatmentsResults[0].status}
+						startedDate={parseDate(treatmentsResults[0].startDate)}
+						finishDate={parseDate(treatmentsResults[0].finishDate)}
+					/>}
 				<StyledBox css={{ display:'flex',flexDirection:"column",alignItems: 'center',}}>
 				<StyledBox
 					css={{
