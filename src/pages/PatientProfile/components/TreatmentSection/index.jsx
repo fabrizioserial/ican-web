@@ -29,8 +29,9 @@ const TreatmentSection = () => {
 				return treatment.finishDate === null;
 			});
 
-			finalArray= finalArray.concat(finalizedTreatments.map((item)=>({...item, status:"finalized"})),currentTreatment.map(item =>(
-				{...item, status:"current"}
+			finalArray= finalArray.concat(
+				finalizedTreatments.map((item)=>({...item, status:"finalized"})),
+				currentTreatment.map(item =>({...item, status:"current"}
 			)).filter(item => item.id))
 			finalArray = _.orderBy(finalArray,"date",'desc')
 
