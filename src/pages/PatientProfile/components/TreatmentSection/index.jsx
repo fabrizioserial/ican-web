@@ -19,11 +19,9 @@ const TreatmentSection = () => {
 	const [treatmentsResults, setTreatmentsResults] = useState(undefined);
 
 	useEffect(() => {
-		console.log("eu")
 		console.log(treatmentsData)
 		if (treatmentsData) {
 			let finalArray=[]
-			console.log("aca")
 			const finalizedTreatments = treatmentsData.filter(treatment => {
 				return treatment.finishDate !== null;
 			});
@@ -36,13 +34,26 @@ const TreatmentSection = () => {
 				currentTreatment.map(item =>({...item, status:"current"}
 			)).filter(item => item.id))
 			finalArray = _.orderBy(finalArray,"date",'desc')
-
-			console.log("hola")
-			console.log("carlos",finalArray)
 			setTreatmentsResults(finalArray);
 		}
 	}, [isSuccessTreatmentsData,treatmentsData]);
 
+
+	const parseDate = (DayItem) => {
+		let dayObject = new Date(DayItem);
+		let day =
+			dayObject.getDate().toString() +
+			'/' +
+			dayObject.getMonth() + 1;
+		return day;
+	};
+
+
+	const parseMedicationList=(medications) =>{
+		const medicationArray = medications.split(',');
+		console.log(medicationArray)
+		return medicationArray
+	}
 
 
 	return (
@@ -64,11 +75,11 @@ const TreatmentSection = () => {
 			>
 				{treatmentsResults?.map((treatment,index) => (
 				<TreatmentItem
-					medications={treatment.treatment}
+					medications={parseMedicationList(treatment.treatment)}
 					id={index}
 					status={treatment.status}
-					startedDate={treatment.startDate}
-					finishDate={treatment.finishDate}
+					startedDate={parseDate(treatment.startDate)}
+					finishDate={parseDate(treatment.finishDate)}
 				/>
 				))}
 				<StyledBox
