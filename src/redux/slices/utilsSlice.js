@@ -2,9 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 import { ModalTypeEnum } from '../../utils/utils';
 
 const initialState = {
-	modalOpen: true,
-	modalType: ModalTypeEnum.WEEKLY_MODAL,
-	reportId: 'c36c2351-d835-493a-a513-7590b97d9e8e',
+	modalOpen: false,
+	modalType: undefined,
+	// 'c36c2351-d835-493a-a513-7590b97d9e8e'
+	reportId: undefined,
 };
 
 export const utilsSlice = createSlice({
@@ -14,6 +15,7 @@ export const utilsSlice = createSlice({
 		setModalOpen: (state, action) => {
 			state.modalOpen = action.payload.open;
 			state.modalType = action.payload.type;
+			state.reportId = action.payload?.id;
 		},
 		closeModal: (state) => {
 			state.modalOpen = false;
@@ -24,5 +26,5 @@ export const utilsSlice = createSlice({
 	},
 });
 
-export const { setModalOpen, closeModal } = utilsSlice.actions;
+export const { setModalOpen, closeModal, setReportId } = utilsSlice.actions;
 export default utilsSlice.reducer;

@@ -12,6 +12,7 @@ import { useGetWeeklyReportQuery } from '../../../../../redux/api/patientApi';
 import { useSelector } from 'react-redux';
 import { StyledCircularProgress } from '../../../../CustomCircularProgress/styles';
 import { useWeeklyQuestionsQuery } from '../../../../../redux/api/homeApi';
+import { parseData, parseDataWithYear } from '../../../../../utils/utils';
 
 const WeeklyModal = ({
 	date,
@@ -91,7 +92,9 @@ const WeeklyModal = ({
 							</StyledP>
 							{renderState(data?.status)}
 						</StyledBox>
-						<StyledP css={{ marginTop: '5px' }}>{data?.endDate}</StyledP>
+						<StyledP css={{ marginTop: '5px' }}>
+							Completado {parseDataWithYear(data?.endDate)}
+						</StyledP>
 					</StyledBox>
 				</StyledBox>
 			}

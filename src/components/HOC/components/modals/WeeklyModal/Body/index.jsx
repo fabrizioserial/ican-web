@@ -7,13 +7,13 @@ import { useGetWeeklyReportQuery } from '../../../../../../redux/api/patientApi'
 
 const Body = () => {
 	const weekly = useSelector((state) => state.homeSlice.weekly);
-
 	return (
 		<StyledBox css={{ padding: '30px 30px 40px' }}>
 			{weekly.map((cat) => (
 				<CustomAccordionWeekly
 					category={cat.name}
 					symptoms={cat.symptoms}
+					endDate={cat.date}
 				/>
 			))}
 		</StyledBox>
