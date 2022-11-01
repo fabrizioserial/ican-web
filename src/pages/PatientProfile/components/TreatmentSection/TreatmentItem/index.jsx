@@ -32,7 +32,7 @@ const TreatmentItem = ({
 					boxSizing: 'border-box',
 					width: '255px',
 					height: '63px',
-					background: status === "current" ? theme.white : '#F5F5F5',
+					background: theme.white,
 					border: '1px solid rgba(225, 209, 252, 0.22)',
 					boxShadow: '0px 4px 24px rgba(214, 203, 252, 0.15)',
 					borderRadius: '10px',
@@ -58,12 +58,13 @@ const TreatmentItem = ({
 							alignItems: 'center',
 							letterSpacing: '0.05em',
 							textTransform: 'capitalize',
-							color: '#949494',
+							color: status === 'finalized' ? '#949494' :'#5F5F5F'  ,
 							whiteSpace: 'nowrap',
 						}}
 					>
 						{medications.length > 0 ? medications[0] : ''}
 					</StyledP>
+					{medications.length > 1 &&
 					<StyledP
 						css={{
 							width: '224px',
@@ -81,8 +82,11 @@ const TreatmentItem = ({
 							whiteSpace: 'nowrap',
 						}}
 					>
-						+ {medications.length > 1 && medications.length - 1}
+
+						+ {medications.length-1}
+
 					</StyledP>
+					}
 				</StyledBox>
 				<StyledP
 					css={{

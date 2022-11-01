@@ -32,7 +32,7 @@ const TreatmentSection = () => {
 
 			finalArray= finalArray.concat(
 				finalizedTreatments.map((item)=>({...item, status:"finalized"})),
-				currentTreatment.map(item =>({...item, status:"finalized"}
+				currentTreatment.map(item =>({...item, status:"current"}
 			)).filter(item => item.id))
 			finalArray = _.orderBy(finalArray,"date",'desc')
 			setTreatmentsResults(finalArray);
