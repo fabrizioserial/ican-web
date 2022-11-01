@@ -7,21 +7,23 @@ import PillIcon from '../../../../assets/PillIcon';
 import PlusCircleIcon from '../../../../assets/PlusCircleIcon';
 import TreatmentItem from './TreatmentItem';
 import {useParams} from "react-router";
-import {useGetPatientTreatmentsQuery} from "../../../../redux/api/patientApi";
+import { useGetPatientTreatmetsQuery} from "../../../../redux/api/patientApi";
 import _ from "lodash"
 
 const TreatmentSection = () => {
 	const theme = useTheme();
 
 	const { patientId } = useParams();
-	const { treatments: treatmentsData, isSuccess: isSuccessTreatmentsData }
-		= useGetPatientTreatmentsQuery(patientId);
+	const { data: treatmentsData, isSuccess: isSuccessTreatmentsData }
+		= useGetPatientTreatmetsQuery(patientId);
 	const [treatmentsResults, setTreatmentsResults] = useState(undefined);
 
 	useEffect(() => {
-		if (treatmentsData)     {
+		console.log("eu")
+		console.log(treatmentsData)
+		if (treatmentsData) {
 			let finalArray=[]
-
+			console.log("aca")
 			const finalizedTreatments = treatmentsData.filter(treatment => {
 				return treatment.finishDate !== null;
 			});
@@ -35,10 +37,11 @@ const TreatmentSection = () => {
 			)).filter(item => item.id))
 			finalArray = _.orderBy(finalArray,"date",'desc')
 
+			console.log("hola")
 			console.log("carlos",finalArray)
 			setTreatmentsResults(finalArray);
 		}
-	}, [isSuccessTreatmentsData]);
+	}, [isSuccessTreatmentsData,treatmentsData]);
 
 
 

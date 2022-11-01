@@ -12,6 +12,7 @@ const TreatmentItem = ({
 	startedDate,
 	status ,
 }) => {
+	console.log(medications,id,finishDate,startedDate,status)
 	const theme = useTheme();
 	return (
 		<StyledBox

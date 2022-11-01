@@ -26,7 +26,7 @@ export const patientApi = api.injectEndpoints({
 				method: 'GET',
 			}),
 		}),
-		getPatientTreatments: builder.query({
+		getPatientTreatmets: builder.query({
 			query: (patientID) => ({
 				url: `/api/home/patient-treatmets/${patientID}`,
 				method: 'GET',
@@ -40,7 +40,7 @@ export const {
 	useLazyGetAppetiteHydrationQuery,
 	useLazyGetSocialPhysicalQuery,
 	useLazyGetCalendarQuery,
-	useGetPatientTreatmentsQuery,
+	useGetPatientTreatmetsQuery,
 } = patientApi;
 
 export const {
