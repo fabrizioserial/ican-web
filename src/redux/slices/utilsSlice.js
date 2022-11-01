@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {ModalTypeEnum} from "../../utils/utils";
 
 const initialState = {
 	modalOpen: false,
@@ -15,7 +14,7 @@ export const utilsSlice = createSlice({
 			state.modalType = action.payload.type;
 		},
 		closeModal: (state) => {
-			state.modalOpen = true;
+			state.modalOpen = false;
 		},
 	},
 });
