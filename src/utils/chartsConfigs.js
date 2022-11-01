@@ -357,7 +357,7 @@ export const DailyColumnChartConfig = (data) => {
 		});
 		let math = maxValue / 10
 
-		for (let index = 0; index <= Object.values(data).length; index++) {
+		for (let index = 1; index <= Object.values(data).length + 1; index++) {
 			aux.push({
 				x: Object.keys(data),
 				y: data[index],

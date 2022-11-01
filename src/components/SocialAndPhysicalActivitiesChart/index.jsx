@@ -15,8 +15,6 @@ const SocialAndPhysicalActivitiesChart = ({ data }) => {
 	const [active, setActive] = useState('physical');
 	const options = useMemo(() => SocialAndPhysicalConfig(data ?? {}), [data]);
 
-	console.log(data);
-
 	const handleActividadFisica = () => {
 		ApexCharts.exec('mychart', 'hideSeries', ['social']);
 		ApexCharts.exec('mychart', 'showSeries', ['physical']);
