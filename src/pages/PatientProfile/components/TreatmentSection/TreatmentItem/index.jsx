@@ -32,7 +32,7 @@ const TreatmentItem = ({
 					boxSizing: 'border-box',
 					width: '255px',
 					height: '63px',
-					background: theme.white,
+					background: status === "current" ? theme.white : '#F5F5F5',
 					border: '1px solid rgba(225, 209, 252, 0.22)',
 					boxShadow: '0px 4px 24px rgba(214, 203, 252, 0.15)',
 					borderRadius: '10px',
@@ -43,7 +43,7 @@ const TreatmentItem = ({
 					css={{
 						display: 'flex',
 						flexDirection: 'row',
-						columnGap: '60px',
+						columnGap: '40px',
 					}}
 				>
 					<StyledP
@@ -96,11 +96,11 @@ const TreatmentItem = ({
 						alignItems: 'center',
 						letterSpacing: '0.05em',
 						textTransform: 'capitalize',
-						color: status === "current" ? '#AF7EFF' : theme.red,
+						color: status === "current" ? '#AF7EFF' : '#FF505F',
 						whiteSpace: 'nowrap',
 					}}
 				>
-					{status === 'finished' ? 'Finalizado' : 'Comienzo'} {startedDate}
+					{status === 'finalized' ? 'Finalizado' : 'Comienzo'} {startedDate}
 				</StyledP>
 			</StyledBox>
 		</StyledBox>
