@@ -3,14 +3,14 @@ import { api } from './api';
 export const listApi = api.injectEndpoints({
 	endpoints: (builder) => ({
 		filterPatient: builder.query({
-			query: (params) => ({
-				url: '/api/home/filter-patients',
-				params: params,
+			query: (column, params) => ({
+				url: `/api/home/filter-patients/${column}`,
+				params: { value: 'Pending' },
 			}),
 		}),
 		orderPatients: builder.query({
-			query: (params) => ({
-				url: '/api/home/order-patients',
+			query: (column, params) => ({
+				url: `/api/home/order-patients/${column}`,
 				params: params,
 			}),
 		}),

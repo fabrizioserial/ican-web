@@ -63,10 +63,8 @@ function WaitingList() {
 			avatar: 'img',
 		},
 	]);
-	const { data, isLoading } = useFilterPatientQuery({
-		status: 'Pending',
-		skip: 0,
-		take: 10,
+	const { data, isLoading } = useFilterPatientQuery('status', {
+		value: 'Pending',
 	});
 	const theme = useTheme();
 

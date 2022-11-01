@@ -24,7 +24,7 @@ const WeeklySummary = () => {
 		[data],
 	);
 	const { data: otherComponentData, isLoading: otherComponentLoading } =
-		useFilterPatientQuery();
+		useFilterPatientQuery('status', { value: 'Pending' });
 	console.log('hola', otherComponentData);
 
 	return (
