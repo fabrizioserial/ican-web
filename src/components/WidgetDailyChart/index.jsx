@@ -6,7 +6,7 @@ import DailyColumnChart from '../DailyColumnChart';
 const WidgetDailyChart = () => {
 
 	const { data, isLoading } = useWeeklyStatisticsQuery();
-	const [dataB, setDataB] = useState({});
+	const [dataChart, setDataB] = useState({});
 
 	useEffect(() => {
 		let aux = {}
@@ -34,7 +34,7 @@ const WidgetDailyChart = () => {
 				display: 'flex',
 			}}
 		>
-			<DailyColumnChart data={dataB} isLoading={isLoading} />
+			<DailyColumnChart data={dataChart} isLoading={isLoading} />
 		</StyledBox>
 	);
 };
