@@ -345,22 +345,23 @@ export const HungerAndThristConfig = (data) => {
 		},
 	};
 };
+
 export const DailyColumnChartConfig = (data) => {
 	const dataAux = () => {
 		let aux = [];
 		let maxValue = 0;
 
-		Object.values(data).forEach(item => {
+		Object.values(data).forEach((item) => {
 			if (item > maxValue) {
-				maxValue = item
+				maxValue = item;
 			}
 		});
-		let math = maxValue / 10
+		let math = maxValue / 10;
 
-		for (let index = 0; index <= Object.values(data).length + 1; index++) {
+		Object.keys(data).forEach((dat) => {
 			aux.push({
-				x: Object.keys(data),
-				y: data[index],
+				x: dat,
+				y: data[dat][0],
 				goals: [
 					{
 						value: -math,
@@ -368,11 +369,11 @@ export const DailyColumnChartConfig = (data) => {
 						strokeWidth: 0,
 						strokeLineCap: 'round',
 						strokeColor: '#949494',
+						top: -10,
 					},
 				],
 			});
-		}
-
+		});
 		return aux;
 	};
 	return {
@@ -437,7 +438,7 @@ export const DailyColumnChartConfig = (data) => {
 				colors: ['transparent'],
 			},
 			xaxis: {
-				categories: Object.values(data).map((a, index) => index + 1),
+				categories: Object.keys(data).map((a) => a),
 				axisBorder: {
 					show: false,
 				},
@@ -451,7 +452,7 @@ export const DailyColumnChartConfig = (data) => {
 						fontWeight: 400,
 						fontSize: '10px',
 					},
-					offsetY: 3,
+					offsetY: 10,
 				},
 			},
 			yaxis: {
