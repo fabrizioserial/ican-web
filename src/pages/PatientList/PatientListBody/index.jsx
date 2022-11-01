@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import {TableBody} from '@material-ui/core';
-import {StyledBodyCell, StyledBodyRow} from './styles';
-import {renderStatusPill,} from '../../../utils/utils';
-import {StyledBox, StyledImg} from '../../../common/styledCommonComponents';
+import React, { useState } from 'react';
+import { TableBody } from '@material-ui/core';
+import { StyledBodyCell, StyledBodyRow } from './styles';
+import { renderStatusPill } from '../../../utils/utils';
+import { StyledBox, StyledImg } from '../../../common/styledCommonComponents';
 
 const PatientListBody = () => {
 	const [body, setBody] = useState([
@@ -79,8 +79,6 @@ const PatientListBody = () => {
 			state: 'active',
 		},
 	]);
-
-
 
 	return (
 		<TableBody>

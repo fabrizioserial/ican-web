@@ -24,7 +24,6 @@ import IconVisual from '../assets/IconVisual';
 import IconLove from '../assets/IconLove';
 import { StyledBox } from '../common/styledCommonComponents';
 
-
 export const ModalTypeEnum = {
 	WEEKLY_MODAL: 'WEEKLY_MODAL',
 	DAILY_MODAL: 'DAILY_MODAL',
@@ -458,14 +457,12 @@ export const textColorStatus = {
 	active: '#1D6535',
 	inactive: '#5F5F5F',
 	in_progress: '#EA8053',
-
 };
 
 export const pollTextColorStatus = {
 	Completed: '#1D6535',
 	Incomplete: '#EA8053',
 	Empty: '#5F5F5F',
-
 };
 
 export const backgroundPollColorStatus = {
@@ -609,15 +606,13 @@ export const translateQuestion = (type) => {
 	}
 };
 
-
 export const pollBackgroundColorStatus = {
 	completed: '#BEE8CF',
 	incomplete: '#C4C4C4',
 	unstarted: '#F9E0D6',
 };
 
-
- export const renderStatusPill = (type) => {
+export const renderStatusPill = (type) => {
 	return (
 		<StyledBox
 			css={{
@@ -637,7 +632,7 @@ export const pollBackgroundColorStatus = {
 };
 
 export const renderPollPill = (type) => {
-	console.log(type)
+	console.log(type);
 	return (
 		<StyledBox
 			css={{
@@ -722,4 +717,3 @@ export const getProfileImageFromName = (name, surname, size) => {
 		</StyledBox>
 	);
 };
-
