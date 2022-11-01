@@ -13,67 +13,19 @@ import PatientWaitingItem from './components/PatientWaitingItem';
 import { useFilterPatientQuery } from '../../redux/api/listApi';
 
 function WaitingList() {
-	const [waitingPatients, setWaitingPatients] = useState([
-		{
-			name: 'Agustin',
-			surname: 'Von Staweksi',
-			dni: '0943892948',
-			avatar: 'img',
-		},
-		{
-			name: 'Carlos',
-			surname: 'Gomez',
-			dni: '9124837499',
-			avatar: 'img',
-		},
-		{
-			name: 'Elisa',
-			surname: 'Furnari',
-			dni: '3789438384',
-			avatar: 'img',
-		},
-		{
-			name: 'Carlos',
-			surname: 'Gomez',
-			dni: '0000000001',
-			avatar: 'img',
-		},
-		{
-			name: 'Carlos',
-			surname: 'Gomez',
-			dni: '0943892948',
-			avatar: 'img',
-		},
-		{
-			name: 'Agustin',
-			surname: 'Von Staweksi',
-			dni: '0943892948',
-			avatar: 'img',
-		},
-		{
-			name: 'Carlos',
-			surname: 'Gomez',
-			dni: '9124837499',
-			avatar: 'img',
-		},
-		{
-			name: 'Elisa',
-			surname: 'Furnari',
-			dni: '3789438384',
-			avatar: 'img',
-		},
-	]);
 	const { data, isLoading } = useFilterPatientQuery('status', {
 		value: 'Pending',
 	});
 	const theme = useTheme();
+	console.log('data', data);
 
 	return (
 		<StyledCardHome
-			width={'0'}
+			width={'230px'}
 			height={'230px'}
 			css={{
 				opacity: '0 !important',
+				marginLeft: '30px',
 			}}
 			className={
 				data?.patients?.length === 0 || data === undefined
@@ -85,9 +37,9 @@ function WaitingList() {
 				css={{
 					display: 'flex',
 					flexDirection: 'column',
-					width: '100%',
 					justifyContent: 'flex-start',
 					height: '100%',
+					minWidth: '230px',
 				}}
 			>
 				<StyledH1
@@ -110,7 +62,7 @@ function WaitingList() {
 					>
 						<StyledSpan css={{ fontWeight: 'bold', fontSize: '16px' }}>
 							{' '}
-							{waitingPatients.length}{' '}
+							{data?.patients.length}{' '}
 						</StyledSpan>
 						<StyledP css={{ fontSize: '14px', marginLeft: '5px' }}>
 							Pacientes en espera
@@ -119,7 +71,7 @@ function WaitingList() {
 				</StyledH1>
 
 				<StyledWaitingListContainer>
-					{waitingPatients.map(({ name, surname, dni, avatar }, index) => (
+					{data?.patients.map(({ name, surname, dni, avatar }, index) => (
 						<PatientWaitingItem
 							key={index}
 							name={name}
