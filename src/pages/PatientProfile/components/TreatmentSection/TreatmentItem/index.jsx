@@ -12,7 +12,6 @@ const TreatmentItem = ({
 	startedDate,
 	status ,
 }) => {
-	console.log(medications,id,finishDate,startedDate,status)
 	const theme = useTheme();
 	return (
 		<StyledBox
@@ -104,7 +103,7 @@ const TreatmentItem = ({
 						whiteSpace: 'nowrap',
 					}}
 				>
-					{status === 'finalized' ? 'Finalizado' : 'Comienzo'} {startedDate}
+					{status === 'finalized' ? 'Finalizado '+ finishDate : 'Comienzo '+ startedDate}
 				</StyledP>
 			</StyledBox>
 		</StyledBox>

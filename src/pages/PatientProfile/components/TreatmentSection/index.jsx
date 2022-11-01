@@ -13,14 +13,12 @@ import {StyledTreatmentItemContainer} from "./TreatmentItemContainer";
 
 const TreatmentSection = () => {
 	const theme = useTheme();
-
 	const { patientId } = useParams();
 	const { data: treatmentsData, isSuccess: isSuccessTreatmentsData }
 		= useGetPatientTreatmetsQuery(patientId);
 	const [treatmentsResults, setTreatmentsResults] = useState(undefined);
 
 	useEffect(() => {
-		console.log(treatmentsData)
 		if (treatmentsData) {
 			let finalArray=[]
 			const finalizedTreatments = treatmentsData.filter(treatment => {
@@ -45,14 +43,15 @@ const TreatmentSection = () => {
 		let day =
 			dayObject.getDate().toString() +
 			'/' +
-			dayObject.getMonth() + 1;
+			(dayObject.getMonth() + 1) + "/"+
+			dayObject.getFullYear()
+
 		return day;
 	};
 
 
 	const parseMedicationList=(medications) =>{
 		const medicationArray = medications.split(',');
-		console.log(medicationArray)
 		return medicationArray
 	}
 
@@ -74,7 +73,7 @@ const TreatmentSection = () => {
 					paddingBottom: '20px',
 				}}
 			>
-				{ treatmentsResults.length!==1?
+
 				<StyledTreatmentItemContainer>
 				{treatmentsResults?.map((treatment,index) => (
 				<TreatmentItem
@@ -86,14 +85,8 @@ const TreatmentSection = () => {
 				/>
 				))
 				}
-				</StyledTreatmentItemContainer> :<TreatmentItem
-						medications={parseMedicationList(treatmentsResults[0].treatment)}
-						id={0}
-						status={treatmentsResults[0].status}
-						startedDate={parseDate(treatmentsResults[0].startDate)}
-						finishDate={parseDate(treatmentsResults[0].finishDate)}
-					/>}
-				<StyledBox css={{ display:'flex',flexDirection:"column",alignItems: 'center',}}>
+				</StyledTreatmentItemContainer>
+				{	/*	<StyledBox css={{ display:'flex',flexDirection:"column",alignItems: 'center',}}>
 				<StyledBox
 					css={{
 						boxSizing: 'border-box',
@@ -136,7 +129,7 @@ const TreatmentSection = () => {
 						Nuevo Tratamiento
 					</StyledP>
 				</StyledBox>
-				</StyledBox>
+				</StyledBox>	*/	}
 			</StyledBox>
 		</Card>
 	);
