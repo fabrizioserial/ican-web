@@ -15,19 +15,13 @@ import PollResultsHeader from "./PollResultsHeader";
 import PollResultsBody from "./PollResultsBody";
 import PollResultsBottom from "./PollResultsBottom";
 import {useParams} from "react-router";
-import {useLazyGetPollResultsQuery} from "../../redux/api/patientApi";
+import {useGetPollResultsQuery} from "../../redux/api/patientApi";
 
 const PollResultsScreen = () => {
     const { patientId } = useParams();
-    const [
-        refetchPollResults,
-        { data: dataPollResults, isSuccess: isSuccessPollResults },
-    ] = useLazyGetPollResultsQuery();
+    const { data: dataPollResults, isSuccess: isSuccessPollResults }
+     = useGetPollResultsQuery(patientId);
     const [pollResults, setPollResults] = useState(undefined);
-
-    useEffect(() => {
-        refetchPollResults(patientId);
-    }, []);
 
     useEffect(() => {
         if (dataPollResults)     {
@@ -39,8 +33,9 @@ const PollResultsScreen = () => {
                 type:"weekly",
             })).filter(item => item.id))
             finalArray = _.orderBy(finalArray,"date",'desc')
-            console.log(finalArray)
-            setPollResults(dataPollResults);
+
+            console.log("carlos",finalArray)
+            setPollResults(finalArray);
         }
     }, [isSuccessPollResults]);
     return (

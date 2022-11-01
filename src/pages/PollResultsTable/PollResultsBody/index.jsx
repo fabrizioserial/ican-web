@@ -13,62 +13,19 @@ import TableBody from "@material-ui/core/TableBody";
 import {StyledBodyCell, StyledBodyRow} from "../../PatientList/PatientListBody/styles";
 import {useDispatch} from "react-redux";
 import {setModalOpen} from "../../../redux/slices/utilsSlice";
-import WeeklyModalIcon from "../../../assets/WeeklyModalIcon";
 
 
-const PollResultsBody = () => {
+const PollResultsBody = ({data}) => {
+    console.log(data)
     const dispatch  = useDispatch()
-    const [body, setBody] = useState([
-        {
-            date:" 14 de noviembre 2022" ,
-            status: 'completed',
-            icon: <DailyIcon/>,
-        },
-        {
-            date:" 14 de noviembre 2022" ,
-            status: 'completed',
-            icon: <WeeklyModalIcon/>,
-        },
-        {
-            date:" 14 de noviembre 2022" ,
-            status: 'completed',
-            icon: <DailyIcon/>,
-        },
-        {
-            date:" 14 de noviembre 2022" ,
-            status: 'completed',
-            icon:  <WeeklyModalIcon/>,
-        },
-        {
-            date:" 14 de noviembre 2022" ,
-            status: 'completed',
-            icon: <DailyIcon/>,
-        },
-        {
-            date:" 14 de noviembre 2022" ,
-            status: 'completed',
-            icon: <WeeklyModalIcon/>,
-        },
-        {
-            date:" 14 de noviembre 2022" ,
-            status: 'incomplete',
-            icon: <WeeklyModalIcon/>,
-        },
-        {
-            date:" 14 de noviembre 2022" ,
-            status: 'incomplete',
-            icon:  <DailyIcon/>,
-        },
-    ]);
 
-    const parseData = ({DayItem}) => {
+    const parseData = (DayItem) => {
             let dayObject= new Date(DayItem)
-            let day =""
-                day =
-                    dayObject.getDate() +
+            let day =
+                    dayObject.getDate().toString() +
                     ' de ' +
                     getMonth(dayObject.getMonth());
-
+            return day
 
 
     }
@@ -99,16 +56,21 @@ const PollResultsBody = () => {
         }
     }
 
+    const getIcon =(type)=>{
+        if(type==="daily") return <DailyIcon/>
+        else  return <WeeklyIcon/>
+    }
+
     return (
         <TableBody>
-            {body.map((bodyItem,index) => (
+            {data?.map((bodyItem,index) => (
                 <StyledBodyRow key={index} onClick={()=>openModal(index)}>
                     <StyledBodyCell with={'20%'} style={{ paddingLeft: '30px' }}>
-                        {bodyItem.icon}
+                        {getIcon(bodyItem.type)}
                     </StyledBodyCell>
 
                     <StyledBodyCell width={'90%'}>
-                        {bodyItem.date}
+                        {parseData(bodyItem.date)}
                     </StyledBodyCell>
                     <StyledBodyCell  width={'10%'} >
                         {renderPollPill(bodyItem.status)}

@@ -37,7 +37,7 @@ export const {
 	useLazyGetAppetiteHydrationQuery,
 	useLazyGetSocialPhysicalQuery,
 	useLazyGetCalendarQuery,
-	useLazyGetPollResultsQuery
+	useGetPollResultsQuery
 } = patientApi;
 
 export const {
