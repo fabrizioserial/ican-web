@@ -8,8 +8,9 @@ import { useTheme } from 'styled-components';
 const TreatmentItem = ({
 	medications,
 	id,
+	finishDate,
 	startedDate,
-	status = 'finished',
+	status ,
 }) => {
 	const theme = useTheme();
 	return (

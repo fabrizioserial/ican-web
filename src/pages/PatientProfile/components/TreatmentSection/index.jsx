@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { StyledBox, StyledP } from '../../../../common/styledCommonComponents';
 
 import { useTheme } from 'styled-components';
@@ -6,12 +6,44 @@ import Card from '../../../../components/Card';
 import PillIcon from '../../../../assets/PillIcon';
 import PlusCircleIcon from '../../../../assets/PlusCircleIcon';
 import TreatmentItem from './TreatmentItem';
+import {useParams} from "react-router";
+import {useGetPatientTreatmentsQuery} from "../../../../redux/api/patientApi";
+import _ from "lodash"
 
 const TreatmentSection = () => {
 	const theme = useTheme();
+
+	const { patientId } = useParams();
+	const { treatments: treatmentsData, isSuccess: isSuccessTreatmentsData }
+		= useGetPatientTreatmentsQuery(patientId);
+	const [treatmentsResults, setTreatmentsResults] = useState(undefined);
+
+	useEffect(() => {
+		if (treatmentsData)     {
+			let finalArray=[]
+
+			const finalizedTreatments = treatmentsData.filter(treatment => {
+				return treatment.finishDate !== null;
+			});
+			const currentTreatment = treatmentsData.filter(treatment => {
+				return treatment.finishDate === null;
+			});
+
+			finalArray= finalArray.concat(finalizedTreatments.map((item)=>({...item, status:"finalized"})),currentTreatment.map(item =>(
+				{...item, status:"current"}
+			)).filter(item => item.id))
+			finalArray = _.orderBy(finalArray,"date",'desc')
+
+			console.log("carlos",finalArray)
+			setTreatmentsResults(finalArray);
+		}
+	}, [isSuccessTreatmentsData]);
+
+
+
 	return (
 		<Card
-			title={'Tratamientos en Curso'}
+			title={'Tratamientos'}
 			icon={<PillIcon />}
 			width={'305px'}
 			height={'676px'}
@@ -26,11 +58,15 @@ const TreatmentSection = () => {
 					paddingBottom: '20px',
 				}}
 			>
+				{treatmentsResults?.map((treatment,index) => (
 				<TreatmentItem
-					medications={['Abiraterona (Zytiga)', '', '', '']}
-					id={''}
-					startedDate={'09/12/2020'}
+					medications={treatment.treatment}
+					id={index}
+					status={treatment.status}
+					startedDate={treatment.startDate}
+					finishDate={treatment.finishDate}
 				/>
+				))}
 				<StyledBox
 					css={{
 						boxSizing: 'border-box',
