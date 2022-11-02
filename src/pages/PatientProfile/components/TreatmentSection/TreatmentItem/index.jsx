@@ -8,8 +8,9 @@ import { useTheme } from 'styled-components';
 const TreatmentItem = ({
 	medications,
 	id,
+	finishDate,
 	startedDate,
-	status = 'finished',
+	status,
 }) => {
 	const theme = useTheme();
 	return (
@@ -41,7 +42,7 @@ const TreatmentItem = ({
 					css={{
 						display: 'flex',
 						flexDirection: 'row',
-						columnGap: '60px',
+						columnGap: '40px',
 					}}
 				>
 					<StyledP
@@ -56,30 +57,33 @@ const TreatmentItem = ({
 							alignItems: 'center',
 							letterSpacing: '0.05em',
 							textTransform: 'capitalize',
-							color: '#949494',
+							color: status === 'finalized' ? '#949494' : '#5F5F5F',
 							whiteSpace: 'nowrap',
 						}}
 					>
 						{medications.length > 0 ? medications[0] : ''}
 					</StyledP>
-					<StyledP
-						css={{
-							width: '224px',
-							height: '16px',
-							fontStyle: 'normal',
-							fontWeight: '400',
-							fontSize: '13px',
-							lineHeight: '16px',
-							display: 'flex',
-							alignItems: 'center',
-							letterSpacing: '0.05em',
-							textTransform: 'capitalize',
-							color: theme.OncoPurple,
-							justifyContent: 'flexEnd',
-						}}
-					>
-						+ {medications.length > 1 && medications.length - 1}
-					</StyledP>
+					{medications.length > 1 && (
+						<StyledP
+							css={{
+								width: '224px',
+								height: '16px',
+								fontStyle: 'normal',
+								fontWeight: '400',
+								fontSize: '13px',
+								lineHeight: '16px',
+								display: 'flex',
+								alignItems: 'center',
+								letterSpacing: '0.05em',
+								textTransform: 'capitalize',
+								color: theme.OncoPurple,
+								justifyContent: 'flexEnd',
+								whiteSpace: 'nowrap',
+							}}
+						>
+							+ {medications.length - 1}
+						</StyledP>
+					)}
 				</StyledBox>
 				<StyledP
 					css={{
@@ -93,11 +97,13 @@ const TreatmentItem = ({
 						alignItems: 'center',
 						letterSpacing: '0.05em',
 						textTransform: 'capitalize',
-						color: '#AF7EFF',
+						color: status === 'current' ? '#AF7EFF' : '#FF505F',
 						whiteSpace: 'nowrap',
 					}}
 				>
-					{status === 'finished' ? 'Finalizado' : 'Comienzo'} {startedDate}
+					{status === 'finalized'
+						? 'Finalizado ' + finishDate
+						: 'Comienzo ' + startedDate}
 				</StyledP>
 			</StyledBox>
 		</StyledBox>
