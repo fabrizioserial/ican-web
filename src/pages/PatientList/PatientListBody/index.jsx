@@ -19,7 +19,7 @@ const PatientListBody = () => {
 		<TableBody>
 			{patients.map((bodyItem) => (
 				<StyledBodyRow onClick={() => navigate(`/profile/${bodyItem.id}`)}>
-					<StyledBodyCell with={'5%'} style={{ paddingLeft: '30px' }}>
+					<StyledBodyCell width={'5%'} style={{ paddingLeft: '30px' }}>
 						<StyledBox
 							css={{
 								height: '34px',

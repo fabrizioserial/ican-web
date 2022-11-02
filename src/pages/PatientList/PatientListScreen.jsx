@@ -12,6 +12,7 @@ import SearchBar from './SearchBar';
 import CardsHeader from './CardsHeader';
 import {
 	useLazyOrderPatientsQuery,
+	useLazyPatientsListWithParamsQuery,
 	usePatientsListQuery,
 } from '../../redux/api/listApi';
 import { StyledCircularProgress } from '../../components/CustomCircularProgress/styles';
@@ -19,6 +20,8 @@ import { StyledCircularProgress } from '../../components/CustomCircularProgress/
 const PatientListScreen = () => {
 	const { isLoading: patientInitalLoading } = usePatientsListQuery();
 	const [refetch, { isLoading: orderLoading }] = useLazyOrderPatientsQuery();
+	const [refetchlq, { isLoading: searchLoading }] =
+		useLazyPatientsListWithParamsQuery();
 
 	return (
 		<StyledScreen
@@ -82,7 +85,7 @@ const PatientListScreen = () => {
 							alignItems: 'center',
 						}}
 					>
-						{patientInitalLoading || orderLoading ? (
+						{patientInitalLoading || orderLoading || searchLoading ? (
 							<StyledCircularProgress />
 						) : null}
 					</StyledBox>

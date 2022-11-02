@@ -2,14 +2,14 @@ import React, { useRef, useState } from 'react';
 import { StyledBox, StyledInput } from '../../../common/styledCommonComponents';
 import SearchIcon from '../../../assets/SearchIcon';
 import _, { debounce } from 'lodash';
+import { useLazyPatientsListWithParamsQuery } from '../../../redux/api/listApi';
 
 const SearchBar = () => {
 	const [textToSearch, setTextToSearch] = useState('');
-	const delayedQuery = useRef(_.debounce((q) => console.log(q), 1000)).current;
-
-	const logValue = debounce((value) => {
-		console.log(value);
-	}, 1200);
+	const [refetch, { data }] = useLazyPatientsListWithParamsQuery();
+	const delayedQuery = useRef(
+		_.debounce((q) => refetch({ pattern: q }), 1000),
+	).current;
 
 	const handleChange = (value) => {
 		setTextToSearch(value);

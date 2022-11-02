@@ -38,7 +38,7 @@ const PatientListHeader = () => {
 		refetch({
 			column: columnName,
 			params: {
-				value: columnState[columnName] === 'desc' ? 'asc' : 'desc',
+				order: columnState[columnName] === 'desc' ? 'asc' : 'desc',
 			},
 		});
 		dispatch(
@@ -62,13 +62,14 @@ const PatientListHeader = () => {
 							boxSizing: 'border-box',
 							borderBottomColor: 'rgba(225, 209, 252, 0.22) !important',
 						}}
+						width={headerItem.width}
 						sortDirection={columnState[headerItem.sortId]}
 						key={'header-' + index}
 						style={{
-							paddingLeft: index === 0 ? '30px' : 'auto',
+							paddingLeft: index === 0 ? '30px !important' : 'auto',
 							paddingRight:
 								index === PatientListHeaderConst.length
-									? '30px'
+									? '30px !important'
 									: 'auto',
 						}}
 					>

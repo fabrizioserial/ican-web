@@ -351,34 +351,44 @@ export const PatientListHeaderConst = [
 	{
 		label: ' ',
 		sortId: '',
+		width: '5%',
+		css: { paddingLeft: '30px' },
 	},
 	{
 		label: 'Nro de Historial Medico',
 		sortId: 'medicHistoryNumber',
+		width: '12%',
 	},
 	{
 		label: 'Nombre y Apellido',
 		sortId: 'name',
+		width: '14%',
 	},
 	{
 		label: 'Tumor Primario',
 		sortId: 'organ',
+		width: '10%',
 	},
 	{
 		label: 'Tratamiento',
 		sortId: 'treatment',
+		width: '26%',
 	},
 	{
 		label: 'Tratamiento de Tumor Primario',
 		sortId: 'tumorTreatment',
+		width: '14%',
 	},
 	{
 		label: 'Tratamiento Perioperatorio',
 		sortId: '',
+		width: '14%',
 	},
 	{
 		label: 'Estado',
 		sortId: 'status',
+		width: '5%',
+		css: { paddingRight: '30px' },
 	},
 ];
 

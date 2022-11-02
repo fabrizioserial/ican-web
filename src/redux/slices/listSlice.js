@@ -27,6 +27,9 @@ export const listSlice = createSlice({
 				[action.payload.columnName]: action.payload.orden,
 			};
 		},
+		clearPatientList: (state, action) => {
+			state.patientList = [];
+		},
 	},
 	extraReducers: (builder) => {
 		builder
@@ -53,10 +56,18 @@ export const listSlice = createSlice({
 					state.maxPage = action.payload.maxPage;
 					state.page = action.payload.page;
 				},
+			)
+			.addMatcher(
+				listApi.endpoints.patientsListWithParams.matchFulfilled,
+				(state, action) => {
+					state.patientList = action.payload.patients;
+					state.maxPage = action.payload.maxPage;
+					state.page = action.payload.page;
+				},
 			);
 	},
 });
 
-export const { setColumnState } = listSlice.actions;
+export const { setColumnState, clearPatientList } = listSlice.actions;
 
 export default listSlice.reducer;
