@@ -20,7 +20,6 @@ function WaitingList() {
 		},
 	});
 	const theme = useTheme();
-	console.log('data', data);
 
 	return (
 		<StyledCardHome
