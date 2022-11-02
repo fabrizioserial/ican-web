@@ -32,8 +32,11 @@ function PatientsInTreatments({ patientsInTreatment, totalPatients }) {
 				<TreatmentIcon color={theme.OncoPurple} width={23} height={19.55} />
 			}
 			title={'Pacientes en tratamiento'}
-			width={'300px'}
+			width={'337px'}
 			height={'300px'}
+			css={{
+				marginRight: '35px',
+			}}
 		>
 			<StyledBox
 				css={{

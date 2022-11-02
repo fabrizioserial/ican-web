@@ -4,11 +4,12 @@ import HungryIcon from '../../assets/HungryIcon';
 import Card from '../Card';
 import { HungerAndThristConfig } from '../../utils/chartsConfigs';
 import { StyledCircularProgress } from '../CustomCircularProgress/styles';
-import { StyledBox } from '../../common/styledCommonComponents';
+import { StyledBox, StyledP } from '../../common/styledCommonComponents';
+import { useTheme } from 'styled-components';
 
 const HungerAndThirstChart = ({ data }) => {
 	const options = useMemo(() => HungerAndThristConfig(data ?? {}), [data]);
-
+	const theme = useTheme();
 	return (
 		<Card
 			title={'Apetito e Hidratación'}
@@ -26,6 +27,19 @@ const HungerAndThirstChart = ({ data }) => {
 					}}
 				>
 					<StyledCircularProgress />
+				</StyledBox>
+			) : options.isEmpty ? (
+				<StyledBox
+					css={{
+						height: '100%',
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}
+				>
+					<StyledP css={{ color: theme.oncoGrey2 }}>
+						No se encontraron registros
+					</StyledP>
 				</StyledBox>
 			) : (
 				<Chart

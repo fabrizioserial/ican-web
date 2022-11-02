@@ -111,9 +111,9 @@ const ProfileScreen = () => {
 			let aux = [];
 			Object.values(dataCalendar).forEach((item) => {
 				aux.push({
-					id: item.weeklyId,
-					dayNumber: new Date(item.date).getDay(),
-					dayName: dayName(new Date(item.date).getDay()),
+					id: item?.dailyId || item?.weeklyId,
+					dayNumber: new Date(item.date).getUTCDate(),
+					dayName: dayName(new Date(item.date).getUTCDay()),
 					state: dayState(item.weeklyStatus).state,
 					detail: dayState(item.weeklyStatus).detail,
 				});
@@ -155,7 +155,6 @@ const ProfileScreen = () => {
 					display: 'flex',
 					flexDirection: 'column',
 					flexWrap: 'wrap',
-					rowGap: '21px',
 				}}
 			>
 				<WeeklySchedule dayList={calendar} />

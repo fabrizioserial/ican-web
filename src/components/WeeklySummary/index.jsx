@@ -28,10 +28,10 @@ const WeeklySummary = () => {
 
 	return (
 		<StyledCardHome
-			width={'500px'}
+			width={'100%'}
 			heigth={'230px'}
 			css={{
-				width: '740px',
+				width: '100%',
 				height: '230px',
 				display: 'flex',
 				flexDirection: 'column',

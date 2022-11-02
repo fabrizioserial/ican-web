@@ -10,13 +10,17 @@ import { useParams } from 'react-router';
 import { useGetPatientTreatmetsQuery } from '../../../../redux/api/patientApi';
 import _ from 'lodash';
 import { StyledTreatmentItemContainer } from './TreatmentItemContainer';
+import { StyledCircularProgress } from '../../../../components/CustomCircularProgress/styles';
 
 const TreatmentSection = () => {
 	const theme = useTheme();
 	const { patientId } = useParams();
-	const { data: treatmentsData, isSuccess: isSuccessTreatmentsData } =
-		useGetPatientTreatmetsQuery(patientId);
-	const [treatmentsResults, setTreatmentsResults] = useState(undefined);
+	const {
+		data: treatmentsData,
+		isSuccess: isSuccessTreatmentsData,
+		isLoading: isLoadingTreatment,
+	} = useGetPatientTreatmetsQuery(patientId);
+	const [treatmentsResults, setTreatmentsResults] = useState([]);
 
 	useEffect(() => {
 		if (treatmentsData) {
@@ -66,6 +70,9 @@ const TreatmentSection = () => {
 			width={'305px'}
 			height={'676px'}
 			align={'top'}
+			css={{
+				marginTop: '30px',
+			}}
 		>
 			<StyledBox
 				css={{
@@ -77,15 +84,42 @@ const TreatmentSection = () => {
 				}}
 			>
 				<StyledTreatmentItemContainer>
-					{treatmentsResults?.map((treatment, index) => (
-						<TreatmentItem
-							medications={parseMedicationList(treatment.treatment)}
-							id={index}
-							status={treatment.status}
-							startedDate={parseDate(treatment.startDate)}
-							finishDate={parseDate(treatment.finishDate)}
-						/>
-					))}
+					{isLoadingTreatment && (
+						<StyledBox
+							css={{
+								display: 'flex',
+								justifyContent: 'center',
+								alignItems: 'center',
+								height: '100%',
+							}}
+						>
+							<StyledCircularProgress />
+						</StyledBox>
+					)}
+					{treatmentsResults?.length === 0 ? (
+						<StyledBox
+							css={{
+								height: '100%',
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'center',
+							}}
+						>
+							<StyledP css={{ color: theme.oncoGrey2 }}>
+								No se encontraron tratamientos
+							</StyledP>
+						</StyledBox>
+					) : (
+						treatmentsResults?.map((treatment, index) => (
+							<TreatmentItem
+								medications={parseMedicationList(treatment.treatment)}
+								id={index}
+								status={treatment.status}
+								startedDate={parseDate(treatment.startDate)}
+								finishDate={parseDate(treatment.finishDate)}
+							/>
+						))
+					)}
 				</StyledTreatmentItemContainer>
 				{/*	<StyledBox css={{ display:'flex',flexDirection:"column",alignItems: 'center',}}>
 				<StyledBox

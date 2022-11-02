@@ -27,8 +27,8 @@ const SocialAndPhysicalActivitiesChart = ({ data }) => {
 	};
 
 	useEffect(() => {
-		data && handleActividadFisica();
-	}, [data]);
+		options && !options.isEmpty && handleActividadFisica();
+	}, [options]);
 
 	return (
 		<StyledCardHome
@@ -145,14 +145,30 @@ const SocialAndPhysicalActivitiesChart = ({ data }) => {
 						justifyContent: 'center',
 					}}
 				>
-					<Chart
-						options={options.options}
-						series={options.series}
-						type="bar"
-						width={300}
-						toggleSeries={'physical'}
-						height={180}
-					/>
+					{options.isEmpty ? (
+						<StyledBox
+							css={{
+								height: '100%',
+								width: '300px',
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'center',
+							}}
+						>
+							<StyledP css={{ color: theme.oncoGrey2 }}>
+								No se encontraron registros
+							</StyledP>
+						</StyledBox>
+					) : (
+						<Chart
+							options={options.options}
+							series={options.series}
+							type="bar"
+							width={300}
+							toggleSeries={'physical'}
+							height={180}
+						/>
+					)}
 				</StyledBox>
 			)}
 		</StyledCardHome>

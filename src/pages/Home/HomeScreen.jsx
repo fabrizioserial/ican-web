@@ -23,7 +23,7 @@ function HomeScreen() {
 						display: 'flex',
 						flexDirection: 'column',
 						flex: 0.6,
-						maxWidth: '760px',
+						maxWidth: '777px',
 						rowGap: '35px',
 					}}
 				>

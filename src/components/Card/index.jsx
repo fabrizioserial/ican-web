@@ -12,7 +12,7 @@ import Chart from 'react-apexcharts';
 import React from 'react';
 import { useTheme } from 'styled-components';
 
-const Card = ({ icon, title, children, width, height, align }) => {
+const Card = ({ icon, title, children, width, height, align, css }) => {
 	const theme = useTheme();
 	return (
 		<StyledCardHome
@@ -22,6 +22,7 @@ const Card = ({ icon, title, children, width, height, align }) => {
 				height: `${height} !important`,
 				display: 'flex',
 				flexDirection: 'column',
+				...css,
 			}}
 		>
 			<StyledBox

@@ -29,6 +29,7 @@ const transformSocial = (type) => {
 
 export const SocialAndPhysicalConfig = (data) => {
 	return {
+		isEmpty: !Object.values(data).find((a) => a[1]),
 		series: [
 			{
 				name: 'social',
@@ -208,6 +209,7 @@ const transformHungry = (type) => {
 
 export const HungerAndThristConfig = (data) => {
 	return {
+		isEmpty: !Object.values(data).find((a) => a[1]),
 		series: [
 			{
 				name: 'Hidratación',

@@ -8,7 +8,6 @@ import Card from '../../../../components/Card';
 import { StyledCircularProgress } from '../../../../components/CustomCircularProgress/styles';
 
 const WeeklySchedule = ({ dayList }) => {
-	console.log(dayList);
 	return (
 		<Card
 			title={'Agenda Semanal'}
@@ -107,6 +106,7 @@ const WeeklySchedule = ({ dayList }) => {
 							padding: '20px 18px',
 						}}
 					>
+						{console.log(dayList)}
 						{dayList?.map((item, index) => (
 							<DayCard
 								key={index}
