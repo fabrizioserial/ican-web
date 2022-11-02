@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { homeApi } from '../api/homeApi';
 import { sessionApi } from '../api/sessionApi';
+import { patientApi } from '../api/patientApi';
 
 const initialState = {
 	user: {
@@ -49,12 +50,43 @@ export const homeSlice = createSlice({
 							name: symp.name,
 							questions: symp.weeklyQuestions.map((question) => ({
 								id: question.id,
-								type: question.type,
+								type: question.questionType,
 								value: undefined,
+								date: undefined,
 							})),
 						})),
 					}));
 					state.weekly = newWeekly;
+				},
+			)
+			.addMatcher(
+				patientApi.endpoints.getWeeklyReport.matchFulfilled,
+				(state, action) => {
+					let newAnswerMap = {};
+					action.payload.answers.forEach((answer) => {
+						newAnswerMap = {
+							...newAnswerMap,
+							[answer.question.id]: {
+								date: answer.answerDate,
+								idQuestion: answer.question.id,
+								value: answer.value,
+							},
+						};
+					});
+					state.weekly = state.weekly.map((category) => ({
+						id: category.id,
+						name: category.name,
+						symptoms: category.symptoms.map((symp) => ({
+							id: symp.id,
+							name: symp.name,
+							questions: symp.questions.map((question) => ({
+								id: question.id,
+								type: question.type,
+								value: newAnswerMap[question.id].value,
+								date: newAnswerMap[question.id].date,
+							})),
+						})),
+					}));
 				},
 			);
 	},

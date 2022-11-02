@@ -25,9 +25,7 @@ const WidgetDailyChart = () => {
 		];
 		if (data) {
 			let monthIndex = {};
-			console.log(data.coordinates);
 			Object.values(data.coordinates).forEach((item) => {
-				console.log(item.x, new Date(item.x).getUTCDate());
 				let day =
 					new Date(item.x).getUTCDate().toString() +
 					'/' +

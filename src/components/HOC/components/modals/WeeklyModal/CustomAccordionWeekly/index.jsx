@@ -13,14 +13,12 @@ import {
 	CapitalizeText,
 	getAnswersByType,
 	getIconByCategory,
+	parseData,
+	parseDataWithYear,
 	translateQuestion,
 } from '../../../../../../utils/utils';
 
-const CustomAccordionWeekly = ({
-	category,
-	endDate = '12 de noviembre de 2022',
-	symptoms,
-}) => {
+const CustomAccordionWeekly = ({ category, endDate, symptoms }) => {
 	const theme = useTheme();
 	return (
 		<StyledCustomAccordion>
@@ -48,7 +46,11 @@ const CustomAccordionWeekly = ({
 							fontWeight: 400,
 						}}
 					>
-						Completado {endDate}
+						Realizado{' '}
+						{parseDataWithYear(
+							symptoms?.find((f) => f.questions.find((d) => d.date))
+								.questions[0].date,
+						)}
 					</StyledP>
 				</StyledBox>
 			</AccordionSummary>
@@ -84,7 +86,11 @@ const CustomAccordionWeekly = ({
 														fontSize: '16px',
 													}}
 												>
-													{ans.date}
+													{`${new Date(ans.date).getUTCDate()}/
+													${new Date(ans.date).getUTCMonth() + 1}/${new Date(ans.date)
+														.getUTCFullYear()
+														.toString()
+														.slice(-2)}`}
 												</StyledP>
 												<StyledP
 													css={{

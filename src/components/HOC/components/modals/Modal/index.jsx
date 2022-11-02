@@ -2,8 +2,9 @@ import React from 'react';
 import { StyledBox } from '../../../../../common/styledCommonComponents';
 import { useTheme } from 'styled-components';
 import CloseIcon from '../../../../../assets/CloseIcon';
+import { StyledCircularProgress } from '../../../../CustomCircularProgress/styles';
 
-const Modal = ({ header, body, onClose }) => {
+const Modal = ({ header, body, onClose, isLoading }) => {
 	const theme = useTheme();
 	return (
 		<StyledBox
@@ -33,12 +34,12 @@ const Modal = ({ header, body, onClose }) => {
 				<StyledBox onClick={onClose} css={{ cursor: 'pointer' }}>
 					<CloseIcon />
 				</StyledBox>
-				{header}
+				{!isLoading && header}
 			</StyledBox>
 			<StyledBox
 				css={{ overflow: 'scroll', maxHeight: 'calc(90vw - 90px)' }}
 			>
-				{body}
+				{isLoading ?? body}
 			</StyledBox>
 		</StyledBox>
 	);

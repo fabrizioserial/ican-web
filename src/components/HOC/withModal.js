@@ -11,7 +11,6 @@ import DailyModal from './components/modals/DailyModal';
 export const withModal = (Component) => (props) => {
 	const open = useSelector((state) => state.utilsSlice.modalOpen);
 	const type = useSelector((state) => state.utilsSlice.modalType);
-	const { data } = useWeeklyQuestionsQuery();
 
 	const dispatch = useDispatch();
 

@@ -632,7 +632,6 @@ export const renderStatusPill = (type) => {
 };
 
 export const renderPollPill = (type) => {
-	console.log(type);
 	return (
 		<StyledBox
 			css={{
@@ -716,4 +715,32 @@ export const getProfileImageFromName = (name, surname, size) => {
 			{letters}
 		</StyledBox>
 	);
+};
+
+export const parseDataWithYear = (dayItem) => {
+	return parseData(dayItem) + ' de ' + new Date(dayItem).getUTCFullYear();
+};
+
+export const parseData = (DayItem) => {
+	let dayObject = new Date(DayItem);
+	let day =
+		dayObject.getUTCDate().toString() +
+		' de ' +
+		getMonth(dayObject.getUTCMonth() + 1);
+	return day;
+};
+
+const getMonth = (number) => {
+	if (number === 1) return 'Enero';
+	if (number === 2) return 'Febrero';
+	if (number === 3) return 'Marzo';
+	if (number === 4) return 'April';
+	if (number === 5) return 'Mayo';
+	if (number === 6) return 'Junio';
+	if (number === 7) return 'Julio';
+	if (number === 8) return 'Agosto';
+	if (number === 9) return 'Septiembre';
+	if (number === 10) return 'Octubre';
+	if (number === 11) return 'Noviembre';
+	if (number === 12) return 'Diciembre';
 };
