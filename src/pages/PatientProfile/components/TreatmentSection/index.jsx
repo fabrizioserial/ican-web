@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyledBox, StyledP } from '../../../../common/styledCommonComponents';
 
 import { useTheme } from 'styled-components';
@@ -6,55 +6,58 @@ import Card from '../../../../components/Card';
 import PillIcon from '../../../../assets/PillIcon';
 import PlusCircleIcon from '../../../../assets/PlusCircleIcon';
 import TreatmentItem from './TreatmentItem';
-import {useParams} from "react-router";
-import { useGetPatientTreatmetsQuery} from "../../../../redux/api/patientApi";
-import _ from "lodash"
-import {StyledTreatmentItemContainer} from "./TreatmentItemContainer";
+import { useParams } from 'react-router';
+import { useGetPatientTreatmetsQuery } from '../../../../redux/api/patientApi';
+import _ from 'lodash';
+import { StyledTreatmentItemContainer } from './TreatmentItemContainer';
 
 const TreatmentSection = () => {
 	const theme = useTheme();
 	const { patientId } = useParams();
-	const { data: treatmentsData, isSuccess: isSuccessTreatmentsData }
-		= useGetPatientTreatmetsQuery(patientId);
+	const { data: treatmentsData, isSuccess: isSuccessTreatmentsData } =
+		useGetPatientTreatmetsQuery(patientId);
 	const [treatmentsResults, setTreatmentsResults] = useState(undefined);
 
 	useEffect(() => {
 		if (treatmentsData) {
-			let finalArray=[]
-			const finalizedTreatments = treatmentsData.filter(treatment => {
+			let finalArray = [];
+			const finalizedTreatments = treatmentsData.filter((treatment) => {
 				return treatment.finishDate !== null;
 			});
-			const currentTreatment = treatmentsData.filter(treatment => {
+			const currentTreatment = treatmentsData.filter((treatment) => {
 				return treatment.finishDate === null;
 			});
 
-			finalArray= finalArray.concat(
-				finalizedTreatments.map((item)=>({...item, status:"finalized"})),
-				currentTreatment.map(item =>({...item, status:"current"}
-			)).filter(item => item.id))
-			finalArray = _.orderBy(finalArray,"date",'desc')
+			finalArray = finalArray.concat(
+				finalizedTreatments.map((item) => ({
+					...item,
+					status: 'finalized',
+				})),
+				currentTreatment
+					.map((item) => ({ ...item, status: 'current' }))
+					.filter((item) => item.id),
+			);
+			finalArray = _.orderBy(finalArray, 'date', 'desc');
 			setTreatmentsResults(finalArray);
 		}
-	}, [isSuccessTreatmentsData,treatmentsData]);
-
+	}, [isSuccessTreatmentsData, treatmentsData]);
 
 	const parseDate = (DayItem) => {
 		let dayObject = new Date(DayItem);
 		let day =
 			dayObject.getDate().toString() +
 			'/' +
-			(dayObject.getMonth() + 1) + "/"+
-			dayObject.getFullYear()
+			(dayObject.getMonth() + 1) +
+			'/' +
+			dayObject.getFullYear();
 
 		return day;
 	};
 
-
-	const parseMedicationList=(medications) =>{
+	const parseMedicationList = (medications) => {
 		const medicationArray = medications.split(',');
-		return medicationArray
-	}
-
+		return medicationArray;
+	};
 
 	return (
 		<Card
@@ -73,20 +76,18 @@ const TreatmentSection = () => {
 					paddingBottom: '20px',
 				}}
 			>
-
 				<StyledTreatmentItemContainer>
-				{treatmentsResults?.map((treatment,index) => (
-				<TreatmentItem
-					medications={parseMedicationList(treatment.treatment)}
-					id={index}
-					status={treatment.status}
-					startedDate={parseDate(treatment.startDate)}
-					finishDate={parseDate(treatment.finishDate)}
-				/>
-				))
-				}
+					{treatmentsResults?.map((treatment, index) => (
+						<TreatmentItem
+							medications={parseMedicationList(treatment.treatment)}
+							id={index}
+							status={treatment.status}
+							startedDate={parseDate(treatment.startDate)}
+							finishDate={parseDate(treatment.finishDate)}
+						/>
+					))}
 				</StyledTreatmentItemContainer>
-				{	/*	<StyledBox css={{ display:'flex',flexDirection:"column",alignItems: 'center',}}>
+				{/*	<StyledBox css={{ display:'flex',flexDirection:"column",alignItems: 'center',}}>
 				<StyledBox
 					css={{
 						boxSizing: 'border-box',
@@ -129,7 +130,7 @@ const TreatmentSection = () => {
 						Nuevo Tratamiento
 					</StyledP>
 				</StyledBox>
-				</StyledBox>	*/	}
+				</StyledBox>	*/}
 			</StyledBox>
 		</Card>
 	);

@@ -10,7 +10,7 @@ const TreatmentItem = ({
 	id,
 	finishDate,
 	startedDate,
-	status ,
+	status,
 }) => {
 	const theme = useTheme();
 	return (
@@ -57,35 +57,33 @@ const TreatmentItem = ({
 							alignItems: 'center',
 							letterSpacing: '0.05em',
 							textTransform: 'capitalize',
-							color: status === 'finalized' ? '#949494' :'#5F5F5F'  ,
+							color: status === 'finalized' ? '#949494' : '#5F5F5F',
 							whiteSpace: 'nowrap',
 						}}
 					>
 						{medications.length > 0 ? medications[0] : ''}
 					</StyledP>
-					{medications.length > 1 &&
-					<StyledP
-						css={{
-							width: '224px',
-							height: '16px',
-							fontStyle: 'normal',
-							fontWeight: '400',
-							fontSize: '13px',
-							lineHeight: '16px',
-							display: 'flex',
-							alignItems: 'center',
-							letterSpacing: '0.05em',
-							textTransform: 'capitalize',
-							color: theme.OncoPurple,
-							justifyContent: 'flexEnd',
-							whiteSpace: 'nowrap',
-						}}
-					>
-
-						+ {medications.length-1}
-
-					</StyledP>
-					}
+					{medications.length > 1 && (
+						<StyledP
+							css={{
+								width: '224px',
+								height: '16px',
+								fontStyle: 'normal',
+								fontWeight: '400',
+								fontSize: '13px',
+								lineHeight: '16px',
+								display: 'flex',
+								alignItems: 'center',
+								letterSpacing: '0.05em',
+								textTransform: 'capitalize',
+								color: theme.OncoPurple,
+								justifyContent: 'flexEnd',
+								whiteSpace: 'nowrap',
+							}}
+						>
+							+ {medications.length - 1}
+						</StyledP>
+					)}
 				</StyledBox>
 				<StyledP
 					css={{
@@ -99,11 +97,13 @@ const TreatmentItem = ({
 						alignItems: 'center',
 						letterSpacing: '0.05em',
 						textTransform: 'capitalize',
-						color: status === "current" ? '#AF7EFF' : '#FF505F',
+						color: status === 'current' ? '#AF7EFF' : '#FF505F',
 						whiteSpace: 'nowrap',
 					}}
 				>
-					{status === 'finalized' ? 'Finalizado '+ finishDate : 'Comienzo '+ startedDate}
+					{status === 'finalized'
+						? 'Finalizado ' + finishDate
+						: 'Comienzo ' + startedDate}
 				</StyledP>
 			</StyledBox>
 		</StyledBox>

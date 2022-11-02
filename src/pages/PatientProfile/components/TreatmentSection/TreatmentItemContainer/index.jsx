@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import {StyledBox} from "../../../../../common/styledCommonComponents";
+import styled from 'styled-components';
+import { StyledBox } from '../../../../../common/styledCommonComponents';
 
 export const StyledTreatmentItemContainer = styled(StyledBox)`
 	overflow-y: auto;
@@ -7,15 +7,13 @@ export const StyledTreatmentItemContainer = styled(StyledBox)`
 	height: 560px;
 	&::-webkit-scrollbar {
 		width: 0px;
-		
 	}
 
 	&::-webkit-scrollbar-thumb {
 		background-color: lightgray;
 	}
 	::-webkit-scrollbar-track {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    
-}
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
 `;
