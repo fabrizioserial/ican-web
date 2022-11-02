@@ -8,76 +8,39 @@ import {
 } from '../../common/styledCommonComponents';
 import UsersIcon from '../../assets/UsersIcon';
 import { useTheme } from 'styled-components';
-import PatientContainer from '../PatientsList/PatientContainer';
 import { StyledWaitingListContainer } from './style';
 import PatientWaitingItem from './components/PatientWaitingItem';
+import { useFilterPatientQuery } from '../../redux/api/listApi';
 
 function WaitingList() {
-	const [waitingPatients, setWaitingPatients] = useState([
-		{
-			name: 'Agustin',
-			surname: 'Von Staweksi',
-			dni: '0943892948',
-			avatar: 'img',
+	const { data, isLoading } = useFilterPatientQuery({
+		column: 'status',
+		params: {
+			value: 'Pending',
 		},
-		{
-			name: 'Carlos',
-			surname: 'Gomez',
-			dni: '9124837499',
-			avatar: 'img',
-		},
-		{
-			name: 'Elisa',
-			surname: 'Furnari',
-			dni: '3789438384',
-			avatar: 'img',
-		},
-		{
-			name: 'Carlos',
-			surname: 'Gomez',
-			dni: '0000000001',
-			avatar: 'img',
-		},
-		{
-			name: 'Carlos',
-			surname: 'Gomez',
-			dni: '0943892948',
-			avatar: 'img',
-		},
-		{
-			name: 'Agustin',
-			surname: 'Von Staweksi',
-			dni: '0943892948',
-			avatar: 'img',
-		},
-		{
-			name: 'Carlos',
-			surname: 'Gomez',
-			dni: '9124837499',
-			avatar: 'img',
-		},
-		{
-			name: 'Elisa',
-			surname: 'Furnari',
-			dni: '3789438384',
-			avatar: 'img',
-		},
-	]);
+	});
 	const theme = useTheme();
+
 	return (
 		<StyledCardHome
+			width={'230px'}
+			height={'230px'}
 			css={{
-				width: '230px',
-				height: '230px',
+				opacity: '0 !important',
 			}}
+			className={
+				data?.patients?.length === 0 || data === undefined
+					? 'close'
+					: 'open'
+			}
 		>
 			<StyledBox
 				css={{
 					display: 'flex',
 					flexDirection: 'column',
-					width: '100%',
 					justifyContent: 'flex-start',
 					height: '100%',
+					minWidth: '230px',
 				}}
 			>
 				<StyledH1
@@ -100,7 +63,7 @@ function WaitingList() {
 					>
 						<StyledSpan css={{ fontWeight: 'bold', fontSize: '16px' }}>
 							{' '}
-							{waitingPatients.length}{' '}
+							{data?.patients.length}{' '}
 						</StyledSpan>
 						<StyledP css={{ fontSize: '14px', marginLeft: '5px' }}>
 							Pacientes en espera
@@ -109,7 +72,7 @@ function WaitingList() {
 				</StyledH1>
 
 				<StyledWaitingListContainer>
-					{waitingPatients.map(({ name, surname, dni, avatar }, index) => (
+					{data?.patients.map(({ name, surname, dni, avatar }, index) => (
 						<PatientWaitingItem
 							key={index}
 							name={name}

@@ -1,31 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
 	StyledBox,
 	StyledH3,
 	StyledScreen,
 } from '../../common/styledCommonComponents';
-import {
-	Box,
-	Table,
-	TableBody,
-	TableCell,
-	TableContainer,
-	TableHead,
-	TableRow,
-	TableSortLabel,
-} from '@material-ui/core';
-import styled from 'styled-components';
-import { visuallyHidden } from '@mui/utils';
+import { Table, TableContainer } from '@material-ui/core';
 import PatientListHeader from './PatientListHeader';
 import PatientListBody from './PatientListBody';
 import PatientListBottom from './PatientListBottom';
 import SearchBar from './SearchBar';
-import WaitingListHeaderCard from './CardsHeader/WaitingListCard';
-import PatientsHeaderCard from './CardsHeader/HeaderCard';
-import { PatientsListHeaderConfig } from '../../utils/utils';
 import CardsHeader from './CardsHeader';
+import {
+	useLazyOrderPatientsQuery,
+	useLazyPatientsListWithParamsQuery,
+	usePatientsListQuery,
+} from '../../redux/api/listApi';
+import { StyledCircularProgress } from '../../components/CustomCircularProgress/styles';
 
 const PatientListScreen = () => {
+	const { isLoading: patientInitalLoading } = usePatientsListQuery();
+	const [refetch, { isLoading: orderLoading }] = useLazyOrderPatientsQuery();
+	const [refetchlq, { isLoading: searchLoading }] =
+		useLazyPatientsListWithParamsQuery();
+
 	return (
 		<StyledScreen
 			css={{
@@ -42,6 +39,7 @@ const PatientListScreen = () => {
 					padding: '20px 40px',
 					width: '100%',
 					boxSizing: 'border-box',
+					flex: 1,
 				}}
 			>
 				<StyledH3>Mis Pacientes</StyledH3>
@@ -67,12 +65,30 @@ const PatientListScreen = () => {
 					css={{
 						maxWidth: '100vw',
 						width: 'calc(100vw - 40px)',
+						height: '100%',
+						flex: 1,
+						display: 'flex',
+						flexDirection: 'column',
+						justifyContent: 'space-between',
 					}}
 				>
-					<Table>
+					<Table sx={{ height: '100%' }}>
 						<PatientListHeader />
 						<PatientListBody />
 					</Table>
+					<StyledBox
+						css={{
+							flex: 1,
+							backgroundColor: 'white',
+							display: 'flex',
+							justifyContent: 'center',
+							alignItems: 'center',
+						}}
+					>
+						{patientInitalLoading || orderLoading || searchLoading ? (
+							<StyledCircularProgress />
+						) : null}
+					</StyledBox>
 					<PatientListBottom />
 				</StyledBox>
 			</StyledBox>

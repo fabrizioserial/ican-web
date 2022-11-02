@@ -1,90 +1,25 @@
 import React, { useState } from 'react';
 import { TableBody } from '@material-ui/core';
 import { StyledBodyCell, StyledBodyRow } from './styles';
-import { renderStatusPill } from '../../../utils/utils';
+import {
+	CapitalizeText,
+	getProfileImageFromName,
+	renderStatusPill,
+} from '../../../utils/utils';
 import { StyledBox, StyledImg } from '../../../common/styledCommonComponents';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 
 const PatientListBody = () => {
-	const [body, setBody] = useState([
-		{
-			nHistorial: '2141325213235435',
-			nameSurname: 'Agustin VonStaszweski',
-			tumor: 'Prostat',
-			treatment: 'Quimioterapia',
-			treatmentTumor: 'Quimioterapia',
-			treatmentTumorPeri: 'Quimioterapia',
-			state: 'active',
-		},
-		{
-			nHistorial: '2141325213235435',
-			nameSurname: 'Fabrizio Serial',
-			tumor: 'Prostat',
-			treatment: 'Quimioterapia',
-			treatmentTumor: 'Quimioterapia',
-			treatmentTumorPeri: 'Quimioterapia',
-			state: 'active',
-		},
-		{
-			nHistorial: '2141325213235435',
-			nameSurname: 'Agustin VonStaszweski',
-			tumor: 'Prostata',
-			treatment: 'Quimioterapia',
-			treatmentTumor: 'Quimioterapia',
-			treatmentTumorPeri: 'Quimioterapia',
-			state: 'active',
-		},
-		{
-			nHistorial: '2141325213235435',
-			nameSurname: 'Agustin VonStaszweski',
-			tumor: 'Prostat',
-			treatment: 'Quimioterapia',
-			treatmentTumor: 'Quimioterapia',
-			treatmentTumorPeri: 'Quimioterapia',
-			state: 'active',
-		},
-		{
-			nHistorial: '2141325213235435',
-			nameSurname: 'Agustin VonStaszweski',
-			tumor: 'Prostat',
-			treatment: 'Quimioterapia',
-			treatmentTumor: 'Quimioterapia',
-			treatmentTumorPeri: 'Quimioterapia',
-			state: 'active',
-		},
-		{
-			nHistorial: '2141325213235435',
-			nameSurname: 'Agustin VonStaszweski',
-			tumor: 'Prostat',
-			treatment: 'Quimioterapia',
-			treatmentTumor: 'Quimioterapia',
-			treatmentTumorPeri: 'Quimioterapia',
-			state: 'active',
-		},
-		{
-			nHistorial: '2141325213235435',
-			nameSurname: 'Agustin VonStaszweski',
-			tumor: 'Prostat',
-			treatment: 'Quimioterapia',
-			treatmentTumor: 'Quimioterapia',
-			treatmentTumorPeri: 'Quimioterapia',
-			state: 'active',
-		},
-		{
-			nHistorial: '2141325213235435',
-			nameSurname: 'Agustin VonStaszweski',
-			tumor: 'Prostat',
-			treatment: 'Quimioterapia',
-			treatmentTumor: 'Quimioterapia',
-			treatmentTumorPeri: 'Quimioterapia',
-			state: 'active',
-		},
-	]);
+	const navigate = useNavigate();
+
+	const patients = useSelector((state) => state.listSlice.patientList);
 
 	return (
 		<TableBody>
-			{body.map((bodyItem) => (
-				<StyledBodyRow>
-					<StyledBodyCell with={'5%'} style={{ paddingLeft: '30px' }}>
+			{patients.map((bodyItem) => (
+				<StyledBodyRow onClick={() => navigate(`/profile/${bodyItem.id}`)}>
+					<StyledBodyCell width={'5%'} style={{ paddingLeft: '30px' }}>
 						<StyledBox
 							css={{
 								height: '34px',
@@ -96,43 +31,34 @@ const PatientListBody = () => {
 							{bodyItem.url ? (
 								<StyledImg src={bodyItem.url} />
 							) : (
-								<StyledBox
-									css={{
-										display: 'flex',
-										justifyContent: 'center',
-										alignItems: 'center',
-										height: '100%',
-										width: '100%',
-									}}
-								>
-									{' '}
-									{bodyItem.nameSurname
-										.split(' ')
-										.map((word) => word.charAt(0))
-										.slice(0, 2)
-										.map((w) => w)}{' '}
-								</StyledBox>
+								getProfileImageFromName(
+									CapitalizeText(bodyItem.name),
+									CapitalizeText(bodyItem.surname),
+									{ width: 34, height: 34 },
+								)
 							)}
 						</StyledBox>
 					</StyledBodyCell>
 					<StyledBodyCell width={'12%'}>
-						{bodyItem.nHistorial}
+						{bodyItem.medicHistoryNumber}
 					</StyledBodyCell>
 					<StyledBodyCell width={'14%'}>
-						{bodyItem.nameSurname}
+						{CapitalizeText(bodyItem.name) +
+							' ' +
+							CapitalizeText(bodyItem.surname)}
 					</StyledBodyCell>
-					<StyledBodyCell width={'10%'}>{bodyItem.tumor}</StyledBodyCell>
+					<StyledBodyCell width={'10%'}>{bodyItem.organ}</StyledBodyCell>
 					<StyledBodyCell width={'26%'}>
 						{bodyItem.treatment}
 					</StyledBodyCell>
 					<StyledBodyCell width={'14%'}>
-						{bodyItem.treatmentTumor}
+						{bodyItem.tumorTreatment}
 					</StyledBodyCell>
 					<StyledBodyCell width={'14%'}>
-						{bodyItem.treatmentTumorPeri}
+						{bodyItem.typeOfMedication}
 					</StyledBodyCell>
 					<StyledBodyCell width={'5%'} style={{ paddingRight: '30px' }}>
-						{renderStatusPill(bodyItem.state)}
+						{renderStatusPill(bodyItem.status)}
 					</StyledBodyCell>
 				</StyledBodyRow>
 			))}

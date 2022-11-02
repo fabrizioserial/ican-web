@@ -5,7 +5,10 @@ import {
 } from '../../../../common/styledCommonComponents';
 import React from 'react';
 import { StyledPatientWaitingContainer } from './styles';
-import { getProfileImageFromName } from '../../../../utils/utils';
+import {
+	CapitalizeText,
+	getProfileImageFromName,
+} from '../../../../utils/utils';
 
 const PatientWaitingItem = ({ name, surename, dni, css }) => {
 	return (
@@ -23,8 +26,19 @@ const PatientWaitingItem = ({ name, surename, dni, css }) => {
 					marginLeft: '6px',
 				}}
 			>
-				<StyledP css={{ fontWeight: 500, margin: '0', fontSize: '11px' }}>
-					{name + ' ' + surename}
+				<StyledP
+					css={{
+						fontWeight: 500,
+						margin: '0',
+						fontSize: '11px',
+						maxHeight: '12px',
+						textOverflow: 'ellipsis',
+						overflowY: 'hidden',
+						whiteSpace: 'nowrap',
+						maxWidth: '120px',
+					}}
+				>
+					{CapitalizeText(name) + ' ' + CapitalizeText(surename)}
 				</StyledP>
 				<StyledP css={{ fontWeight: 400, margin: '0', fontSize: '10px' }}>
 					{dni}

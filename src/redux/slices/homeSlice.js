@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { homeApi } from '../api/homeApi';
 import { sessionApi } from '../api/sessionApi';
 import { patientApi } from '../api/patientApi';
+import { listApi } from '../api/listApi';
 
 const initialState = {
 	user: {

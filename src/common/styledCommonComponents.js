@@ -69,6 +69,21 @@ export const StyledCardHome = styled(StyledBox)`
 	background-color: white;
 	box-shadow: 0 2px 24px rgba(214, 203, 252, 0.3);
 	box-sizing: border-box;
+	transition: all 0.4s ease-out;
+
+	&.open {
+		width: ${(props) => props.width} !important;
+		height: ${(props) => props.height};
+		transition: all 0.4s ease-out;
+		opacity: 1 !important;
+		margin-left: 30px;
+	}
+	&.close {
+		width: 0px;
+		transition: all 0.4s ease-out;
+		opacity: 0 !important;
+		margin-left: 0px;
+	}
 	//padding: 24px 20px;
 	${(props) => styledComponentCss`${props.css}`}
 `;

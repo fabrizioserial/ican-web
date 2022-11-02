@@ -72,7 +72,7 @@ function WaitingListHeaderCard() {
 						color: '#5F5F5F',
 					}}
 				>
-					{users?.length ?? 0}
+					{data?.pending ?? 0}
 				</StyledP>
 			</StyledBox>
 			<StyledBox

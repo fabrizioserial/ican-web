@@ -6,6 +6,7 @@ import { sessionApi } from './api/sessionApi';
 import authSliceReducer from './slices/authSlice';
 import homeSliceReducer from './slices/homeSlice';
 import formSliceReducer from './slices/formSlice';
+import listSliceReducer from './slices/listSlice';
 import { api } from './api/api';
 import utilsSliceReducer from './slices/utilsSlice';
 // const middlewares = [sessionMiddleware];
@@ -22,6 +23,7 @@ const reducers = combineReducers({
 	authSlice: authSliceReducer,
 	homeSlice: homeSliceReducer,
 	formSlice: formSliceReducer,
+	listSlice: listSliceReducer,
 	utilsSlice: utilsSliceReducer,
 });
 

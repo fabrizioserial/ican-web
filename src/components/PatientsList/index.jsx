@@ -7,12 +7,12 @@ import {
 } from '../../common/styledCommonComponents';
 import PatientContainer from './PatientContainer';
 import { StyledButtonMore } from './PatientContainer/styles';
-import { usePatientsListQuery } from '../../redux/api/homeApi';
 import { StyledCircularProgress } from '../CustomCircularProgress/styles';
+import { usePatientsListQuery } from '../../redux/api/listApi';
 
 const PatientsList = () => {
 	const theme = useTheme();
-	const { data, isLoading } = usePatientsListQuery();
+	const { data, isLoading } = usePatientsListQuery({ skip: 0, take: 9 });
 
 	return (
 		<StyledCardHome

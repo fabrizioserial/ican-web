@@ -15,7 +15,7 @@ const WidgetPastelStats = () => {
 			}}
 		>
 			<PatientsInTreatments patientsInTreatment={50} totalPatients={70} />
-			<DonutChart cancerTypes={['100', '23', '33']} />
+			<DonutChart />
 		</StyledBox>
 	);
 };
