@@ -7,6 +7,7 @@ import {
 	StyledSelect,
 } from '../../../../common/styledCommonComponents';
 import { useTheme } from 'styled-components';
+import { useLazyGetCancerTypeQuery } from '../../../../redux/api/validateFormApi';
 
 const SelectorInputField = ({
 	height,
@@ -19,6 +20,18 @@ const SelectorInputField = ({
 	disabled
 }) => {
 	const theme = useTheme();
+
+	const [refetch, { data: dataCancerType, isSuccess: successType }] = useLazyGetCancerTypeQuery();
+
+	const handleChange = (name2, value) => {
+		console.log(value, name)
+		if (name === 'organ') {
+
+			console.log(options)
+			refetch("956205d1-ce8b-4137-be4e-4d7b973011cf")
+		}
+		onChange(name2, value)
+	}
 
 	return (
 		<StyledBox
@@ -47,12 +60,14 @@ const SelectorInputField = ({
 					border: !disabled && "1px solid #E5D7FD",
 					borderRadius: "5px"
 				}}
-				onChange={(e) => onChange(name, e.target.value)}
+				onChange={(e) => handleChange(name, e.target.value)}
 				value={value}
 			>
 				{Object.keys(options)?.map((item, index) => (
-					<StyledOption key={index} value={item}>
-						{options[item]}
+					// <StyledOption key={index} value={item}>
+					<StyledOption key={index} value={options[item].value ?? item}>
+						{/* <StyledOption key={index} value={item}> */}
+						{options[item].label ?? options[item]}
 					</StyledOption>
 				))}
 			</StyledSelect>

@@ -13,193 +13,212 @@ export const InputTypeEnum = {
 	ACTIONFIELD: 'ACTIONFIELD',
 	CONDITIONAL: 'CONDITIONAL',
 	BIOMARKER_ROW: 'BIOMARKER_ROW',
-	RELAPSES_ROW: 'RELAPSES_ROW',
+	SETBACK_ROW: 'SETBACK_ROW',
 	MEDICATION_ROW: 'MEDICATION_ROW',
 	ADD_SECTION: 'ADD_SECTION'
 };
 
 export const actionTypeEnum = {
 	ADD_BIOMARKER: "ADD_BIOMARKER",
-	ADD_RELAPSES: "ADD_RELAPSES",
+	ADD_SETBACK: "ADD_SETBACK",
 	ADD_TREATMENT: "ADD_TREATMENT",
 	ADD_MEDICATION: "ADD_MEDICATION",
 	DELETE_MEDICATION: "DELETE_MEDICATION"
 }
 
 export const TNMOptions = {
-	mama: {
-		t: {
-			T1: 'T1',
-			TX: 'TX',
-			T0: 'T0',
-		},
-		n: {
-			NX: 'NX',
-			N1: 'N1',
-			N0: 'N0',
-		},
-		m: {
-			MX: 'MX',
-			M0: 'M0',
-		},
-		estadio: {
-			O: 'O',
-			IA: 'IA',
-			IB: 'IB',
-		},
+	tumor: {
+		T1: { label: 'testT1', value: 'T1' },
+		TX: 'TX',
+		T0: 'T0',
 	},
-	prostata: {
-		t: {
-			TX: 'TX',
-			T0: 'T0',
-		},
-		n: {
-			NX: 'NX',
-			N0: 'N0',
-		},
-		m: {
-			MX: 'MX',
-			M0: 'M0',
-		},
-		estadio: {
-			O: 'O',
-			IA: 'IA',
-			IB: 'IB',
-		},
+	nodule: {
+		NX: 'NX',
+		N1: 'N1',
+		N0: 'N0',
 	},
-	pulmon: {
-		t: {
-			TX: 'TX',
-			T0: 'T0',
-		},
-		n: {
-			NX: 'NX',
-			N0: 'N0',
-		},
-		m: {
-			MX: 'MX',
-			M0: 'M0',
-		},
-		estadio: {
-			O: 'O',
-			IA: 'IA',
-			IB: 'IB',
-		},
+	metastasis: {
+		MX: 'MX',
+		M0: 'M0',
 	},
-	colon: {
-		t: {
-			TX: 'Colon TX',
-			T0: 'T0',
-		},
-		n: {
-			NX: 'Colon NX',
-			N0: 'N0',
-		},
-		m: {
-			MX: 'Colon MX',
-			M0: 'M0',
-		},
-		estadio: {
-			O: 'Colon O',
-			IA: 'IA',
-			IB: 'IB',
-		},
+	estadio: {
+		O: 'O',
+		IA: 'IA',
+		IB: 'IB',
 	},
-	cervix: {
-		t: {
-			TX: 'Cer TX',
-			T0: 'T0',
-		},
-		n: {
-			NX: 'Cer NX',
-			N0: 'N0',
-		},
-		m: {
-			MX: 'Cer MX',
-			M0: 'M0',
-		},
-		estadio: {
-			O: 'Cer O',
-			IA: 'IA',
-			IB: 'IB',
-		},
-	},
-	gastrico: {
-		t: {
-			TX: 'TX',
-			T0: 'T0',
-		},
-		n: {
-			NX: 'NX',
-			N0: 'N0',
-		},
-		m: {
-			MX: 'MX',
-			M0: 'M0',
-		},
-		estadio: {
-			O: 'O',
-			IA: 'IA',
-			IB: 'IB',
-		},
-	},
-	higado: {
-		t: {
-			TX: 'TX',
-			T0: 'T0',
-		},
-		n: {
-			NX: 'NX',
-			N0: 'N0',
-		},
-		m: {
-			MX: 'MX',
-			M0: 'M0',
-		},
-		estadio: {
-			O: 'O',
-			IA: 'IA',
-			IB: 'IB',
-		},
-	},
-	utero: {
-		t: {
-			TX: 'TX',
-			T0: 'T0',
-		},
-		n: {
-			NX: 'NX',
-			N0: 'N0',
-		},
-		m: {
-			MX: 'MX',
-			M0: 'M0',
-		},
-		estadio: {
-			O: 'O',
-			IA: 'IA',
-			IB: 'IB',
-		},
-	},
-	ovario: {
-		t: {
-			TX: 'TX',
-			T0: 'T0',
-		},
-		n: {
-			NX: 'NX',
-			N0: 'N0',
-		},
-		m: {
-			MX: 'MX',
-			M0: 'M0',
-		},
-		estadio: {
-			O: 'O',
-			IA: 'IA',
-			IB: 'IB',
-		},
-	},
+	// mama: {
+	// 	tumor: {
+	// 		T1: 'T1',
+	// 		TX: 'TX',
+	// 		T0: 'T0',
+	// 	},
+	// 	nodule: {
+	// 		NX: 'NX',
+	// 		N1: 'N1',
+	// 		N0: 'N0',
+	// 	},
+	// 	metastasis: {
+	// 		MX: 'MX',
+	// 		M0: 'M0',
+	// 	},
+	// 	estadio: {
+	// 		O: 'O',
+	// 		IA: 'IA',
+	// 		IB: 'IB',
+	// 	},
+	// },
+	// prostata: {
+	// 	t: {
+	// 		TX: 'TX',
+	// 		T0: 'T0',
+	// 	},
+	// 	n: {
+	// 		NX: 'NX',
+	// 		N0: 'N0',
+	// 	},
+	// 	m: {
+	// 		MX: 'MX',
+	// 		M0: 'M0',
+	// 	},
+	// 	estadio: {
+	// 		O: 'O',
+	// 		IA: 'IA',
+	// 		IB: 'IB',
+	// 	},
+	// },
+	// pulmon: {
+	// 	t: {
+	// 		TX: 'TX',
+	// 		T0: 'T0',
+	// 	},
+	// 	n: {
+	// 		NX: 'NX',
+	// 		N0: 'N0',
+	// 	},
+	// 	m: {
+	// 		MX: 'MX',
+	// 		M0: 'M0',
+	// 	},
+	// 	estadio: {
+	// 		O: 'O',
+	// 		IA: 'IA',
+	// 		IB: 'IB',
+	// 	},
+	// },
+	// colon: {
+	// 	t: {
+	// 		TX: 'Colon TX',
+	// 		T0: 'T0',
+	// 	},
+	// 	n: {
+	// 		NX: 'Colon NX',
+	// 		N0: 'N0',
+	// 	},
+	// 	m: {
+	// 		MX: 'Colon MX',
+	// 		M0: 'M0',
+	// 	},
+	// 	estadio: {
+	// 		O: 'Colon O',
+	// 		IA: 'IA',
+	// 		IB: 'IB',
+	// 	},
+	// },
+	// cervix: {
+	// 	t: {
+	// 		TX: 'Cer TX',
+	// 		T0: 'T0',
+	// 	},
+	// 	n: {
+	// 		NX: 'Cer NX',
+	// 		N0: 'N0',
+	// 	},
+	// 	m: {
+	// 		MX: 'Cer MX',
+	// 		M0: 'M0',
+	// 	},
+	// 	estadio: {
+	// 		O: 'Cer O',
+	// 		IA: 'IA',
+	// 		IB: 'IB',
+	// 	},
+	// },
+	// gastrico: {
+	// 	t: {
+	// 		TX: 'TX',
+	// 		T0: 'T0',
+	// 	},
+	// 	n: {
+	// 		NX: 'NX',
+	// 		N0: 'N0',
+	// 	},
+	// 	m: {
+	// 		MX: 'MX',
+	// 		M0: 'M0',
+	// 	},
+	// 	estadio: {
+	// 		O: 'O',
+	// 		IA: 'IA',
+	// 		IB: 'IB',
+	// 	},
+	// },
+	// higado: {
+	// 	t: {
+	// 		TX: 'TX',
+	// 		T0: 'T0',
+	// 	},
+	// 	n: {
+	// 		NX: 'NX',
+	// 		N0: 'N0',
+	// 	},
+	// 	m: {
+	// 		MX: 'MX',
+	// 		M0: 'M0',
+	// 	},
+	// 	estadio: {
+	// 		O: 'O',
+	// 		IA: 'IA',
+	// 		IB: 'IB',
+	// 	},
+	// },
+	// utero: {
+	// 	t: {
+	// 		TX: 'TX',
+	// 		T0: 'T0',
+	// 	},
+	// 	n: {
+	// 		NX: 'NX',
+	// 		N0: 'N0',
+	// 	},
+	// 	m: {
+	// 		MX: 'MX',
+	// 		M0: 'M0',
+	// 	},
+	// 	estadio: {
+	// 		O: 'O',
+	// 		IA: 'IA',
+	// 		IB: 'IB',
+	// 	},
+	// },
+	// ovario: {
+	// 	t: {
+	// 		TX: 'TX',
+	// 		T0: 'T0',
+	// 	},
+	// 	n: {
+	// 		NX: 'NX',
+	// 		N0: 'N0',
+	// 	},
+	// 	m: {
+	// 		MX: 'MX',
+	// 		M0: 'M0',
+	// 	},
+	// 	estadio: {
+	// 		O: 'O',
+	// 		IA: 'IA',
+	// 		IB: 'IB',
+	// 	},
+	// },
 };
 
 const FormBuilder = {};

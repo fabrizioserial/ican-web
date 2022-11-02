@@ -6,8 +6,9 @@ import PlusCircleIcon from '../../assets/PlusCircleIcon';
 import HeartIcon from '../../assets/HeartIcon';
 import StateIcon from '../../assets/StateIcon';
 import TreatmentIcon from '../../assets/TreatmentIcon';
-import { actionTypeEnum, InputTypeEnum } from '../../utils/utils';
+import { actionTypeEnum, InputTypeEnum, TNMOptions } from '../../utils/utils';
 import { patientApi } from '../api/patientApi';
+import { validateFormApi } from '../api/validateFormApi';
 
 const initialState = {
     patients: {
@@ -146,7 +147,34 @@ const initialState = {
             ],
             [
                 {
-                    label: 'Histologia',
+                    label: 'Tipo',
+                    options: {
+                        asd: 'asd'
+                    },
+                    // options: {
+                    //     adenocarcinoma: 'Adenocarcinoma',
+                    //     adenoescamoso: 'Adenoescamoso',
+                    //     carcinoma_pleomorfico: 'Carcinoma pleomorfico',
+                    //     carcinoma_sarcomatoide: 'Carcinoma sarcomatoide',
+                    //     celulas_grandes: 'Células grandes',
+                    //     escamoso: 'Escamoso',
+                    //     indiferenciado: 'Indiferenciado',
+                    //     otro: 'Otro',
+                    //     nos: 'Tipo NOS',
+                    //     adenoidequistico: 'Adenoidequístico',
+                    //     liposarcoma_bien_diferenciado:
+                    //         'Liposarcoma bien diferenciado',
+                    //     osteosarcoma: 'Osteosarcoma',
+                    //     condrosarcoma: 'Condrosarcoma',
+                    //     liposarcoma_indiferenciado: 'Liposarcoma indiferenciado',
+                    //     basocelular: 'Basocelular',
+                    // },
+                    input_type: InputTypeEnum.CONDITIONAL,
+                    varToEvaluate: 'organ',
+                    name: 'cancerType',
+                },
+                {
+                    label: 'Subtipo',
                     options: {
                         adenocarcinoma: 'Adenocarcinoma',
                         adenoescamoso: 'Adenoescamoso',
@@ -166,9 +194,31 @@ const initialState = {
                         basocelular: 'Basocelular',
                     },
                     input_type: InputTypeEnum.SELECTOR,
-                    name: 'histology',
+                    name: 'cancerSubType',
                 },
-                {},
+                // {
+                //     label: 'Histología',
+                //     options: {
+                //         adenocarcinoma: 'Adenocarcinoma',
+                //         adenoescamoso: 'Adenoescamoso',
+                //         carcinoma_pleomorfico: 'Carcinoma pleomorfico',
+                //         carcinoma_sarcomatoide: 'Carcinoma sarcomatoide',
+                //         celulas_grandes: 'Células grandes',
+                //         escamoso: 'Escamoso',
+                //         indiferenciado: 'Indiferenciado',
+                //         otro: 'Otro',
+                //         nos: 'Tipo NOS',
+                //         adenoidequistico: 'Adenoidequístico',
+                //         liposarcoma_bien_diferenciado:
+                //             'Liposarcoma bien diferenciado',
+                //         osteosarcoma: 'Osteosarcoma',
+                //         condrosarcoma: 'Condrosarcoma',
+                //         liposarcoma_indiferenciado: 'Liposarcoma indiferenciado',
+                //         basocelular: 'Basocelular',
+                //     },
+                //     input_type: InputTypeEnum.SELECTOR,
+                //     name: 'cancerSubType',
+                // },
             ],
             [
                 {
@@ -184,6 +234,7 @@ const initialState = {
                     input_type: InputTypeEnum.CONDITIONAL,
                     name: 'estadio',
                     varToEvaluate: 'organ',
+                    options: TNMOptions
                 },
             ],
             [
@@ -192,32 +243,32 @@ const initialState = {
                     input_type: InputTypeEnum.CONDITIONAL,
                     name: 'tumor',
                     varToEvaluate: 'organ',
+                    options: TNMOptions
                 },
                 {
                     label: 'N',
                     input_type: InputTypeEnum.CONDITIONAL,
                     name: 'nodule',
                     varToEvaluate: 'organ',
+                    options: TNMOptions
                 },
                 {
                     label: 'M',
                     input_type: InputTypeEnum.CONDITIONAL,
                     name: 'metastasis',
                     varToEvaluate: 'organ',
+                    options: TNMOptions
                 },
             ],
             [
                 {
                     label: 'Tratamiento del tumor primario ',
                     options: {
-                        cirugia: 'Cirugía',
-                        radioterapia: 'Radioterapia',
-                        quimioterapia: 'Quimioterapia',
-                        inmunoterapia: 'Inmunoterapia',
-                        inhibidor_tirosina_kinasa: 'Inhibidor tirosina kinasa',
+                        Surgery: 'Cirugía',
+                        Radiotherapy: 'Radioterapia',
                     },
                     input_type: InputTypeEnum.SELECTOR,
-                    name: 'primary_tumor',
+                    name: 'tumorTreatment',
                 },
                 {
                     label: 'Tratamiento perioperatorio',
@@ -248,47 +299,17 @@ const initialState = {
             ],
         ],
     },
-    relapses: {
+    setbacks: {
         title: 'Recaidas',
         icon: <HeartIcon />,
         fields: [
-            // [
-            //     {
-            //         label: 'Fecha de Recaida',
-            //         placeholder: 'XX/XX/XX',
-            //         input_type: InputTypeEnum.DATEFIELD,
-            //         // name: 'load_date',
-            //         type: 'text',
-            //     },
-            //     {
-            //         label: 'Fecha del Diagnostico de la Enferemedad Metatistica',
-            //         placeholder: 'XX/XX/XX',
-            //         input_type: InputTypeEnum.DATEFIELD,
-            //         // name: 'load_date',
-            //         type: 'text',
-            //     }
-            // ],
-            // [
-            //     {
-            //         label: 'Sitio de la Metastasis',
-            //         type: 'text',
-            //         input_type: InputTypeEnum.TEXTFIELD,
-            //         // name: 'name',
-            //     },
-            //     {
-            //         label: 'Tratamiento de la Recaida',
-            //         type: 'text',
-            //         input_type: InputTypeEnum.TEXTFIELD,
-            //         // name: 'name',
-            //     },
-            // ],
             [
                 {
                     label: 'Añadir Nueva Recaida',
                     type: 'text',
                     input_type: InputTypeEnum.ADD_SECTION,
                     icon: <PlusCircleIcon />,
-                    handleClick: () => actionTypeEnum.ADD_RELAPSES
+                    handleClick: () => actionTypeEnum.ADD_SETBACK
                 }
             ],
         ],
@@ -370,27 +391,30 @@ export const formSlice = createSlice({
                 ...state.values.biomarkers, [`biomarker${biomarkersToAdd.id}`]: { [`biomarker${biomarkersToAdd.id}`]: "", [`evaluation${biomarkersToAdd.id}`]: "" }
             }
         },
-        addRelapses: (state) => {
-            const relapses = state.relapses.fields.slice(0, state.relapses.fields.length - 1)
-            const fixedRows = state.relapses.fields.slice(state.relapses.fields.length - 1, state.relapses.fields.length)
+        addSetBacks: (state) => {
+            const setbacks = state.setbacks.fields.slice(0, state.setbacks.fields.length - 1)
+            const fixedRows = state.setbacks.fields.slice(state.setbacks.fields.length - 1, state.setbacks.fields.length)
 
-            const relapsesToAdd = {
-                id: relapses.length + 1,
-                input_type: InputTypeEnum.RELAPSES_ROW,
+            const setbacksToAdd = {
+                id: setbacks.length + 1,
+                input_type: InputTypeEnum.SETBACK_ROW,
                 names: [
-                    "fecha_de_recaída", "fecha_de_diagnostico", "sitio_de_metástasis", "tratamiento_de_recaida"
+                    "setBackDate",
+                    "setBackPlace",
+                    "diagnosisDate"
                 ]
             }
 
-            state.relapses.fields = [...relapses, [
-                relapsesToAdd
+            state.setbacks.fields = [...setbacks, [
+                setbacksToAdd
             ],
             ...fixedRows
             ]
 
-            state.values = {
-                ...state.values, [`fecha_de_recaída${relapsesToAdd.id}`]: "", [`fecha_de_diagnostico${relapsesToAdd.id}`]: "",
-                [`sitio_de_metâstasis${relapsesToAdd.id}`]: "", [`tratamiento_de_recaida${relapsesToAdd.id}`]: "",
+            state.values.setbacks = {
+                ...state.values.setbacks, [`setBackDate${setbacksToAdd.id}`]: "",
+                [`setBackPlace${setbacksToAdd.id}`]: "",
+                [`diagnosisDate${setbacksToAdd.id}`]: ""
             }
         },
         addTreatment: (state) => {
@@ -400,7 +424,7 @@ export const formSlice = createSlice({
                         id: 1,
                         input_type: InputTypeEnum.MEDICATION_ROW,
                         names: [
-                            "medicamento", "gramaje"
+                            "medication", "grammage"
                         ]
                     },
                 ],
@@ -418,14 +442,29 @@ export const formSlice = createSlice({
                         label: 'Fecha de Comienzo',
                         placeholder: 'XX/XX/XX',
                         input_type: InputTypeEnum.DATEFIELD,
-                        name: 'start_treatment_date'
+                        name: 'treatmentStartDate'
                     },
                     {
                         label: 'Fecha de Finalización',
                         placeholder: 'XX/XX/XX',
                         input_type: InputTypeEnum.DATEFIELD,
-                        name: 'end_treatment_date',
+                        name: 'estimateFinishDate',
                     }
+                ],
+                [
+                    {
+                        label: 'Intension del medicamente',
+                        // placeholder: 'El objetivo de este tratamiento es reducir los sintomas de caracter cutaneo presentes en el paciente..',
+                        type: 'text',
+                        input_type: InputTypeEnum.SELECTOR,
+                        options: {
+                            Adjuvant: "Adyuvante",
+                            Concurrent: "Concurrante",
+                            Neoadjuvant: "Neoadyuvante",
+                            Palliative: "Paliativa",
+                        },
+                        name: 'intention',
+                    },
                 ],
                 [
                     {
@@ -433,11 +472,24 @@ export const formSlice = createSlice({
                         // placeholder: 'El objetivo de este tratamiento es reducir los sintomas de caracter cutaneo presentes en el paciente..',
                         type: 'text',
                         input_type: InputTypeEnum.TEXTFIELD,
-                        name: 'objetive',
+                        name: 'treatmentObjective',
                     },
-                ]]
+                ]
+                ]
 
-            state.values = { ...state.values, 'medicamento1': "", "gramaje1": "", "start_treatment_date": "", 'end_treatment_date': "", "objetive": "" }
+            state.values = {
+                ...state.values, 'treatment': {
+                    'medicalHistoryId': "",
+                    'objetive': "",
+                    'tumorTreatment': "",
+                    'treatmentLine': 0,
+                    'medications': {
+                        'medication1': { 'medication1': "", "grammage1": "" },
+                    },
+                    'startDate': "",
+                    'estimateFinishDate': "",
+                }
+            }
         },
         addTreatmentMedication: (state) => {
             const medications = state.treatment.fields.slice(0, state.treatment.fields.length - 3)
@@ -447,7 +499,7 @@ export const formSlice = createSlice({
                 id: medications.length + 1,
                 input_type: InputTypeEnum.MEDICATION_ROW,
                 names: [
-                    "medicamento", "gramaje"
+                    "medication", "grammage"
                 ]
             }
 
@@ -457,8 +509,8 @@ export const formSlice = createSlice({
             ...fixedRows
             ]
 
-            state.values = {
-                ...state.values, [`medicamento${medicationToAdd.id}`]: "", [`gramaje${medicationToAdd.id}`]: ""
+            state.values.treatment.medications = {
+                ...state.values.treatment.medications, [`medication${medicationToAdd.id}`]: { [`medication${medicationToAdd.id}`]: "", [`grammage${medicationToAdd.id}`]: "" }
             }
         },
         removeBiomarker: (state, action) => {
@@ -470,15 +522,14 @@ export const formSlice = createSlice({
             delete auxValues[action.payload.evaluationId]
             state.values = auxValues
         },
-        removeRelapses: (state, action) => {
-            state.relapses.fields = state.relapses.fields?.filter(fields =>
+        removeSetBacks: (state, action) => {
+            state.setbacks.fields = state.setbacks.fields?.filter(fields =>
                 fields.find(item => (!item?.id || item.id !== action.payload))
             )
             let auxValues = state.values
-            delete auxValues[action.payload.relapseDateId]
-            delete auxValues[action.payload.diagnosticDate]
-            delete auxValues[action.payload.metastasisSite]
-            delete auxValues[action.payload.treatmentRelapse]
+            delete auxValues[action.payload.setBackDateId]
+            delete auxValues[action.payload.diagnosisDate]
+            delete auxValues[action.payload.setBackPlace]
             state.values = auxValues
         },
         removeTreatmentMedication: (state, action) => {
@@ -502,15 +553,43 @@ export const formSlice = createSlice({
             patientApi.endpoints.getPatientDataForm.matchFulfilled,
             (state, action) => {
                 state.values = { ...state.values, ...action.payload }
+                // console.log(action.payload)
+                // console.log(action.payload.biomarkers ? console.log("tiene bio") : console.log("no tiene"))
+                // action.payload.biomarkers && formSlice.caseReducers.addBiomarkers()
+                //     console.log(action.payload.diseases ? console.log("tiene bdiseaseso") : console.log("no tiene"))
+                // console.log(action.payload.otherMedications ? console.log("tiene med") : console.log("no tiene"))
+                // console.log(action.payload.setbacks ? console.log("tiene setb") : console.log("no tiene"))
             },
+        ).addMatcher(validateFormApi.endpoints.getCancerType.matchFulfilled,
+            (state, action) => {
+                console.log("carlitos")
+                state.hospital.fields = state.hospital.fields.map(row => row.map(column => {
+                    if (column.name === 'cancerType') {
+                        let auxObj = {}
+                        console.log(action.payload)
+                        action.payload.forEach(item => (auxObj = {
+                            ...auxObj,
+                            [item.id]: item.cancerType
+                        }))
+                        return {
+                            ...column,
+                            options: {
+                                cancerType: auxObj
+                            }
+                        }
+                    } else {
+                        return column
+                    }
+                }))
+            }
         );
     },
 });
 
 export const {
     addBiomarkers,
-    removeRelapses,
-    addRelapses,
+    removeSetBacks,
+    addSetBacks,
     addTreatment,
     addTreatmentMedication,
     removeBiomarker,

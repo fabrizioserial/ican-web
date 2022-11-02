@@ -10,7 +10,7 @@ import PlusCircelIcon from '../../../assets/PlusCircleIcon';
 import ActionInputField from './ActionInputField';
 import MedicationField from './MedicationField';
 import BiomarkerField from './BiomarkersField';
-import RelapsesField from './RelapsesField';
+import SetBacksField from './SetBacksField';
 
 export const FormBuilder = (formSqueleton, values, onChangeHandle) => {
 	return formSqueleton?.map((section, index) => (
@@ -83,23 +83,21 @@ const InputTypeBuilder = (type, index, properties, values, onChangeHandle, handl
 					onChange={onChangeHandle}
 				/>
 			);
-		case InputTypeEnum.RELAPSES_ROW:
+		case InputTypeEnum.SETBACK_ROW:
 			return (
-				<RelapsesField
+				<SetBacksField
 					key={index}
 					id={properties.id}
 					type={properties.type}
 					values={{
-						relapseDate: values[`${properties.names[0]}${properties.id}`],
-						diagnosticDate: values[`${properties.names[1]}${properties.id}`],
-						metastasisSite: values[`${properties.names[2]}${properties.id}`],
-						treatmentRelapse: values[`${properties.names[3]}${properties.id}`]
+						setBackDate: values[`${properties.names[0]}${properties.id}`],
+						setBackPlace: values[`${properties.names[1]}${properties.id}`],
+						diagnosisDate: values[`${properties.names[2]}${properties.id}`],
 					}}
 					names={{
-						relapseDate: `${properties.names[0]}${properties.id}`,
-						diagnosticDate: `${properties.names[1]}${properties.id}`,
-						metastasisSite: `${properties.names[2]}${properties.id}`,
-						treatmentRelapse: `${properties.names[3]}${properties.id}`
+						setBackDate: `${properties.names[0]}${properties.id}`,
+						setBackPlace: `${properties.names[1]}${properties.id}`,
+						diagnosisDate: `${properties.names[2]}${properties.id}`,
 					}}
 					onChange={onChangeHandle}
 				/>
