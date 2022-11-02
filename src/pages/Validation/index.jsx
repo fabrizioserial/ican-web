@@ -54,7 +54,7 @@ const Validation = () => {
 	// set values of validationFormValues
 	const handleOnChange = (name, newValue) => {
 		if (!name || newValue === undefined) return;
-		dispatch(setValue({ name, value: newValue }))
+		dispatch(setValue({ name, value: newValue }));
 	};
 
 	const handleSubmit = (values) => {
@@ -150,12 +150,12 @@ const Validation = () => {
 	console.log(hospital)
 
 	return (
-		<StyledScreen css={{ justifyContent: 'center', flexDirection: "column" }}>
+		<StyledScreen css={{ justifyContent: 'center', flexDirection: 'column' }}>
 			<StyledBox
 				css={{
-					margin: "50px 0",
+					margin: '50px 0',
 					display: 'flex',
-					justifyContent: "center",
+					justifyContent: 'center',
 					alignSelf: 'center',
 					flexDirection: 'column',
 				}}
@@ -163,7 +163,7 @@ const Validation = () => {
 				<StyledBox
 					css={{
 						backgroundColor: 'white',
-						width: "800px",
+						width: '800px',
 						borderRadius: '20px',
 						margin: '50px',
 					}}
@@ -172,7 +172,7 @@ const Validation = () => {
 				</StyledBox>
 				<StyledBox
 					css={{
-						margin: "0 50px",
+						margin: '0 50px',
 					}}
 				>
 					<Button

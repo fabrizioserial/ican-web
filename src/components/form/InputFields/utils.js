@@ -34,7 +34,7 @@ export const FormBuilder = (formSqueleton, values, onChangeHandle) => {
 								component,
 								values,
 								onChangeHandle,
-								component?.handleClick
+								component?.handleClick,
 							),
 						)}
 					</StyledBox>
@@ -44,7 +44,14 @@ export const FormBuilder = (formSqueleton, values, onChangeHandle) => {
 	));
 };
 
-const InputTypeBuilder = (type, index, properties, values, onChangeHandle, handleClick) => {
+const InputTypeBuilder = (
+	type,
+	index,
+	properties,
+	values,
+	onChangeHandle,
+	handleClick,
+) => {
 	switch (type) {
 		case InputTypeEnum.BUTTON:
 			return (
@@ -74,11 +81,11 @@ const InputTypeBuilder = (type, index, properties, values, onChangeHandle, handl
 					type={properties.type}
 					values={{
 						biomarker: values[`${properties.names[0]}${properties.id}`],
-						evaluation: values[`${properties.names[1]}${properties.id}`]
+						evaluation: values[`${properties.names[1]}${properties.id}`],
 					}}
 					names={{
 						biomarker: `${properties.names[0]}${properties.id}`,
-						evaluation: `${properties.names[1]}${properties.id}`
+						evaluation: `${properties.names[1]}${properties.id}`,
 					}}
 					onChange={onChangeHandle}
 				/>
@@ -110,11 +117,11 @@ const InputTypeBuilder = (type, index, properties, values, onChangeHandle, handl
 					type={properties.type}
 					values={{
 						medication: values[`${properties.names[0]}${properties.id}`],
-						grammage: values[`${properties.names[1]}${properties.id}`]
+						grammage: values[`${properties.names[1]}${properties.id}`],
 					}}
 					names={{
 						medication: `${properties.names[0]}${properties.id}`,
-						grammage: `${properties.names[1]}${properties.id}`
+						grammage: `${properties.names[1]}${properties.id}`,
 					}}
 					onChange={onChangeHandle}
 				/>

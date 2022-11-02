@@ -23,15 +23,13 @@ const BiomarkerField = ({ id, names, values, onChange, type }) => {
 
     const { data: dataBiomarkers, isSuccess: isSuccessBio } = useGetBiomarkersQuery()
 
-    const handleChangeEvaluation = () => {
+    const handleChangeEvaluation = () => { }
 
-    }
+    const dispatch = useDispatch();
 
-    const dispatch = useDispatch()
-
-    const handleDelete = id => {
-        dispatch(removeBiomarker(id))
-    }
+    const handleDelete = (id) => {
+        dispatch(removeBiomarker(id));
+    };
 
     useEffect(() => {
         if (isSuccessBio) {

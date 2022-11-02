@@ -22,7 +22,7 @@ const NavItem = ({ icon, title, pathName, state }) => {
 				marginBottom: '4px',
 			}}
 		>
-			<NavLink to={pathName}>
+			<NavLink to={pathName[0]}>
 				<StyledBox>{icon && icon(state)}</StyledBox>
 			</NavLink>
 

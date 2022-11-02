@@ -366,12 +366,18 @@ const initialState = {
 };
 
 export const formSlice = createSlice({
-    name: 'formSlice',
-    initialState,
-    reducers: {
-        addBiomarkers: (state) => {
-            const biomarkers = state.biomarkers.fields.slice(0, state.biomarkers.fields.length - 1)
-            const fixedRows = state.biomarkers.fields.slice(state.biomarkers.fields.length - 1, state.biomarkers.fields.length)
+	name: 'formSlice',
+	initialState,
+	reducers: {
+		addBiomarkers: (state) => {
+			const biomarkers = state.biomarkers.fields.slice(
+				0,
+				state.biomarkers.fields.length - 1,
+			);
+			const fixedRows = state.biomarkers.fields.slice(
+				state.biomarkers.fields.length - 1,
+				state.biomarkers.fields.length,
+			);
 
             const biomarkersToAdd = {
                 id: biomarkers.length + 1,
@@ -381,11 +387,11 @@ export const formSlice = createSlice({
                 ]
             }
 
-            state.biomarkers.fields = [...biomarkers, [
-                biomarkersToAdd
-            ],
-            ...fixedRows
-            ]
+			state.biomarkers.fields = [
+				...biomarkers,
+				[biomarkersToAdd],
+				...fixedRows,
+			];
 
             state.values.biomarkers = {
                 ...state.values.biomarkers, [`biomarker${biomarkersToAdd.id}`]: { [`biomarker${biomarkersToAdd.id}`]: "", [`evaluation${biomarkersToAdd.id}`]: "" }
@@ -503,11 +509,11 @@ export const formSlice = createSlice({
                 ]
             }
 
-            state.treatment.fields = [...medications, [
-                medicationToAdd
-            ],
-            ...fixedRows
-            ]
+			state.treatment.fields = [
+				...medications,
+				[medicationToAdd],
+				...fixedRows,
+			];
 
             state.values.treatment.medications = {
                 ...state.values.treatment.medications, [`medication${medicationToAdd.id}`]: { [`medication${medicationToAdd.id}`]: "", [`grammage${medicationToAdd.id}`]: "" }

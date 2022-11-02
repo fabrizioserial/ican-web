@@ -5,6 +5,9 @@ import styled, {
 
 export const StyledBox = styled.div`
 	${(props) => styledComponentCss`${props.css}`}
+	&.withBoxShadow {
+		box-shadow: 0 4px 24px rgba(214, 203, 252, 0.3);
+	}
 `;
 
 export const StyledP = styled.p`
@@ -24,6 +27,13 @@ export const StyledH1 = styled.h1`
 	${(props) => styledComponentCss`${props.css}`}
 `;
 export const StyledH3 = styled.h3`
+	${(props) => styledComponentCss`${props.css}`}
+`;
+
+export const StyledH2 = styled.h2`
+	${(props) => styledComponentCss`${props.css}`}
+`;
+export const StyledH4 = styled.h4`
 	${(props) => styledComponentCss`${props.css}`}
 `;
 
@@ -59,6 +69,21 @@ export const StyledCardHome = styled(StyledBox)`
 	background-color: white;
 	box-shadow: 0 2px 24px rgba(214, 203, 252, 0.3);
 	box-sizing: border-box;
+	transition: all 0.4s ease-out;
+
+	&.open {
+		width: ${(props) => props.width} !important;
+		height: ${(props) => props.height};
+		transition: all 0.4s ease-out;
+		opacity: 1 !important;
+		margin-left: 30px;
+	}
+	&.close {
+		width: 0px;
+		transition: all 0.4s ease-out;
+		opacity: 0 !important;
+		margin-left: 0px;
+	}
 	//padding: 24px 20px;
 	${(props) => styledComponentCss`${props.css}`}
 `;
@@ -69,4 +94,15 @@ export const StyledScreen = styled(StyledBox)`
 	width: calc(100vw - 70px);
 	min-height: 100vh;
 	max-width: 100vw;
+`;
+
+export const StyledPatientsListCard = styled(StyledBox)`
+	box-sizing: border-box;
+	/* max-width: 306px;
+     min-width: 206px;
+     flex: 1;	*/
+	height: 104px;
+	background: #ffffff;
+	box-shadow: 0px 4px 24px rgba(214, 203, 252, 0.3);
+	border-radius: 15px;
 `;

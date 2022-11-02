@@ -8,14 +8,14 @@ const WidgetPastelStats = () => {
 		<StyledBox
 			css={{
 				width: 'inherit',
-				height: '230px',
+				height: '300px',
 				display: 'flex',
 				flexDirection: 'row',
 				justifyContent: 'space-between',
 			}}
 		>
 			<PatientsInTreatments patientsInTreatment={50} totalPatients={70} />
-			<DonutChart cancerTypes={['100', '23', '33']} />
+			<DonutChart />
 		</StyledBox>
 	);
 };

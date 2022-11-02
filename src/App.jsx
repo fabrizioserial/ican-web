@@ -8,8 +8,12 @@ import { BrowserRouter, Navigate } from 'react-router-dom';
 import { StyledBox } from './common/styledCommonComponents';
 
 import Validation from './pages/Validation';
-import ProfileScreen from './pages/Profile/ProfileScreen';
+import ProfileScreen from './pages/PatientProfile/ProfileScreen';
 import Wrapper from './components/Navbar/Wrapper';
+import PatientListScreen from './pages/PatientList/PatientListScreen';
+import { withModal } from './components/HOC/withModal';
+import PollResultsScreen from './pages/PollResultsTable';
+import StatisticsScreen from './pages/Statistics/StatisticsScreen';
 
 const App = () => {
 	const accessToken = useSelector((state) => state.authSlice.accessToken);
@@ -20,35 +24,11 @@ const App = () => {
 				<Route element={<ProtectedRoute accessToken={accessToken} />}>
 					<Route element={<Wrapper />}>
 						<Route path="/home" exact element={<HomeScreen />} />
+						<Route path="/statistics" element={<StatisticsScreen />} />
+						<Route path="/my-patients" element={<PatientListScreen />} />
 						<Route
-							path="/statistics"
-							element={
-								<StyledBox
-									css={{
-										textAlign: 'center',
-										fontSize: '23px',
-										padding: '100px',
-									}}
-								>
-									{' '}
-									Statistics
-								</StyledBox>
-							}
-						/>
-						<Route
-							path="/my-patients"
-							element={
-								<StyledBox
-									css={{
-										textAlign: 'center',
-										fontSize: '23px',
-										padding: '100px',
-									}}
-								>
-									{' '}
-									My patients
-								</StyledBox>
-							}
+							path="/poll-results/:patientId"
+							element={<PollResultsScreen />}
 						/>
 						<Route
 							path="/settings"
@@ -80,7 +60,7 @@ const App = () => {
 								</StyledBox>
 							}
 						/>
-						<Route path={'/profile'} element={<ProfileScreen />} />
+						<Route path={'/profile/:patientId'} element={<ProfileScreen />} />
 						<Route path="/validate-patient/:patientId" element={<Validation />} />
 					</Route>
 				</Route>
@@ -91,4 +71,4 @@ const App = () => {
 	);
 };
 
-export default App;
+export default withModal(App);

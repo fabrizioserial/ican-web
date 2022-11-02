@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTheme } from 'styled-components';
 import {
 	StyledBox,
@@ -7,15 +7,17 @@ import {
 } from '../../common/styledCommonComponents';
 import PatientContainer from './PatientContainer';
 import { StyledButtonMore } from './PatientContainer/styles';
-import patients from './patients';
+import { StyledCircularProgress } from '../CustomCircularProgress/styles';
+import { usePatientsListQuery } from '../../redux/api/listApi';
 
 const PatientsList = () => {
 	const theme = useTheme();
+	const { data, isLoading } = usePatientsListQuery({ skip: 0, take: 9 });
+
 	return (
 		<StyledCardHome
 			css={{
-				minHeight: '100%',
-				maxHeight: '100%',
+				maxHeight: '891px',
 				width: '380px',
 				color: theme.oncoBlack,
 				padding: '24px 20px',
@@ -39,7 +41,7 @@ const PatientsList = () => {
                 justfyContent: "space-between",
                 rowGap: "10px"
             }}>
-                {patients?.map((patient, index) => (
+                {data?.patients?.map((patient, index) => (
                     <PatientContainer key={index} name={patient.name} surename={patient.surname} cancerType={patient.cancerType} />
                 ))}
                 <StyledButtonMore
@@ -48,49 +50,66 @@ const PatientsList = () => {
                     Ver más
                 </StyledButtonMore>
             </StyledBox> */}
-			<StyledBox
-				css={{
-					height: '95%',
-					display: 'flex',
-					flexDirection: 'column',
-					justifyContent: 'space-between',
-				}}
-			>
+
+			{isLoading ? (
 				<StyledBox
 					css={{
+						width: '100%',
+						height: '100%',
 						display: 'flex',
-						flexDirection: 'column',
-						rowGap: '10px',
+						alignItems: 'center',
+						justifyContent: 'center',
 					}}
 				>
-					{patients?.length < 10
-						? patients
-								?.slice(0, 9)
-								.map((patient, index) => (
-									<PatientContainer
-										key={index}
-										name={patient.name}
-										surename={patient.surname}
-										cancerType={patient.cancerType}
-									/>
-								))
-						: patients
-								?.slice(0, 8)
-								.map((patient, index) => (
-									<PatientContainer
-										key={index}
-										name={patient.name}
-										surename={patient.surname}
-										cancerType={patient.cancerType}
-									/>
-								))}
+					<StyledCircularProgress />
 				</StyledBox>
-				{patients?.length > 9 && (
-					<StyledButtonMore onClick={() => console.log('asd')}>
-						Ver más
-					</StyledButtonMore>
-				)}
-			</StyledBox>
+			) : (
+				<StyledBox
+					css={{
+						height: '95%',
+						display: 'flex',
+						flexDirection: 'column',
+						justifyContent: 'space-between',
+					}}
+				>
+					<StyledBox
+						css={{
+							display: 'flex',
+							flexDirection: 'column',
+							rowGap: '10px',
+						}}
+					>
+						{data?.patients?.length < 10
+							? data?.patients
+									?.slice(0, 9)
+									.map((patient, index) => (
+										<PatientContainer
+											key={index}
+											name={patient.name}
+											surename={patient.surname}
+											cancerType={patient.organ}
+											patientId={patient.id}
+										/>
+									))
+							: data?.patients
+									?.slice(0, 8)
+									.map((patient, index) => (
+										<PatientContainer
+											key={index}
+											name={patient.name}
+											surename={patient.surname}
+											cancerType={patient.organ}
+											patientId={patient.id}
+										/>
+									))}
+					</StyledBox>
+					{data?.patients?.length > 9 && (
+						<StyledButtonMore onClick={() => console.log('asd')}>
+							Ver más
+						</StyledButtonMore>
+					)}
+				</StyledBox>
+			)}
 		</StyledCardHome>
 	);
 };

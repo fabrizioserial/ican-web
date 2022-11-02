@@ -29,6 +29,7 @@ const transformSocial = (type) => {
 
 export const SocialAndPhysicalConfig = (data) => {
 	return {
+		isEmpty: !Object.values(data).find((a) => a[1]),
 		series: [
 			{
 				name: 'social',
@@ -208,6 +209,7 @@ const transformHungry = (type) => {
 
 export const HungerAndThristConfig = (data) => {
 	return {
+		isEmpty: !Object.values(data).find((a) => a[1]),
 		series: [
 			{
 				name: 'Hidratación',
@@ -310,6 +312,169 @@ export const HungerAndThristConfig = (data) => {
 						'">' +
 						'<span>' +
 						textToAdd +
+						'</span>' +
+						'</div>'
+					);
+				},
+				fixed: {
+					position: 'top',
+				},
+				onDatasetHover: {
+					highlightDataSeries: false,
+				},
+				marker: {
+					show: false,
+				},
+			},
+			fill: {
+				type: 'gradient',
+				gradient: {
+					shade: 'light',
+					type: 'vertical',
+					opacityFrom: 1,
+					opacityTo: 0.55,
+				},
+			},
+			legend: {
+				show: true,
+				position: 'top',
+				horizontalAlign: 'left',
+				inverseOrder: false,
+				markers: {
+					radius: 20,
+				},
+			},
+		},
+	};
+};
+
+export const DailyColumnChartConfig = (data) => {
+	const dataAux = () => {
+		let aux = [];
+		let maxValue = 0;
+
+		Object.values(data).forEach((item) => {
+			if (item > maxValue) {
+				maxValue = item;
+			}
+		});
+		let math = maxValue / 10;
+
+		Object.keys(data).forEach((dat) => {
+			aux.push({
+				x: dat,
+				y: data[dat][0],
+				goals: [
+					{
+						value: -math,
+						strokeHeight: 9,
+						strokeWidth: 0,
+						strokeLineCap: 'round',
+						strokeColor: '#949494',
+						top: -10,
+					},
+				],
+			});
+		});
+		return aux;
+	};
+	return {
+		series: [
+			{
+				data: dataAux(),
+			},
+		],
+		options: {
+			chart: {
+				type: 'bar',
+				width: 555,
+				toolbar: {
+					show: false,
+				},
+			},
+			grid: {
+				show: false,
+				xaxis: {
+					lines: {
+						show: false,
+					},
+				},
+				yaxis: {
+					lines: {
+						show: false,
+					},
+				},
+			},
+			plotOptions: {
+				bar: {
+					horizontal: false,
+					columnWidth: 75,
+					endingShape: 'rounded',
+					borderRadius: 5,
+				},
+			},
+			dataLabels: {
+				enabled: false,
+			},
+			states: {
+				normal: {
+					filter: {
+						type: 'none',
+					},
+				},
+				hover: {
+					filter: {
+						type: 'none',
+					},
+				},
+				active: {
+					filter: {
+						type: 'none',
+					},
+				},
+			},
+			colors: ['#80A2F9', '#A67FE7'],
+			stroke: {
+				show: true,
+				width: 2,
+				colors: ['transparent'],
+			},
+			xaxis: {
+				categories: Object.keys(data).map((a) => a),
+				axisBorder: {
+					show: false,
+				},
+				axisTicks: {
+					show: false,
+				},
+				labels: {
+					style: {
+						colors: '#A3A3A3',
+						fontFamily: 'Helvetica',
+						fontWeight: 400,
+						fontSize: '10px',
+					},
+					offsetY: 10,
+				},
+			},
+			yaxis: {
+				show: false,
+			},
+			tooltip: {
+				fillSeriesColor: false,
+				followCursor: false,
+				custom: function ({ series, dataPointIndex }) {
+					const textToAdd = series[0];
+					return (
+						'<div style="padding: 5px 20px; ' +
+						'border-radius: 5px; ' +
+						'background-color:#393939 !important;' +
+						'color: white;' +
+						'border-style: none;' +
+						'border-width: 0px;' +
+						'">' +
+						'<span>' +
+						textToAdd[dataPointIndex] +
 						'</span>' +
 						'</div>'
 					);

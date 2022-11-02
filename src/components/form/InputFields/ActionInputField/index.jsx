@@ -26,16 +26,16 @@ const ActionInputField = ({ index, label, handleClick }) => {
         }
     }
 
-    return (
-        <Button
-            className="action"
-            key={index}
-            text={label}
-            disabled={true}
-            icon={<PlusCircelIcon />}
-            onClick={onClick}
-        />
-    )
-}
+	return (
+		<Button
+			className="action"
+			key={index}
+			text={label}
+			disabled={true}
+			icon={<PlusCircelIcon />}
+			onClick={onClick}
+		/>
+	);
+};
 
-export default ActionInputField
+export default ActionInputField;

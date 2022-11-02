@@ -31,7 +31,7 @@ export const StyledButton = styled.button`
 		background-color: ${(props) => props.theme.OncoPurple};
 		border-radius: 25px;
 
-		span{
+		span {
 			font-size: 16px;
 			padding-left: 1rem;
 			padding-right: 1rem;
@@ -44,19 +44,19 @@ export const StyledButton = styled.button`
 		background-color: ${(props) => props.theme.white};
 		border: 1px solid ${(props) => props.theme.OncoPurple};
 		border-radius: 25px;
-		
-		span{
+
+		span {
 			color: ${(props) => props.theme.OncoPurple};
 			font-size: 18px;
 			padding-left: 1rem;
 			padding-right: 1rem;
 		}
-		
-		&:hover{
+
+		&:hover {
 			background-color: ${(props) => props.theme.OncoPurple};
-			span{
+			span {
 				color: ${(props) => props.theme.white} !important;
 			}
 		}
-  }
+	}
 `;

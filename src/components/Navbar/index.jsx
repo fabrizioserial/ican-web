@@ -9,7 +9,7 @@ import SettingsIcon from '../../assets/SettingsIcon';
 
 const Navbar = () => {
 	let location = useLocation();
-	const [navbarList, setNavbarList] = useState(NavbarConfig);
+	const [navbarList] = useState(NavbarConfig);
 	const [navbarListBottom, setNavbarListBottom] = useState(NavbarConfigBottom);
 
 	const theme = useTheme();
@@ -28,7 +28,7 @@ const Navbar = () => {
 				boxShadow: '0 2px 24px rgba(214, 203, 252, 0.3)',
 				left: '0px',
 				top: '2px',
-				position: 'absolute',
+				position: 'fixed',
 				boxSizing: 'border-box',
 				display: 'flex',
 				flexDirection: 'column',
@@ -42,7 +42,9 @@ const Navbar = () => {
 						icon={item.icon}
 						pathName={item.path}
 						title={item.name}
-						state={location.pathname === item.path}
+						state={item.path.find((path) =>
+							location.pathname.includes(path),
+						)}
 					/>
 				))}
 			</StyledBox>
