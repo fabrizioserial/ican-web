@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { StyledBox, StyledInput } from '../../../common/styledCommonComponents';
 import SearchIcon from '../../../assets/SearchIcon';
+import _, { debounce } from 'lodash';
 
 const SearchBar = () => {
+	const [textToSearch, setTextToSearch] = useState('');
+	const delayedQuery = useRef(_.debounce((q) => console.log(q), 1000)).current;
+
+	const logValue = debounce((value) => {
+		console.log(value);
+	}, 1200);
+
+	const handleChange = (value) => {
+		setTextToSearch(value);
+		delayedQuery(value);
+	};
 	return (
 		<StyledBox
 			css={{
@@ -23,6 +35,7 @@ const SearchBar = () => {
 			</StyledBox>
 			<StyledInput
 				placeholder={'Introduzca busqueda'}
+				value={textToSearch}
 				css={{
 					width: '100%',
 					height: '100%',
@@ -37,6 +50,7 @@ const SearchBar = () => {
 						color: 'white',
 					},
 				}}
+				onChange={(e) => handleChange(e.target.value)}
 			/>
 		</StyledBox>
 	);

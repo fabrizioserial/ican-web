@@ -354,23 +354,23 @@ export const PatientListHeaderConst = [
 	},
 	{
 		label: 'Nro de Historial Medico',
-		sortId: '',
+		sortId: 'medicHistoryNumber',
 	},
 	{
 		label: 'Nombre y Apellido',
-		sortId: '',
+		sortId: 'name',
 	},
 	{
 		label: 'Tumor Primario',
-		sortId: '',
+		sortId: 'organ',
 	},
 	{
 		label: 'Tratamiento',
-		sortId: '',
+		sortId: 'treatment',
 	},
 	{
 		label: 'Tratamiento de Tumor Primario',
-		sortId: '',
+		sortId: 'tumorTreatment',
 	},
 	{
 		label: 'Tratamiento Perioperatorio',
@@ -378,16 +378,18 @@ export const PatientListHeaderConst = [
 	},
 	{
 		label: 'Estado',
-		sortId: '',
+		sortId: 'status',
 	},
 ];
 
 export const getUserStatusLabel = (type) => {
 	switch (type) {
-		case 'active':
+		case 'Accepted':
 			return 'Activo';
 		case 'innactive':
 			return 'Inactivo';
+		case 'Pending':
+			return 'En espera';
 	}
 };
 export const getPollStatusLabel = (type) => {
@@ -454,9 +456,9 @@ export const getIconByCategory = (category) => {
 };
 
 export const textColorStatus = {
-	active: '#1D6535',
+	Accepted: '#1D6535',
 	inactive: '#5F5F5F',
-	in_progress: '#EA8053',
+	Pending: '#EA8053',
 };
 
 export const pollTextColorStatus = {
@@ -472,9 +474,9 @@ export const backgroundPollColorStatus = {
 };
 
 export const backgroundColorStatus = {
-	active: '#BEE8CF',
+	Accepted: '#BEE8CF',
 	innactive: '#C4C4C4',
-	in_progress: '#F9E0D6',
+	Pending: '#F9E0D6',
 };
 
 export const FrequencyAnswers = [

@@ -5,6 +5,11 @@ import { TableCell, TableRow } from '@material-ui/core';
 export const StyledBodyRow = styled(TableRow)`
 	height: 65px;
 	font-size: 11px !important;
+	cursor: pointer;
+
+	&:hover {
+		background-color: #f6f6f6;
+	}
 `;
 
 export const StyledBodyCell = styled(TableCell)`

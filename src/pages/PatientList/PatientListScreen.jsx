@@ -10,8 +10,16 @@ import PatientListBody from './PatientListBody';
 import PatientListBottom from './PatientListBottom';
 import SearchBar from './SearchBar';
 import CardsHeader from './CardsHeader';
+import {
+	useLazyOrderPatientsQuery,
+	usePatientsListQuery,
+} from '../../redux/api/listApi';
+import { StyledCircularProgress } from '../../components/CustomCircularProgress/styles';
 
 const PatientListScreen = () => {
+	const { isLoading: patientInitalLoading } = usePatientsListQuery();
+	const [refetch, { isLoading: orderLoading }] = useLazyOrderPatientsQuery();
+
 	return (
 		<StyledScreen
 			css={{
@@ -28,6 +36,7 @@ const PatientListScreen = () => {
 					padding: '20px 40px',
 					width: '100%',
 					boxSizing: 'border-box',
+					flex: 1,
 				}}
 			>
 				<StyledH3>Mis Pacientes</StyledH3>
@@ -53,12 +62,30 @@ const PatientListScreen = () => {
 					css={{
 						maxWidth: '100vw',
 						width: 'calc(100vw - 40px)',
+						height: '100%',
+						flex: 1,
+						display: 'flex',
+						flexDirection: 'column',
+						justifyContent: 'space-between',
 					}}
 				>
-					<Table>
+					<Table sx={{ height: '100%' }}>
 						<PatientListHeader />
 						<PatientListBody />
 					</Table>
+					<StyledBox
+						css={{
+							flex: 1,
+							backgroundColor: 'white',
+							display: 'flex',
+							justifyContent: 'center',
+							alignItems: 'center',
+						}}
+					>
+						{patientInitalLoading || orderLoading ? (
+							<StyledCircularProgress />
+						) : null}
+					</StyledBox>
 					<PatientListBottom />
 				</StyledBox>
 			</StyledBox>

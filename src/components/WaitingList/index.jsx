@@ -13,8 +13,11 @@ import PatientWaitingItem from './components/PatientWaitingItem';
 import { useFilterPatientQuery } from '../../redux/api/listApi';
 
 function WaitingList() {
-	const { data, isLoading } = useFilterPatientQuery('status', {
-		value: 'Pending',
+	const { data, isLoading } = useFilterPatientQuery({
+		column: 'status',
+		params: {
+			value: 'Pending',
+		},
 	});
 	const theme = useTheme();
 	console.log('data', data);
@@ -25,7 +28,6 @@ function WaitingList() {
 			height={'230px'}
 			css={{
 				opacity: '0 !important',
-				marginLeft: '30px',
 			}}
 			className={
 				data?.patients?.length === 0 || data === undefined

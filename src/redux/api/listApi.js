@@ -3,15 +3,15 @@ import { api } from './api';
 export const listApi = api.injectEndpoints({
 	endpoints: (builder) => ({
 		filterPatient: builder.query({
-			query: (column, params) => ({
-				url: `/api/home/filter-patients/${column}`,
-				params: { value: 'Pending' },
+			query: (arg) => ({
+				url: `/api/home/filter-patients/${arg.column}`,
+				params: arg.params,
 			}),
 		}),
 		orderPatients: builder.query({
-			query: (column, params) => ({
-				url: `/api/home/order-patients/${column}`,
-				params: params,
+			query: (arg) => ({
+				url: `/api/home/order-patients/${arg.column}`,
+				params: arg.params,
 			}),
 		}),
 		patientsList: builder.query({
@@ -24,6 +24,6 @@ export const listApi = api.injectEndpoints({
 
 export const {
 	useFilterPatientQuery,
-	useOrderPatientsQuery,
+	useLazyOrderPatientsQuery,
 	usePatientsListQuery,
 } = listApi;

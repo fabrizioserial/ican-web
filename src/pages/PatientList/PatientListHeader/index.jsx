@@ -11,6 +11,9 @@ import styled from 'styled-components';
 import { PatientListHeaderConst } from '../../../utils/utils';
 import ArrowOrderIcon from '../../../assets/ArrowOrderIcon';
 import { StyledBox } from '../../../common/styledCommonComponents';
+import { useLazyOrderPatientsQuery } from '../../../redux/api/listApi';
+import { useDispatch, useSelector } from 'react-redux';
+import { setColumnState } from '../../../redux/slices/listSlice';
 
 const StyledTableHeader = styled(TableRow)`
 	background-color: #f6f2ff;
@@ -27,7 +30,24 @@ const StyledTableHeader = styled(TableRow)`
 `;
 
 const PatientListHeader = () => {
-	const sortColumn = () => {};
+	const [refetch, { data, isLoading }] = useLazyOrderPatientsQuery();
+	const dispatch = useDispatch();
+	const columnState = useSelector((state) => state.listSlice.columnState);
+
+	const sortColumn = (columnName) => {
+		refetch({
+			column: columnName,
+			params: {
+				value: columnState[columnName] === 'desc' ? 'asc' : 'desc',
+			},
+		});
+		dispatch(
+			setColumnState({
+				columnName: columnName,
+				orden: columnState[columnName] === 'desc' ? 'asc' : 'desc',
+			}),
+		);
+	};
 
 	return (
 		<TableHead>
@@ -42,7 +62,7 @@ const PatientListHeader = () => {
 							boxSizing: 'border-box',
 							borderBottomColor: 'rgba(225, 209, 252, 0.22) !important',
 						}}
-						sortDirection={'asc'}
+						sortDirection={columnState[headerItem.sortId]}
 						key={'header-' + index}
 						style={{
 							paddingLeft: index === 0 ? '30px' : 'auto',
@@ -59,9 +79,21 @@ const PatientListHeader = () => {
 								fontSize: '12px',
 							}}
 							active={true}
-							direction={'asc'}
+							direction={columnState[headerItem.sortId]}
 							onClick={() => sortColumn(headerItem.sortId)}
-							IconComponent={() => <ArrowOrderIcon />}
+							IconComponent={() =>
+								columnState[headerItem?.sortId] ? (
+									<ArrowOrderIcon
+										css={{
+											transform:
+												columnState[headerItem.sortId] === 'asc' &&
+												'rotate(180deg)',
+										}}
+									/>
+								) : (
+									<></>
+								)
+							}
 						>
 							{headerItem.label}
 							<Box component="span" sx={visuallyHidden}>
