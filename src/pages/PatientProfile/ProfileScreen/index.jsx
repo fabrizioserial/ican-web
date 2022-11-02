@@ -107,8 +107,8 @@ const ProfileScreen = () => {
 	};
 
 	useEffect(() => {
-		let aux = [];
-		dataCalendar &&
+		if (dataCalendar) {
+			let aux = [];
 			Object.values(dataCalendar).forEach((item) => {
 				aux.push({
 					id: item.weeklyId,
@@ -118,7 +118,8 @@ const ProfileScreen = () => {
 					detail: dayState(item.weeklyStatus).detail,
 				});
 			});
-		setCalendar(aux);
+			setCalendar(aux);
+		}
 	}, [isSuccessCalendar]);
 
 	return (

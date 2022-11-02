@@ -8,13 +8,17 @@ import Card from '../../../../components/Card';
 import { StyledCircularProgress } from '../../../../components/CustomCircularProgress/styles';
 
 const WeeklySchedule = ({ dayList }) => {
+	console.log(dayList);
 	return (
 		<Card
 			title={'Agenda Semanal'}
 			icon={<CalendarIcon />}
-			width={305}
-			height={200}
+			width={'305px'}
+			height={'193px'}
 			align={'center'}
+			css={{
+				minHeight: '193px',
+			}}
 		>
 			{!dayList ? (
 				<StyledBox

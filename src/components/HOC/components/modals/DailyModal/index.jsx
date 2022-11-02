@@ -9,17 +9,18 @@ import { useTheme } from 'styled-components';
 import DailyBody from './DailyBody';
 import WeeklyIcon from '../../../../../assets/WeeklyIcon';
 import DailyModalIcon from '../../../../../assets/DailyModalIcon';
+import { useGetDailyReportQuery } from '../../../../../redux/api/patientApi';
+import { useSelector } from 'react-redux';
+import { StyledCircularProgress } from '../../../../CustomCircularProgress/styles';
 
-const DailyModal = ({
-	date,
-	weeklyData,
-	state = 'COMPLETED',
-	handleOnClose,
-}) => {
+const DailyModal = ({ date, weeklyData, handleOnClose }) => {
 	const theme = useTheme();
-	const renderState = () => {
+	const reportId = useSelector((state) => state.utilsSlice.reportId);
+	const { data, isLoading } = useGetDailyReportQuery(reportId);
+
+	const renderState = (state) => {
 		switch (state) {
-			case 'COMPLETED':
+			case 'Completed':
 				return (
 					<StyledSpan
 						css={{
@@ -66,13 +67,27 @@ const DailyModal = ({
 							>
 								Encuesta Diaria
 							</StyledP>
-							{renderState()}
+							{renderState(data?.status)}
 						</StyledBox>
-						<StyledP>12 de semptiembre de 2022</StyledP>
+						<StyledP css={{ marginTop: '5px' }}>{data?.date}</StyledP>
 					</StyledBox>
 				</StyledBox>
 			}
 			body={<DailyBody />}
+			isLoading={
+				isLoading ? (
+					<StyledBox
+						css={{
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'center',
+							height: '370px',
+						}}
+					>
+						<StyledCircularProgress />
+					</StyledBox>
+				) : undefined
+			}
 		/>
 	);
 };

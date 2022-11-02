@@ -104,7 +104,6 @@ const PatientListHeader = () => {
 					</StyledBox>
 				))}
 			</StyledTableHeader>
-			{}
 		</TableHead>
 	);
 };
