@@ -8,6 +8,11 @@ import {
 import WeeklyIcon from '../../../../../assets/WeeklyIcon';
 import { useTheme } from 'styled-components';
 import Body from './Body';
+import { useGetWeeklyReportQuery } from '../../../../../redux/api/patientApi';
+import { useSelector } from 'react-redux';
+import { StyledCircularProgress } from '../../../../CustomCircularProgress/styles';
+import { useWeeklyQuestionsQuery } from '../../../../../redux/api/homeApi';
+import { parseData, parseDataWithYear } from '../../../../../utils/utils';
 
 const WeeklyModal = ({
 	date,
@@ -16,9 +21,13 @@ const WeeklyModal = ({
 	handleOnClose,
 }) => {
 	const theme = useTheme();
-	const renderState = () => {
+	const reportId = useSelector((state) => state.utilsSlice.reportId);
+	const { data, isLoading } = useGetWeeklyReportQuery(reportId);
+	const { isLoading: weeklyLoading } = useWeeklyQuestionsQuery();
+
+	const renderState = (state) => {
 		switch (state) {
-			case 'COMPLETED':
+			case 'Completed':
 				return (
 					<StyledSpan
 						css={{
@@ -33,8 +42,24 @@ const WeeklyModal = ({
 						Completado
 					</StyledSpan>
 				);
+			case 'Incomplete':
+				return (
+					<StyledSpan
+						css={{
+							fontSize: '11px',
+							backgroundColor: theme.oncoLightOrange4,
+							borderRadius: '20px',
+							fontWeight: 500,
+							padding: '5px 20px',
+							color: '#EA8053',
+						}}
+					>
+						Incompleto
+					</StyledSpan>
+				);
 		}
 	};
+
 	return (
 		<Modal
 			onClose={handleOnClose}
@@ -65,13 +90,29 @@ const WeeklyModal = ({
 							>
 								Encuesta Semanal
 							</StyledP>
-							{renderState()}
+							{renderState(data?.status)}
 						</StyledBox>
-						<StyledP>12 de semptiembre de 2022</StyledP>
+						<StyledP css={{ marginTop: '5px' }}>
+							Completado {parseDataWithYear(data?.endDate)}
+						</StyledP>
 					</StyledBox>
 				</StyledBox>
 			}
 			body={<Body />}
+			isLoading={
+				isLoading || weeklyLoading ? (
+					<StyledBox
+						css={{
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'center',
+							height: 'calc(90vw - 90px - 100px - 100px)',
+						}}
+					>
+						<StyledCircularProgress />
+					</StyledBox>
+				) : undefined
+			}
 		/>
 	);
 };
