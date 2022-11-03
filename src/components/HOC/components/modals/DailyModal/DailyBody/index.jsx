@@ -71,6 +71,7 @@ const DailyBody = () => {
 	]);
 
 	const TransformAnswers = (questionType, value) => {
+		if (!value) return value;
 		switch (questionType) {
 			case 'ánimo':
 			case 'dolor':

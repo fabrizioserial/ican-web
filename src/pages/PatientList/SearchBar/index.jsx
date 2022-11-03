@@ -34,7 +34,7 @@ const SearchBar = () => {
 				<SearchIcon />
 			</StyledBox>
 			<StyledInput
-				placeholder={'Introduzca busqueda'}
+				placeholder={'Buscar'}
 				value={textToSearch}
 				css={{
 					width: '100%',

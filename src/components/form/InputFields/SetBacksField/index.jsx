@@ -3,26 +3,17 @@ import { useDispatch } from 'react-redux';
 import TrashIcon from '../../../../assets/TrashIcon';
 import IconButton from '../../../../common/components/iconButton';
 import { StyledBox } from '../../../../common/styledCommonComponents';
-import { removeRelapses } from '../../../../redux/slices/formSlice';
+import { removeSetBacks } from '../../../../redux/slices/formSlice';
 import DateInputField from '../DateInputField';
-import TextInputField from '../TextInputField';
+import SelectorInputField from '../SelectorInputField';
 
-const optionsMed = {
-	Aspirina: 'Aspirina',
-	Ribotril: 'Ribotril',
-	Tafirol: 'Tafirol',
-	Actron: 'Actron',
-	Amoxixilina: 'Amoxixilina',
-};
-const optionsGram = {
-	0: '0',
-	1: '1',
-	2: '2',
-	3: '3',
-	4: '4',
+const options = {
+	Local: 'Local',
+	Distancia: 'Distacia',
+	DistanciaYLocal: 'DistanciaYLocal',
 };
 
-const RelapsesField = ({ id, names, placeholder, values, onChange, type }) => {
+const SetBacksField = ({ id, names, placeholder, values, onChange, type }) => {
 	// pegar directo al endpoint que trae la medicacion y el gramaje
 
 	// crear funciones 1: onchange para gramaje, 2: onChange para medication
@@ -36,7 +27,7 @@ const RelapsesField = ({ id, names, placeholder, values, onChange, type }) => {
 	const dispatch = useDispatch();
 
 	const handleDelete = (id) => {
-		dispatch(removeRelapses(id));
+		dispatch(removeSetBacks(id));
 	};
 
 	return (
@@ -68,9 +59,9 @@ const RelapsesField = ({ id, names, placeholder, values, onChange, type }) => {
 					<DateInputField
 						type={type}
 						placeholder={placeholder}
-						value={values.relapseDate}
+						value={values.setBackDate}
 						label={'Fecha de Recaida'}
-						name={names.relapseDate}
+						name={names.setBackDate}
 						onChange={onChange}
 					/>
 				</StyledBox>
@@ -86,9 +77,9 @@ const RelapsesField = ({ id, names, placeholder, values, onChange, type }) => {
 					<DateInputField
 						type={type}
 						placeholder={placeholder}
-						value={values.diagnosticDate}
+						value={values.diagnosisDate}
 						label={'Fecha del Diagnostico de la Enferemedad Metatistica'}
-						name={names.diagnosticDate}
+						name={names.diagnosisDate}
 						onChange={onChange}
 					/>
 					<StyledBox>
@@ -116,13 +107,13 @@ const RelapsesField = ({ id, names, placeholder, values, onChange, type }) => {
 						paddingRight: 30,
 					}}
 				>
-					<TextInputField
+					<SelectorInputField
 						type={type}
-						placeholder={placeholder}
-						value={values.metastasisSite}
+						value={values.setBackPlace}
 						label={'Sitio de la Metástasis'}
-						name={values.metastasisSite}
-						onChange={onChange}
+						name={names.setBackPlace}
+						onChange={onChange} // onChange medicacion
+						options={options} // recibe del endpoint
 					/>
 				</StyledBox>
 			</StyledBox>
@@ -130,4 +121,4 @@ const RelapsesField = ({ id, names, placeholder, values, onChange, type }) => {
 	);
 };
 
-export default RelapsesField;
+export default SetBacksField;

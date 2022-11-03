@@ -28,6 +28,7 @@ export const ModalTypeEnum = {
 	WEEKLY_MODAL: 'WEEKLY_MODAL',
 	DAILY_MODAL: 'DAILY_MODAL',
 	TREATMENT_MODAL: 'TREATMENT_MODAL',
+	CONTACT_MODAL: 'CONTACT_MODAL',
 };
 
 export const InputTypeEnum = {
@@ -38,190 +39,77 @@ export const InputTypeEnum = {
 	ACTIONFIELD: 'ACTIONFIELD',
 	CONDITIONAL: 'CONDITIONAL',
 	BIOMARKER_ROW: 'BIOMARKER_ROW',
-	RELAPSES_ROW: 'RELAPSES_ROW',
+	SETBACK_ROW: 'SETBACK_ROW',
 	MEDICATION_ROW: 'MEDICATION_ROW',
 	ADD_SECTION: 'ADD_SECTION',
 };
 
 export const actionTypeEnum = {
 	ADD_BIOMARKER: 'ADD_BIOMARKER',
-	ADD_RELAPSES: 'ADD_RELAPSES',
+	ADD_SETBACK: 'ADD_SETBACK',
 	ADD_TREATMENT: 'ADD_TREATMENT',
 	ADD_MEDICATION: 'ADD_MEDICATION',
 	DELETE_MEDICATION: 'DELETE_MEDICATION',
 };
 
 export const TNMOptions = {
-	mama: {
-		t: {
-			TX: 'TX',
-			T0: 'T0',
-		},
-		n: {
-			NX: 'NX',
-			N0: 'N0',
-		},
-		m: {
-			MX: 'MX',
-			M0: 'M0',
-		},
-		estadio: {
-			O: 'O',
-			IA: 'IA',
-			IB: 'IB',
-		},
+	tumor: {
+		no_value: 'Seleccione T',
+		TX: 'TX',
+		T0: 'T0',
+		T1: 'T1',
+		T1a: 'T1a',
+		T1ami: 'T1ami',
+		T1b: 'T1b',
+		T1c: 'T1c',
+		T1aac: 'T1aac',
+		T1aab: 'T1aab',
+		T2: 'T2',
+		T2a: 'T2a',
+		T2b: 'T2b',
+		T3: 'T3',
+		T4: 'T4',
+		T4a: 'T4a',
+		T4b: 'T4b',
+		T4c: 'T4c',
+		T4d: 'T4d',
+		Tis: 'Tis',
+		TisDCIS: 'TisDCIS',
+		TisCLIS: 'TisCLIS',
+		TisPaget: 'TisPaget',
 	},
-	prostata: {
-		t: {
-			TX: 'TX',
-			T0: 'T0',
-		},
-		n: {
-			NX: 'NX',
-			N0: 'N0',
-		},
-		m: {
-			MX: 'MX',
-			M0: 'M0',
-		},
-		estadio: {
-			O: 'O',
-			IA: 'IA',
-			IB: 'IB',
-		},
+	nodule: {
+		no_value: 'Seleccione N',
+		N0: 'N0',
+		N0i: 'N0i',
+		N1: 'N1',
+		N1a: 'N1a',
+		N1b: 'N1b',
+		N1c: 'N1c',
+		N2: 'N2',
+		N2a: 'N2a',
+		N2b: 'N2b',
+		N3: 'N3',
+		N3a: 'N3a',
+		N3b: 'N3b',
+		N3c: 'N3c',
 	},
-	pulmon: {
-		t: {
-			TX: 'TX',
-			T0: 'T0',
-		},
-		n: {
-			NX: 'NX',
-			N0: 'N0',
-		},
-		m: {
-			MX: 'MX',
-			M0: 'M0',
-		},
-		estadio: {
-			O: 'O',
-			IA: 'IA',
-			IB: 'IB',
-		},
+	metastasis: {
+		no_value: 'Seleccione M',
+		M0: 'M0',
+		cM0Mic: 'cM0Mic',
+		M1: 'M1',
+		M1a: 'M1a',
+		M1b: 'M1b',
+		M1c: 'M1c',
+		cM1: 'cM1',
+		PM1: 'PM1',
 	},
-	colon: {
-		t: {
-			TX: 'Colon TX',
-			T0: 'T0',
-		},
-		n: {
-			NX: 'Colon NX',
-			N0: 'N0',
-		},
-		m: {
-			MX: 'Colon MX',
-			M0: 'M0',
-		},
-		estadio: {
-			O: 'Colon O',
-			IA: 'IA',
-			IB: 'IB',
-		},
-	},
-	cervix: {
-		t: {
-			TX: 'Cer TX',
-			T0: 'T0',
-		},
-		n: {
-			NX: 'Cer NX',
-			N0: 'N0',
-		},
-		m: {
-			MX: 'Cer MX',
-			M0: 'M0',
-		},
-		estadio: {
-			O: 'Cer O',
-			IA: 'IA',
-			IB: 'IB',
-		},
-	},
-	gastrico: {
-		t: {
-			TX: 'TX',
-			T0: 'T0',
-		},
-		n: {
-			NX: 'NX',
-			N0: 'N0',
-		},
-		m: {
-			MX: 'MX',
-			M0: 'M0',
-		},
-		estadio: {
-			O: 'O',
-			IA: 'IA',
-			IB: 'IB',
-		},
-	},
-	higado: {
-		t: {
-			TX: 'TX',
-			T0: 'T0',
-		},
-		n: {
-			NX: 'NX',
-			N0: 'N0',
-		},
-		m: {
-			MX: 'MX',
-			M0: 'M0',
-		},
-		estadio: {
-			O: 'O',
-			IA: 'IA',
-			IB: 'IB',
-		},
-	},
-	utero: {
-		t: {
-			TX: 'TX',
-			T0: 'T0',
-		},
-		n: {
-			NX: 'NX',
-			N0: 'N0',
-		},
-		m: {
-			MX: 'MX',
-			M0: 'M0',
-		},
-		estadio: {
-			O: 'O',
-			IA: 'IA',
-			IB: 'IB',
-		},
-	},
-	ovario: {
-		t: {
-			TX: 'TX',
-			T0: 'T0',
-		},
-		n: {
-			NX: 'NX',
-			N0: 'N0',
-		},
-		m: {
-			MX: 'MX',
-			M0: 'M0',
-		},
-		estadio: {
-			O: 'O',
-			IA: 'IA',
-			IB: 'IB',
-		},
+	estadio: {
+		no_value: 'Seleccione Estadio',
+		O: 'O',
+		IA: 'IA',
+		IB: 'IB',
 	},
 };
 
@@ -235,22 +123,12 @@ export const NavbarConfig = [
 	},
 	{
 		name: 'Mis Pacientes',
-		path: ['/my-patients', '/profile'],
+		path: ['/my-patients', '/profile', '/validate-patient'],
 		icon: (active) => <PatientsListIcon active={active} />,
-	},
-	{
-		name: 'Estadísticas',
-		path: ['/statistics'],
-		icon: (active) => <StatisticsIcon active={active} />,
 	},
 ];
 
 export const NavbarConfigBottom = [
-	{
-		name: 'Notificaciones',
-		path: ['/notifications'],
-		icon: (active) => <BellIcon active={active} />,
-	},
 	{
 		name: 'Cerrar sesión',
 		path: ['/login'],
@@ -258,50 +136,6 @@ export const NavbarConfigBottom = [
 	},
 ];
 
-export const WeeklyScheduleConfig = [
-	{
-		dayNumber: '1',
-		dayName: 'L',
-		state: 'green',
-		detail: 'Completo la encuesta semanal 1',
-	},
-	{
-		dayNumber: '2',
-		dayName: 'M',
-		state: 'grey',
-		detail: 'Nada para reportar 2',
-	},
-	{
-		dayNumber: '3',
-		dayName: 'M',
-		state: 'green',
-		detail: 'Completo la encuesta semanal 3',
-	},
-	{
-		dayNumber: '4',
-		dayName: 'J',
-		state: 'green',
-		detail: 'Completo la encuesta semanal 4',
-	},
-	{
-		dayNumber: '5',
-		dayName: 'V',
-		state: 'grey',
-		detail: 'Nada para reportar 5',
-	},
-	{
-		dayNumber: '6',
-		dayName: 'S',
-		state: 'grey',
-		detail: 'Nada para reportar 6',
-	},
-	{
-		dayNumber: '7',
-		dayName: 'D',
-		state: 'grey',
-		detail: 'Nada para reportar 7',
-	},
-];
 export const PatientsListHeaderConfig = [
 	{
 		text: 'Pacientes Activos',
@@ -326,17 +160,24 @@ export const PatientsListHeaderConfig = [
 	},
 ];
 
+export const ProfileConfigButtonType = {
+	FORM: 'form',
+	CONTACT: 'contact',
+};
+
 export const ProfileConfigButton = [
 	{
 		text: 'Formulario',
 		icon: <FormIcon />,
 		color: '#FFFFFF',
+		type: ProfileConfigButtonType.FORM,
 		textColor: theme.textGrey,
 	},
 	{
 		text: 'Contactar',
 		icon: <CallIcon />,
 		color: '#5EC386',
+		type: ProfileConfigButtonType.CONTACT,
 		textColor: theme.white,
 	},
 ];
@@ -755,4 +596,10 @@ const getMonth = (number) => {
 	if (number === 10) return 'Octubre';
 	if (number === 11) return 'Noviembre';
 	if (number === 12) return 'Diciembre';
+};
+
+export const EndpointsListType = {
+	ORDEN: 'ORDEN',
+	FILTER: 'FILTER',
+	TABLE: 'TABLE',
 };

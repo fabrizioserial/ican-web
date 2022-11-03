@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { listApi } from '../api/listApi';
 import { authSlice } from './authSlice';
+import { EndpointsListType } from '../../utils/utils';
 
 const initialState = {
 	patientList: [],
@@ -15,6 +16,8 @@ const initialState = {
 	},
 	maxPage: undefined,
 	page: undefined,
+	lastCalled: undefined,
+	lastParams: undefined,
 };
 
 export const listSlice = createSlice({
@@ -30,16 +33,22 @@ export const listSlice = createSlice({
 		clearPatientList: (state, action) => {
 			state.patientList = [];
 		},
+		saveParams: (state, action) => {
+			state.lastParams = action.payload;
+		},
 	},
 	extraReducers: (builder) => {
 		builder
-			.addCase(authSlice.actions.logout, (state) => { state = initialState; })
+			.addCase(authSlice.actions.logout, (state) => {
+				state = initialState;
+			})
 			.addMatcher(
 				listApi.endpoints.filterPatient.matchFulfilled,
 				(state, action) => {
 					state.patientList = action.payload.patients;
 					state.maxPage = action.payload.maxPage;
 					state.page = action.payload.page;
+					state.lastCalled = EndpointsListType.FILTER;
 				},
 			)
 			.addMatcher(
@@ -48,6 +57,7 @@ export const listSlice = createSlice({
 					state.patientList = action.payload.patients;
 					state.maxPage = action.payload.maxPage;
 					state.page = action.payload.page;
+					state.lastCalled = EndpointsListType.ORDEN;
 				},
 			)
 			.addMatcher(
@@ -56,6 +66,7 @@ export const listSlice = createSlice({
 					state.patientList = action.payload.patients;
 					state.maxPage = action.payload.maxPage;
 					state.page = action.payload.page;
+					state.lastCalled = EndpointsListType.TABLE;
 				},
 			)
 			.addMatcher(
@@ -69,6 +80,7 @@ export const listSlice = createSlice({
 	},
 });
 
-export const { setColumnState, clearPatientList } = listSlice.actions;
+export const { setColumnState, clearPatientList, saveParams } =
+	listSlice.actions;
 
 export default listSlice.reducer;

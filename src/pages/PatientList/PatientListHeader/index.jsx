@@ -39,6 +39,8 @@ const PatientListHeader = () => {
 			column: columnName,
 			params: {
 				order: columnState[columnName] === 'desc' ? 'asc' : 'desc',
+				skip: 0,
+				take: 2,
 			},
 		});
 		dispatch(

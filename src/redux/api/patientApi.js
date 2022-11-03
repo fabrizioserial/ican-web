@@ -2,6 +2,12 @@ import { api } from './api';
 
 export const patientApi = api.injectEndpoints({
 	endpoints: (builder) => ({
+		getPatientDataForm: builder.query({
+			query: (patientId) => ({
+				url: `/api/home/patient-form/${patientId}`,
+				method: 'GET',
+			}),
+		}),
 		getPatientData: builder.query({
 			query: (patientID) => ({
 				url: `/api/home/profile/${patientID}`,
@@ -38,7 +44,7 @@ export const patientApi = api.injectEndpoints({
 		}),
 		getPatientTreatmets: builder.query({
 			query: (patientID) => ({
-				url: `/api/home/patient-treatmets/${patientID}`,
+				url: `/api/home/patient-treatments/${patientID}`,
 				method: 'GET',
 			}),
 		}),
@@ -52,7 +58,9 @@ export const patientApi = api.injectEndpoints({
 });
 
 export const {
+	useLazyGetPatientDataFormQuery,
 	useLazyGetPatientDataQuery,
+	useGetPatientDataQuery,
 	useLazyGetAppetiteHydrationQuery,
 	useLazyGetSocialPhysicalQuery,
 	useLazyGetCalendarQuery,
@@ -64,6 +72,7 @@ export const {
 
 export const {
 	endpoints: {
+		getPatientDataForm,
 		getPatientData,
 		getAppetiteHydration,
 		getSocialPhysical,

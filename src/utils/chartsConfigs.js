@@ -1,5 +1,13 @@
 const transformPhysical = (type) => {
 	switch (type) {
+		case 'No hice actividad fisica':
+			return 1;
+		case 'Menos de 30min.':
+			return 2;
+		case 'Entre 30min y 1h':
+			return 3;
+		case 'Mas de 1h':
+			return 4;
 		case 0:
 			return 'No hice actividad fisica';
 		case 1:
@@ -8,12 +16,22 @@ const transformPhysical = (type) => {
 			return 'Entre 30min y 1h';
 		case 3:
 			return 'Mas de 1h';
-		default:
+		case -1:
 			return 'No respondió';
+		default:
+			return 0;
 	}
 };
 const transformSocial = (type) => {
 	switch (type) {
+		case 'No vi a nadie':
+			return 1;
+		case 'Limitado a pocas interacciones':
+			return 2;
+		case 'Vi a amigos o conocidos por mas de 1h':
+			return 3;
+		case 'Vi a amigos o conocidos por mas de 2h':
+			return 4;
 		case 0:
 			return 'No vi a nadie';
 		case 1:
@@ -22,8 +40,10 @@ const transformSocial = (type) => {
 			return 'Vi a amigos o conocidos por mas de 1h';
 		case 3:
 			return 'Vi a amigos o conocidos por mas de 2h';
-		default:
+		case -1:
 			return 'No respondió';
+		default:
+			return 0;
 	}
 };
 
@@ -33,11 +53,11 @@ export const SocialAndPhysicalConfig = (data) => {
 		series: [
 			{
 				name: 'social',
-				data: Object.values(data).map((a) => a[1] + 1),
+				data: Object.values(data).map((a) => transformSocial(a[0]) + 1),
 			},
 			{
 				name: 'physical',
-				data: Object.values(data).map((a) => a[0] + 1),
+				data: Object.values(data).map((a) => transformPhysical(a[1]) + 1),
 			},
 		],
 		options: {
@@ -134,8 +154,8 @@ export const SocialAndPhysicalConfig = (data) => {
 				followCursor: false,
 				custom: function ({ series, seriesIndex, dataPointIndex, w }) {
 					const textToAdd = seriesIndex
-						? transformPhysical(series[seriesIndex][dataPointIndex] - 1)
-						: transformSocial(series[seriesIndex][dataPointIndex] - 1);
+						? transformPhysical(series[seriesIndex][dataPointIndex] - 2)
+						: transformSocial(series[seriesIndex][dataPointIndex] - 2);
 					return (
 						'<div style="padding: 5px 20px; ' +
 						'border-radius: 5px; ' +
@@ -184,14 +204,22 @@ export const SocialAndPhysicalConfig = (data) => {
 
 const transformThirst = (type) => {
 	switch (type) {
+		case 'Menos de 1lt':
+			return 1;
+		case 'Entre 1lt y 2lts':
+			return 2;
+		case 'Mas de 2lts':
+			return 3;
 		case 0:
 			return 'Menos de 1 lt';
 		case 1:
 			return 'Entre 1lt y 2lts';
 		case 2:
 			return 'Mas de 2lts';
-		default:
+		case -1:
 			return 'No respondió';
+		default:
+			return 0;
 	}
 };
 const transformHungry = (type) => {
@@ -202,8 +230,16 @@ const transformHungry = (type) => {
 			return 'Normal';
 		case 2:
 			return 'Mas de lo normal';
-		default:
+		case 'Menos de lo normal':
+			return 1;
+		case 'Normal':
+			return 2;
+		case 'Mas de lo normal':
+			return 3;
+		case -1:
 			return 'No respondió';
+		default:
+			return 0;
 	}
 };
 
@@ -213,11 +249,11 @@ export const HungerAndThristConfig = (data) => {
 		series: [
 			{
 				name: 'Hidratación',
-				data: Object.values(data).map((a) => a[1] + 1),
+				data: Object.values(data).map((a) => transformThirst(a[1]) + 1),
 			},
 			{
 				name: 'Apetito',
-				data: Object.values(data).map((a) => a[0] + 1),
+				data: Object.values(data).map((a) => transformHungry(a[0]) + 1),
 			},
 		],
 		options: {
@@ -300,8 +336,8 @@ export const HungerAndThristConfig = (data) => {
 				followCursor: false,
 				custom: function ({ series, seriesIndex, dataPointIndex, w }) {
 					const textToAdd = !seriesIndex
-						? transformThirst(series[seriesIndex][dataPointIndex] - 1)
-						: transformHungry(series[seriesIndex][dataPointIndex] - 1);
+						? transformThirst(series[seriesIndex][dataPointIndex] - 2)
+						: transformHungry(series[seriesIndex][dataPointIndex] - 2);
 					return (
 						'<div style="padding: 5px 20px; ' +
 						'border-radius: 5px; ' +

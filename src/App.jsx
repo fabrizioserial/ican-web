@@ -14,7 +14,6 @@ import PatientListScreen from './pages/PatientList/PatientListScreen';
 import { withModal } from './components/HOC/withModal';
 import PollResultsScreen from './pages/PollResultsTable';
 import StatisticsScreen from './pages/Statistics/StatisticsScreen';
-import SettingScreen from './pages/Settings';
 
 const App = () => {
 	const accessToken = useSelector((state) => state.authSlice.accessToken);
@@ -25,8 +24,6 @@ const App = () => {
 				<Route element={<ProtectedRoute accessToken={accessToken} />}>
 					<Route element={<Wrapper />}>
 						<Route path="/home" exact element={<HomeScreen />} />
-
-						<Route path="/statistics" element={<StatisticsScreen />} />
 						<Route path="/my-patients" element={<PatientListScreen />} />
 						<Route
 							path="/poll-results/:patientId"
@@ -34,10 +31,6 @@ const App = () => {
 						/>
 						<Route
 							path="/settings"
-							element={<SettingScreen />}
-						/>
-						<Route
-							path="/notifications"
 							element={
 								<StyledBox
 									css={{
@@ -47,7 +40,7 @@ const App = () => {
 									}}
 								>
 									{' '}
-									Notifications
+									Settings
 								</StyledBox>
 							}
 						/>
@@ -56,7 +49,10 @@ const App = () => {
 							path={'/profile/:patientId'}
 							element={<ProfileScreen />}
 						/>
-						<Route path="/validate-patient" element={<Validation />} />
+						<Route
+							path="/validate-patient/:patientId"
+							element={<Validation />}
+						/>
 					</Route>
 				</Route>
 				<Route path="/login" element={<LoginScreen />} />
