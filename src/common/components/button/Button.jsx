@@ -3,18 +3,17 @@ import { StyledButton } from './StyledButton';
 import { StyledBox } from '../../../common/styledCommonComponents';
 import { useTheme } from 'styled-components';
 
-const Button = ({ onClick, css, text, pending = false, icon }) => {
+const Button = ({ onClick, text, pending = false, className, icon }) => {
 	const theme = useTheme();
 
 	return (
 		<StyledButton
+			className={className}
 			onClick={onClick}
-			css={
-				css || {
-					display: 'flex',
-					justifyContent: 'center',
-				}
-			}
+			css={{
+				display: 'flex',
+				justifyContent: 'center',
+			}}
 		>
 			{pending ? (
 				<CircularProgress color={theme.white} size="0.95rem" />
