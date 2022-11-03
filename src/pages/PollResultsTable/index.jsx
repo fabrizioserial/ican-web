@@ -23,19 +23,12 @@ const PollResultsScreen = () => {
 		if (dataPollResults) {
 			let finalArray = [];
 			finalArray = finalArray.concat(
-				dataPollResults.dailyReports.map((item) => ({
+				dataPollResults.reports.dailyReports.map((item) => ({
 					...item,
 					type: 'daily',
 				})),
-				// dataPollResults.weeklyReports
-				// 	.map((item) => ({
-				// 		id: item.id,
-				// 		status: item.status,
-				// 		date: item.endDate,
-				// 		type: 'weekly',
-				// 	}))
-				// 	.filter((item) => item.id),
-				dataPollResults.weeklyReports[0]
+
+				dataPollResults.reports.weeklyReports
 					.map((item) => ({
 						id: item.id,
 						status: item.status,

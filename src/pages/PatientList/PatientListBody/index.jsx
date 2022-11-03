@@ -47,12 +47,14 @@ const PatientListBody = () => {
 							' ' +
 							CapitalizeText(bodyItem.surname)}
 					</StyledBodyCell>
-					<StyledBodyCell width={'10%'}>{bodyItem.organ}</StyledBodyCell>
+					<StyledBodyCell width={'10%'}>
+						{CapitalizeText(bodyItem.organ)}
+					</StyledBodyCell>
 					<StyledBodyCell width={'26%'}>
 						{bodyItem.treatment}
 					</StyledBodyCell>
 					<StyledBodyCell width={'14%'}>
-						{bodyItem.tumorTreatment}
+						{CapitalizeText(bodyItem.tumorTreatment)}
 					</StyledBodyCell>
 					<StyledBodyCell width={'14%'}>
 						{bodyItem.typeOfMedication}

@@ -49,6 +49,7 @@ const WeeklySchedule = ({ dayList }) => {
 									display: 'flex',
 									flexDirection: 'row',
 									columnGap: '6px',
+									opacity: 0,
 								}}
 							>
 								<BackIcon />
@@ -65,6 +66,7 @@ const WeeklySchedule = ({ dayList }) => {
 										letterSpacing: '0.05em',
 										textTransform: 'capitalize',
 										color: '#949494',
+										opacity: 0,
 									}}
 								>
 									Anterior

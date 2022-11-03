@@ -60,6 +60,7 @@ export const patientApi = api.injectEndpoints({
 export const {
 	useLazyGetPatientDataFormQuery,
 	useLazyGetPatientDataQuery,
+	useGetPatientDataQuery,
 	useLazyGetAppetiteHydrationQuery,
 	useLazyGetSocialPhysicalQuery,
 	useLazyGetCalendarQuery,

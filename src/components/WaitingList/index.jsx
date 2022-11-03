@@ -72,15 +72,18 @@ function WaitingList() {
 				</StyledH1>
 
 				<StyledWaitingListContainer>
-					{data?.patients.map(({ name, surname, dni, avatar }, index) => (
-						<PatientWaitingItem
-							key={index}
-							name={name}
-							surename={surname}
-							dni={dni}
-							// avatar = {avatarImg}
-						/>
-					))}
+					{data?.patients.map(
+						({ name, surname, dni, avatar, id }, index) => (
+							<PatientWaitingItem
+								key={index}
+								name={name}
+								surename={surname}
+								dni={dni}
+								// avatar = {avatarImg}
+								id={id}
+							/>
+						),
+					)}
 				</StyledWaitingListContainer>
 			</StyledBox>
 		</StyledCardHome>
