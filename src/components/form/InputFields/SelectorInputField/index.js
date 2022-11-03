@@ -7,7 +7,10 @@ import {
 	StyledSelect,
 } from '../../../../common/styledCommonComponents';
 import { useTheme } from 'styled-components';
-import { useLazyGetCancerTypeQuery } from '../../../../redux/api/validateFormApi';
+import {
+	useLazyGetCancerSubTypeQuery,
+	useLazyGetCancerTypeQuery,
+} from '../../../../redux/api/validateFormApi';
 
 const SelectorInputField = ({
 	height,
@@ -17,21 +20,24 @@ const SelectorInputField = ({
 	onChange,
 	name,
 	options,
-	disabled
+	disabled,
 }) => {
 	const theme = useTheme();
 
-	const [refetch, { data: dataCancerType, isSuccess: successType }] = useLazyGetCancerTypeQuery();
+	const [refetch, { data: dataCancerType, isSuccess: successType }] =
+		useLazyGetCancerTypeQuery();
+	const [refetchSubtype, result] = useLazyGetCancerSubTypeQuery();
 
 	const handleChange = (name2, value) => {
-		console.log(value, name)
+		const text = value.target.value;
 		if (name === 'organ') {
-
-			console.log(options)
-			refetch("956205d1-ce8b-4137-be4e-4d7b973011cf")
+			refetch(text);
 		}
-		onChange(name2, value)
-	}
+		if (name === 'cancerType') {
+			refetchSubtype(text);
+		}
+		onChange(name2, text);
+	};
 
 	return (
 		<StyledBox
@@ -56,16 +62,16 @@ const SelectorInputField = ({
 					fontSize: '16px',
 					boxSizing: 'border-box',
 					width: '100%',
-					backgroundColor: disabled ? theme.oncoGrey : "transparent",
-					border: !disabled && "1px solid #E5D7FD",
-					borderRadius: "5px"
+					backgroundColor: disabled ? theme.oncoGrey : 'transparent',
+					border: !disabled && '1px solid #E5D7FD',
+					borderRadius: '5px',
 				}}
-				onChange={(e) => handleChange(name, e.target.value)}
+				onChange={(e) => handleChange(name, e)}
 				value={value}
 			>
 				{Object.keys(options)?.map((item, index) => (
 					// <StyledOption key={index} value={item}>
-					<StyledOption key={index} value={options[item].value ?? item}>
+					<StyledOption key={index} value={options[item].value || item}>
 						{/* <StyledOption key={index} value={item}> */}
 						{options[item].label ?? options[item]}
 					</StyledOption>
