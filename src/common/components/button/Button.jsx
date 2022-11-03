@@ -3,16 +3,15 @@ import { StyledButton } from './StyledButton';
 import { StyledBox } from '../../../common/styledCommonComponents';
 import { useTheme } from 'styled-components';
 
-const Button = ({ onClick, text, pending = false, className, icon }) => {
+const Button = ({ onClick, css, text, pending = false, icon }) => {
 	const theme = useTheme();
 	
 	return (
 		<StyledButton
-			className={className}
 			onClick={onClick}
-			css={{
+			css={ css || {
 				display: 'flex',
-				justifyContent: 'center',
+				justifyContent: 'center'
 			}}
 		>
 			{pending ? (

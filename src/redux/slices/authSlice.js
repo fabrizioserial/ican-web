@@ -19,7 +19,7 @@ export const authSlice = createSlice({
 			state.ui.loginPending = false;
 			state.ui.errorMessage = payload.errorMessage;
 		},
-		logout: (state) => { state = initialState; }
+		logout: (state) => { state.accessToken = null; state.ui = initialState.ui; }
 	},
 	extraReducers: (builder) => {
 		builder.addMatcher(
