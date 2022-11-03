@@ -194,7 +194,7 @@ const PatientProfileCard = () => {
 											text={genderValue(dataPatient?.sex)}
 										/>
 										<ProfileDetailText
-											text={dataPatient?.phoneNumber}
+											text={dataPatient?.medicHistoryNumber}
 										/>
 										<ProfileDetailText
 											text={statusValue(dataPatient?.status)}

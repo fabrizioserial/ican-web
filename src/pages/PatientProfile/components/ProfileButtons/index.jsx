@@ -19,6 +19,7 @@ const ProfileButton = ({ icon, color, text, textColor }) => {
 				justifyContent: 'center',
 				alignItems: 'center',
 				columnGap: '10px',
+				cursor: 'pointer',
 			}}
 		>
 			<StyledBox

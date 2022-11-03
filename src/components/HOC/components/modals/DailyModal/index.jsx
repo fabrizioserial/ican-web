@@ -12,6 +12,7 @@ import DailyModalIcon from '../../../../../assets/DailyModalIcon';
 import { useGetDailyReportQuery } from '../../../../../redux/api/patientApi';
 import { useSelector } from 'react-redux';
 import { StyledCircularProgress } from '../../../../CustomCircularProgress/styles';
+import { parseDataWithYear } from '../../../../../utils/utils';
 
 const DailyModal = ({ date, weeklyData, handleOnClose }) => {
 	const theme = useTheme();
@@ -33,6 +34,21 @@ const DailyModal = ({ date, weeklyData, handleOnClose }) => {
 						}}
 					>
 						Completado
+					</StyledSpan>
+				);
+			case 'Incomplete':
+				return (
+					<StyledSpan
+						css={{
+							fontSize: '11px',
+							backgroundColor: theme.oncoLightOrange4,
+							borderRadius: '20px',
+							fontWeight: 500,
+							padding: '5px 20px',
+							color: '#EA8053',
+						}}
+					>
+						Incompleto
 					</StyledSpan>
 				);
 		}
@@ -69,7 +85,9 @@ const DailyModal = ({ date, weeklyData, handleOnClose }) => {
 							</StyledP>
 							{renderState(data?.status)}
 						</StyledBox>
-						<StyledP css={{ marginTop: '5px' }}>{data?.date}</StyledP>
+						<StyledP css={{ marginTop: '5px' }}>
+							{parseDataWithYear(data?.date)}
+						</StyledP>
 					</StyledBox>
 				</StyledBox>
 			}
