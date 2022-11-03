@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import TrashIcon from '../../../../assets/TrashIcon';
 import IconButton from '../../../../common/components/iconButton';
 import { StyledBox } from '../../../../common/styledCommonComponents';
+import { useGetCancerMedicationQuery } from '../../../../redux/api/validateFormApi';
 import { removeTreatmentMedication } from '../../../../redux/slices/formSlice';
 import SelectorInputField from '../SelectorInputField';
 
@@ -26,6 +27,40 @@ const MedicationField = ({ id, names, values, onChange, type }) => {
 
 	// crear funciones 1: onchange para gramaje, 2: onChange para medication
 	// argumentos para onChange: names y values
+
+	const { data: dataCancerMed, isSuccess: isSuccessCancerMed } =
+		useGetCancerMedicationQuery();
+
+	const [optionsMed, setOptionsMed] = useState([]);
+	const [optionsGram, setOptionsGram] = useState([]);
+
+	useEffect(() => {
+		if (isSuccessCancerMed) {
+			let auxOptMed = [];
+			let auxOptGram = {};
+			auxOptMed.no_value = 'Selecciona un Medicamento';
+			Object.values(dataCancerMed).forEach((med) => {
+				auxOptMed[med.id] = med.name;
+				auxOptGram[med.id] = {
+					no_value: 'Selecciona Gramaje',
+				};
+			});
+			Object.values(dataCancerMed).forEach((med) =>
+				med.possibleGrammages.forEach((gram) => {
+					auxOptGram = {
+						...auxOptGram,
+						[med.id]: {
+							...auxOptGram[med.id],
+							[gram.grammage.id]: gram.grammage.grammage,
+						},
+					};
+				}),
+			);
+
+			setOptionsMed(auxOptMed);
+			setOptionsGram(auxOptGram);
+		}
+	}, [dataCancerMed, isSuccessCancerMed]);
 
 	const handleChangeMed = () => {};
 
@@ -76,7 +111,7 @@ const MedicationField = ({ id, names, values, onChange, type }) => {
 					label={'Gramaje'}
 					name={names.grammage}
 					onChange={onChange} // onChange gramaje
-					options={optionsGram} // recibe del endpoint
+					options={optionsGram[values?.medication] ?? []} // recibe del endpoint
 				/>
 				{id !== 1 && (
 					<StyledBox>

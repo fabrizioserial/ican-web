@@ -4,7 +4,7 @@ import PlusCircelIcon from '../../../../assets/PlusCircleIcon';
 import Button from '../../../../common/components/button/Button';
 import {
 	addBiomarkers,
-	addRelapses,
+	addSetBacks,
 	addTreatment,
 	addTreatmentMedication,
 } from '../../../../redux/slices/formSlice';
@@ -17,8 +17,8 @@ const ActionInputField = ({ index, label, handleClick }) => {
 			case actionTypeEnum.ADD_BIOMARKER:
 				dispatch(addBiomarkers());
 				break;
-			case actionTypeEnum.ADD_RELAPSES:
-				dispatch(addRelapses());
+			case actionTypeEnum.ADD_SETBACK:
+				dispatch(addSetBacks());
 				break;
 			case actionTypeEnum.ADD_TREATMENT:
 				dispatch(addTreatment());
