@@ -7,6 +7,7 @@ import HeartIcon from '../../assets/HeartIcon';
 import StateIcon from '../../assets/StateIcon';
 import TreatmentIcon from '../../assets/TreatmentIcon';
 import { actionTypeEnum, InputTypeEnum } from '../../utils/utils';
+import { authSlice } from "./authSlice"
 
 const initialState = {
 	patients: {

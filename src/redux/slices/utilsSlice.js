@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ModalTypeEnum } from '../../utils/utils';
+import { authSlice } from "./authSlice"
 
 const initialState = {
 	modalOpen: false,
