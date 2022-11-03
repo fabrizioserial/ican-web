@@ -28,6 +28,7 @@ export const ModalTypeEnum = {
 	WEEKLY_MODAL: 'WEEKLY_MODAL',
 	DAILY_MODAL: 'DAILY_MODAL',
 	TREATMENT_MODAL: 'TREATMENT_MODAL',
+	CONTACT_MODAL: 'CONTACT_MODAL',
 };
 
 export const InputTypeEnum = {
@@ -316,17 +317,24 @@ export const PatientsListHeaderConfig = [
 	},
 ];
 
+export const ProfileConfigButtonType = {
+	FORM: 'form',
+	CONTACT: 'contact',
+};
+
 export const ProfileConfigButton = [
 	{
 		text: 'Formulario',
 		icon: <FormIcon />,
 		color: '#FFFFFF',
+		type: ProfileConfigButtonType.FORM,
 		textColor: theme.textGrey,
 	},
 	{
 		text: 'Contactar',
 		icon: <CallIcon />,
 		color: '#5EC386',
+		type: ProfileConfigButtonType.CONTACT,
 		textColor: theme.white,
 	},
 ];

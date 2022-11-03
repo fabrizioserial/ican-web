@@ -1,11 +1,41 @@
 import React from 'react';
 import { useTheme } from 'styled-components';
 import { StyledBox, StyledP } from '../../../../common/styledCommonComponents';
+import {
+	ModalTypeEnum,
+	ProfileConfigButtonType,
+} from '../../../../utils/utils';
+import { useNavigate, useParams } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { setModalOpen } from '../../../../redux/slices/utilsSlice';
 
-const ProfileButton = ({ icon, color, text, textColor }) => {
+const ProfileButton = ({ icon, color, text, textColor, type }) => {
+	const { patientId } = useParams();
+	const dispatch = useDispatch();
+	const navigation = useNavigate();
 	const theme = useTheme();
+	const handleAction = (type) => {
+		console.log(type);
+		switch (type) {
+			case ProfileConfigButtonType.FORM:
+				navigation(`/validate-patient/${patientId}`);
+				break;
+			case ProfileConfigButtonType.CONTACT:
+				dispatch(
+					setModalOpen({
+						open: true,
+						type: ModalTypeEnum.CONTACT_MODAL,
+						id: patientId,
+					}),
+				);
+				break;
+			default:
+				break;
+		}
+	};
 	return (
 		<StyledBox
+			onClick={() => handleAction(type)}
 			css={{
 				boxSizing: 'border-box',
 				width: '197px',

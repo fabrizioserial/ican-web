@@ -227,6 +227,7 @@ const PatientProfileCard = () => {
 										color={item.color}
 										textColor={item.textColor}
 										key={index}
+										type={item.type}
 									/>
 								))}
 							</StyledBox>
