@@ -9,7 +9,7 @@ import { useNavigate, useParams } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { setModalOpen } from '../../../../redux/slices/utilsSlice';
 
-const ProfileButton = ({ icon, color, text, textColor, type }) => {
+const ProfileButton = ({ icon, color, text, textColor, type,border }) => {
 	const { patientId } = useParams();
 	const dispatch = useDispatch();
 	const navigation = useNavigate();
@@ -41,7 +41,7 @@ const ProfileButton = ({ icon, color, text, textColor, type }) => {
 				width: '197px',
 				height: '39px',
 				background: color,
-				border: '1px solid rgba(235, 224, 253, 0.24)',
+				border: border,
 				boxShadow: '0px 4px 24px rgba(214, 203, 252, 0.15)',
 				borderRadius: '15px',
 				display: 'flex',
