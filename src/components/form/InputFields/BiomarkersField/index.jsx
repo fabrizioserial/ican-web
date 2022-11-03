@@ -38,6 +38,7 @@ const BiomarkerField = ({ id, names, values, onChange, type }) => {
 				(bio) => (auxBio[bio.id] = bio.type),
 			);
 
+			auxBio[0] = 'Seleccione Biomarcador';
 			setOptionsbio(auxBio);
 		}
 	}, [dataBiomarkers, isSuccessBio]);

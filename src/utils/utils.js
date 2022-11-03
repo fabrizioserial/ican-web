@@ -54,13 +54,14 @@ export const actionTypeEnum = {
 
 export const TNMOptions = {
 	tumor: {
-		TX: "TX",
+		no_value: 'Seleccione T',
+		TX: 'TX',
 		T0: 'T0',
 		T1: 'T1',
 		T1a: 'T1a',
 		T1ami: 'T1ami',
 		T1b: 'T1b',
-		T1c: "T1c",
+		T1c: 'T1c',
 		T1aac: 'T1aac',
 		T1aab: 'T1aab',
 		T2: 'T2',
@@ -75,9 +76,10 @@ export const TNMOptions = {
 		Tis: 'Tis',
 		TisDCIS: 'TisDCIS',
 		TisCLIS: 'TisCLIS',
-		TisPaget: 'TisPaget'
+		TisPaget: 'TisPaget',
 	},
 	nodule: {
+		no_value: 'Seleccione N',
 		N0: 'N0',
 		N0i: 'N0i',
 		N1: 'N1',
@@ -93,6 +95,7 @@ export const TNMOptions = {
 		N3c: 'N3c',
 	},
 	metastasis: {
+		no_value: 'Seleccione M',
 		M0: 'M0',
 		cM0Mic: 'cM0Mic',
 		M1: 'M1',
@@ -103,183 +106,11 @@ export const TNMOptions = {
 		PM1: 'PM1',
 	},
 	estadio: {
+		no_value: 'Seleccione Estadio',
 		O: 'O',
 		IA: 'IA',
 		IB: 'IB',
 	},
-	// mama: {
-	// 	tumor: {
-	// 		T1: 'T1',
-	// 		TX: 'TX',
-	// 		T0: 'T0',
-	// 	},
-	// 	nodule: {
-	// 		NX: 'NX',
-	// 		N1: 'N1',
-	// 		N0: 'N0',
-	// 	},
-	// 	metastasis: {
-	// 		MX: 'MX',
-	// 		M0: 'M0',
-	// 	},
-	// 	estadio: {
-	// 		O: 'O',
-	// 		IA: 'IA',
-	// 		IB: 'IB',
-	// 	},
-	// },
-	// prostata: {
-	// 	t: {
-	// 		TX: 'TX',
-	// 		T0: 'T0',
-	// 	},
-	// 	n: {
-	// 		NX: 'NX',
-	// 		N0: 'N0',
-	// 	},
-	// 	m: {
-	// 		MX: 'MX',
-	// 		M0: 'M0',
-	// 	},
-	// 	estadio: {
-	// 		O: 'O',
-	// 		IA: 'IA',
-	// 		IB: 'IB',
-	// 	},
-	// },
-	// pulmon: {
-	// 	t: {
-	// 		TX: 'TX',
-	// 		T0: 'T0',
-	// 	},
-	// 	n: {
-	// 		NX: 'NX',
-	// 		N0: 'N0',
-	// 	},
-	// 	m: {
-	// 		MX: 'MX',
-	// 		M0: 'M0',
-	// 	},
-	// 	estadio: {
-	// 		O: 'O',
-	// 		IA: 'IA',
-	// 		IB: 'IB',
-	// 	},
-	// },
-	// colon: {
-	// 	t: {
-	// 		TX: 'Colon TX',
-	// 		T0: 'T0',
-	// 	},
-	// 	n: {
-	// 		NX: 'Colon NX',
-	// 		N0: 'N0',
-	// 	},
-	// 	m: {
-	// 		MX: 'Colon MX',
-	// 		M0: 'M0',
-	// 	},
-	// 	estadio: {
-	// 		O: 'Colon O',
-	// 		IA: 'IA',
-	// 		IB: 'IB',
-	// 	},
-	// },
-	// cervix: {
-	// 	t: {
-	// 		TX: 'Cer TX',
-	// 		T0: 'T0',
-	// 	},
-	// 	n: {
-	// 		NX: 'Cer NX',
-	// 		N0: 'N0',
-	// 	},
-	// 	m: {
-	// 		MX: 'Cer MX',
-	// 		M0: 'M0',
-	// 	},
-	// 	estadio: {
-	// 		O: 'Cer O',
-	// 		IA: 'IA',
-	// 		IB: 'IB',
-	// 	},
-	// },
-	// gastrico: {
-	// 	t: {
-	// 		TX: 'TX',
-	// 		T0: 'T0',
-	// 	},
-	// 	n: {
-	// 		NX: 'NX',
-	// 		N0: 'N0',
-	// 	},
-	// 	m: {
-	// 		MX: 'MX',
-	// 		M0: 'M0',
-	// 	},
-	// 	estadio: {
-	// 		O: 'O',
-	// 		IA: 'IA',
-	// 		IB: 'IB',
-	// 	},
-	// },
-	// higado: {
-	// 	t: {
-	// 		TX: 'TX',
-	// 		T0: 'T0',
-	// 	},
-	// 	n: {
-	// 		NX: 'NX',
-	// 		N0: 'N0',
-	// 	},
-	// 	m: {
-	// 		MX: 'MX',
-	// 		M0: 'M0',
-	// 	},
-	// 	estadio: {
-	// 		O: 'O',
-	// 		IA: 'IA',
-	// 		IB: 'IB',
-	// 	},
-	// },
-	// utero: {
-	// 	t: {
-	// 		TX: 'TX',
-	// 		T0: 'T0',
-	// 	},
-	// 	n: {
-	// 		NX: 'NX',
-	// 		N0: 'N0',
-	// 	},
-	// 	m: {
-	// 		MX: 'MX',
-	// 		M0: 'M0',
-	// 	},
-	// 	estadio: {
-	// 		O: 'O',
-	// 		IA: 'IA',
-	// 		IB: 'IB',
-	// 	},
-	// },
-	// ovario: {
-	// 	t: {
-	// 		TX: 'TX',
-	// 		T0: 'T0',
-	// 	},
-	// 	n: {
-	// 		NX: 'NX',
-	// 		N0: 'N0',
-	// 	},
-	// 	m: {
-	// 		MX: 'MX',
-	// 		M0: 'M0',
-	// 	},
-	// 	estadio: {
-	// 		O: 'O',
-	// 		IA: 'IA',
-	// 		IB: 'IB',
-	// 	},
-	// },
 };
 
 const FormBuilder = {};
@@ -305,50 +136,6 @@ export const NavbarConfigBottom = [
 	},
 ];
 
-export const WeeklyScheduleConfig = [
-	{
-		dayNumber: '1',
-		dayName: 'L',
-		state: 'green',
-		detail: 'Completo la encuesta semanal 1',
-	},
-	{
-		dayNumber: '2',
-		dayName: 'M',
-		state: 'grey',
-		detail: 'Nada para reportar 2',
-	},
-	{
-		dayNumber: '3',
-		dayName: 'M',
-		state: 'green',
-		detail: 'Completo la encuesta semanal 3',
-	},
-	{
-		dayNumber: '4',
-		dayName: 'J',
-		state: 'green',
-		detail: 'Completo la encuesta semanal 4',
-	},
-	{
-		dayNumber: '5',
-		dayName: 'V',
-		state: 'grey',
-		detail: 'Nada para reportar 5',
-	},
-	{
-		dayNumber: '6',
-		dayName: 'S',
-		state: 'grey',
-		detail: 'Nada para reportar 6',
-	},
-	{
-		dayNumber: '7',
-		dayName: 'D',
-		state: 'grey',
-		detail: 'Nada para reportar 7',
-	},
-];
 export const PatientsListHeaderConfig = [
 	{
 		text: 'Pacientes Activos',

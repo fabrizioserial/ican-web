@@ -122,26 +122,7 @@ const initialState = {
 					options: {
 						no_value: 'Seleccionar Tipo',
 					},
-					// options: {
-					//     adenocarcinoma: 'Adenocarcinoma',
-					//     adenoescamoso: 'Adenoescamoso',
-					//     carcinoma_pleomorfico: 'Carcinoma pleomorfico',
-					//     carcinoma_sarcomatoide: 'Carcinoma sarcomatoide',
-					//     celulas_grandes: 'Células grandes',
-					//     escamoso: 'Escamoso',
-					//     indiferenciado: 'Indiferenciado',
-					//     otro: 'Otro',
-					//     nos: 'Tipo NOS',
-					//     adenoidequistico: 'Adenoidequístico',
-					//     liposarcoma_bien_diferenciado:
-					//         'Liposarcoma bien diferenciado',
-					//     osteosarcoma: 'Osteosarcoma',
-					//     condrosarcoma: 'Condrosarcoma',
-					//     liposarcoma_indiferenciado: 'Liposarcoma indiferenciado',
-					//     basocelular: 'Basocelular',
-					// },
-					input_type: InputTypeEnum.CONDITIONAL,
-					varToEvaluate: 'organ',
+					input_type: InputTypeEnum.SELECTOR,
 					name: 'cancerType',
 				},
 				{
@@ -152,34 +133,12 @@ const initialState = {
 					input_type: InputTypeEnum.SELECTOR,
 					name: 'cancerSubType',
 				},
-				// {
-				//     label: 'Histología',
-				//     options: {
-				//         adenocarcinoma: 'Adenocarcinoma',
-				//         adenoescamoso: 'Adenoescamoso',
-				//         carcinoma_pleomorfico: 'Carcinoma pleomorfico',
-				//         carcinoma_sarcomatoide: 'Carcinoma sarcomatoide',
-				//         celulas_grandes: 'Células grandes',
-				//         escamoso: 'Escamoso',
-				//         indiferenciado: 'Indiferenciado',
-				//         otro: 'Otro',
-				//         nos: 'Tipo NOS',
-				//         adenoidequistico: 'Adenoidequístico',
-				//         liposarcoma_bien_diferenciado:
-				//             'Liposarcoma bien diferenciado',
-				//         osteosarcoma: 'Osteosarcoma',
-				//         condrosarcoma: 'Condrosarcoma',
-				//         liposarcoma_indiferenciado: 'Liposarcoma indiferenciado',
-				//         basocelular: 'Basocelular',
-				//     },
-				//     input_type: InputTypeEnum.SELECTOR,
-				//     name: 'cancerSubType',
-				// },
 			],
 			[
 				{
 					label: 'Expresión de PDL1',
 					options: {
+						no_value: 'Seleccione Expresion del PDL1',
 						hipertension: 'Hipertensión',
 					},
 					input_type: InputTypeEnum.SELECTOR,
@@ -220,6 +179,7 @@ const initialState = {
 				{
 					label: 'Tratamiento del tumor primario ',
 					options: {
+						no_value: 'Seleccione tumor primario',
 						Surgery: 'Cirugía',
 						Radiotherapy: 'Radioterapia',
 					},
@@ -229,6 +189,7 @@ const initialState = {
 				{
 					label: 'Tratamiento perioperatorio',
 					options: {
+						no_value: 'Seleccione tumor primario',
 						radioterapia: 'Radioterapia',
 						quimioterapia: 'Quimioterapia',
 						inmunoterapia: 'Inmunoterapia',
@@ -521,7 +482,13 @@ export const formSlice = createSlice({
 			};
 		},
 		cleanForm: (state, action) => {
-			state = initialState;
+			state.patients = initialState.patients;
+			state.hospital = initialState.hospital;
+			state.biomarkers = initialState.biomarkers;
+			state.setbacks = initialState.setbacks;
+			state.state = initialState.state;
+			state.treatment = initialState.treatment;
+			state.values = initialState.values;
 		},
 	},
 	extraReducers: (builder) => {
@@ -530,6 +497,146 @@ export const formSlice = createSlice({
 				patientApi.endpoints.getPatientDataForm.matchFulfilled,
 				(state, action) => {
 					state.values = { ...state.values, ...action.payload };
+					if (action.payload?.treatmentObjective) {
+						state.treatment.fields = [
+							[
+								{
+									id: 1,
+									input_type: InputTypeEnum.MEDICATION_ROW,
+									names: ['medication', 'grammage'],
+								},
+							],
+							[
+								{
+									label: 'Añadir Medicación',
+									type: 'text',
+									input_type: InputTypeEnum.ADD_SECTION,
+									icon: <PlusCircleIcon />,
+									handleClick: () => actionTypeEnum.ADD_MEDICATION,
+								},
+							],
+							[
+								{
+									label: 'Fecha de Comienzo',
+									placeholder: 'XX/XX/XX',
+									input_type: InputTypeEnum.DATEFIELD,
+									name: 'treatmentStartDate',
+								},
+								{
+									label: 'Fecha de Finalización',
+									placeholder: 'XX/XX/XX',
+									input_type: InputTypeEnum.DATEFIELD,
+									name: 'estimateFinishDate',
+								},
+							],
+							[
+								{
+									label: 'Intension del medicamente',
+									// placeholder: 'El objetivo de este tratamiento es reducir los sintomas de caracter cutaneo presentes en el paciente..',
+									type: 'text',
+									input_type: InputTypeEnum.SELECTOR,
+									options: {
+										Adjuvant: 'Adyuvante',
+										Concurrent: 'Concurrante',
+										Neoadjuvant: 'Neoadyuvante',
+										Palliative: 'Paliativa',
+									},
+									name: 'intention',
+								},
+							],
+							[
+								{
+									label: 'Objetivo',
+									// placeholder: 'El objetivo de este tratamiento es reducir los sintomas de caracter cutaneo presentes en el paciente..',
+									type: 'text',
+									input_type: InputTypeEnum.TEXTFIELD,
+									name: 'treatmentObjective',
+								},
+							],
+						];
+						state.values = {
+							...state.values,
+							treatment: {
+								medicalHistoryId: action.payload.medicalHistoryId,
+								objetive: action.payload.treatmentObjective,
+								tumorTreatment: '',
+								medications: {
+									medication1: {
+										grammage1: action.payload.medications[0].grammage,
+										medication1:
+											action.payload.medications[0].medicationId,
+									},
+								},
+								startDate: action.payload.treatmentStartDate,
+								estimateFinishDate: action.payload.estimateFinishDate,
+							},
+						};
+					}
+					if (action.payload?.medications?.length > 1) {
+						action.payload?.medications?.forEach((med) => {
+							addTreatmentMedication(state);
+						});
+					}
+					if (action.payload.biomarkers?.length > 0) {
+						const biomarkers = state.biomarkers.fields.slice(
+							0,
+							state.biomarkers.fields.length - 1,
+						);
+						const fixedRows = state.biomarkers.fields.slice(
+							state.biomarkers.fields.length - 1,
+							state.biomarkers.fields.length,
+						);
+
+						const biomarkersToAdd = {
+							id: biomarkers.length + 1,
+							input_type: InputTypeEnum.BIOMARKER_ROW,
+							names: ['biomarker', 'evaluation'],
+						};
+
+						state.biomarkers.fields = [
+							...biomarkers,
+							[biomarkersToAdd],
+							...fixedRows,
+						];
+
+						state.values = {
+							...state.values,
+							[`biomarker1`]: action.payload.biomarkers[0].type,
+							[`evaluation1`]: action.payload.biomarkers[0].evaluation,
+						};
+
+						// console.log(state.values)
+					}
+					if (action.payload.setbacks?.length > 0) {
+						const setbacks = state.setbacks.fields.slice(
+							0,
+							state.setbacks.fields.length - 1,
+						);
+						const fixedRows = state.setbacks.fields.slice(
+							state.setbacks.fields.length - 1,
+							state.setbacks.fields.length,
+						);
+
+						const setbacksToAdd = {
+							id: setbacks.length + 1,
+							input_type: InputTypeEnum.SETBACK_ROW,
+							names: ['setBackDate', 'setBackPlace', 'diagnosisDate'],
+						};
+
+						state.setbacks.fields = [
+							...setbacks,
+							[setbacksToAdd],
+							...fixedRows,
+						];
+
+						state.values = {
+							...state.values,
+							[`setBackDate1`]: action.payload.setbacks[0].setBackDate,
+							[`setBackPlace1`]: action.payload.setbacks[0].setBackPlace,
+							[`diagnosisDate1`]:
+								action.payload.setbacks[0].diagnosisDate,
+						};
+					}
 					// console.log(action.payload)
 					// console.log(action.payload.biomarkers ? console.log("tiene bio") : console.log("no tiene"))
 					// action.payload.biomarkers && formSlice.caseReducers.addBiomarkers()
@@ -556,9 +663,7 @@ export const formSlice = createSlice({
 								);
 								return {
 									...column,
-									options: {
-										cancerType: auxObj,
-									},
+									options: auxObj,
 								};
 							} else {
 								return column;

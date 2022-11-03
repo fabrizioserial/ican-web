@@ -4,9 +4,9 @@ import { FormBuilder } from '../../components/form/InputFields/utils';
 import Button from '../../common/components/button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { cleanForm, setValue } from '../../redux/slices/formSlice';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import {
-	useGetCancerQuery,
+	useLazyGetCancerQuery,
 	useLazyGetCancerSubTypeQuery,
 	useLazyGetCancerTypeQuery,
 	useSetPatientFormMutation,
@@ -28,6 +28,7 @@ const Validation = () => {
 		values,
 	} = useSelector((state) => state.formSlice);
 	const dispatch = useDispatch();
+	const navigation = useNavigate();
 	const { patientId } = useParams();
 	const [
 		setPatientForm,
@@ -47,44 +48,34 @@ const Validation = () => {
 	] = useUpdateValidatePatientMutation();
 
 	// const [values, setValues] = useState(validationFormValues);
-	const [refetch, { data, isSuccess, isFetching }] =
+	const [refetch, { data, isSuccess, isLoading }] =
 		useLazyGetPatientDataFormQuery();
-
-	const { data: dataCancer, isSuccess: isSuccessCancer } = useGetCancerQuery();
 	const [
-		refetchCancerType,
-		{ data: dataCancerType, isSuccess: isSuccessCancerType },
-	] = useLazyGetCancerTypeQuery();
-	const [
-		refetchCancerSubType,
-		{ data: dataCancerSubType, isSuccess: isSuccessCancerSubType },
-	] = useLazyGetCancerSubTypeQuery();
+		getCancersFetching,
+		{ data: dataCancer, isSuccess: isSuccessCancer },
+	] = useLazyGetCancerQuery();
+	console.log(values);
 	// const { data: dataCancerMed, isSuccess: isSuccessCancerMed } = useGetCancerMedicationQuery()
 
 	useEffect(() => {
 		refetch(patientId);
+		getCancersFetching();
 		return () => {
 			dispatch(cleanForm());
 		};
 	}, []);
 
 	useEffect(() => {
-		(successPostPatient && successPostTreatment) &&
+		if (successPostPatient && successPostTreatment) {
 			updateValidatePatient({ userId: patientId, status: 'Accepted' }); // Pending
+			navigation('/home');
+		}
 	}, [
 		resultPostPatient,
 		successPostPatient,
 		resultPostTreatment,
 		successPostTreatment,
 	]);
-
-	useEffect(() => {
-		succesUpdateValidation && console.log('update', resultUpdateValidation);
-	}, [succesUpdateValidation, resultUpdateValidation]);
-
-	useEffect(() => {
-		successPostSetBacks && console.log('setBack', resultPostSetBacks);
-	}, [successPostSetBacks, resultPostSetBacks]);
 
 	// set values of validationFormValues
 	const handleOnChange = (name, newValue) => {
@@ -95,8 +86,6 @@ const Validation = () => {
 	const handleSubmit = (values) => {
 		let biomarkers = [];
 		let setbacks = [];
-		let medications = [];
-		let treatment = [];
 		let medicalHistory = {};
 
 		for (let indexBio = 1; indexBio < 16; indexBio++) {
@@ -143,39 +132,46 @@ const Validation = () => {
 				},
 			];
 		}
-
-		for (let indexTreat = 1; indexTreat < 16; indexTreat++) {
-			if (
-				!values['medication'.concat(indexTreat)] &&
-				!values['grammage'.concat(indexTreat)]
-			) {
-				treatment = {
-					medicalHistoryId: values.medicalHistoryId,
-					objective: values.treatmentObjective,
-					tumorTreatment: values.tumorTreatment,
-					// treatmentLine: values.treatmentLine ?? 1,
-					medications: medications,
-					startDate: values.treatmentStartDate,
-					estimateFinishDate: values.estimateFinishDate,
-				};
-				break;
-			}
-			medications = [
-				...medications,
-				{
-					medicationId: values['medication'.concat(indexTreat)],
-					intention: values.intention,
-					grammageId: values['grammage'.concat(indexTreat)],
-				},
-			];
-		}
-
-		console.log("values", values)
-		console.log(treatment)
 		setbacks.map((item) => setSetbacks(item));
-		setTreatmentForm(treatment); // listo
 		setPatientForm(medicalHistory);
 	};
+
+	useEffect(() => {
+		refetch(patientId);
+	}, [successPostPatient]);
+
+	useEffect(() => {
+		if (successPostPatient && data.medicalHistoryId) {
+			let treatment = [];
+			let medications = [];
+			for (let indexTreat = 1; indexTreat < 16; indexTreat++) {
+				if (
+					!values['medication'.concat(indexTreat)] &&
+					!values['grammage'.concat(indexTreat)]
+				) {
+					treatment = {
+						medicalHistoryId: values.medicalHistoryId,
+						objective: values.treatmentObjective,
+						tumorTreatment: values.tumorTreatment,
+						// treatmentLine: values.treatmentLine ?? 1,
+						medications: medications,
+						startDate: values.treatmentStartDate,
+						estimateFinishDate: values.estimateFinishDate,
+					};
+					break;
+				}
+				medications = [
+					...medications,
+					{
+						medicationId: values['medication'.concat(indexTreat)],
+						intention: values.intention,
+						grammageId: values['grammage'.concat(indexTreat)],
+					},
+				];
+			}
+			setTreatmentForm(treatment); // listo
+		}
+	}, [successPostPatient, data]);
 
 	return (
 		<StyledScreen css={{ justifyContent: 'center', flexDirection: 'column' }}>
@@ -197,7 +193,7 @@ const Validation = () => {
 					}}
 				>
 					{values &&
-						!isFetching &&
+						!isLoading &&
 						FormBuilder(
 							[
 								patients,

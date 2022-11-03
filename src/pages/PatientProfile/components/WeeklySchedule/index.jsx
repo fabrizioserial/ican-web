@@ -108,7 +108,6 @@ const WeeklySchedule = ({ dayList }) => {
 							padding: '20px 18px',
 						}}
 					>
-						{console.log(dayList)}
 						{dayList?.map((item, index) => (
 							<DayCard
 								key={index}

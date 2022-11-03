@@ -37,16 +37,24 @@ const MedicationField = ({ id, names, values, onChange, type }) => {
 	useEffect(() => {
 		if (isSuccessCancerMed) {
 			let auxOptMed = [];
-			let auxOptGram = [];
-
-			Object.values(dataCancerMed).map(
-				(med) => (auxOptMed[med.id] = med.name),
-			);
-			Object.values(dataCancerMed).map((med) =>
-				med.possibleGrammages.map(
-					(gram) =>
-						(auxOptGram[gram.grammage.id] = gram.grammage.grammage),
-				),
+			let auxOptGram = {};
+			auxOptMed.no_value = 'Selecciona un Medicamento';
+			Object.values(dataCancerMed).forEach((med) => {
+				auxOptMed[med.id] = med.name;
+				auxOptGram[med.id] = {
+					no_value: 'Selecciona Gramaje',
+				};
+			});
+			Object.values(dataCancerMed).forEach((med) =>
+				med.possibleGrammages.forEach((gram) => {
+					auxOptGram = {
+						...auxOptGram,
+						[med.id]: {
+							...auxOptGram[med.id],
+							[gram.grammage.id]: gram.grammage.grammage,
+						},
+					};
+				}),
 			);
 
 			setOptionsMed(auxOptMed);
@@ -103,7 +111,7 @@ const MedicationField = ({ id, names, values, onChange, type }) => {
 					label={'Gramaje'}
 					name={names.grammage}
 					onChange={onChange} // onChange gramaje
-					options={optionsGram} // recibe del endpoint
+					options={optionsGram[values?.medication] ?? []} // recibe del endpoint
 				/>
 				{id !== 1 && (
 					<StyledBox>
