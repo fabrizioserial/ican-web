@@ -39,7 +39,7 @@ const DailyBody = () => {
 
 	const [daily, setDaily] = useState([
 		{
-			category: 'Animo',
+			category: 'Ánimo',
 			questionType: 'ánimo',
 			icon: <MoodIcon />,
 		},
@@ -59,7 +59,7 @@ const DailyBody = () => {
 			icon: <HidrationIcon />,
 		},
 		{
-			category: 'Actividad Fisica',
+			category: 'Actividad Física',
 			questionType: 'actividad física',
 			icon: <SocialActivityIcon />,
 		},
