@@ -25,6 +25,7 @@ const App = () => {
 				<Route element={<ProtectedRoute accessToken={accessToken} />}>
 					<Route element={<Wrapper />}>
 						<Route path="/home" exact element={<HomeScreen />} />
+
 						<Route path="/statistics" element={<StatisticsScreen />} />
 						<Route path="/my-patients" element={<PatientListScreen />} />
 						<Route

@@ -3,7 +3,6 @@ import React from 'react';
 import PatientsListIcon from '../assets/PatientsListIcon';
 import StatisticsIcon from '../assets/StatisticsIcon';
 import BellIcon from '../assets/BellIcon';
-import SettingsIcon from '../assets/SettingsIcon';
 import CallIcon from '../assets/CallIcon';
 import FormIcon from '../assets/FormIcon';
 import { theme } from '../common/theme';
@@ -22,6 +21,7 @@ import IconMemory from '../assets/IconMemory';
 import IconMiscellaneous from '../assets/IconMiscellaneous';
 import IconVisual from '../assets/IconVisual';
 import IconLove from '../assets/IconLove';
+import LogoutIcon from '../assets/IconLogout';
 import { StyledBox } from '../common/styledCommonComponents';
 
 export const ModalTypeEnum = {
@@ -252,9 +252,9 @@ export const NavbarConfigBottom = [
 		icon: (active) => <BellIcon active={active} />,
 	},
 	{
-		name: 'Configuración',
-		path: ['/settings'],
-		icon: (active) => <SettingsIcon active={active} />,
+		name: 'Cerrar sesión',
+		path: ['/login'],
+		icon: (active) => <LogoutIcon active={active} />,
 	},
 ];
 
