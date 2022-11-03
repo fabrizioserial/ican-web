@@ -9,7 +9,7 @@ import { useNavigate, useParams } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { setModalOpen } from '../../../../redux/slices/utilsSlice';
 
-const ProfileButton = ({ icon, color, text, textColor, type,border }) => {
+const ProfileButton = ({ icon, color, text, textColor, type, border }) => {
 	const { patientId } = useParams();
 	const dispatch = useDispatch();
 	const navigation = useNavigate();
@@ -28,6 +28,9 @@ const ProfileButton = ({ icon, color, text, textColor, type,border }) => {
 						id: patientId,
 					}),
 				);
+				break;
+			case ProfileConfigButtonType.PIN:
+				// onClick
 				break;
 			default:
 				break;

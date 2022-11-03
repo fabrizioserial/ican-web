@@ -30,7 +30,7 @@ const PatientsList = () => {
 				}}
 			>
 				<StyledP css={{ color: theme.OncoBlack, fontWeight: 500 }}>
-					Mis pacientes
+					Mis pacientes fijados
 				</StyledP>
 			</StyledBox>
 			{/* <StyledBox css={{

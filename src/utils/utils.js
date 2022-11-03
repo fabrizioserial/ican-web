@@ -321,7 +321,7 @@ export const PatientsListHeaderConfig = [
 export const ProfileConfigButtonType = {
 	FORM: 'form',
 	CONTACT: 'contact',
-	PIN:'PIN'
+	PIN: 'PIN'
 };
 
 export const ProfileConfigButton = [
@@ -331,7 +331,7 @@ export const ProfileConfigButton = [
 		color: '#FFFFFF',
 		type: ProfileConfigButtonType.FORM,
 		textColor: theme.textGrey,
-		border:'1px solid rgba(235, 224, 253, 0.24)'
+		border: '1px solid rgba(235, 224, 253, 0.24)'
 	},
 	{
 		text: 'Contactar',
@@ -339,16 +339,16 @@ export const ProfileConfigButton = [
 		color: '#5EC386',
 		type: ProfileConfigButtonType.CONTACT,
 		textColor: theme.white,
-		border:'1px solid rgba(235, 224, 253, 0.24)'
+		border: '1px solid rgba(235, 224, 253, 0.24)'
 	},
 	{
 		text: 'Fijar',
-		icon: <PurplePinIcon/>,
+		icon: <PurplePinIcon />,
 		color: '#FFFFFF',
 		type: ProfileConfigButtonType.PIN,
 		textColor: '#9357F7',
 		border: '1px solid #9357F7',
-	},
+	},	
 ];
 
 // Tables
