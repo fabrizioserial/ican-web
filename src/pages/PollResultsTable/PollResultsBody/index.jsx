@@ -19,7 +19,6 @@ import { useDispatch } from 'react-redux';
 import { setModalOpen, setReportId } from '../../../redux/slices/utilsSlice';
 
 const PollResultsBody = ({ data }) => {
-
 	const dispatch = useDispatch();
 
 	const openModal = (id, type) => {
