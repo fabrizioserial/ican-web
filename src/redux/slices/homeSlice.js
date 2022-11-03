@@ -3,6 +3,7 @@ import { homeApi } from '../api/homeApi';
 import { sessionApi } from '../api/sessionApi';
 import { patientApi } from '../api/patientApi';
 import { listApi } from '../api/listApi';
+import { authSlice } from './authSlice';
 
 const initialState = {
 	user: {
@@ -25,6 +26,9 @@ export const homeSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder
+			.addCase(authSlice.actions.logout, (state) => {
+				state = initialState;
+			})
 			.addMatcher(
 				sessionApi.endpoints.login.matchFulfilled,
 				(state, { payload }) => {

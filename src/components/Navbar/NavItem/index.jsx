@@ -3,11 +3,12 @@ import { StyledBox } from '../../../common/styledCommonComponents';
 import { NavLink } from 'react-router-dom';
 import { useTheme } from 'styled-components';
 
-const NavItem = ({ icon, title, pathName, state }) => {
+const NavItem = ({ icon, title, pathName, state, onClick }) => {
 	const theme = useTheme();
 	const color = state ? theme.oncoNavbarSelection : theme.white;
 	return (
 		<StyledBox
+			onClick={onClick}
 			css={{
 				height: '40px',
 				width: '70px',

@@ -14,6 +14,7 @@ import {
 } from '../../utils/utils';
 import { patientApi } from '../api/patientApi';
 import { validateFormApi } from '../api/validateFormApi';
+import { authSlice } from './authSlice';
 
 const initialState = {
 	patients: {
@@ -493,6 +494,9 @@ export const formSlice = createSlice({
 	},
 	extraReducers: (builder) => {
 		builder
+			.addCase(authSlice.actions.logout, (state) => {
+				state = initialState;
+			})
 			.addMatcher(
 				patientApi.endpoints.getPatientDataForm.matchFulfilled,
 				(state, action) => {
