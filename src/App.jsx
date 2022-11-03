@@ -60,8 +60,14 @@ const App = () => {
 								</StyledBox>
 							}
 						/>
-						<Route path={'/profile/:patientId'} element={<ProfileScreen />} />
-						<Route path="/validate-patient/:patientId" element={<Validation />} />
+						<Route
+							path={'/profile/:patientId'}
+							element={<ProfileScreen />}
+						/>
+						<Route
+							path="/validate-patient/:patientId"
+							element={<Validation />}
+						/>
 					</Route>
 				</Route>
 				<Route path="/login" element={<LoginScreen />} />

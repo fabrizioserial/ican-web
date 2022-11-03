@@ -5,7 +5,7 @@ export const patientApi = api.injectEndpoints({
 		getPatientDataForm: builder.query({
 			query: (patientId) => ({
 				url: `/api/home/patient-form/${patientId}`,
-				method: 'GET'
+				method: 'GET',
 			}),
 		}),
 		getPatientData: builder.query({

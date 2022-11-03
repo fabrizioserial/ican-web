@@ -28,7 +28,7 @@ const TextInputField = ({
 				display: 'flex',
 				flexDirection: 'column',
 				boxSizing: 'border-box',
-				justifyContent: "flex-end",
+				justifyContent: 'flex-end',
 				pointerEvents: disabled && 'none',
 			}}
 		>
@@ -45,15 +45,15 @@ const TextInputField = ({
 					boxSizing: 'border-box',
 					width: '100%',
 					backgroundColor: disabled ? theme.oncoGrey : 'transparent',
-					border: !disabled && "1px solid #E5D7FD",
-					borderRadius: "5px"
+					border: !disabled && '1px solid #E5D7FD',
+					borderRadius: '5px',
 				}}
 				type={type}
 				placeholder={placeholder}
 				value={value}
 				onChange={(e) => handleOnChange(e.target.value)}
 			/>
-		</StyledBox >
+		</StyledBox>
 	);
 };
 

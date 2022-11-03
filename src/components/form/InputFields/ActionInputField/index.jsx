@@ -1,30 +1,35 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import PlusCircelIcon from '../../../../assets/PlusCircleIcon'
-import Button from '../../../../common/components/button/Button'
-import { addBiomarkers, addSetBacks, addTreatment, addTreatmentMedication } from '../../../../redux/slices/formSlice'
-import { actionTypeEnum } from '../../../../utils/utils'
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import PlusCircelIcon from '../../../../assets/PlusCircleIcon';
+import Button from '../../../../common/components/button/Button';
+import {
+	addBiomarkers,
+	addSetBacks,
+	addTreatment,
+	addTreatmentMedication,
+} from '../../../../redux/slices/formSlice';
+import { actionTypeEnum } from '../../../../utils/utils';
 
 const ActionInputField = ({ index, label, handleClick }) => {
-    const dispatch = useDispatch()
-    const onClick = () => {
-        switch (handleClick()) {
-            case actionTypeEnum.ADD_BIOMARKER:
-                dispatch(addBiomarkers())
-                break;
-            case actionTypeEnum.ADD_SETBACK:
-                dispatch(addSetBacks())
-                break;
-            case actionTypeEnum.ADD_TREATMENT:
-                dispatch(addTreatment())
-                break;
-            case actionTypeEnum.ADD_MEDICATION:
-                dispatch(addTreatmentMedication())
-                break;
-            default:
-                break;
-        }
-    }
+	const dispatch = useDispatch();
+	const onClick = () => {
+		switch (handleClick()) {
+			case actionTypeEnum.ADD_BIOMARKER:
+				dispatch(addBiomarkers());
+				break;
+			case actionTypeEnum.ADD_SETBACK:
+				dispatch(addSetBacks());
+				break;
+			case actionTypeEnum.ADD_TREATMENT:
+				dispatch(addTreatment());
+				break;
+			case actionTypeEnum.ADD_MEDICATION:
+				dispatch(addTreatmentMedication());
+				break;
+			default:
+				break;
+		}
+	};
 
 	return (
 		<Button

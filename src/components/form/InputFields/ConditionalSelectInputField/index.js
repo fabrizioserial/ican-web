@@ -19,7 +19,7 @@ const ConditionalSelectInputField = ({ properties, values, onChange }) => {
 			name={name}
 			onChange={onChange}
 			options={options[name] ?? {}}
-		// options={TNMOptions[name] ?? {}}
+			// options={TNMOptions[name] ?? {}}
 		/>
 	);
 };

@@ -98,8 +98,10 @@ const InputTypeBuilder = (
 					type={properties.type}
 					values={{
 						setBackDate: values[`${properties.names[0]}${properties.id}`],
-						setBackPlace: values[`${properties.names[1]}${properties.id}`],
-						diagnosisDate: values[`${properties.names[2]}${properties.id}`],
+						setBackPlace:
+							values[`${properties.names[1]}${properties.id}`],
+						diagnosisDate:
+							values[`${properties.names[2]}${properties.id}`],
 					}}
 					names={{
 						setBackDate: `${properties.names[0]}${properties.id}`,

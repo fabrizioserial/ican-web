@@ -77,32 +77,35 @@ const PollResultsScreen = () => {
 						boxSizing: 'border-box',
 						width: '100%',
 						height: '16px',
-						justifyContent:'center',
+						justifyContent: 'center',
 						borderBottom: '1px solid #E1D1FC',
 						paddingBottom: '16px',
-
 					}}
 				/>
 			</StyledBox>
 
-			<StyledBox css={{display: 'flex',
-				flexDirection: 'column',
-				width: '100%',
-				alignItems: 'top,',
-			}}>
 			<StyledBox
-				as={TableContainer}
 				css={{
-					maxWidth: '50vw',
-					width: 'calc(100vw - 40px)',margin: "auto",
+					display: 'flex',
+					flexDirection: 'column',
+					width: '100%',
+					alignItems: 'top,',
 				}}
 			>
-				<Table>
-					<PollResultsHeader />
-					<PollResultsBody data={pollResults} />
-				</Table>
-				<PollResultsBottom />
-			</StyledBox>
+				<StyledBox
+					as={TableContainer}
+					css={{
+						maxWidth: '50vw',
+						width: 'calc(100vw - 40px)',
+						margin: 'auto',
+					}}
+				>
+					<Table>
+						<PollResultsHeader />
+						<PollResultsBody data={pollResults} />
+					</Table>
+					<PollResultsBottom />
+				</StyledBox>
 			</StyledBox>
 		</StyledScreen>
 	);
