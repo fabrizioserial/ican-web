@@ -3,7 +3,7 @@ import { StyledBox, StyledScreen } from '../../common/styledCommonComponents';
 import { FormBuilder } from '../../components/form/InputFields/utils';
 import Button from '../../common/components/button/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { setValue } from '../../redux/slices/formSlice';
+import { cleanForm, setValue } from '../../redux/slices/formSlice';
 import { useParams } from 'react-router';
 import {
 	useGetCancerQuery,
@@ -47,7 +47,8 @@ const Validation = () => {
 	] = useUpdateValidatePatientMutation();
 
 	// const [values, setValues] = useState(validationFormValues);
-	const [refetch, { data, isSuccess }] = useLazyGetPatientDataFormQuery();
+	const [refetch, { data, isSuccess, isFetching }] =
+		useLazyGetPatientDataFormQuery();
 
 	const { data: dataCancer, isSuccess: isSuccessCancer } = useGetCancerQuery();
 	const [
@@ -62,6 +63,9 @@ const Validation = () => {
 
 	useEffect(() => {
 		refetch(patientId);
+		return () => {
+			dispatch(cleanForm());
+		};
 	}, []);
 
 	console.log(values);
@@ -209,6 +213,7 @@ const Validation = () => {
 					}}
 				>
 					{values &&
+						!isFetching &&
 						FormBuilder(
 							[
 								patients,

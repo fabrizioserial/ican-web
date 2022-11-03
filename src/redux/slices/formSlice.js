@@ -520,6 +520,9 @@ export const formSlice = createSlice({
 				[action.payload.name]: action.payload.value,
 			};
 		},
+		cleanForm: (state, action) => {
+			state = initialState;
+		},
 	},
 	extraReducers: (builder) => {
 		builder
@@ -630,5 +633,6 @@ export const {
 	removeBiomarker,
 	removeTreatmentMedication,
 	setValue,
+	cleanForm,
 } = formSlice.actions;
 export default formSlice.reducer;
