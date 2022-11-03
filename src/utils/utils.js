@@ -123,7 +123,7 @@ export const NavbarConfig = [
 	},
 	{
 		name: 'Mis Pacientes',
-		path: ['/my-patients', '/profile'],
+		path: ['/my-patients', '/profile', '/validate-patient'],
 		icon: (active) => <PatientsListIcon active={active} />,
 	},
 ];
@@ -596,4 +596,10 @@ const getMonth = (number) => {
 	if (number === 10) return 'Octubre';
 	if (number === 11) return 'Noviembre';
 	if (number === 12) return 'Diciembre';
+};
+
+export const EndpointsListType = {
+	ORDEN: 'ORDEN',
+	FILTER: 'FILTER',
+	TABLE: 'TABLE',
 };

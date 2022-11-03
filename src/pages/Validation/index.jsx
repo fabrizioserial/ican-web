@@ -54,7 +54,6 @@ const Validation = () => {
 		getCancersFetching,
 		{ data: dataCancer, isSuccess: isSuccessCancer },
 	] = useLazyGetCancerQuery();
-	console.log(values);
 	// const { data: dataCancerMed, isSuccess: isSuccessCancerMed } = useGetCancerMedicationQuery()
 
 	useEffect(() => {
@@ -81,6 +80,10 @@ const Validation = () => {
 	const handleOnChange = (name, newValue) => {
 		if (!name || newValue === undefined) return;
 		dispatch(setValue({ name, value: newValue }));
+	};
+
+	const handleRejected = () => {
+		updateValidatePatient({ userId: patientId, status: 'Rejected' });
 	};
 
 	const handleSubmit = (values) => {
@@ -210,8 +213,16 @@ const Validation = () => {
 				<StyledBox
 					css={{
 						margin: '0 50px',
+						display: 'flex',
+						flexDirection: 'row',
+						columnGap: '10px',
 					}}
 				>
+					<Button
+						text={'Rechazar'}
+						className="rejected"
+						onClick={() => handleRejected()}
+					/>
 					<Button
 						text={'Guardar cambios'}
 						className="submit"

@@ -44,7 +44,7 @@ export const patientApi = api.injectEndpoints({
 		}),
 		getPatientTreatmets: builder.query({
 			query: (patientID) => ({
-				url: `/api/home/patient-treatmets/${patientID}`,
+				url: `/api/home/patient-treatments/${patientID}`,
 				method: 'GET',
 			}),
 		}),

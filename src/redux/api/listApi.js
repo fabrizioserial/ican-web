@@ -1,5 +1,5 @@
 import { api } from './api';
-import { clearPatientList } from '../slices/listSlice';
+import { clearPatientList, saveParams } from '../slices/listSlice';
 
 export const listApi = api.injectEndpoints({
 	endpoints: (builder) => ({
@@ -8,8 +8,9 @@ export const listApi = api.injectEndpoints({
 				url: `/api/home/filter-patients/${arg.column}`,
 				params: arg.params,
 			}),
-			async onQueryStarted({ id, ...patch }, { dispatch }) {
+			async onQueryStarted(arg, { dispatch }) {
 				dispatch(clearPatientList());
+				dispatch(saveParams(arg));
 			},
 		}),
 		orderPatients: builder.query({
@@ -17,8 +18,9 @@ export const listApi = api.injectEndpoints({
 				url: `/api/home/order-patients/${arg.column}`,
 				params: arg.params,
 			}),
-			async onQueryStarted({ id, ...patch }, { dispatch }) {
+			async onQueryStarted(arg, { dispatch }) {
 				dispatch(clearPatientList());
+				dispatch(saveParams(arg));
 			},
 		}),
 		patientsList: builder.query({
@@ -31,8 +33,9 @@ export const listApi = api.injectEndpoints({
 				url: '/api/home/patients-table',
 				params: params,
 			}),
-			async onQueryStarted({ id, ...patch }, { dispatch }) {
+			async onQueryStarted(arg, { dispatch }) {
 				dispatch(clearPatientList());
+				dispatch(saveParams(arg));
 			},
 		}),
 	}),

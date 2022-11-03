@@ -22,6 +22,7 @@ export const theme = {
 	oncoGrey2: '#A3A3A3',
 	oncoGrey3: '#e5e5e5',
 	oncoGrey4: '#757575',
+	oncoRed: '#FF505F',
 
 	oncoLightBlue: '#DFE8FF',
 	oncoLightBlue2: '#CDDCFF',

@@ -15,7 +15,6 @@ const ProfileButton = ({ icon, color, text, textColor, type }) => {
 	const navigation = useNavigate();
 	const theme = useTheme();
 	const handleAction = (type) => {
-		console.log(type);
 		switch (type) {
 			case ProfileConfigButtonType.FORM:
 				navigation(`/validate-patient/${patientId}`);
