@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import {
 	StyledBox,
+	StyledP,
 	StyledScreen,
 } from '../../../common/styledCommonComponents';
 import HungerAndThirstChart from '../../../components/HungerAndThirstChart';
 import SocialAndPhysicalActivitiesChart from '../../../components/SocialAndPhysicalActivitiesChart';
 import PatientProfileCard from '../../../components/PatientProfileCard';
 import { useParams } from 'react-router';
+import { Table, TableContainer } from '@material-ui/core';
 import {
 	useLazyGetAppetiteHydrationQuery,
 	useLazyGetCalendarQuery,
@@ -15,6 +17,9 @@ import {
 } from '../../../redux/api/patientApi';
 import WeeklySchedule from '../components/WeeklySchedule';
 import TreatmentSection from '../components/TreatmentSection';
+import PollResultsHeader from '../../PollResultsTable/PollResultsHeader';
+import PollResultsBody from '../../PollResultsTable/PollResultsBody';
+import IconHeartFile from '../../../assets/IconHeartFile';
 
 const ProfileScreen = () => {
 	const { patientId } = useParams();
@@ -40,6 +45,8 @@ const ProfileScreen = () => {
 		refetchSocialPhysical(patientId);
 		refetchCalendar(patientId);
 	}, []);
+
+	const [pollResults, setPollResults] = useState(undefined);
 
 	useEffect(() => {
 		if (dataAppetiteHydration) {
@@ -147,6 +154,44 @@ const ProfileScreen = () => {
 				>
 					<HungerAndThirstChart data={appetiteHydration} />
 					<SocialAndPhysicalActivitiesChart data={socialPhysical} />
+				</StyledBox>
+				<StyledBox
+					css={{
+						display: 'flex',
+						flexDirection: 'row',
+						marginTop: '30px',
+						columnGap: 30,
+					}}
+					as={TableContainer}
+				>
+
+					<Table>
+						<PollResultsHeader bgColor='#fff'>
+							<StyledBox
+								css={{
+									display: 'flex',
+									flexDirection: 'row',
+									alignItems: 'center',
+								}}
+							>
+								<IconHeartFile />
+								<StyledP
+									css={{
+										fontStyle: 'normal',
+										fontWeight: 500,
+										fontSize: '14px',
+										paddingLeft: '10px',
+										alignItems: 'center',
+										color: '#9357F7',
+									}}
+								>
+									{' '}
+									Fecha de realización
+								</StyledP>
+							</StyledBox>
+						</PollResultsHeader>
+						<PollResultsBody data={pollResults} />
+					</Table>
 				</StyledBox>
 			</StyledBox>
 			<StyledBox
