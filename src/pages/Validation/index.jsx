@@ -68,11 +68,8 @@ const Validation = () => {
 		};
 	}, []);
 
-	console.log(values);
-
 	useEffect(() => {
-		// console.log("update status")
-		(successPostPatient && successPostTreatment) === true &&
+		(successPostPatient && successPostTreatment) &&
 			updateValidatePatient({ userId: patientId, status: 'Accepted' }); // Pending
 	}, [
 		resultPostPatient,
@@ -102,17 +99,6 @@ const Validation = () => {
 		let treatment = [];
 		let medicalHistory = {};
 
-		refetchCancerType(
-			dataCancer.find((item) => item.organ === values.organ).id,
-		);
-
-		let cancerType = dataCancerType;
-		refetchCancerSubType('7edc14a0-9acb-4bbf-952d-bafd35edd513');
-		let cancerSubType = dataCancerSubType;
-
-		console.log('cancer type', cancerType);
-		console.log('cancer sub type', cancerSubType);
-
 		for (let indexBio = 1; indexBio < 16; indexBio++) {
 			if (!values['biomarker'.concat(indexBio)]) {
 				medicalHistory = {
@@ -122,7 +108,7 @@ const Validation = () => {
 					metastasis: values.metastasis,
 					risk: values.risk,
 					biomarkers: biomarkers,
-					cancerId: '7edc14a0-9acb-4bbf-952d-bafd35edd573',
+					cancerId: values.cancerSubType,
 				};
 				break;
 			}
@@ -167,7 +153,7 @@ const Validation = () => {
 					medicalHistoryId: values.medicalHistoryId,
 					objective: values.treatmentObjective,
 					tumorTreatment: values.tumorTreatment,
-					treatmentLine: values.treatmentLine ?? 1,
+					// treatmentLine: values.treatmentLine ?? 1,
 					medications: medications,
 					startDate: values.treatmentStartDate,
 					estimateFinishDate: values.estimateFinishDate,
@@ -184,14 +170,12 @@ const Validation = () => {
 			];
 		}
 
-		// console.log(values)
-		// console.log(treatment)
+		console.log("values", values)
+		console.log(treatment)
 		setbacks.map((item) => setSetbacks(item));
 		setTreatmentForm(treatment); // listo
 		setPatientForm(medicalHistory);
 	};
-
-	console.log(hospital);
 
 	return (
 		<StyledScreen css={{ justifyContent: 'center', flexDirection: 'column' }}>
