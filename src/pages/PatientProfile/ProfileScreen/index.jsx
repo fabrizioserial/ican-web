@@ -8,7 +8,7 @@ import {
 import HungerAndThirstChart from '../../../components/HungerAndThirstChart';
 import SocialAndPhysicalActivitiesChart from '../../../components/SocialAndPhysicalActivitiesChart';
 import PatientProfileCard from '../../../components/PatientProfileCard';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { Table, TableContainer } from '@material-ui/core';
 import {
 	useGetPollResultsQuery,
@@ -18,16 +18,15 @@ import {
 } from '../../../redux/api/patientApi';
 import WeeklySchedule from '../components/WeeklySchedule';
 import TreatmentSection from '../components/TreatmentSection';
-import PollResultsHeader from '../../PollResultsTable/PollResultsHeader';
 import PollResultsBody from '../../PollResultsTable/PollResultsBody';
 import IconHeartFile from '../../../assets/IconHeartFile';
 import { useTheme } from 'styled-components';
-import { borderBottomColor } from '@mui/system';
 import { StyledButtonMore } from '../../../components/PatientsList/PatientContainer/styles';
 
 const ProfileScreen = () => {
 	const theme = useTheme();
 	const { patientId } = useParams();
+	const navigate = useNavigate();
 	const [
 		refetchAppetiteHydration,
 		{ data: dataAppetiteHydration, isSuccess: isSuccessAppetiteHydration },
@@ -51,12 +50,12 @@ const ProfileScreen = () => {
 		if (dataPollResults) {
 			let finalArray = [];
 			finalArray = finalArray.concat(
-				dataPollResults.reports.dailyReports.map((item) => ({
+				dataPollResults.reports.dailyReports.slice(0, 5).map((item) => ({
 					...item,
 					type: 'daily',
 				})),
 
-				dataPollResults.reports.weeklyReports
+				dataPollResults.reports.weeklyReports.slice(0, 5)
 					.map((item) => ({
 						id: item.id,
 						status: item.status,
@@ -66,7 +65,6 @@ const ProfileScreen = () => {
 					.filter((item) => item.id),
 			);
 			finalArray = _.orderBy(finalArray, 'date', 'desc');
-			console.log(" final", finalArray)
 			setPollResults(finalArray);
 		}
 	}, [dataPollResults, isSuccessPollResults]);
@@ -231,7 +229,9 @@ const ProfileScreen = () => {
 							</StyledH3>
 						</StyledBox>
 						<Table>
-							{pollResults.length > 0 ? <PollResultsBody data={pollResults} />
+							{pollResults && Object.values(pollResults).length > 0
+								?
+								<PollResultsBody data={pollResults} />
 								:
 								<StyledBox
 									css={{
@@ -251,8 +251,6 @@ const ProfileScreen = () => {
 							css={{
 								display: 'flex',
 								flexDirection: 'row',
-								height: '50px',
-								minHeight: '50px',
 								paddingTop: 0,
 								alignItems: 'center',
 								justifyContent: 'center',
@@ -264,11 +262,11 @@ const ProfileScreen = () => {
 
 							}}
 						>
-							{/* {data?.patients?.length > 9 && ( */}
-							<StyledButtonMore onClick={() => console.log('asd')}>
-								Ver más
-							</StyledButtonMore>
-							{/* )} */}
+							{pollResults && Object.values(pollResults).length > 5 && (
+								<StyledButtonMore onClick={() => navigate(`/poll-results/${patientId}`)}>
+									Ver más
+								</StyledButtonMore>
+							)}
 						</StyledBox>
 					</StyledBox>
 				</StyledBox>

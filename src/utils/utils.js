@@ -1,8 +1,6 @@
 import HomeIcon from '../assets/HomeIcon';
 import React from 'react';
 import PatientsListIcon from '../assets/PatientsListIcon';
-import StatisticsIcon from '../assets/StatisticsIcon';
-import BellIcon from '../assets/BellIcon';
 import SettingsIcon from '../assets/SettingsIcon';
 import CallIcon from '../assets/CallIcon';
 import FormIcon from '../assets/FormIcon';
@@ -405,7 +403,7 @@ export const getPollStatusLabel = (type) => {
 		case 'Completed':
 			return 'Completado';
 		case 'Incomplete':
-			return 'Incomplete';
+			return 'Incompleto';
 		case 'Empty':
 			return 'Sin Arrancar';
 	}

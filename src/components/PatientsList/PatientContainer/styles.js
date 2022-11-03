@@ -21,7 +21,7 @@ export const StyledButtonMore = styled(StyledButton)`
 	border: 1px solid;
 	border-color: ${(props) => props.theme.OncoLightPurple};
 	border-radius: 20px;
-	width: 100%;
+	width: ${(props) => props.width};
 	background-color: transparent;
 	padding: 6px;
 	color: ${(props) => props.theme.OncoPurple};
