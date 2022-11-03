@@ -9,10 +9,14 @@ import {
 	CapitalizeText,
 	getProfileImageFromName,
 } from '../../../../utils/utils';
+import { useNavigate } from 'react-router';
 
-const PatientWaitingItem = ({ name, surename, dni, css }) => {
+const PatientWaitingItem = ({ name, surename, dni, css, id }) => {
+	const navigation = useNavigate();
 	return (
-		<StyledPatientWaitingContainer onClick={() => console.log('asd')}>
+		<StyledPatientWaitingContainer
+			onClick={() => navigation(`/validate-patient/${id}`)}
+		>
 			{getProfileImageFromName(name, surename, {
 				width: 28,
 				height: 28,

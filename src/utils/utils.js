@@ -237,7 +237,7 @@ export const NavbarConfig = [
 		name: 'Mis Pacientes',
 		path: ['/my-patients', '/profile'],
 		icon: (active) => <PatientsListIcon active={active} />,
-	}
+	},
 ];
 
 export const NavbarConfigBottom = [
