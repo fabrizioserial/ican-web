@@ -27,14 +27,14 @@ const WidgetDailyChart = () => {
 			let monthIndex = {};
 			Object.values(data.coordinates).forEach((item) => {
 				let day =
-					new Date(item.x).getUTCDate().toString() +
+					new Date(item.date).getUTCDate().toString() +
 					'/' +
-					(new Date(item.x).getUTCMonth() + 1).toString();
+					(new Date(item.date).getUTCMonth() + 1).toString();
 				monthIndex = {
 					...monthIndex,
-					[new Date(item.x).getUTCMonth()]: '',
+					[new Date(item.date).getUTCMonth()]: '',
 				};
-				aux[day] = [item.y];
+				aux[day] = [item.completed];
 			});
 			setDataB({
 				month:

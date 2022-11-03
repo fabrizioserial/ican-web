@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ModalTypeEnum } from '../../utils/utils';
+import { authSlice } from './authSlice';
 
 const initialState = {
 	modalOpen: false,
@@ -24,6 +25,10 @@ export const utilsSlice = createSlice({
 			state.reportId = action.payload;
 		},
 	},
+	extraReducers: (builder) =>
+		builder.addCase(authSlice.actions.logout, (state) => {
+			state = initialState;
+		}),
 });
 
 export const { setModalOpen, closeModal, setReportId } = utilsSlice.actions;

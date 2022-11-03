@@ -31,7 +31,7 @@ export const homeApi = api.injectEndpoints({
 		}),
 		weeklyStatistics: builder.query({
 			query: () => ({
-				url: '/api/weekly/statistics',
+				url: '/api/log/response-rate',
 			}),
 		}),
 	}),

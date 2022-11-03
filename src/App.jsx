@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet, Route, Routes } from 'react-router';
+import { Outlet, Route, Routes, useNavigate } from 'react-router';
 import { ProtectedRoute } from './pages/routes/ProtectedRoute';
 import HomeScreen from './pages/Home/HomeScreen';
 import LoginScreen from './pages/Login/LoginScreen';

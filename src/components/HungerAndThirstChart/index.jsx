@@ -10,6 +10,7 @@ import { useTheme } from 'styled-components';
 const HungerAndThirstChart = ({ data }) => {
 	const options = useMemo(() => HungerAndThristConfig(data ?? {}), [data]);
 	const theme = useTheme();
+
 	return (
 		<Card
 			title={'Apetito e Hidratación'}

@@ -25,6 +25,18 @@ export const StyledButton = styled.button`
 		background-color: ${(props) => props.theme.inactive};
 	}
 
+	&.rejected {
+		width: 100%;
+		color: ${(props) => props.theme.white};
+		background-color: ${(props) => props.theme.oncoRed};
+		border-radius: 25px;
+		span {
+			font-size: 16px;
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+	}
+
 	&.submit {
 		width: 100%;
 		color: ${(props) => props.theme.white};
