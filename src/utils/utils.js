@@ -237,20 +237,10 @@ export const NavbarConfig = [
 		name: 'Mis Pacientes',
 		path: ['/my-patients', '/profile'],
 		icon: (active) => <PatientsListIcon active={active} />,
-	},
-	{
-		name: 'Estadísticas',
-		path: ['/statistics'],
-		icon: (active) => <StatisticsIcon active={active} />,
-	},
+	}
 ];
 
 export const NavbarConfigBottom = [
-	{
-		name: 'Notificaciones',
-		path: ['/notifications'],
-		icon: (active) => <BellIcon active={active} />,
-	},
 	{
 		name: 'Configuración',
 		path: ['/settings'],
