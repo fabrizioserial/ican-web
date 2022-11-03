@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
 	StyledBox,
+	StyledH3,
 	StyledP,
 	StyledScreen,
 } from '../../../common/styledCommonComponents';
@@ -10,9 +11,9 @@ import PatientProfileCard from '../../../components/PatientProfileCard';
 import { useParams } from 'react-router';
 import { Table, TableContainer } from '@material-ui/core';
 import {
+	useGetPollResultsQuery,
 	useLazyGetAppetiteHydrationQuery,
 	useLazyGetCalendarQuery,
-	useLazyGetPatientDataQuery,
 	useLazyGetSocialPhysicalQuery,
 } from '../../../redux/api/patientApi';
 import WeeklySchedule from '../components/WeeklySchedule';
@@ -20,8 +21,12 @@ import TreatmentSection from '../components/TreatmentSection';
 import PollResultsHeader from '../../PollResultsTable/PollResultsHeader';
 import PollResultsBody from '../../PollResultsTable/PollResultsBody';
 import IconHeartFile from '../../../assets/IconHeartFile';
+import { useTheme } from 'styled-components';
+import { borderBottomColor } from '@mui/system';
+import { StyledButtonMore } from '../../../components/PatientsList/PatientContainer/styles';
 
 const ProfileScreen = () => {
+	const theme = useTheme();
 	const { patientId } = useParams();
 	const [
 		refetchAppetiteHydration,
@@ -36,6 +41,36 @@ const ProfileScreen = () => {
 		{ data: dataCalendar, isSuccess: isSuccessCalendar },
 	] = useLazyGetCalendarQuery();
 
+
+	const { data: dataPollResults, isSuccess: isSuccessPollResults } = useGetPollResultsQuery(patientId);
+
+	const [pollResults, setPollResults] = useState(undefined);
+
+	useEffect(() => {
+		console.log(dataPollResults)
+		if (dataPollResults) {
+			let finalArray = [];
+			finalArray = finalArray.concat(
+				dataPollResults.reports.dailyReports.map((item) => ({
+					...item,
+					type: 'daily',
+				})),
+
+				dataPollResults.reports.weeklyReports
+					.map((item) => ({
+						id: item.id,
+						status: item.status,
+						date: item.endDate,
+						type: 'weekly',
+					}))
+					.filter((item) => item.id),
+			);
+			finalArray = _.orderBy(finalArray, 'date', 'desc');
+			console.log(" final", finalArray)
+			setPollResults(finalArray);
+		}
+	}, [dataPollResults, isSuccessPollResults]);
+
 	const [appetiteHydration, setAppetiteHydration] = useState(undefined);
 	const [socialPhysical, setSocialPhysical] = useState(undefined);
 	const [calendar, setCalendar] = useState(undefined);
@@ -46,7 +81,6 @@ const ProfileScreen = () => {
 		refetchCalendar(patientId);
 	}, []);
 
-	const [pollResults, setPollResults] = useState(undefined);
 
 	useEffect(() => {
 		if (dataAppetiteHydration) {
@@ -164,34 +198,79 @@ const ProfileScreen = () => {
 					}}
 					as={TableContainer}
 				>
+					<StyledBox
+						css={{ width: '100%', }}
+					>
+						<StyledBox
+							css={{
+								display: 'flex',
+								flexDirection: 'row',
+								height: '50px',
+								minHeight: '50px',
+								paddingTop: 0,
+								alignItems: 'center',
+								paddingLeft: 25,
+								backgroundColor: '#fff',
+								borderBottom: '1px solid',
+								borderBottomColor: theme.itemBackground,
+								borderRadius: '20px 20px 0px 0px'
 
-					<Table>
-						<PollResultsHeader bgColor='#fff'>
-							<StyledBox
+							}}
+						>
+							<IconHeartFile />
+							<StyledH3
 								css={{
-									display: 'flex',
-									flexDirection: 'row',
-									alignItems: 'center',
+									color: theme.OncoPurple,
+									margin: '0 0 0 10px',
+									textAlign: 'left',
+									fontSize: '1rem',
+									fontWeight: 'normal',
 								}}
 							>
-								<IconHeartFile />
-								<StyledP
+								Últimos reportes
+							</StyledH3>
+						</StyledBox>
+						<Table>
+							{pollResults.length > 0 ? <PollResultsBody data={pollResults} />
+								:
+								<StyledBox
 									css={{
-										fontStyle: 'normal',
-										fontWeight: 500,
-										fontSize: '14px',
-										paddingLeft: '10px',
+										height: 200,
+										backgroundColor: '#fff',
+										display: 'flex',
 										alignItems: 'center',
-										color: '#9357F7',
+										justifyContent: 'center',
 									}}
 								>
-									{' '}
-									Fecha de realización
-								</StyledP>
-							</StyledBox>
-						</PollResultsHeader>
-						<PollResultsBody data={pollResults} />
-					</Table>
+									<StyledP css={{ color: theme.oncoGrey2 }}>
+										No se encontraron registros
+									</StyledP>
+								</StyledBox>}
+						</Table>
+						<StyledBox
+							css={{
+								display: 'flex',
+								flexDirection: 'row',
+								height: '50px',
+								minHeight: '50px',
+								paddingTop: 0,
+								alignItems: 'center',
+								justifyContent: 'center',
+								padding: "10px 25px",
+								backgroundColor: '#fff',
+								borderBottom: '1px solid',
+								borderBottomColor: theme.itemBackground,
+								borderRadius: '0px 0px 20px 20px'
+
+							}}
+						>
+							{/* {data?.patients?.length > 9 && ( */}
+							<StyledButtonMore onClick={() => console.log('asd')}>
+								Ver más
+							</StyledButtonMore>
+							{/* )} */}
+						</StyledBox>
+					</StyledBox>
 				</StyledBox>
 			</StyledBox>
 			<StyledBox
@@ -205,7 +284,7 @@ const ProfileScreen = () => {
 				<WeeklySchedule dayList={calendar} />
 				<TreatmentSection />
 			</StyledBox>
-		</StyledScreen>
+		</StyledScreen >
 	);
 };
 

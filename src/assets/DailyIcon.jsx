@@ -26,7 +26,7 @@ const DailyIcon = () => {
 				rx="1.125"
 				fill="#EA8053"
 				stroke="#F9E0D6"
-				stroke-width="0.25"
+				strokeWidth="0.25"
 			/>
 			<rect
 				x="21.875"
@@ -36,7 +36,7 @@ const DailyIcon = () => {
 				rx="1.125"
 				fill="#EA8053"
 				stroke="#F9E0D6"
-				stroke-width="0.25"
+				strokeWidth="0.25"
 			/>
 			<rect
 				x="17.875"
@@ -46,7 +46,7 @@ const DailyIcon = () => {
 				rx="1.125"
 				fill="#EA8053"
 				stroke="#F9E0D6"
-				stroke-width="0.25"
+				strokeWidth="0.25"
 			/>
 			<rect
 				x="13.875"
@@ -56,7 +56,7 @@ const DailyIcon = () => {
 				rx="1.125"
 				fill="#EA8053"
 				stroke="#F9E0D6"
-				stroke-width="0.25"
+				strokeWidth="0.25"
 			/>
 			<path
 				d="M16 15.5555C16 15.2487 16.2487 15 16.5555 15H16.968C17.5026 15 17.936 15.4334 17.936 15.968V21.6715C17.936 21.9904 17.6774 22.249 17.3585 22.249C17.0396 22.249 16.781 21.9904 16.781 21.6715V16.5015C16.781 16.2858 16.6062 16.111 16.3905 16.111C16.1748 16.111 16 15.9362 16 15.7205V15.5555Z"

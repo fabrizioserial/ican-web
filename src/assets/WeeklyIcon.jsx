@@ -43,7 +43,7 @@ const WeeklyIcon = () => {
 				rx="1.125"
 				fill="#9357F7"
 				stroke="#EAE0FF"
-				stroke-width="0.25"
+				strokeWidth="0.25"
 			/>
 			<rect
 				x="21.875"
@@ -53,7 +53,7 @@ const WeeklyIcon = () => {
 				rx="1.125"
 				fill="#9357F7"
 				stroke="#EAE0FF"
-				stroke-width="0.25"
+				strokeWidth="0.25"
 			/>
 			<rect
 				x="17.875"
@@ -63,7 +63,7 @@ const WeeklyIcon = () => {
 				rx="1.125"
 				fill="#9357F7"
 				stroke="#EAE0FF"
-				stroke-width="0.25"
+				strokeWidth="0.25"
 			/>
 			<rect
 				x="13.875"
@@ -73,7 +73,7 @@ const WeeklyIcon = () => {
 				rx="1.125"
 				fill="#9357F7"
 				stroke="#EAE0FF"
-				stroke-width="0.25"
+				strokeWidth="0.25"
 			/>
 		</svg>
 	);

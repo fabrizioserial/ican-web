@@ -21,7 +21,7 @@ const DailyModalIcon = () => {
 				rx="1.125"
 				fill="#EA8053"
 				stroke="#F9E0D6"
-				stroke-width="0.25"
+				strokeWidth="0.25"
 			/>
 			<rect
 				x="30.875"
@@ -31,7 +31,7 @@ const DailyModalIcon = () => {
 				rx="1.125"
 				fill="#EA8053"
 				stroke="#F9E0D6"
-				stroke-width="0.25"
+				strokeWidth="0.25"
 			/>
 			<rect
 				x="24.875"
@@ -41,7 +41,7 @@ const DailyModalIcon = () => {
 				rx="1.125"
 				fill="#EA8053"
 				stroke="#F9E0D6"
-				stroke-width="0.25"
+				strokeWidth="0.25"
 			/>
 			<rect
 				x="18.875"
@@ -51,7 +51,7 @@ const DailyModalIcon = () => {
 				rx="1.125"
 				fill="#EA8053"
 				stroke="#F9E0D6"
-				stroke-width="0.25"
+				strokeWidth="0.25"
 			/>
 			<path
 				d="M22 23.7663C22 23.3431 22.3431 23 22.7663 23H23.5C24.3284 23 25 23.6716 25 24.5V32.1051C25 32.5993 24.5993 33 24.1051 33C23.6109 33 23.2102 32.5993 23.2102 32.1051V25.1377C23.2102 24.8035 22.9393 24.5326 22.6051 24.5326C22.2709 24.5326 22 24.2617 22 23.9275V23.7663Z"

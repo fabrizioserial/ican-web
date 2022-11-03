@@ -12,9 +12,9 @@ import { visuallyHidden } from '@mui/utils';
 import React from 'react';
 import styled from 'styled-components';
 
-const PollResultsHeader = ({ bgColor = '#f6f2ff', children }) => {
+const PollResultsHeader = () => {
 	const StyledTableHeader = styled(TableRow)`
-		background-color: ${bgColor};
+		background-color: #f6f2ff;
 		.MuiTableCell-root {
 			&:first-child {
 				border-radius: 15px 0 0 0;
@@ -29,52 +29,45 @@ const PollResultsHeader = ({ bgColor = '#f6f2ff', children }) => {
 	return (
 		<TableHead>
 			<StyledTableHeader>
-				{children ?
-					<StyledBox as={TableCell} >
-						{children}
-					</StyledBox>
-					:
-					<>
-						<StyledBox as={TableCell} />
-						<StyledBox as={TableCell}>
-							<StyledP
-								css={{
-									width: '108px',
-									height: '13px',
-									fontStyle: 'normal',
-									fontWeight: 500,
-									fontSize: '11px',
-									lineHeight: '13px',
-									display: 'flex',
-									alignItems: 'center',
-									color: '#9357F7',
-								}}
-							>
-								{' '}
-								Fecha de realización
-							</StyledP>
-						</StyledBox>
-						<StyledBox as={TableCell}>
-							<StyledP
-								css={{
-									width: '37px',
-									height: '13px',
-									left: '1352px',
-									top: '166px',
-									fontStyle: 'normal',
-									fontWeight: '500',
-									fontSize: '11px',
-									lineHeight: '13px',
-									display: 'flex',
-									alignItems: 'center',
-									paddingLeft: '40px',
-									color: '#9357F7',
-								}}
-							>
-								Estado
-							</StyledP>
-						</StyledBox>
-					</>}
+				<StyledBox as={TableCell} />
+				<StyledBox as={TableCell}>
+					<StyledP
+						css={{
+							width: '108px',
+							height: '13px',
+							fontStyle: 'normal',
+							fontWeight: 500,
+							fontSize: '11px',
+							lineHeight: '13px',
+							display: 'flex',
+							alignItems: 'center',
+							color: '#9357F7',
+						}}
+					>
+						{' '}
+						Fecha de realización
+					</StyledP>
+				</StyledBox>
+				<StyledBox as={TableCell}>
+					<StyledP
+						css={{
+							width: '37px',
+							height: '13px',
+							left: '1352px',
+							top: '166px',
+							fontStyle: 'normal',
+							fontWeight: '500',
+							fontSize: '11px',
+							lineHeight: '13px',
+							display: 'flex',
+							alignItems: 'center',
+							paddingLeft: '40px',
+							color: '#9357F7',
+						}}
+					>
+						Estado
+					</StyledP>
+				</StyledBox>
 			</StyledTableHeader>
 		</TableHead>
 	);
