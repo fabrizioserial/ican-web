@@ -1,22 +1,25 @@
 import React, { useMemo } from 'react';
-import { TNMOptions } from '../../../../utils/utils';
+import { useLazyGetCancerTypeQuery } from '../../../../redux/api/validateFormApi';
+// import { TNMOptions } from '../../../../utils/utils';
 import SelectorInputField from '../SelectorInputField';
 
 const ConditionalSelectInputField = ({ properties, values, onChange }) => {
-	const { varToEvaluate, type, name, label } = properties;
-	const currentOption = useMemo(
-		() => TNMOptions[values[varToEvaluate]] ?? TNMOptions.default,
-		[values[varToEvaluate]],
-	);
+	const { varToEvaluate, type, name, label, options } = properties;
+	// const { varToEvaluate, type, name, label } = properties;
+	// const currentOption = useMemo(
+	// 	() => TNMOptions[values[varToEvaluate]] ?? TNMOptions.default,
+	// 	[values[varToEvaluate]],
+	// );
 
 	return (
 		<SelectorInputField
-			type={type}
+			// type={type}
 			value={values[name]}
 			label={label}
 			name={name}
 			onChange={onChange}
-			options={currentOption[name]}
+			options={options[name] ?? {}}
+			// options={TNMOptions[name] ?? {}}
 		/>
 	);
 };

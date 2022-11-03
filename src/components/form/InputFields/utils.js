@@ -10,7 +10,7 @@ import PlusCircelIcon from '../../../assets/PlusCircleIcon';
 import ActionInputField from './ActionInputField';
 import MedicationField from './MedicationField';
 import BiomarkerField from './BiomarkersField';
-import RelapsesField from './RelapsesField';
+import SetBacksField from './SetBacksField';
 
 export const FormBuilder = (formSqueleton, values, onChangeHandle) => {
 	return formSqueleton?.map((section, index) => (
@@ -90,26 +90,23 @@ const InputTypeBuilder = (
 					onChange={onChangeHandle}
 				/>
 			);
-		case InputTypeEnum.RELAPSES_ROW:
+		case InputTypeEnum.SETBACK_ROW:
 			return (
-				<RelapsesField
+				<SetBacksField
 					key={index}
 					id={properties.id}
 					type={properties.type}
 					values={{
-						relapseDate: values[`${properties.names[0]}${properties.id}`],
-						diagnosticDate:
+						setBackDate: values[`${properties.names[0]}${properties.id}`],
+						setBackPlace:
 							values[`${properties.names[1]}${properties.id}`],
-						metastasisSite:
+						diagnosisDate:
 							values[`${properties.names[2]}${properties.id}`],
-						treatmentRelapse:
-							values[`${properties.names[3]}${properties.id}`],
 					}}
 					names={{
-						relapseDate: `${properties.names[0]}${properties.id}`,
-						diagnosticDate: `${properties.names[1]}${properties.id}`,
-						metastasisSite: `${properties.names[2]}${properties.id}`,
-						treatmentRelapse: `${properties.names[3]}${properties.id}`,
+						setBackDate: `${properties.names[0]}${properties.id}`,
+						setBackPlace: `${properties.names[1]}${properties.id}`,
+						diagnosisDate: `${properties.names[2]}${properties.id}`,
 					}}
 					onChange={onChangeHandle}
 				/>
@@ -135,6 +132,7 @@ const InputTypeBuilder = (
 			return (
 				<TextInputField
 					key={index}
+					disabled={properties.disabled}
 					type={properties.type}
 					placeholder={properties.placeholder}
 					value={values[properties.name]}
@@ -147,6 +145,7 @@ const InputTypeBuilder = (
 			return (
 				<SelectorInputField
 					key={index}
+					disabled={properties.disabled}
 					type={properties.type}
 					value={values[properties.name]}
 					label={properties.label}
@@ -158,6 +157,7 @@ const InputTypeBuilder = (
 		case InputTypeEnum.DATEFIELD:
 			return (
 				<DateInputField
+					disabled={properties.disabled}
 					key={index}
 					type={properties.type}
 					placeholder={properties.placeholder}
