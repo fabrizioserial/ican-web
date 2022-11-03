@@ -24,7 +24,6 @@ const App = () => {
 				<Route element={<ProtectedRoute accessToken={accessToken} />}>
 					<Route element={<Wrapper />}>
 						<Route path="/home" exact element={<HomeScreen />} />
-						<Route path="/statistics" element={<StatisticsScreen />} />
 						<Route path="/my-patients" element={<PatientListScreen />} />
 						<Route
 							path="/poll-results/:patientId"
@@ -42,21 +41,6 @@ const App = () => {
 								>
 									{' '}
 									Settings
-								</StyledBox>
-							}
-						/>
-						<Route
-							path="/notifications"
-							element={
-								<StyledBox
-									css={{
-										textAlign: 'center',
-										fontSize: '23px',
-										padding: '100px',
-									}}
-								>
-									{' '}
-									Notifications
 								</StyledBox>
 							}
 						/>
