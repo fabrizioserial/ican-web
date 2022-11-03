@@ -26,7 +26,9 @@ export const homeSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder
-			.addCase(authSlice.actions.logout, (state) => { state = initialState; })
+			.addCase(authSlice.actions.logout, (state) => {
+				state = initialState;
+			})
 			.addMatcher(
 				sessionApi.endpoints.login.matchFulfilled,
 				(state, { payload }) => {

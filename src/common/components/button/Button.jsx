@@ -5,14 +5,16 @@ import { useTheme } from 'styled-components';
 
 const Button = ({ onClick, css, text, pending = false, icon }) => {
 	const theme = useTheme();
-	
+
 	return (
 		<StyledButton
 			onClick={onClick}
-			css={ css || {
-				display: 'flex',
-				justifyContent: 'center'
-			}}
+			css={
+				css || {
+					display: 'flex',
+					justifyContent: 'center',
+				}
+			}
 		>
 			{pending ? (
 				<CircularProgress color={theme.white} size="0.95rem" />

@@ -6,7 +6,7 @@ import { NavbarConfig, NavbarConfigBottom } from '../../utils/utils';
 import { useTheme } from 'styled-components';
 import BellIcon from '../../assets/BellIcon';
 import { useDispatch } from 'react-redux';
-import { logout } from "../../redux/slices/authSlice"
+import { logout } from '../../redux/slices/authSlice';
 
 const Navbar = () => {
 	let location = useLocation();
@@ -15,7 +15,6 @@ const Navbar = () => {
 
 	const theme = useTheme();
 	const dispatch = useDispatch();
-
 
 	return (
 		<StyledBox
@@ -60,7 +59,7 @@ const Navbar = () => {
 						pathName={item.path}
 						title={item.name}
 						state={location.pathname === item.path}
-						onClick={ () => item.path === "/login" && dispatch(logout()) }
+						onClick={() => item.path === '/login' && dispatch(logout())}
 					/>
 				))}
 			</StyledBox>
