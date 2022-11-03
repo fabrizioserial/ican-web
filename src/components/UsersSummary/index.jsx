@@ -103,7 +103,7 @@ const UsersSummary = () => {
 						to={'/'} // TODO: Change url
 					>
 						<StyledP css={{ textAlign: 'center', color: 'white' }}>
-							Ver mas
+							Ver más
 						</StyledP>
 					</StyledBox>
 				</StyledBox>
@@ -169,7 +169,7 @@ const UsersSummary = () => {
 						to={'/'} // TODO: Change url
 					>
 						<StyledP css={{ textAlign: 'center', color: 'white' }}>
-							Ver mas
+							Ver más
 						</StyledP>
 					</StyledBox>
 				</StyledBox>

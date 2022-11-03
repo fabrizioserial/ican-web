@@ -21,7 +21,6 @@ const DailyBody = () => {
 	const { data } = useGetDailyReportQuery(reportId);
 
 	const answersTranslation = {
-		apetito: ['Menos de lo normal', 'Normal', 'Mas de lo normal'],
 		hidratación: ['Menos de 1lt', 'Entre 1lt y 2lts', 'Más de 2 lts'],
 		'actividad física': [
 			'No hice actividad física',
@@ -39,7 +38,7 @@ const DailyBody = () => {
 
 	const [daily, setDaily] = useState([
 		{
-			category: 'Animo',
+			category: 'Ánimo',
 			questionType: 'ánimo',
 			icon: <MoodIcon />,
 		},
@@ -59,7 +58,7 @@ const DailyBody = () => {
 			icon: <HidrationIcon />,
 		},
 		{
-			category: 'Actividad Fisica',
+			category: 'Actividad Física',
 			questionType: 'actividad física',
 			icon: <SocialActivityIcon />,
 		},
@@ -77,13 +76,10 @@ const DailyBody = () => {
 			case 'dolor':
 				return `${value} de 10`;
 			case 'apetito':
-				return answersTranslation.apetito[value];
 			case 'hidratación':
-				return answersTranslation.hidratación[value];
 			case 'actividad física':
-				return answersTranslation['actividad física'][value];
 			case 'actividad social':
-				return answersTranslation['actividad social'][value];
+				return value;
 		}
 	};
 

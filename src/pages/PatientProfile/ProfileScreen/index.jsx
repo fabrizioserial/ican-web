@@ -1,22 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import {
 	StyledBox,
+	StyledH3,
+	StyledP,
 	StyledScreen,
 } from '../../../common/styledCommonComponents';
 import HungerAndThirstChart from '../../../components/HungerAndThirstChart';
 import SocialAndPhysicalActivitiesChart from '../../../components/SocialAndPhysicalActivitiesChart';
 import PatientProfileCard from '../../../components/PatientProfileCard';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
+import { Table, TableContainer } from '@material-ui/core';
 import {
+	useGetPollResultsQuery,
 	useLazyGetAppetiteHydrationQuery,
 	useLazyGetCalendarQuery,
-	useLazyGetPatientDataQuery,
 	useLazyGetSocialPhysicalQuery,
 } from '../../../redux/api/patientApi';
 import WeeklySchedule from '../components/WeeklySchedule';
 import TreatmentSection from '../components/TreatmentSection';
+import PollResultsBody from '../../PollResultsTable/PollResultsBody';
+import IconHeartFile from '../../../assets/IconHeartFile';
+import { useTheme } from 'styled-components';
+import { StyledButtonMore } from '../../../components/PatientsList/PatientContainer/styles';
+import ReportComponent from '../components/ReportComponent';
 
 const ProfileScreen = () => {
+	const theme = useTheme();
 	const { patientId } = useParams();
 	const [
 		refetchAppetiteHydration,
@@ -148,6 +157,7 @@ const ProfileScreen = () => {
 					<HungerAndThirstChart data={appetiteHydration} />
 					<SocialAndPhysicalActivitiesChart data={socialPhysical} />
 				</StyledBox>
+				<ReportComponent />
 			</StyledBox>
 			<StyledBox
 				css={{
