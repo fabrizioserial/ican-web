@@ -24,6 +24,8 @@ export const utilsSlice = createSlice({
 			state.reportId = action.payload;
 		},
 	},
+	extraReducers: (builder) => builder
+		.addCase(authSlice.actions.logout, (state) => { state = initialState; })
 });
 
 export const { setModalOpen, closeModal, setReportId } = utilsSlice.actions;

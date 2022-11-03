@@ -33,6 +33,7 @@ export const listSlice = createSlice({
 	},
 	extraReducers: (builder) => {
 		builder
+			.addCase(authSlice.actions.logout, (state) => { state = initialState; })
 			.addMatcher(
 				listApi.endpoints.filterPatient.matchFulfilled,
 				(state, action) => {

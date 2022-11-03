@@ -527,8 +527,10 @@ export const formSlice = createSlice({
 				...state.values,
 				[action.payload.name]: action.payload.value,
 			};
-		},
+		}
 	},
+	extraReducers: (builder) => builder
+		.addCase(authSlice.actions.logout, (state) => { state = initialState; })
 });
 
 export const {

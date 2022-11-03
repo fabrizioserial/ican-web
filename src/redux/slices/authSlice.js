@@ -19,6 +19,7 @@ export const authSlice = createSlice({
 			state.ui.loginPending = false;
 			state.ui.errorMessage = payload.errorMessage;
 		},
+		logout: (state) => { state = initialState; }
 	},
 	extraReducers: (builder) => {
 		builder.addMatcher(
@@ -32,5 +33,5 @@ export const authSlice = createSlice({
 	},
 });
 
-export const { setLoginPending, setLoginError } = authSlice.actions;
+export const { setLoginPending, setLoginError, logout } = authSlice.actions;
 export default authSlice.reducer;

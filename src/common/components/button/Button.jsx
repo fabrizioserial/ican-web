@@ -5,6 +5,7 @@ import { useTheme } from 'styled-components';
 
 const Button = ({ onClick, text, pending = false, className, icon }) => {
 	const theme = useTheme();
+	
 	return (
 		<StyledButton
 			className={className}

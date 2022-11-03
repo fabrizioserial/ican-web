@@ -3,7 +3,7 @@ import { Outlet, Route, Routes } from 'react-router';
 import { ProtectedRoute } from './pages/routes/ProtectedRoute';
 import HomeScreen from './pages/Home/HomeScreen';
 import LoginScreen from './pages/Login/LoginScreen';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Navigate } from 'react-router-dom';
 import { StyledBox } from './common/styledCommonComponents';
 
@@ -14,9 +14,12 @@ import PatientListScreen from './pages/PatientList/PatientListScreen';
 import { withModal } from './components/HOC/withModal';
 import PollResultsScreen from './pages/PollResultsTable';
 import StatisticsScreen from './pages/Statistics/StatisticsScreen';
+import Button from './common/components/button/Button';
+import { logout } from './redux/slices/authSlice';
 
 const App = () => {
 	const accessToken = useSelector((state) => state.authSlice.accessToken);
+	const dispatch = useDispatch();
 
 	return (
 		<BrowserRouter>
@@ -42,6 +45,7 @@ const App = () => {
 								>
 									{' '}
 									Settings
+									<Button onClick={() => dispatch(logout())} text="Cerrar sesión" />
 								</StyledBox>
 							}
 						/>
