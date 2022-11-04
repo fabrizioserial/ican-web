@@ -18,29 +18,25 @@ const PatientContainer = ({ name, surename, cancerType, css, patientId }) => {
 			css={css}
 			onClick={() => navigate(`/profile/${patientId}`)}
 		>
-			{getProfileImageFromName(name, surename, { width: 38, height: 38 })}
 			<StyledBox
 				css={{
-					backgroundColor: '#fff',
-					position: 'relative',
+					backgroundColor: theme.oncoGrey2,
+					position: 'absolute',
 					borderRadius: 15,
-					padding: 2,
+					padding: 3,
 					display: "flex",
-					alignSelf: 'flex-end',
-					right: 8,
-					border: '1px solid',
-					borderColor: theme.OncoPurple,
-					outline: '2px solid #fff'
+					alignSelf: 'flex-start',
 				}}
 			>
-				<PurplePinIcon width={10} height={10} />
+				<PurplePinIcon width={10} height={10} color={'#fff'}/>
 			</StyledBox>
+			{getProfileImageFromName(name, surename, { width: 38, height: 38 })}
 			<StyledBox
 				css={{
 					display: 'flex',
 					flexDirection: 'column',
 					justifyContent: 'space-around',
-					// marginLeft: '12px',
+					marginLeft: '12px',
 				}}
 			>
 				<StyledP

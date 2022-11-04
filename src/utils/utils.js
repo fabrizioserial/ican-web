@@ -348,7 +348,7 @@ export const ProfileConfigButton = [
 		type: ProfileConfigButtonType.PIN,
 		textColor: '#9357F7',
 		border: '1px solid #9357F7',
-	},	
+	},
 ];
 
 // Tables
@@ -722,6 +722,7 @@ export const getProfileImageFromName = (name, surname, size) => {
 	return (
 		<StyledBox
 			css={{
+				margin: 2,
 				width: size.width,
 				height: size.height,
 				borderRadius: '50px',
