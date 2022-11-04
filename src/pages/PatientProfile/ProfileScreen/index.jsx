@@ -101,7 +101,6 @@ const ProfileScreen = () => {
 		}
 	};
 	const dayState = (status) => {
-		console.log(status);
 		switch (status) {
 			case 'daily':
 				return {

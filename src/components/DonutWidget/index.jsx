@@ -21,6 +21,9 @@ const DonutWidget = () => {
 			icon={
 				<TreatmentIcon color={theme.OncoPurple} width={23} height={19.55} />
 			}
+			css={{
+				overflow: 'hidden',
+			}}
 			title={'Porcentaje de pacientes con tumores'}
 			width={'405px'}
 			height={'300px'}

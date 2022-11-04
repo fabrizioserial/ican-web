@@ -1,21 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
 import { useTheme } from 'styled-components';
 import PurplePinIcon from '../../../../assets/PurplePinIcon';
 import { StyledBox, StyledP } from '../../../../common/styledCommonComponents';
-import { useUpdateFixedPatientMutation } from '../../../../redux/api/patientApi';
+import {
+	useLazyGetPatientDataQuery,
+	useUpdateFixedPatientMutation,
+} from '../../../../redux/api/patientApi';
 import { StyledCircularProgress } from '../../../CustomCircularProgress/styles';
 
 const PinButton = ({ fixed = false, color, textColor, border, isLoading }) => {
 	const theme = useTheme();
 	const { patientId } = useParams();
 
-	const [fetch, { data }] = useUpdateFixedPatientMutation();
+	const [refetchPatientData, { data: dataPatient }] =
+		useLazyGetPatientDataQuery();
+
+	const [fetch, { data, isSuccess }] = useUpdateFixedPatientMutation();
 
 	const handleClick = () => {
 		console.log('click');
 		fetch({ userId: patientId, fixed: !fixed });
 	};
+
+	useEffect(() => {
+		refetchPatientData(patientId);
+	}, [isSuccess]);
 
 	return (
 		<StyledBox
