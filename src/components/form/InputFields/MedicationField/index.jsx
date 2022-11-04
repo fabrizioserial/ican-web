@@ -6,6 +6,7 @@ import { StyledBox } from '../../../../common/styledCommonComponents';
 import { useGetCancerMedicationQuery } from '../../../../redux/api/validateFormApi';
 import { removeTreatmentMedication } from '../../../../redux/slices/formSlice';
 import SelectorInputField from '../SelectorInputField';
+import { useLazyGetPatientDataFormQuery } from '../../../../redux/api/patientApi';
 
 const optionsMed = {
 	Aspirina: 'Aspirina',
@@ -34,6 +35,8 @@ const MedicationField = ({ id, names, values, onChange, type }) => {
 	const [optionsMed, setOptionsMed] = useState([]);
 	const [optionsGram, setOptionsGram] = useState([]);
 
+	const [_, { data }] = useLazyGetPatientDataFormQuery();
+
 	useEffect(() => {
 		if (isSuccessCancerMed) {
 			let auxOptMed = [];
@@ -51,7 +54,8 @@ const MedicationField = ({ id, names, values, onChange, type }) => {
 						...auxOptGram,
 						[med.id]: {
 							...auxOptGram[med.id],
-							[gram.grammage.id]: gram.grammage.grammage,
+							[gram.grammage
+								.id]: `${gram.grammage.grammage}${gram.grammage.unit}`,
 						},
 					};
 				}),
@@ -60,7 +64,7 @@ const MedicationField = ({ id, names, values, onChange, type }) => {
 			setOptionsMed(auxOptMed);
 			setOptionsGram(auxOptGram);
 		}
-	}, [dataCancerMed, isSuccessCancerMed]);
+	}, [dataCancerMed, isSuccessCancerMed, data]);
 
 	const handleChangeMed = () => {};
 
@@ -72,7 +76,7 @@ const MedicationField = ({ id, names, values, onChange, type }) => {
 	const handleDelete = (id) => {
 		dispatch(removeTreatmentMedication(id));
 	};
-
+	console.log(names.medication, values.medication);
 	return (
 		<StyledBox
 			css={{

@@ -7,6 +7,7 @@ import { useTheme } from 'styled-components';
 import BellIcon from '../../assets/BellIcon';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/slices/authSlice';
+import LogoIcon from '../../assets/LogoIcon';
 
 const Navbar = () => {
 	let location = useLocation();
@@ -25,7 +26,8 @@ const Navbar = () => {
 				overflowX: 'hidden',
 				minHeight: '100vh',
 				maxHeight: '100vh',
-				paddingTop: '125px',
+				paddingTop: '10x',
+				paddingBottom: '15px',
 				borderRight: '1px solid rgba(223, 223, 223, 0.5)',
 				boxShadow: '0 2px 24px rgba(214, 203, 252, 0.3)',
 				left: '0px',
@@ -38,6 +40,17 @@ const Navbar = () => {
 			}}
 		>
 			<StyledBox>
+				<StyledBox
+					css={{
+						width: '100%',
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						margin: '20px 0 110px 0',
+					}}
+				>
+					<LogoIcon />
+				</StyledBox>
 				{navbarList.map((item, index) => (
 					<NavItem
 						key={index}

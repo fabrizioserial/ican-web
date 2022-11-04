@@ -48,6 +48,11 @@ export const StyledButton = styled.button`
 			padding-left: 1rem;
 			padding-right: 1rem;
 		}
+		&.disabled {
+			background-color: ${(props) => props.theme.oncoGrey2};
+			color: ${(props) => props.theme.white};
+			cursor: not-allowed;
+		}
 	}
 
 	&.action {

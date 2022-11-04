@@ -501,73 +501,167 @@ export const formSlice = createSlice({
 			.addMatcher(
 				patientApi.endpoints.getPatientDataForm.matchFulfilled,
 				(state, action) => {
+					const accepted = action.payload.status === 'Accepted';
+					const hasTreatment =
+						action.payload?.medications?.length > 0 ?? false;
 					state.values = {
 						...state.values,
 						...action.payload,
 						perioperatory: action.payload.perioperativeTreatment,
 						organ: action.payload.organId,
-						cancerSubType: action.payload.cancerSubTypeId,
+						cancerSubType: action.payload.cancerSutypeId,
 						cancerType: action.payload.cancerTypeId,
 					};
+					state.hospital.fields = state.hospital.fields.map((row) =>
+						row.map((column) => {
+							if (
+								column.name === 'cancerType' &&
+								action.payload.cancerTypeId &&
+								action.payload.cancerType
+							) {
+								let auxObj = { no_value: 'Seleccionar Tipo' };
+								auxObj[action.payload.cancerTypeId] = CapitalizeText(
+									action.payload.cancerType,
+								);
+								return {
+									...column,
+									options: auxObj,
+								};
+							} else if (
+								column.name === 'cancerSubType' &&
+								action.payload.cancerSutypeId &&
+								action.payload.cancerSubtype
+							) {
+								let auxObj = { no_value: 'Seleccionar Tipo' };
+								auxObj[action.payload.cancerSutypeId] = CapitalizeText(
+									action.payload.cancerSubtype,
+								);
+								return {
+									...column,
+									options: auxObj,
+								};
+							} else {
+								return column;
+							}
+						}),
+					);
 					if (action.payload?.treatmentObjective) {
-						state.treatment.fields = [
-							[
-								{
-									id: 1,
-									input_type: InputTypeEnum.MEDICATION_ROW,
-									names: ['medication', 'grammage'],
-								},
-							],
-							[
-								{
-									label: 'Añadir Medicación',
-									type: 'text',
-									input_type: InputTypeEnum.ADD_SECTION,
-									icon: <PlusCircleIcon />,
-									handleClick: () => actionTypeEnum.ADD_MEDICATION,
-								},
-							],
-							[
-								{
-									label: 'Fecha de Comienzo',
-									placeholder: 'XX/XX/XX',
-									input_type: InputTypeEnum.DATEFIELD,
-									name: 'treatmentStartDate',
-								},
-								{
-									label: 'Fecha de Finalización',
-									placeholder: 'XX/XX/XX',
-									input_type: InputTypeEnum.DATEFIELD,
-									name: 'estimateFinishDate',
-								},
-							],
-							[
-								{
-									label: 'Intension del medicamente',
-									// placeholder: 'El objetivo de este tratamiento es reducir los sintomas de caracter cutaneo presentes en el paciente..',
-									type: 'text',
-									input_type: InputTypeEnum.SELECTOR,
-									options: {
-										Adjuvant: 'Adyuvante',
-										Concurrent: 'Concurrante',
-										Neoadjuvant: 'Neoadyuvante',
-										Palliative: 'Paliativa',
-									},
-									name: 'intention',
-								},
-							],
-							[
-								{
-									label: 'Objetivo',
-									// placeholder: 'El objetivo de este tratamiento es reducir los sintomas de caracter cutaneo presentes en el paciente..',
-									type: 'text',
-									input_type: InputTypeEnum.TEXTFIELD,
-									name: 'treatmentObjective',
-								},
-							],
-						];
+						state.treatment.fields = hasTreatment
+							? [
+									[
+										{
+											id: 1,
+											input_type: InputTypeEnum.MEDICATION_ROW,
+											names: ['medication', 'grammage'],
+										},
+									],
+									[
+										{
+											label: 'Fecha de Comienzo',
+											placeholder: 'XX/XX/XX',
+											input_type: InputTypeEnum.DATEFIELD,
+											name: 'treatmentStartDate',
+										},
+										{
+											label: 'Fecha de Finalización',
+											placeholder: 'XX/XX/XX',
+											input_type: InputTypeEnum.DATEFIELD,
+											name: 'estimateFinishDate',
+										},
+									],
+									[
+										{
+											label: 'Intension del medicamente',
+											// placeholder: 'El objetivo de este tratamiento es reducir los sintomas de caracter cutaneo presentes en el paciente..',
+											type: 'text',
+											input_type: InputTypeEnum.SELECTOR,
+											options: {
+												Adjuvant: 'Adyuvante',
+												Concurrent: 'Concurrante',
+												Neoadjuvant: 'Neoadyuvante',
+												Palliative: 'Paliativa',
+											},
+											name: 'intention',
+										},
+									],
+									[
+										{
+											label: 'Objetivo',
+											// placeholder: 'El objetivo de este tratamiento es reducir los sintomas de caracter cutaneo presentes en el paciente..',
+											type: 'text',
+											input_type: InputTypeEnum.TEXTFIELD,
+											name: 'treatmentObjective',
+										},
+									],
+							  ]
+							: [
+									[
+										{
+											id: 1,
+											input_type: InputTypeEnum.MEDICATION_ROW,
+											names: ['medication', 'grammage'],
+										},
+									],
+									[
+										{
+											label: 'Añadir Medicación',
+											type: 'text',
+											input_type: InputTypeEnum.ADD_SECTION,
+											icon: <PlusCircleIcon />,
+											handleClick: () =>
+												actionTypeEnum.ADD_MEDICATION,
+										},
+									],
+									[
+										{
+											label: 'Fecha de Comienzo',
+											placeholder: 'XX/XX/XX',
+											input_type: InputTypeEnum.DATEFIELD,
+											name: 'treatmentStartDate',
+										},
+										{
+											label: 'Fecha de Finalización',
+											placeholder: 'XX/XX/XX',
+											input_type: InputTypeEnum.DATEFIELD,
+											name: 'estimateFinishDate',
+										},
+									],
+									[
+										{
+											label: 'Intension del medicamente',
+											// placeholder: 'El objetivo de este tratamiento es reducir los sintomas de caracter cutaneo presentes en el paciente..',
+											type: 'text',
+											input_type: InputTypeEnum.SELECTOR,
+											options: {
+												Adjuvant: 'Adyuvante',
+												Concurrent: 'Concurrante',
+												Neoadjuvant: 'Neoadyuvante',
+												Palliative: 'Paliativa',
+											},
+											name: 'intention',
+										},
+									],
+									[
+										{
+											label: 'Objetivo',
+											// placeholder: 'El objetivo de este tratamiento es reducir los sintomas de caracter cutaneo presentes en el paciente..',
+											type: 'text',
+											input_type: InputTypeEnum.TEXTFIELD,
+											name: 'treatmentObjective',
+										},
+									],
+							  ];
+
+						action.payload.medications.forEach((item, index) => {
+							if (index !== 0) {
+								state.values[`medication${index}`] = item.medicationId;
+								state.values[`grammage${index}`] = item.grammageId;
+							}
+						});
 						state.values = {
 							...state.values,
+							medication1: action.payload.medications[0].medicationId,
+							grammage1: action.payload.medications[0]?.grammageId,
 							treatment: {
 								medicalHistoryId: action.payload.medicalHistoryId,
 								objetive: action.payload.treatmentObjective,

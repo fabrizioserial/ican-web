@@ -15,6 +15,7 @@ import {
 	useUpdateValidatePatientMutation,
 } from '../../redux/api/validateFormApi';
 import { useLazyGetPatientDataFormQuery } from '../../redux/api/patientApi';
+import classNames from 'classnames';
 
 const Validation = () => {
 	// const [sections, setSections] = useState(FormsSqueleton);
@@ -55,7 +56,7 @@ const Validation = () => {
 		{ data: dataCancer, isSuccess: isSuccessCancer },
 	] = useLazyGetCancerQuery();
 	// const { data: dataCancerMed, isSuccess: isSuccessCancerMed } = useGetCancerMedicationQuery()
-
+	console.log(values);
 	useEffect(() => {
 		refetch(patientId);
 		getCancersFetching();
@@ -218,14 +219,18 @@ const Validation = () => {
 						columnGap: '10px',
 					}}
 				>
-					<Button
-						text={'Rechazar'}
-						className="rejected"
-						onClick={() => handleRejected()}
-					/>
+					{values.status !== 'Accepted' && (
+						<Button
+							text={'Rechazar'}
+							className="rejected"
+							onClick={() => handleRejected()}
+						/>
+					)}
 					<Button
 						text={'Guardar cambios'}
-						className="submit"
+						className={classNames('submit', {
+							disabled: values.status === 'Accepted',
+						})}
 						onClick={() => handleSubmit(values)}
 					/>
 				</StyledBox>
