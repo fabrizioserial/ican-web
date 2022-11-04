@@ -28,6 +28,12 @@ export const listApi = api.injectEndpoints({
 				url: '/api/home/patients-table',
 			}),
 		}),
+		getFixedPatients: builder.query({
+			query: () => ({
+				url: '/api/home/fixed-patients',
+				method: 'GET',
+			}),
+		}),
 		patientsListWithParams: builder.query({
 			query: (params) => ({
 				url: '/api/home/patients-table',
@@ -43,6 +49,7 @@ export const listApi = api.injectEndpoints({
 
 export const {
 	useFilterPatientQuery,
+	useGetFixedPatientsQuery,
 	useLazyOrderPatientsQuery,
 	usePatientsListQuery,
 	useLazyPatientsListWithParamsQuery,

@@ -47,6 +47,8 @@ const PatientListBody = () => {
 							' ' +
 							CapitalizeText(bodyItem.surname)}
 					</StyledBodyCell>
+					<StyledBodyCell width={'14%'}>{bodyItem.dni}</StyledBodyCell>
+
 					<StyledBodyCell width={'10%'}>
 						{CapitalizeText(bodyItem.organ)}
 					</StyledBodyCell>
@@ -56,9 +58,7 @@ const PatientListBody = () => {
 					<StyledBodyCell width={'14%'}>
 						{CapitalizeText(bodyItem.tumorTreatment)}
 					</StyledBodyCell>
-					<StyledBodyCell width={'14%'}>
-						{bodyItem.typeOfMedication}
-					</StyledBodyCell>
+
 					<StyledBodyCell width={'5%'} style={{ paddingRight: '30px' }}>
 						{renderStatusPill(bodyItem.status)}
 					</StyledBodyCell>

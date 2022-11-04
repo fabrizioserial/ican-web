@@ -8,11 +8,18 @@ import {
 import PatientContainer from './PatientContainer';
 import { StyledButtonMore } from './PatientContainer/styles';
 import { StyledCircularProgress } from '../CustomCircularProgress/styles';
-import { usePatientsListQuery } from '../../redux/api/listApi';
+import {
+	useGetFixedPatientsQuery,
+	usePatientsListQuery,
+} from '../../redux/api/listApi';
 
 const PatientsList = () => {
 	const theme = useTheme();
 	const { data, isLoading } = usePatientsListQuery({ skip: 0, take: 9 });
+
+	// const { data, isLoading, isSuccess } = useGetFixedPatientsQuery();
+
+	console.log(data);
 
 	return (
 		<StyledCardHome
@@ -30,26 +37,9 @@ const PatientsList = () => {
 				}}
 			>
 				<StyledP css={{ color: theme.OncoBlack, fontWeight: 500 }}>
-					Mis pacientes
+					Mis pacientes fijados
 				</StyledP>
 			</StyledBox>
-			{/* <StyledBox css={{
-                height: "95%",
-                width: "100%",
-                display: "flex",
-                flexDirection: "column",
-                justfyContent: "space-between",
-                rowGap: "10px"
-            }}>
-                {data?.patients?.map((patient, index) => (
-                    <PatientContainer key={index} name={patient.name} surename={patient.surname} cancerType={patient.cancerType} />
-                ))}
-                <StyledButtonMore
-                    onClick={() => console.log("asd")}
-                >
-                    Ver más
-                </StyledButtonMore>
-            </StyledBox> */}
 
 			{isLoading ? (
 				<StyledBox
@@ -81,6 +71,7 @@ const PatientsList = () => {
 					>
 						{data?.patients?.length < 10
 							? data?.patients
+									.filter((user) => user.fixed === true)
 									?.slice(0, 9)
 									.map((patient, index) => (
 										<PatientContainer
@@ -92,6 +83,7 @@ const PatientsList = () => {
 										/>
 									))
 							: data?.patients
+									.filter((user) => user.fixed === true)
 									?.slice(0, 8)
 									.map((patient, index) => (
 										<PatientContainer
