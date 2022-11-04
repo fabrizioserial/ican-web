@@ -36,6 +36,7 @@ export const ModalTypeEnum = {
 export const InputTypeEnum = {
 	BUTTON: 'BUTTON',
 	TEXTFIELD: 'TEXTFIELD',
+	LIST: 'LIST',
 	SELECTOR: 'SELECTOR',
 	DATEFIELD: 'DATEFIELD',
 	ACTIONFIELD: 'ACTIONFIELD',

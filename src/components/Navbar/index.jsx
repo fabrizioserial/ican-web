@@ -2,12 +2,18 @@ import React, { useState } from 'react';
 import { StyledBox } from '../../common/styledCommonComponents';
 import NavItem from './NavItem';
 import { useLocation } from 'react-router';
-import { NavbarConfig, NavbarConfigBottom } from '../../utils/utils';
+import {
+	CapitalizeText,
+	getProfileImageFromName,
+	NavbarConfig,
+	NavbarConfigBottom,
+} from '../../utils/utils';
 import { useTheme } from 'styled-components';
 import BellIcon from '../../assets/BellIcon';
 import { useDispatch } from 'react-redux';
-import { logout } from '../../redux/slices/authSlice';
+import { logout, logoutNew } from '../../redux/slices/authSlice';
 import LogoIcon from '../../assets/LogoIcon';
+import ReactTooltip from 'react-tooltip';
 
 const Navbar = () => {
 	let location = useLocation();
@@ -16,6 +22,10 @@ const Navbar = () => {
 
 	const theme = useTheme();
 	const dispatch = useDispatch();
+
+	const handleLogout = () => {
+		dispatch(logoutNew());
+	};
 
 	return (
 		<StyledBox
@@ -65,6 +75,35 @@ const Navbar = () => {
 			</StyledBox>
 
 			<StyledBox>
+				<StyledBox
+					id={'medic-tooltip-name'}
+					css={{
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+						width: '100%',
+						marginBottom: '20px',
+						cursor: 'default',
+					}}
+					data-tip
+					data-for={'medic-tooltip-name'}
+				>
+					{getProfileImageFromName(
+						CapitalizeText(localStorage.getItem('medicName')),
+						CapitalizeText(localStorage.getItem('medicSurname')),
+						{ width: 32, height: 32, fontSize: '12px' },
+					)}
+					<ReactTooltip
+						id={'medic-tooltip-name'}
+						place="top"
+						effect="solid"
+					>
+						{`${CapitalizeText(
+							localStorage.getItem('medicName'),
+						)} ${CapitalizeText(localStorage.getItem('medicSurname'))}`}
+					</ReactTooltip>
+				</StyledBox>
+
 				{navbarListBottom.map((item, index) => (
 					<NavItem
 						key={index}
@@ -72,7 +111,7 @@ const Navbar = () => {
 						pathName={item.path}
 						title={item.name}
 						state={location.pathname === item.path}
-						onClick={() => item.path === '/login' && dispatch(logout())}
+						onClick={handleLogout}
 					/>
 				))}
 			</StyledBox>

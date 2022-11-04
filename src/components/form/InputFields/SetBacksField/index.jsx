@@ -6,6 +6,7 @@ import { StyledBox } from '../../../../common/styledCommonComponents';
 import { removeSetBacks } from '../../../../redux/slices/formSlice';
 import DateInputField from '../DateInputField';
 import SelectorInputField from '../SelectorInputField';
+import { useTheme } from 'styled-components';
 
 const options = {
 	Local: 'Local',
@@ -13,9 +14,17 @@ const options = {
 	DistanciaYLocal: 'Distancia y Local',
 };
 
-const SetBacksField = ({ id, names, placeholder, values, onChange, type }) => {
+const SetBacksField = ({
+	id,
+	names,
+	placeholder,
+	values,
+	onChange,
+	type,
+	disabled,
+}) => {
 	// pegar directo al endpoint que trae la medicacion y el gramaje
-
+	const theme = useTheme();
 	// crear funciones 1: onchange para gramaje, 2: onChange para medication
 	// argumentos para onChange: names y values
 
@@ -63,6 +72,7 @@ const SetBacksField = ({ id, names, placeholder, values, onChange, type }) => {
 						label={'Fecha de Recaida'}
 						name={names.setBackDate}
 						onChange={onChange}
+						disabled={disabled}
 					/>
 				</StyledBox>
 				<StyledBox
@@ -81,13 +91,24 @@ const SetBacksField = ({ id, names, placeholder, values, onChange, type }) => {
 						label={'Fecha del Diagnostico de la Enferemedad Metatistica'}
 						name={names.diagnosisDate}
 						onChange={onChange}
+						disabled={disabled}
 					/>
-					<StyledBox>
-						<IconButton
-							icon={<TrashIcon />}
-							onClick={() => handleDelete(id)}
-						/>
-					</StyledBox>
+					{!disabled && (
+						<StyledBox
+							css={{
+								backgroundColor: disabled
+									? theme.oncoGrey
+									: 'transparent',
+								pointerEvents: disabled ? 'none' : 'auto',
+								cursor: 'not-allowed',
+							}}
+						>
+							<IconButton
+								icon={<TrashIcon />}
+								onClick={() => handleDelete(id)}
+							/>
+						</StyledBox>
+					)}
 				</StyledBox>
 			</StyledBox>
 			<StyledBox
@@ -114,6 +135,7 @@ const SetBacksField = ({ id, names, placeholder, values, onChange, type }) => {
 						name={names.setBackPlace}
 						onChange={onChange} // onChange medicacion
 						options={options} // recibe del endpoint
+						disabled={disabled}
 					/>
 				</StyledBox>
 			</StyledBox>

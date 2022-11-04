@@ -6,13 +6,15 @@ import { StyledBox } from '../../../../common/styledCommonComponents';
 import { useGetBiomarkersQuery } from '../../../../redux/api/validateFormApi';
 import { removeBiomarker } from '../../../../redux/slices/formSlice';
 import SelectorInputField from '../SelectorInputField';
+import { useTheme } from 'styled-components';
+import { useLazyGetPatientDataFormQuery } from '../../../../redux/api/patientApi';
 
 const optionsEvaluation = {
 	true: 'Positiva',
 	false: 'Negativa',
 };
 
-const BiomarkerField = ({ id, names, values, onChange, type }) => {
+const BiomarkerField = ({ id, names, values, onChange, type, disabled }) => {
 	// pegar directo al endpoint que trae el biomarcardor y la evaluacion
 
 	// crear funciones 1: onchange para evaluacion
@@ -22,6 +24,7 @@ const BiomarkerField = ({ id, names, values, onChange, type }) => {
 
 	const { data: dataBiomarkers, isSuccess: isSuccessBio } =
 		useGetBiomarkersQuery();
+	const theme = useTheme();
 
 	const handleChangeEvaluation = () => {};
 
@@ -30,6 +33,8 @@ const BiomarkerField = ({ id, names, values, onChange, type }) => {
 	const handleDelete = (id) => {
 		dispatch(removeBiomarker(id));
 	};
+
+	const [_, { data }] = useLazyGetPatientDataFormQuery();
 
 	useEffect(() => {
 		if (isSuccessBio) {
@@ -42,6 +47,15 @@ const BiomarkerField = ({ id, names, values, onChange, type }) => {
 			setOptionsbio(auxBio);
 		}
 	}, [dataBiomarkers, isSuccessBio]);
+
+	useEffect(() => {
+		if (data) {
+			let aux = [];
+			data.biomarkers.forEach((a) => (aux[a.id] = a.type));
+			aux[0] = 'Seleccione Biomarcador';
+			setOptionsbio(aux);
+		}
+	}, [data]);
 
 	return (
 		<StyledBox
@@ -64,6 +78,7 @@ const BiomarkerField = ({ id, names, values, onChange, type }) => {
 					name={names.biomarker}
 					onChange={onChange} // onChange gramaje
 					options={optionsBio} // recibe del endpoint
+					disabled={disabled}
 				/>
 			</StyledBox>
 			<StyledBox
@@ -82,13 +97,22 @@ const BiomarkerField = ({ id, names, values, onChange, type }) => {
 					name={names.evaluation}
 					onChange={onChange} // onChange gramaje
 					options={optionsEvaluation} // recibe del endpoint
+					disabled={disabled}
 				/>
-				<StyledBox>
-					<IconButton
-						icon={<TrashIcon />}
-						onClick={() => handleDelete(id)}
-					/>
-				</StyledBox>
+				{!disabled && (
+					<StyledBox
+						css={{
+							backgroundColor: disabled ? theme.oncoGrey : 'transparent',
+							pointerEvents: disabled ? 'none' : 'auto',
+							cursor: 'not-allowed',
+						}}
+					>
+						<IconButton
+							icon={<TrashIcon />}
+							onClick={() => handleDelete(id)}
+						/>
+					</StyledBox>
+				)}
 			</StyledBox>
 		</StyledBox>
 	);

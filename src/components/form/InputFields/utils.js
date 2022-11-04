@@ -11,6 +11,7 @@ import ActionInputField from './ActionInputField';
 import MedicationField from './MedicationField';
 import BiomarkerField from './BiomarkersField';
 import SetBacksField from './SetBacksField';
+import ListField from './ListField';
 
 export const FormBuilder = (formSqueleton, values, onChangeHandle) => {
 	return formSqueleton?.map((section, index) => (
@@ -53,6 +54,18 @@ const InputTypeBuilder = (
 	handleClick,
 ) => {
 	switch (type) {
+		case InputTypeEnum.LIST:
+			return (
+				<ListField
+					key={index}
+					disabled={properties.disabled}
+					type={properties.type}
+					placeholder={properties.placeholder}
+					value={values[properties.name]}
+					label={properties.label}
+					name={properties.name}
+				/>
+			);
 		case InputTypeEnum.BUTTON:
 			return (
 				<Button
@@ -88,6 +101,7 @@ const InputTypeBuilder = (
 						evaluation: `${properties.names[1]}${properties.id}`,
 					}}
 					onChange={onChangeHandle}
+					disabled={properties.disabled}
 				/>
 			);
 		case InputTypeEnum.SETBACK_ROW:
@@ -109,6 +123,7 @@ const InputTypeBuilder = (
 						diagnosisDate: `${properties.names[2]}${properties.id}`,
 					}}
 					onChange={onChangeHandle}
+					disabled={properties.disabled}
 				/>
 			);
 		case InputTypeEnum.MEDICATION_ROW:
@@ -126,6 +141,7 @@ const InputTypeBuilder = (
 						grammage: `${properties.names[1]}${properties.id}`,
 					}}
 					onChange={onChangeHandle}
+					disabled={properties.disabled}
 				/>
 			);
 		case InputTypeEnum.TEXTFIELD:
@@ -157,7 +173,6 @@ const InputTypeBuilder = (
 		case InputTypeEnum.DATEFIELD:
 			return (
 				<DateInputField
-					disabled={properties.disabled}
 					key={index}
 					type={properties.type}
 					placeholder={properties.placeholder}
@@ -165,6 +180,7 @@ const InputTypeBuilder = (
 					label={properties.label}
 					name={properties.name}
 					onChange={onChangeHandle}
+					disabled={properties.disabled}
 				/>
 			);
 		case InputTypeEnum.CONDITIONAL:
@@ -174,6 +190,7 @@ const InputTypeBuilder = (
 					properties={properties}
 					values={values}
 					onChange={onChangeHandle}
+					disabled={properties.disabled}
 				/>
 			);
 		case InputTypeEnum.ACTIONFIELD:

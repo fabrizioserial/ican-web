@@ -7,6 +7,7 @@ import { useGetCancerMedicationQuery } from '../../../../redux/api/validateFormA
 import { removeTreatmentMedication } from '../../../../redux/slices/formSlice';
 import SelectorInputField from '../SelectorInputField';
 import { useLazyGetPatientDataFormQuery } from '../../../../redux/api/patientApi';
+import { useTheme } from 'styled-components';
 
 const optionsMed = {
 	Aspirina: 'Aspirina',
@@ -23,11 +24,13 @@ const optionsGram = {
 	4: '4',
 };
 
-const MedicationField = ({ id, names, values, onChange, type }) => {
+const MedicationField = ({ id, names, values, onChange, type, disabled }) => {
 	// pegar directo al endpoint que trae la medicacion y el gramaje
 
 	// crear funciones 1: onchange para gramaje, 2: onChange para medication
 	// argumentos para onChange: names y values
+
+	const theme = useTheme();
 
 	const { data: dataCancerMed, isSuccess: isSuccessCancerMed } =
 		useGetCancerMedicationQuery();
@@ -55,7 +58,7 @@ const MedicationField = ({ id, names, values, onChange, type }) => {
 						[med.id]: {
 							...auxOptGram[med.id],
 							[gram.grammage
-								.id]: `${gram.grammage.grammage}${gram.grammage.unit}`,
+								.id]: `${gram.grammage.grammage} ${gram.grammage.unit}`,
 						},
 					};
 				}),
@@ -98,6 +101,7 @@ const MedicationField = ({ id, names, values, onChange, type }) => {
 					name={names.medication}
 					onChange={onChange} // onChange medicacion
 					options={optionsMed} // recibe del endpoint
+					disabled={disabled}
 				/>
 			</StyledBox>
 			<StyledBox
@@ -116,9 +120,16 @@ const MedicationField = ({ id, names, values, onChange, type }) => {
 					name={names.grammage}
 					onChange={onChange} // onChange gramaje
 					options={optionsGram[values?.medication] ?? []} // recibe del endpoint
+					disabled={disabled}
 				/>
 				{id !== 1 && (
-					<StyledBox>
+					<StyledBox
+						css={{
+							backgroundColor: disabled ? theme.oncoGrey : 'transparent',
+							pointerEvents: disabled ? 'none' : 'auto',
+							cursor: 'not-allowed',
+						}}
+					>
 						<IconButton
 							icon={<TrashIcon />}
 							onClick={() => handleDelete(id)}

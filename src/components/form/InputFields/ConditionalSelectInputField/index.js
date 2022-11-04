@@ -3,7 +3,12 @@ import { useLazyGetCancerTypeQuery } from '../../../../redux/api/validateFormApi
 // import { TNMOptions } from '../../../../utils/utils';
 import SelectorInputField from '../SelectorInputField';
 
-const ConditionalSelectInputField = ({ properties, values, onChange }) => {
+const ConditionalSelectInputField = ({
+	properties,
+	values,
+	onChange,
+	disabled,
+}) => {
 	const { varToEvaluate, type, name, label, options } = properties;
 	// const { varToEvaluate, type, name, label } = properties;
 	// const currentOption = useMemo(
@@ -19,6 +24,8 @@ const ConditionalSelectInputField = ({ properties, values, onChange }) => {
 			name={name}
 			onChange={onChange}
 			options={options[name] ?? {}}
+			disabled={disabled}
+
 			// options={TNMOptions[name] ?? {}}
 		/>
 	);

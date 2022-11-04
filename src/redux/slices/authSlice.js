@@ -23,6 +23,10 @@ export const authSlice = createSlice({
 			state.accessToken = null;
 			state.ui = initialState.ui;
 		},
+		logoutNew: (state) => {
+			state.accessToken = undefined;
+			localStorage.removeItem('accessToken');
+		},
 	},
 	extraReducers: (builder) => {
 		builder.addMatcher(
@@ -31,10 +35,13 @@ export const authSlice = createSlice({
 				state.ui.loginPending = false;
 				state.accessToken = payload.access_token;
 				localStorage.setItem('accessToken', payload.access_token);
+				localStorage.setItem('medicName', payload.name);
+				localStorage.setItem('medicSurname', payload.surname);
 			},
 		); // Match with the endpoint
 	},
 });
 
-export const { setLoginPending, setLoginError, logout } = authSlice.actions;
+export const { setLoginPending, setLoginError, logout, logoutNew } =
+	authSlice.actions;
 export default authSlice.reducer;

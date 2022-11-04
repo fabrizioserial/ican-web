@@ -85,27 +85,36 @@ const initialState = {
 		fields: [
 			[
 				{
-					label: 'Antecedentes personales',
-					options: {
-						hipertension: 'Hipertensión',
-						diabetes_insulina: 'Diabetes en tratamiento con insulina',
-						diabetes_oral: 'Diabetes en tratamiento con medicación oral',
-						epoc: 'Enfermedad pulmonar obstructiva crónica (EPOC)',
-						asma: 'Asma',
-						infarto: 'Infarto',
-						acv: 'Accidente cerebrovascular (ACV)',
-					},
-					input_type: InputTypeEnum.SELECTOR,
-					name: 'personal_history',
+					label: 'Fumador',
+					values: [],
+					input_type: InputTypeEnum.LIST,
+					name: 'smoker',
+					disabled: true,
 				},
 				{},
+			],
+			[
+				{
+					label: 'Antecedentes personales',
+					values: [],
+					input_type: InputTypeEnum.LIST,
+					name: 'personal_history',
+					disabled: true,
+				},
+				{
+					label: 'Medicamentos ocasionales',
+					values: [],
+					input_type: InputTypeEnum.LIST,
+					name: 'medication_history',
+					disabled: true,
+				},
 			],
 			[
 				{
 					label: 'Fecha de diagnostico',
 					placeholder: 'XX/XX/XX',
 					input_type: InputTypeEnum.DATEFIELD,
-					name: 'diagnostic_date',
+					name: 'diagnosisDate',
 					type: 'text',
 				},
 				{
@@ -231,38 +240,38 @@ const initialState = {
 			],
 		],
 	},
-	state: {
-		title: 'Estado',
-		icon: <StateIcon />,
-		fields: [
-			[
-				{
-					label: 'Números de Lineas de Tratamiento',
-					type: 'number',
-					input_type: InputTypeEnum.TEXTFIELD,
-					name: 'treatmentLine',
-				},
-				{
-					label: 'Progresión de la Enfermedad',
-					options: {
-						yes: 'Si',
-						no: 'No',
-					},
-					input_type: InputTypeEnum.SELECTOR,
-					name: 'progression',
-				},
-			],
-			[
-				{
-					label: 'Fecha de Progresión',
-					placeholder: 'XX/XX/XX',
-					input_type: InputTypeEnum.DATEFIELD,
-					// name: 'load_date',
-					type: 'text',
-				},
-			],
-		],
-	},
+	// state: {
+	// 	title: 'Estado',
+	// 	icon: <StateIcon />,
+	// 	fields: [
+	// 		[
+	// 			{
+	// 				label: 'Números de Lineas de Tratamiento',
+	// 				type: 'number',
+	// 				input_type: InputTypeEnum.TEXTFIELD,
+	// 				name: 'treatmentLine',
+	// 			},
+	// 			{
+	// 				label: 'Progresión de la Enfermedad',
+	// 				options: {
+	// 					yes: 'Si',
+	// 					no: 'No',
+	// 				},
+	// 				input_type: InputTypeEnum.SELECTOR,
+	// 				name: 'progression',
+	// 			},
+	// 		],
+	// 		[
+	// 			{
+	// 				label: 'Fecha de Progresión',
+	// 				placeholder: 'XX/XX/XX',
+	// 				input_type: InputTypeEnum.DATEFIELD,
+	// 				name: 'load_date',
+	// 				type: 'text',
+	// 			},
+	// 		],
+	// 	],
+	// },
 	treatment: {
 		title: 'Tratamiento',
 		icon: <TreatmentIcon width={30} height={25} />,
@@ -509,7 +518,59 @@ export const formSlice = createSlice({
 						organ: action.payload.organId,
 						cancerSubType: action.payload.cancerSutypeId,
 						cancerType: action.payload.cancerTypeId,
+						medication_history: action.payload.otherMedications,
+						personal_history: action.payload.diseases,
+						name: CapitalizeText(action.payload.name),
+						surname: CapitalizeText(action.payload.surname),
+						smoker: [
+							{
+								name: `Tiempo fumado: ${action.payload.timeSmoking} año`,
+							},
+							{
+								name: `Cantidad fumada por dia: ${action.payload.quantitySmoked} cigarrillos por dia`,
+							},
+						],
 					};
+
+					if (!action.payload?.isSmoker) {
+						state.hospital.fields = state.hospital.fields.map((b) =>
+							b.filter((a) => a.name !== 'smoker'),
+						);
+					}
+					if (action.payload.otherMedications.length === 0) {
+						state.hospital.fields = state.hospital.fields.map((b) =>
+							b.filter((a) => a.name !== 'personal_history'),
+						);
+					}
+					if (action.payload.diseases.length === 0) {
+						state.hospital.fields = state.hospital.fields.map((b) =>
+							b.filter((a) => a.name !== 'medication_history'),
+						);
+					}
+					if (accepted) {
+						state.hospital.fields = state.hospital.fields?.map((row) =>
+							row?.map((column) => {
+								if (column?.name) {
+									return {
+										...column,
+										disabled: true,
+									};
+								} else {
+									return { ...column };
+								}
+							}),
+						);
+						// state.state.fields = state.state.fields.map((row) => row?.map((column) => {
+						// 	if(column?.name){
+						// 		return({
+						// 			...column,
+						// 			disabled: true
+						// 		})
+						// 	}else{
+						// 		return {...column}
+						// 	}
+						// }))
+					}
 					state.hospital.fields = state.hospital.fields.map((row) =>
 						row.map((column) => {
 							if (
@@ -551,6 +612,7 @@ export const formSlice = createSlice({
 											id: 1,
 											input_type: InputTypeEnum.MEDICATION_ROW,
 											names: ['medication', 'grammage'],
+											disabled: true,
 										},
 									],
 									[
@@ -559,12 +621,14 @@ export const formSlice = createSlice({
 											placeholder: 'XX/XX/XX',
 											input_type: InputTypeEnum.DATEFIELD,
 											name: 'treatmentStartDate',
+											disabled: true,
 										},
 										{
 											label: 'Fecha de Finalización',
 											placeholder: 'XX/XX/XX',
 											input_type: InputTypeEnum.DATEFIELD,
 											name: 'estimateFinishDate',
+											disabled: true,
 										},
 									],
 									[
@@ -573,6 +637,7 @@ export const formSlice = createSlice({
 											// placeholder: 'El objetivo de este tratamiento es reducir los sintomas de caracter cutaneo presentes en el paciente..',
 											type: 'text',
 											input_type: InputTypeEnum.SELECTOR,
+											disabled: true,
 											options: {
 												Adjuvant: 'Adyuvante',
 												Concurrent: 'Concurrante',
@@ -589,6 +654,7 @@ export const formSlice = createSlice({
 											type: 'text',
 											input_type: InputTypeEnum.TEXTFIELD,
 											name: 'treatmentObjective',
+											disabled: true,
 										},
 									],
 							  ]
@@ -686,52 +752,52 @@ export const formSlice = createSlice({
 							0,
 							state.biomarkers.fields.length - 1,
 						);
-						const fixedRows = state.biomarkers.fields.slice(
-							state.biomarkers.fields.length - 1,
-							state.biomarkers.fields.length,
-						);
 
-						const biomarkersToAdd = {
-							id: biomarkers.length + 1,
-							input_type: InputTypeEnum.BIOMARKER_ROW,
-							names: ['biomarker', 'evaluation'],
-						};
+						const aux = [];
+						action.payload.biomarkers?.forEach((biomarker, index) => {
+							aux.push([
+								{
+									id: index + 1,
+									input_type: InputTypeEnum.BIOMARKER_ROW,
+									names: ['biomarker', 'evaluation'],
+									disabled: true,
+								},
+							]);
 
-						state.biomarkers.fields = [
-							...biomarkers,
-							[biomarkersToAdd],
-							...fixedRows,
-						];
+							state.values = {
+								...state.values,
+								[`biomarker${index + 1}`]:
+									action.payload.biomarkers[index].id,
+								[`evaluation${index + 1}`]:
+									action.payload.biomarkers[index].evaluation,
+							};
+						});
+
+						state.biomarkers.fields = [...aux];
 
 						state.values = {
 							...state.values,
-							[`biomarker1`]: action.payload.biomarkers[0].type,
+							[`biomarker1`]: action.payload.biomarkers[0].id,
 							[`evaluation1`]: action.payload.biomarkers[0].evaluation,
 						};
 
 						// console.log(state.values)
 					}
+
 					if (action.payload.setbacks?.length > 0) {
 						const setbacks = state.setbacks.fields.slice(
 							0,
 							state.setbacks.fields.length - 1,
-						);
-						const fixedRows = state.setbacks.fields.slice(
-							state.setbacks.fields.length - 1,
-							state.setbacks.fields.length,
 						);
 
 						const setbacksToAdd = {
 							id: setbacks.length + 1,
 							input_type: InputTypeEnum.SETBACK_ROW,
 							names: ['setBackDate', 'setBackPlace', 'diagnosisDate'],
+							disabled: true,
 						};
 
-						state.setbacks.fields = [
-							...setbacks,
-							[setbacksToAdd],
-							...fixedRows,
-						];
+						state.setbacks.fields = [...setbacks, [setbacksToAdd]];
 
 						state.values = {
 							...state.values,

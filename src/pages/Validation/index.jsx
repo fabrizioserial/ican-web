@@ -56,7 +56,6 @@ const Validation = () => {
 		{ data: dataCancer, isSuccess: isSuccessCancer },
 	] = useLazyGetCancerQuery();
 	// const { data: dataCancerMed, isSuccess: isSuccessCancerMed } = useGetCancerMedicationQuery()
-	console.log(values);
 	useEffect(() => {
 		refetch(patientId);
 		getCancersFetching();
@@ -104,6 +103,7 @@ const Validation = () => {
 					cancerId: values.cancerSubType,
 					expresionPDL1: values.expresionPDL1,
 					cancerStage: values.cancerStage,
+					diagnosisDate: values.diagnosisDate,
 				};
 				break;
 			}
@@ -201,14 +201,7 @@ const Validation = () => {
 					{values &&
 						!isLoading &&
 						FormBuilder(
-							[
-								patients,
-								hospital,
-								biomarkers,
-								setbacks,
-								state,
-								treatment,
-							],
+							[patients, hospital, biomarkers, setbacks, treatment],
 							values,
 							handleOnChange,
 						)}
