@@ -98,7 +98,7 @@ const ReportComponent = () => {
 						paddingTop: 0,
 						boxSizing: 'border-box',
 						padding: '20px 25px',
-						backgroundColor: '#fff',
+						backgroundColor: 'transparent',
 					}}
 				>
 					{pollResults && Object.values(pollResults).length > 5 && (

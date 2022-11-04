@@ -68,7 +68,7 @@ const TreatmentSection = () => {
 			title={'Tratamientos'}
 			icon={<PillIcon />}
 			width={'305px'}
-			height={'676px'}
+			height={'686px'}
 			align={'top'}
 			css={{
 				marginTop: '30px',

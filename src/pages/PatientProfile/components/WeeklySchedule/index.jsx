@@ -109,14 +109,18 @@ const WeeklySchedule = ({ dayList }) => {
 						}}
 					>
 						{dayList?.map((item, index) => (
-							<DayCard
-								key={index}
-								index={index}
-								dayNumber={item.dayNumber}
-								dayName={item.dayName}
-								state={item.state}
-								detail={item.detail}
-							/>
+							<>
+								<DayCard
+									id={item.id}
+									key={index}
+									index={index}
+									dayNumber={item.dayNumber}
+									dayName={item.dayName}
+									state={item.state}
+									detail={item.detail}
+								/>
+								{console.log(item)}
+							</>
 						))}
 					</StyledBox>
 				</>

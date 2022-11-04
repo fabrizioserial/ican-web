@@ -23,7 +23,6 @@ function HomeScreen() {
 						display: 'flex',
 						flexDirection: 'column',
 						maxWidth: '777px',
-						rowGap: '35px',
 					}}
 				>
 					<WidgetHome />

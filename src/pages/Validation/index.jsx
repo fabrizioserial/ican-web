@@ -102,6 +102,8 @@ const Validation = () => {
 					risk: values.risk,
 					biomarkers: biomarkers,
 					cancerId: values.cancerSubType,
+					expresionPDL1: values.expresionPDL1,
+					cancerStage: values.cancerStage,
 				};
 				break;
 			}

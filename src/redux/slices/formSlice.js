@@ -137,18 +137,16 @@ const initialState = {
 			],
 			[
 				{
+					placeholder: 'Introduzca Expresion del PDL1',
+					type: 'text',
 					label: 'Expresión de PDL1',
-					options: {
-						no_value: 'Seleccione Expresion del PDL1',
-						hipertension: 'Hipertensión',
-					},
-					input_type: InputTypeEnum.SELECTOR,
-					name: 'PDL1_expresion',
+					input_type: InputTypeEnum.TEXTFIELD,
+					name: 'expresionPDL1',
 				},
 				{
 					label: 'Estadio',
 					input_type: InputTypeEnum.CONDITIONAL,
-					name: 'estadio',
+					name: 'cancerStage',
 					varToEvaluate: 'organ',
 					options: TNMOptions,
 				},

@@ -106,11 +106,23 @@ export const TNMOptions = {
 		cM1: 'cM1',
 		PM1: 'PM1',
 	},
-	estadio: {
+	cancerStage: {
 		no_value: 'Seleccione Estadio',
-		O: 'O',
-		IA: 'IA',
-		IB: 'IB',
+		Estadio0: 'Estadio0',
+		EstadioIA: 'EstadioIA',
+		EstadioIA1: 'EstadioIA1',
+		EstadioIA2: 'EstadioIA2',
+		EstadioIA3: 'EstadioIA3',
+		EstadioIB: 'EstadioIB',
+		EstadioIIA: 'EstadioIIA',
+		EstadioIIB: 'EstadioIIB',
+		EstadioIIIA: 'EstadioIIIA',
+		EstadioIIIB: 'EstadioIIIB',
+		EstadioIIIC: 'EstadioIIIC',
+		EstadioIV: 'EstadioIV',
+		EstadioIVA: 'EstadioIVA',
+		EstadioIVB: 'EstadioIVB',
+		EstadioIVC: 'EstadioIVC',
 	},
 };
 

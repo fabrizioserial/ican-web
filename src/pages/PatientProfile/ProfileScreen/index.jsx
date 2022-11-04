@@ -101,10 +101,16 @@ const ProfileScreen = () => {
 		}
 	};
 	const dayState = (status) => {
+		console.log(status);
 		switch (status) {
-			case 'Completed':
+			case 'daily':
 				return {
-					state: 'green',
+					state: 'daily',
+					detail: 'Completo la encuesta diaria',
+				};
+			case 'weekly':
+				return {
+					state: 'weekly',
 					detail: 'Completo la encuesta semanal',
 				};
 			default:
@@ -123,8 +129,20 @@ const ProfileScreen = () => {
 					id: item?.dailyId || item?.weeklyId,
 					dayNumber: new Date(item.date).getUTCDate(),
 					dayName: dayName(new Date(item.date).getUTCDay()),
-					state: dayState(item.weeklyStatus).state,
-					detail: dayState(item.weeklyStatus).detail,
+					state: dayState(
+						item?.dailyStatus === 'Completed'
+							? 'daily'
+							: item?.weeklyStatus === 'Completed'
+							? 'weekly'
+							: 'nothing',
+					).state,
+					detail: dayState(
+						item?.dailyStatus === 'Completed'
+							? 'daily'
+							: item?.weeklyStatus === 'Completed'
+							? 'weekly'
+							: 'nothing',
+					).detail,
 				});
 			});
 			setCalendar(aux);

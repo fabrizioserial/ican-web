@@ -17,7 +17,7 @@ const PatientsList = () => {
 	return (
 		<StyledCardHome
 			css={{
-				maxHeight: '891px',
+				maxHeight: '868px',
 				width: '380px',
 				color: theme.oncoBlack,
 				padding: '24px 20px',

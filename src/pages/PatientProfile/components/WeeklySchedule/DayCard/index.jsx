@@ -5,13 +5,31 @@ import {
 } from '../../../../../common/styledCommonComponents';
 import { useTheme } from 'styled-components';
 import ReactTooltip from 'react-tooltip';
+import { useDispatch } from 'react-redux';
+import { ModalTypeEnum } from '../../../../../utils/utils';
+import { setModalOpen } from '../../../../../redux/slices/utilsSlice';
 
-const DayCard = ({ dayNumber, dayName, state, detail, index }) => {
+const DayCard = ({ dayNumber, dayName, state, detail, index, id }) => {
 	const theme = useTheme();
+	const dispatch = useDispatch();
+	const handleOpenModal = () => {
+		(state === 'daily' || state === 'weekly') &&
+			dispatch(
+				setModalOpen({
+					open: true,
+					type:
+						state === 'daily'
+							? ModalTypeEnum.DAILY_MODAL
+							: ModalTypeEnum.WEEKLY_MODAL,
+					id: id,
+				}),
+			);
+	};
 	return (
 		<StyledBox
 			data-tip
 			data-for={'dayTip' + dayNumber}
+			onClick={handleOpenModal}
 			css={{
 				boxSizing: 'border-box',
 				width: '33px',
@@ -20,13 +38,14 @@ const DayCard = ({ dayNumber, dayName, state, detail, index }) => {
 				boxShadow: '0px 4px 24px rgba(214, 203, 252, 0.15)',
 				borderRadius: '10px',
 				border:
-					state === 'green'
+					state === 'daily' || state === 'weekly'
 						? '1px solid rgba(100, 201, 140, 0.5)'
 						: '1px solid rgba(225, 209, 252, 0.22)',
-				cursor: state === 'green' ? 'pointer' : 'normal',
+				cursor:
+					state === 'daily' || state === 'weekly' ? 'pointer' : 'normal',
 			}}
 		>
-			{state === 'green' && (
+			{(state === 'daily' || state === 'weekly') && (
 				<ReactTooltip id={'dayTip' + dayNumber} place="top" effect="solid">
 					{detail}
 				</ReactTooltip>

@@ -12,6 +12,7 @@ const WidgetHome = () => {
 				display: 'flex',
 				flexDirection: 'row',
 				justifyContent: 'space-between',
+				marginBottom: '35px',
 			}}
 		>
 			<WeeklySummary />
