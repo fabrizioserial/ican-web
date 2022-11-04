@@ -39,19 +39,22 @@ const CustomAccordionWeekly = ({ category, endDate, symptoms }) => {
 					<StyledP css={{ fontSize: '18px', fontWeight: 500 }}>
 						{category}
 					</StyledP>
-					<StyledP
-						css={{
-							fontSize: '12px',
-							color: theme.oncoGrey4,
-							fontWeight: 400,
-						}}
-					>
-						Realizado{' '}
-						{parseDataWithYear(
-							symptoms?.find((f) => f.questions.find((d) => d.date))
-								.questions[0].date,
-						)}
-					</StyledP>
+					{symptoms?.find((f) => f.questions?.find((d) => d.date))
+						?.questions[0]?.date && (
+						<StyledP
+							css={{
+								fontSize: '12px',
+								color: theme.oncoGrey4,
+								fontWeight: 400,
+							}}
+						>
+							Realizado{' '}
+							{parseDataWithYear(
+								symptoms?.find((f) => f.questions?.find((d) => d.date))
+									?.questions[0]?.date,
+							)}
+						</StyledP>
+					)}
 				</StyledBox>
 			</AccordionSummary>
 			<AccordionDetails>

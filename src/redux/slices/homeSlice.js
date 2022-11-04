@@ -87,8 +87,8 @@ export const homeSlice = createSlice({
 							questions: symp.questions.map((question) => ({
 								id: question.id,
 								type: question.type,
-								value: newAnswerMap[question.id].value,
-								date: newAnswerMap[question.id].date,
+								value: newAnswerMap[question.id]?.value,
+								date: newAnswerMap[question.id]?.date,
 							})),
 						})),
 					}));
