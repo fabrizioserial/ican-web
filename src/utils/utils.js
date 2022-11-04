@@ -23,7 +23,7 @@ import IconMiscellaneous from '../assets/IconMiscellaneous';
 import IconVisual from '../assets/IconVisual';
 import IconLove from '../assets/IconLove';
 import { StyledBox } from '../common/styledCommonComponents';
-import PurplePinIcon from "../assets/PurplePinIcon";
+import PurplePinIcon from '../assets/PurplePinIcon';
 
 export const ModalTypeEnum = {
 	WEEKLY_MODAL: 'WEEKLY_MODAL',
@@ -321,7 +321,7 @@ export const PatientsListHeaderConfig = [
 export const ProfileConfigButtonType = {
 	FORM: 'form',
 	CONTACT: 'contact',
-	PIN: 'PIN'
+	PIN: 'PIN',
 };
 
 export const ProfileConfigButton = [
@@ -331,7 +331,7 @@ export const ProfileConfigButton = [
 		color: '#FFFFFF',
 		type: ProfileConfigButtonType.FORM,
 		textColor: theme.textGrey,
-		border: '1px solid rgba(235, 224, 253, 0.24)'
+		border: '1px solid rgba(235, 224, 253, 0.24)',
 	},
 	{
 		text: 'Contactar',
@@ -339,7 +339,7 @@ export const ProfileConfigButton = [
 		color: '#5EC386',
 		type: ProfileConfigButtonType.CONTACT,
 		textColor: theme.white,
-		border: '1px solid rgba(235, 224, 253, 0.24)'
+		border: '1px solid rgba(235, 224, 253, 0.24)',
 	},
 	{
 		text: 'Fijar',
@@ -690,7 +690,7 @@ export const CapitalizeText = (text) => {
 	return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 };
 
-export const getProfileImageFromName = (name, surname, size) => {
+export const getProfileImageFromName = (name, surname, size, withMargin) => {
 	const sumOfChars = (name.length + surname.length) % 5;
 	let color = '';
 	switch (sumOfChars) {
@@ -721,7 +721,7 @@ export const getProfileImageFromName = (name, surname, size) => {
 	return (
 		<StyledBox
 			css={{
-				margin: 2,
+				margin: withMargin ? 2 : '0',
 				width: size.width,
 				height: size.height,
 				borderRadius: '50px',
