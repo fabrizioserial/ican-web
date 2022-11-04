@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
 import { StyledBox, StyledP } from '../../../../common/styledCommonComponents';
 import {
@@ -13,9 +13,7 @@ const ProfileButton = ({ icon, color, text, textColor, type, border }) => {
 	const { patientId } = useParams();
 	const dispatch = useDispatch();
 	const navigation = useNavigate();
-	const theme = useTheme();
 	const handleAction = (type) => {
-		console.log(type);
 		switch (type) {
 			case ProfileConfigButtonType.FORM:
 				navigation(`/validate-patient/${patientId}`);
@@ -29,13 +27,11 @@ const ProfileButton = ({ icon, color, text, textColor, type, border }) => {
 					}),
 				);
 				break;
-			case ProfileConfigButtonType.PIN:
-				// onClick
-				break;
 			default:
 				break;
 		}
 	};
+
 	return (
 		<StyledBox
 			onClick={() => handleAction(type)}

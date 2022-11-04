@@ -343,7 +343,6 @@ export const ProfileConfigButton = [
 	},
 	{
 		text: 'Fijar',
-		icon: <PurplePinIcon />,
 		color: '#FFFFFF',
 		type: ProfileConfigButtonType.PIN,
 		textColor: '#9357F7',

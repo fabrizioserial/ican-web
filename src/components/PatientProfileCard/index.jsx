@@ -3,6 +3,7 @@ import { useTheme } from 'styled-components';
 import {
 	getProfileImageFromName,
 	ProfileConfigButton,
+	ProfileConfigButtonType
 } from '../../utils/utils';
 import {
 	StyledBox,
@@ -15,6 +16,7 @@ import ProfileButton from '../../pages/PatientProfile/components/ProfileButtons'
 import { useParams } from 'react-router';
 import { useLazyGetPatientDataQuery } from '../../redux/api/patientApi';
 import { StyledCircularProgress } from '../CustomCircularProgress/styles';
+import PinButton from './components/PinButton';
 
 const PatientProfileCard = () => {
 	const theme = useTheme();
@@ -221,15 +223,27 @@ const PatientProfileCard = () => {
 								}}
 							>
 								{buttonList.map((item, index) => (
-									<ProfileButton
-										text={item.text}
-										icon={item.icon}
-										color={item.color}
-										textColor={item.textColor}
-										key={index}
-										border={item.border}
-										type={item.type}
-									/>
+
+									item.type === ProfileConfigButtonType.PIN ?
+										<PinButton
+											key={index}
+											color={item.color}
+											textColor={item.textColor}
+											border={item.border}
+											type={item.type}
+											fixed={dataPatient?.fixed}
+										/>
+										:
+										< ProfileButton
+											text={item.text}
+											icon={item.icon}
+											color={item.color}
+											textColor={item.textColor}
+											key={index}
+											border={item.border}
+											type={item.type}
+										/>
+
 								))}
 							</StyledBox>
 						</StyledBox>

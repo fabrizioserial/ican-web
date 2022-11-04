@@ -48,6 +48,13 @@ export const patientApi = api.injectEndpoints({
 				method: 'GET',
 			}),
 		}),
+		updateFixedPatient: builder.mutation({
+			query: (body) => ({
+				url: '/api/medical-history/fix',
+				body: body,
+				method: 'PATCH'
+			}),
+		}),
 	}),
 });
 
@@ -61,6 +68,7 @@ export const {
 	useGetDailyReportQuery,
 	useGetWeeklyReportQuery,
 	useGetPatientTreatmetsQuery,
+	useUpdateFixedPatientMutation,
 } = patientApi;
 
 export const {
@@ -73,5 +81,6 @@ export const {
 		getWeeklyReport,
 		getPollResults,
 		getPatientTreatments,
+		updateFixedPatient
 	},
 } = patientApi;
