@@ -191,10 +191,11 @@ const initialState = {
 					label: 'Tratamiento perioperatorio',
 					options: {
 						no_value: 'Seleccione tumor primario',
-						radioterapia: 'Radioterapia',
-						quimioterapia: 'Quimioterapia',
-						inmunoterapia: 'Inmunoterapia',
-						inhibidor_tirosina_kinasa: 'Inhibidor tirosina kinasa',
+						Chemotherapy: 'Quimioterapia',
+						HormoneTherapy: 'Hormonoterapia',
+						Immunotherapy: 'Inmunoterapia',
+						KinaseInhibitor: 'Kinesioterapia',
+						Radiotherapy: 'Radioterapia',
 					},
 					input_type: InputTypeEnum.SELECTOR,
 					name: 'perioperatory',
@@ -500,7 +501,14 @@ export const formSlice = createSlice({
 			.addMatcher(
 				patientApi.endpoints.getPatientDataForm.matchFulfilled,
 				(state, action) => {
-					state.values = { ...state.values, ...action.payload };
+					state.values = {
+						...state.values,
+						...action.payload,
+						perioperatory: action.payload.perioperativeTreatment,
+						organ: action.payload.organId,
+						cancerSubType: action.payload.cancerSubTypeId,
+						cancerType: action.payload.cancerTypeId,
+					};
 					if (action.payload?.treatmentObjective) {
 						state.treatment.fields = [
 							[

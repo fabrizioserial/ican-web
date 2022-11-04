@@ -10,7 +10,7 @@ import SelectorInputField from '../SelectorInputField';
 const options = {
 	Local: 'Local',
 	Distancia: 'Distacia',
-	DistanciaYLocal: 'DistanciaYLocal',
+	DistanciaYLocal: 'Distancia y Local',
 };
 
 const SetBacksField = ({ id, names, placeholder, values, onChange, type }) => {
