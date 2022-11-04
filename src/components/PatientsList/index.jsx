@@ -8,7 +8,10 @@ import {
 import PatientContainer from './PatientContainer';
 import { StyledButtonMore } from './PatientContainer/styles';
 import { StyledCircularProgress } from '../CustomCircularProgress/styles';
-import { useGetFixedPatientsQuery, usePatientsListQuery } from '../../redux/api/listApi';
+import {
+	useGetFixedPatientsQuery,
+	usePatientsListQuery,
+} from '../../redux/api/listApi';
 
 const PatientsList = () => {
 	const theme = useTheme();
@@ -16,7 +19,7 @@ const PatientsList = () => {
 
 	// const { data, isLoading, isSuccess } = useGetFixedPatientsQuery();
 
-	console.log(data)
+	console.log(data);
 
 	return (
 		<StyledCardHome
@@ -67,28 +70,30 @@ const PatientsList = () => {
 						}}
 					>
 						{data?.patients?.length < 10
-							? data?.patients.filter(user => user.fixed === true)
-								?.slice(0, 9)
-								.map((patient, index) => (
-									<PatientContainer
-										key={index}
-										name={patient.name}
-										surename={patient.surname}
-										cancerType={patient.organ}
-										patientId={patient.id}
-									/>
-								))
-							: data?.patients.filter(user => user.fixed === true)
-								?.slice(0, 8)
-								.map((patient, index) => (
-									<PatientContainer
-										key={index}
-										name={patient.name}
-										surename={patient.surname}
-										cancerType={patient.organ}
-										patientId={patient.id}
-									/>
-								))}
+							? data?.patients
+									.filter((user) => user.fixed === true)
+									?.slice(0, 9)
+									.map((patient, index) => (
+										<PatientContainer
+											key={index}
+											name={patient.name}
+											surename={patient.surname}
+											cancerType={patient.organ}
+											patientId={patient.id}
+										/>
+									))
+							: data?.patients
+									.filter((user) => user.fixed === true)
+									?.slice(0, 8)
+									.map((patient, index) => (
+										<PatientContainer
+											key={index}
+											name={patient.name}
+											surename={patient.surname}
+											cancerType={patient.organ}
+											patientId={patient.id}
+										/>
+									))}
 					</StyledBox>
 					{data?.patients?.length > 9 && (
 						<StyledButtonMore onClick={() => console.log('asd')}>

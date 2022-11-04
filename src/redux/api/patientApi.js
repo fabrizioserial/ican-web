@@ -52,7 +52,7 @@ export const patientApi = api.injectEndpoints({
 			query: (body) => ({
 				url: '/api/medical-history/fix',
 				body: body,
-				method: 'PATCH'
+				method: 'PATCH',
 			}),
 		}),
 	}),
@@ -81,6 +81,6 @@ export const {
 		getWeeklyReport,
 		getPollResults,
 		getPatientTreatments,
-		updateFixedPatient
+		updateFixedPatient,
 	},
 } = patientApi;

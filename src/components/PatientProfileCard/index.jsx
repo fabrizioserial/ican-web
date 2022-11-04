@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components';
 import {
 	getProfileImageFromName,
 	ProfileConfigButton,
-	ProfileConfigButtonType
+	ProfileConfigButtonType,
 } from '../../utils/utils';
 import {
 	StyledBox,
@@ -222,9 +222,8 @@ const PatientProfileCard = () => {
 									rowGap: '12px',
 								}}
 							>
-								{buttonList.map((item, index) => (
-
-									item.type === ProfileConfigButtonType.PIN ?
+								{buttonList.map((item, index) =>
+									item.type === ProfileConfigButtonType.PIN ? (
 										<PinButton
 											key={index}
 											color={item.color}
@@ -233,8 +232,8 @@ const PatientProfileCard = () => {
 											type={item.type}
 											fixed={dataPatient?.fixed}
 										/>
-										:
-										< ProfileButton
+									) : (
+										<ProfileButton
 											text={item.text}
 											icon={item.icon}
 											color={item.color}
@@ -243,8 +242,8 @@ const PatientProfileCard = () => {
 											border={item.border}
 											type={item.type}
 										/>
-
-								))}
+									),
+								)}
 							</StyledBox>
 						</StyledBox>
 					</StyledBox>

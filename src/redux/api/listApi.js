@@ -29,7 +29,7 @@ export const listApi = api.injectEndpoints({
 		getFixedPatients: builder.query({
 			query: () => ({
 				url: '/api/home/fixed-patients',
-				method: 'GET'
+				method: 'GET',
 			}),
 		}),
 		patientsListWithParams: builder.query({
