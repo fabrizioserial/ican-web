@@ -374,6 +374,12 @@ export const PatientListHeaderConst = [
 		width: '14%',
 	},
 	{
+		label: 'DNI',
+		sortId: '',
+		width: '14%',
+	},
+
+	{
 		label: 'Tumor Primario',
 		sortId: 'organ',
 		width: '10%',
@@ -386,11 +392,6 @@ export const PatientListHeaderConst = [
 	{
 		label: 'Tratamiento de Tumor Primario',
 		sortId: 'tumorTreatment',
-		width: '14%',
-	},
-	{
-		label: 'Tratamiento Perioperatorio',
-		sortId: '',
 		width: '14%',
 	},
 	{
