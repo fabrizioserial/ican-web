@@ -22,7 +22,6 @@ const ReportComponent = () => {
 	} = useGetPollResultsQuery(patientId);
 
 	useEffect(() => {
-		console.log(dataPollResults);
 		if (dataPollResults) {
 			let finalArray = [];
 			finalArray = finalArray.concat(

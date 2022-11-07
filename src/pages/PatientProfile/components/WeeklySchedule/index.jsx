@@ -119,7 +119,6 @@ const WeeklySchedule = ({ dayList }) => {
 									state={item.state}
 									detail={item.detail}
 								/>
-								{console.log(item)}
 							</>
 						))}
 					</StyledBox>

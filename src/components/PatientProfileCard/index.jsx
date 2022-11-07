@@ -42,6 +42,14 @@ const PatientProfileCard = () => {
 		switch (state) {
 			case 'Accepted':
 				return 'Aceptado';
+			case 'Pending':
+				return 'En espera';
+			case 'Bloqued':
+				return 'Bloqueado';
+			case 'Dead':
+				return 'Fallecido';
+			case 'Rejected':
+				return 'Rechazado';
 			default:
 				break;
 		}

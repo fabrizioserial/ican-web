@@ -384,7 +384,7 @@ export const HungerAndThristConfig = (data) => {
 	};
 };
 
-export const DailyColumnChartConfig = (data) => {
+export const DailyColumnChartConfig = (data, total) => {
 	const dataAux = () => {
 		let aux = [];
 		let maxValue = 0;
@@ -495,6 +495,7 @@ export const DailyColumnChartConfig = (data) => {
 			},
 			yaxis: {
 				show: false,
+				max: total,
 			},
 			tooltip: {
 				fillSeriesColor: false,
@@ -508,10 +509,21 @@ export const DailyColumnChartConfig = (data) => {
 						'color: white;' +
 						'border-style: none;' +
 						'border-width: 0px;' +
+						'display:flex ' +
+						'flex-direction:column ' +
 						'">' +
-						'<span>' +
-						textToAdd[dataPointIndex] +
-						'</span>' +
+						'<p>' +
+						'Completados: ' +
+						Object.values(data)[dataPointIndex][0] +
+						'</p>' +
+						'<p>' +
+						'Incompletos: ' +
+						Object.values(data)[dataPointIndex][1] +
+						'</p>' +
+						'<p>' +
+						'Sin arrancar: ' +
+						Object.values(data)[dataPointIndex][2] +
+						'</p>' +
 						'</div>'
 					);
 				},

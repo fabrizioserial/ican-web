@@ -8,14 +8,14 @@ import { StyledCircularProgress } from '../CustomCircularProgress/styles';
 
 const DailyColumnChart = ({ data, isLoading }) => {
 	const options = useMemo(
-		() => DailyColumnChartConfig(data?.data ?? {}),
+		() => DailyColumnChartConfig(data?.data ?? {}, data.total),
 		[data?.data ?? {}],
 	);
 	const height = '90%';
 
 	return (
 		<Card
-			title={'Tasa de respuesta en la Encuesta diaria'}
+			title={'Cantidad de encuestas diarias completadas'}
 			icon={<ExclamamtionIcon />}
 			width="100%"
 			height="268px"

@@ -89,31 +89,33 @@ const Validation = () => {
 	const handleSubmit = (values) => {
 		let biomarkers = [];
 		let setbacks = [];
-		let medicalHistory = {};
+		let medicalHistory = {
+			userId: patientId,
+			tumor: values.tumor,
+			nodule: values.nodule,
+			metastasis: values.metastasis,
+			risk: values.risk,
+			cancerId: values.cancerSubType,
+			expresionPDL1: values.expresionPDL1,
+			cancerStage: values.cancerStage,
+			diagnosisDate: values.diagnosisDate,
+		};
 
-		for (let indexBio = 1; indexBio < 16; indexBio++) {
-			if (!values['biomarker'.concat(indexBio)]) {
-				medicalHistory = {
-					userId: patientId,
-					tumor: values.tumor,
-					nodule: values.nodule,
-					metastasis: values.metastasis,
-					risk: values.risk,
-					biomarkers: biomarkers,
-					cancerId: values.cancerSubType,
-					expresionPDL1: values.expresionPDL1,
-					cancerStage: values.cancerStage,
-					diagnosisDate: values.diagnosisDate,
-				};
-				break;
-			}
+		values.biomarkers.biomarkersId.forEach((id) => {
 			biomarkers = [
 				...biomarkers,
 				{
-					biomarkerId: values['biomarker'.concat(indexBio)],
-					evaluation: JSON.parse(values['evaluation'.concat(indexBio)]),
+					biomarkerId: values[`biomarker${id}`],
+					evaluation: JSON.parse(values[`evaluation${id}`]),
 				},
 			];
+		});
+
+		if (biomarkers.length > 0) {
+			medicalHistory = {
+				...medicalHistory,
+				biomarkers,
+			};
 		}
 
 		for (let indexSetBacks = 1; indexSetBacks < 16; indexSetBacks++) {
@@ -147,38 +149,35 @@ const Validation = () => {
 	}, [successPostPatient]);
 
 	useEffect(() => {
-		if (successPostPatient && data.medicalHistoryId) {
+		if (
+			successPostPatient &&
+			data.medicalHistoryId &&
+			values.treatment?.medicationsIds?.length > 0
+		) {
 			let treatment = [];
 			let medications = [];
-			for (let indexTreat = 1; indexTreat < 16; indexTreat++) {
-				if (
-					!values['medication'.concat(indexTreat)] &&
-					!values['grammage'.concat(indexTreat)]
-				) {
-					treatment = {
-						medicalHistoryId: values.medicalHistoryId,
-						objective: values.treatmentObjective,
-						tumorTreatment: values.tumorTreatment,
-						// treatmentLine: values.treatmentLine ?? 1,
-						medications: medications,
-						startDate: values.treatmentStartDate,
-						estimateFinishDate: values.estimateFinishDate,
-					};
-					break;
-				}
+			values.treatment.medicationsIds.forEach((id) => {
 				medications = [
 					...medications,
 					{
-						medicationId: values['medication'.concat(indexTreat)],
+						medicationId: values[`medication${id}`],
 						intention: values.intention,
-						grammageId: values['grammage'.concat(indexTreat)],
+						grammageId: values[`grammage${id}`],
 					},
 				];
-			}
+			});
+			treatment = {
+				medicalHistoryId: values.medicalHistoryId,
+				objective: values.treatmentObjective,
+				tumorTreatment: values.tumorTreatment,
+				// treatmentLine: values.treatmentLine ?? 1,
+				medications: medications,
+				startDate: values.treatmentStartDate,
+				estimateFinishDate: values.estimateFinishDate,
+			};
 			setTreatmentForm(treatment); // listo
 		}
 	}, [successPostPatient, data]);
-
 	return (
 		<StyledScreen css={{ justifyContent: 'center', flexDirection: 'column' }}>
 			<StyledBox
@@ -190,45 +189,47 @@ const Validation = () => {
 					flexDirection: 'column',
 				}}
 			>
-				<StyledBox
-					css={{
-						backgroundColor: 'white',
-						width: '800px',
-						borderRadius: '20px',
-						margin: '50px',
-					}}
-				>
-					{values &&
-						!isLoading &&
-						FormBuilder(
-							[patients, hospital, biomarkers, setbacks, treatment],
-							values,
-							handleOnChange,
-						)}
-				</StyledBox>
-				<StyledBox
-					css={{
-						margin: '0 50px',
-						display: 'flex',
-						flexDirection: 'row',
-						columnGap: '10px',
-					}}
-				>
-					{values.status !== 'Accepted' && (
-						<Button
-							text={'Rechazar'}
-							className="rejected"
-							onClick={() => handleRejected()}
-						/>
-					)}
-					<Button
-						text={'Guardar cambios'}
-						className={classNames('submit', {
-							disabled: values.status === 'Accepted',
-						})}
-						onClick={() => handleSubmit(values)}
-					/>
-				</StyledBox>
+				{values && !isLoading && (
+					<>
+						<StyledBox
+							css={{
+								backgroundColor: 'white',
+								width: '800px',
+								borderRadius: '20px',
+								margin: '50px',
+							}}
+						>
+							{FormBuilder(
+								[patients, hospital, biomarkers, setbacks, treatment],
+								values,
+								handleOnChange,
+							)}
+						</StyledBox>
+						<StyledBox
+							css={{
+								margin: '0 50px',
+								display: 'flex',
+								flexDirection: 'row',
+								columnGap: '10px',
+							}}
+						>
+							{values.status !== 'Accepted' && (
+								<Button
+									text={'Rechazar'}
+									className="rejected"
+									onClick={() => handleRejected()}
+								/>
+							)}
+							<Button
+								text={'Guardar cambios'}
+								className={classNames('submit', {
+									disabled: values.status === 'Accepted',
+								})}
+								onClick={() => handleSubmit(values)}
+							/>
+						</StyledBox>
+					</>
+				)}
 			</StyledBox>
 		</StyledScreen>
 	);

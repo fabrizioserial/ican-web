@@ -19,7 +19,6 @@ const PinButton = ({ fixed = false, color, textColor, border, isLoading }) => {
 	const [fetch, { data, isSuccess }] = useUpdateFixedPatientMutation();
 
 	const handleClick = () => {
-		console.log('click');
 		fetch({ userId: patientId, fixed: !fixed });
 	};
 

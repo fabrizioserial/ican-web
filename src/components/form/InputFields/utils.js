@@ -155,6 +155,7 @@ const InputTypeBuilder = (
 					label={properties.label}
 					name={properties.name}
 					onChange={onChangeHandle}
+					{...properties}
 				/>
 			);
 		case InputTypeEnum.SELECTOR:

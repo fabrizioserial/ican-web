@@ -79,7 +79,6 @@ const MedicationField = ({ id, names, values, onChange, type, disabled }) => {
 	const handleDelete = (id) => {
 		dispatch(removeTreatmentMedication(id));
 	};
-	console.log(names.medication, values.medication);
 	return (
 		<StyledBox
 			css={{

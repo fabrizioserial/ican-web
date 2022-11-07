@@ -19,8 +19,6 @@ const PatientsList = () => {
 
 	// const { data, isLoading, isSuccess } = useGetFixedPatientsQuery();
 
-	console.log(data);
-
 	return (
 		<StyledCardHome
 			css={{

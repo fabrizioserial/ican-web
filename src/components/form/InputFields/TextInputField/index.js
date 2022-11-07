@@ -16,7 +16,8 @@ const TextInputField = ({
 	name,
 	type,
 	disabled,
-	maxCharacters,
+	max,
+	min,
 }) => {
 	const theme = useTheme();
 	const handleOnChange = (newValue) => onChange(name, newValue);
@@ -48,6 +49,8 @@ const TextInputField = ({
 					border: !disabled && '1px solid #E5D7FD',
 					borderRadius: '5px',
 				}}
+				max={max}
+				min={min}
 				type={type}
 				placeholder={placeholder}
 				value={value}

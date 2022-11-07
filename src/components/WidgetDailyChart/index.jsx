@@ -34,7 +34,7 @@ const WidgetDailyChart = () => {
 					...monthIndex,
 					[new Date(item.date).getUTCMonth()]: '',
 				};
-				aux[day] = [item.completed];
+				aux[day] = [item.completed, item.incomplete, item.empty];
 			});
 			setDataB({
 				month:
@@ -44,6 +44,7 @@ const WidgetDailyChart = () => {
 						  }`
 						: monthNames[Object.keys(monthIndex)[0]],
 				data: aux,
+				total: data.total,
 			});
 		}
 	}, [data, isLoading]);

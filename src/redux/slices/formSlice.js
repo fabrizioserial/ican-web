@@ -5,6 +5,8 @@ import BiomarkerIcon from '../../assets/BiomarkerIcon';
 import PlusCircleIcon from '../../assets/PlusCircleIcon';
 import HeartIcon from '../../assets/HeartIcon';
 import StateIcon from '../../assets/StateIcon';
+import { v4 as uuidv4 } from 'uuid';
+
 import TreatmentIcon from '../../assets/TreatmentIcon';
 import {
 	actionTypeEnum,
@@ -77,12 +79,6 @@ const initialState = {
 					disabled: true,
 				},
 			],
-		],
-	},
-	hospital: {
-		title: 'Datos Hospitalario',
-		icon: <CrossIcon />,
-		fields: [
 			[
 				{
 					label: 'Fumador',
@@ -109,6 +105,12 @@ const initialState = {
 					disabled: true,
 				},
 			],
+		],
+	},
+	hospital: {
+		title: 'Datos Hospitalario',
+		icon: <CrossIcon />,
+		fields: [
 			[
 				{
 					label: 'Fecha de diagnostico',
@@ -147,7 +149,9 @@ const initialState = {
 			[
 				{
 					placeholder: 'Introduzca Expresion del PDL1',
-					type: 'text',
+					type: 'number',
+					max: 100,
+					min: 0,
 					label: 'Expresión de PDL1',
 					input_type: InputTypeEnum.TEXTFIELD,
 					name: 'expresionPDL1',
@@ -291,6 +295,12 @@ const initialState = {
 		organ: 'no_value',
 		cancerType: 'no_value',
 		cancerSubType: 'no_value',
+		biomarkers: {
+			biomarkersId: [],
+		},
+		setbacks: {
+			setbacksId: [],
+		},
 	},
 };
 
@@ -309,7 +319,7 @@ export const formSlice = createSlice({
 			);
 
 			const biomarkersToAdd = {
-				id: biomarkers.length + 1,
+				id: uuidv4(),
 				input_type: InputTypeEnum.BIOMARKER_ROW,
 				names: ['biomarker', 'evaluation'],
 			};
@@ -325,6 +335,10 @@ export const formSlice = createSlice({
 				[`biomarker${biomarkersToAdd.id}`]: {
 					[`biomarker${biomarkersToAdd.id}`]: '',
 					[`evaluation${biomarkersToAdd.id}`]: '',
+					biomarkersId: [
+						...state.values.biomarkers.biomarkersId,
+						biomarkersToAdd.id,
+					],
 				},
 			};
 		},
@@ -339,7 +353,7 @@ export const formSlice = createSlice({
 			);
 
 			const setbacksToAdd = {
-				id: setbacks.length + 1,
+				id: uuidv4(),
 				input_type: InputTypeEnum.SETBACK_ROW,
 				names: ['setBackDate', 'setBackPlace', 'diagnosisDate'],
 			};
@@ -351,13 +365,15 @@ export const formSlice = createSlice({
 				[`setBackDate${setbacksToAdd.id}`]: '',
 				[`setBackPlace${setbacksToAdd.id}`]: '',
 				[`diagnosisDate${setbacksToAdd.id}`]: '',
+				setbacksId: [...state.values.setbacks.setbacksId, setbacksToAdd.id],
 			};
 		},
 		addTreatment: (state) => {
+			const newId = uuidv4();
 			state.treatment.fields = [
 				[
 					{
-						id: 1,
+						id: newId,
 						input_type: InputTypeEnum.MEDICATION_ROW,
 						names: ['medication', 'grammage'],
 					},
@@ -419,25 +435,31 @@ export const formSlice = createSlice({
 					tumorTreatment: '',
 					treatmentLine: 0,
 					medications: {
-						medication1: { medication1: '', grammage1: '' },
+						[`medication${newId}`]: {
+							[`medication${newId}`]: '',
+							[`grammage${newId}`]: '',
+						},
 					},
 					startDate: '',
 					estimateFinishDate: '',
+					medicationsIds: [newId],
 				},
 			};
 		},
 		addTreatmentMedication: (state) => {
 			const medications = state.treatment.fields.slice(
 				0,
-				state.treatment.fields.length - 3,
+				state.treatment.fields.length - 4,
 			);
 			const fixedRows = state.treatment.fields.slice(
-				state.treatment.fields.length - 3,
+				state.treatment.fields.length - 4,
 				state.treatment.fields.length,
 			);
 
+			const newID = uuidv4();
+
 			const medicationToAdd = {
-				id: medications.length + 1,
+				id: newID,
 				input_type: InputTypeEnum.MEDICATION_ROW,
 				names: ['medication', 'grammage'],
 			};
@@ -455,6 +477,10 @@ export const formSlice = createSlice({
 					[`grammage${medicationToAdd.id}`]: '',
 				},
 			};
+			state.values.treatment.medicationsIds = [
+				...state.values.treatment.medicationsIds,
+				newID,
+			];
 		},
 		removeBiomarker: (state, action) => {
 			state.biomarkers.fields = state.biomarkers.fields?.filter((fields) =>
@@ -464,6 +490,10 @@ export const formSlice = createSlice({
 			delete auxValues[action.payload.biomarkerId];
 			delete auxValues[action.payload.evaluationId];
 			state.values = auxValues;
+			state.values.biomarkers.biomarkersId =
+				state.values.biomarkers.biomarkersId.filter(
+					(id) => id !== action.payload,
+				);
 		},
 		removeSetBacks: (state, action) => {
 			state.setbacks.fields = state.setbacks.fields?.filter((fields) =>
@@ -473,7 +503,12 @@ export const formSlice = createSlice({
 			delete auxValues[action.payload.setBackDateId];
 			delete auxValues[action.payload.diagnosisDate];
 			delete auxValues[action.payload.setBackPlace];
+
 			state.values = auxValues;
+			state.values.setbacks.setbacksId =
+				state.values.setbacks.setbacksId.filter(
+					(id) => id !== action.payload,
+				);
 		},
 		removeTreatmentMedication: (state, action) => {
 			state.treatment.fields = state.treatment.fields?.filter((fields) =>
@@ -483,6 +518,9 @@ export const formSlice = createSlice({
 			delete auxValues[action.payload.medicationId];
 			delete auxValues[action.payload.grammage1];
 			state.values = auxValues;
+			state.values.treatment.medicationsIds.filter(
+				(id) => id !== action.payload,
+			);
 		},
 		setValue: (state, action) => {
 			state.values = {
@@ -533,17 +571,17 @@ export const formSlice = createSlice({
 					};
 
 					if (!action.payload?.isSmoker) {
-						state.hospital.fields = state.hospital.fields.map((b) =>
+						state.patients.fields = state.patients.fields.map((b) =>
 							b.filter((a) => a.name !== 'smoker'),
 						);
 					}
 					if (action.payload.otherMedications.length === 0) {
-						state.hospital.fields = state.hospital.fields.map((b) =>
+						state.patients.fields = state.patients.fields.map((b) =>
 							b.filter((a) => a.name !== 'personal_history'),
 						);
 					}
 					if (action.payload.diseases.length === 0) {
-						state.hospital.fields = state.hospital.fields.map((b) =>
+						state.patients.fields = state.patients.fields.map((b) =>
 							b.filter((a) => a.name !== 'medication_history'),
 						);
 					}
@@ -785,26 +823,39 @@ export const formSlice = createSlice({
 					}
 
 					if (action.payload.setbacks?.length > 0) {
-						const setbacks = state.setbacks.fields.slice(
-							0,
-							state.setbacks.fields.length - 1,
-						);
+						state.setbacks.fields = [];
+						action.payload.setbacks.forEach((setback, index) => {
+							// const setbacks = state.setbacks.fields.slice(
+							// 	0,
+							// 	state.setbacks.fields.length - 1,
+							// );
+							const newId = uuidv4();
+							const setbacksToAdd = {
+								id: newId,
+								input_type: InputTypeEnum.SETBACK_ROW,
+								names: ['setBackDate', 'setBackPlace', 'diagnosisDate'],
+								disabled: true,
+							};
 
-						const setbacksToAdd = {
-							id: setbacks.length + 1,
-							input_type: InputTypeEnum.SETBACK_ROW,
-							names: ['setBackDate', 'setBackPlace', 'diagnosisDate'],
-							disabled: true,
-						};
+							state.setbacks.fields = [
+								...state.setbacks.fields,
+								[setbacksToAdd],
+							];
 
-						state.setbacks.fields = [...setbacks, [setbacksToAdd]];
-
-						state.values = {
-							...state.values,
-							[`setBackDate1`]: action.payload.setbacks[0].setBackDate,
-							[`setBackPlace1`]: action.payload.setbacks[0].setBackPlace,
-							[`diagnosisDate1`]:
-								action.payload.setbacks[0].diagnosisDate,
+							state.values = {
+								...state.values,
+								[`setBackDate${newId}`]:
+									action.payload.setbacks[index].setBackDate,
+								[`setBackPlace${newId}`]:
+									action.payload.setbacks[index].setBackPlace,
+								[`diagnosisDate${newId}`]:
+									action.payload.setbacks[index].diagnosisDate,
+							};
+						});
+					} else {
+						state.values.setbacks = {
+							...state.values.setbacks,
+							setbacksId: [],
 						};
 					}
 					// console.log(action.payload)

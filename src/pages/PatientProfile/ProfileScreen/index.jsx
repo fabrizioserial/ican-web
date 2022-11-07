@@ -56,9 +56,9 @@ const ProfileScreen = () => {
 			let day = '';
 			Object.values(dataAppetiteHydration).forEach((item) => {
 				day =
-					new Date(item.date).getDate() +
+					new Date(item.date).getUTCDate() +
 					'/' +
-					new Date(item.date).getMonth();
+					new Date(item.date).getUTCMonth();
 				aux[day] = [item.apettite, item.hydration];
 			});
 			setAppetiteHydration(aux);
@@ -71,9 +71,9 @@ const ProfileScreen = () => {
 			let day = '';
 			Object.values(dataSocialPhysical).forEach((item) => {
 				day =
-					new Date(item.date).getDate() +
+					new Date(item.date).getUTCDate() +
 					'/' +
-					new Date(item.date).getMonth();
+					new Date(item.date).getUTCMonth();
 				aux[day] = [item.social, item.physical];
 			});
 			setSocialPhysical(aux);
@@ -83,19 +83,19 @@ const ProfileScreen = () => {
 	const dayName = (day) => {
 		switch (day) {
 			case 0:
-				return 'L';
+				return 'D';
 			case 1:
-				return 'M';
+				return 'L';
 			case 2:
 				return 'M';
 			case 3:
-				return 'J';
+				return 'M';
 			case 4:
-				return 'V';
+				return 'J';
 			case 5:
-				return 'S';
+				return 'V';
 			case 6:
-				return 'D';
+				return 'S';
 			default:
 				break;
 		}
