@@ -101,8 +101,6 @@ const Validation = () => {
 			diagnosisDate: values.diagnosisDate,
 		};
 
-		console.log(values);
-
 		values.biomarkers.biomarkersId.forEach((id) => {
 			biomarkers = [
 				...biomarkers,
