@@ -113,7 +113,7 @@ const TreatmentSection = () => {
 						treatmentsResults?.map((treatment, index) => (
 							<TreatmentItem
 								medications={parseMedicationList(treatment.treatment)}
-								id={index}
+								id={treatment.id}
 								status={treatment.status}
 								startedDate={parseDate(treatment.startDate)}
 								finishDate={parseDate(treatment.finishDate)}

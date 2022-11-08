@@ -6,7 +6,8 @@ const initialState = {
 	modalOpen: false,
 	modalType: undefined,
 	// 'c36c2351-d835-493a-a513-7590b97d9e8e'
-	reportId: undefined,
+	// reportId: '0ce21e6b-68cb-4ca7-b26a-fecf4d763748',
+	reportId: '',
 };
 
 export const utilsSlice = createSlice({

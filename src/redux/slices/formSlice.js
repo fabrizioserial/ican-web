@@ -330,16 +330,17 @@ export const formSlice = createSlice({
 				...fixedRows,
 			];
 
+			state.values = {
+				...state.values,
+				[`biomarker${biomarkersToAdd.id}`]: '',
+				[`evaluation${biomarkersToAdd.id}`]: '',
+			};
 			state.values.biomarkers = {
 				...state.values.biomarkers,
-				[`biomarker${biomarkersToAdd.id}`]: {
-					[`biomarker${biomarkersToAdd.id}`]: '',
-					[`evaluation${biomarkersToAdd.id}`]: '',
-					biomarkersId: [
-						...state.values.biomarkers.biomarkersId,
-						biomarkersToAdd.id,
-					],
-				},
+				biomarkersId: [
+					...state.values.biomarkers.biomarkersId,
+					biomarkersToAdd.id,
+				],
 			};
 		},
 		addSetBacks: (state) => {
@@ -568,6 +569,12 @@ export const formSlice = createSlice({
 								name: `Cantidad fumada por dia: ${action.payload.quantitySmoked} cigarrillos por dia`,
 							},
 						],
+						biomarkers: {
+							biomarkersId: [],
+						},
+						setbacks: {
+							setbacksId: [],
+						},
 					};
 
 					if (!action.payload?.isSmoker) {

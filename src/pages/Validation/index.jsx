@@ -101,6 +101,8 @@ const Validation = () => {
 			diagnosisDate: values.diagnosisDate,
 		};
 
+		console.log(values);
+
 		values.biomarkers.biomarkersId.forEach((id) => {
 			biomarkers = [
 				...biomarkers,
@@ -111,12 +113,10 @@ const Validation = () => {
 			];
 		});
 
-		if (biomarkers.length > 0) {
-			medicalHistory = {
-				...medicalHistory,
-				biomarkers,
-			};
-		}
+		medicalHistory = {
+			...medicalHistory,
+			biomarkers,
+		};
 
 		for (let indexSetBacks = 1; indexSetBacks < 16; indexSetBacks++) {
 			if (

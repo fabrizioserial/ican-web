@@ -4,6 +4,9 @@ import {
 	StyledP,
 } from '../../../../../common/styledCommonComponents';
 import { useTheme } from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { ModalTypeEnum } from '../../../../../utils/utils';
+import { setModalOpen } from '../../../../../redux/slices/utilsSlice';
 
 const TreatmentItem = ({
 	medications,
@@ -13,6 +16,18 @@ const TreatmentItem = ({
 	status,
 }) => {
 	const theme = useTheme();
+
+	const dispatch = useDispatch();
+
+	const openModal = () => {
+		dispatch(
+			setModalOpen({
+				open: true,
+				type: ModalTypeEnum.TREATMENT_MODAL,
+				id: id,
+			}),
+		);
+	};
 	return (
 		<StyledBox
 			css={{
@@ -25,6 +40,7 @@ const TreatmentItem = ({
 				alignSelf: 'top',
 				cursor: 'pointer',
 			}}
+			onClick={openModal}
 		>
 			<StyledBox
 				css={{

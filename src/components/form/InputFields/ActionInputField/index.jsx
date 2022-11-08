@@ -9,6 +9,7 @@ import {
 	addTreatmentMedication,
 } from '../../../../redux/slices/formSlice';
 import { actionTypeEnum } from '../../../../utils/utils';
+import { addNewMedication } from '../../../../redux/slices/treatmentSlice';
 
 const ActionInputField = ({ index, label, handleClick }) => {
 	const dispatch = useDispatch();
@@ -26,7 +27,10 @@ const ActionInputField = ({ index, label, handleClick }) => {
 			case actionTypeEnum.ADD_MEDICATION:
 				dispatch(addTreatmentMedication());
 				break;
+			case actionTypeEnum.ADD_MEDICATION_TREATMENT_MODAL:
+				dispatch(addNewMedication());
 			default:
+				handleClick();
 				break;
 		}
 	};

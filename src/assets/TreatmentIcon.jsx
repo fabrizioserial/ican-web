@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TreatmentIcon = ({ width, height }, props) => {
+const TreatmentIcon = ({ width = '25px', height = '25px' }, props) => {
 	const { color = '#AF7EFF' } = props;
 	return (
 		<svg

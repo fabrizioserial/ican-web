@@ -8,6 +8,7 @@ import { closeModal } from '../../redux/slices/utilsSlice';
 import { useWeeklyQuestionsQuery } from '../../redux/api/homeApi';
 import DailyModal from './components/modals/DailyModal';
 import ContactModal from './components/modals/ContactModal';
+import TreatmentModal from './components/modals/TreatmentModal';
 
 export const withModal = (Component) => (props) => {
 	const open = useSelector((state) => state.utilsSlice.modalOpen);
@@ -27,6 +28,8 @@ export const withModal = (Component) => (props) => {
 				return <DailyModal handleOnClose={handleOnClose} />;
 			case ModalTypeEnum.CONTACT_MODAL:
 				return <ContactModal handleOnClose={handleOnClose} />;
+			case ModalTypeEnum.TREATMENT_MODAL:
+				return <TreatmentModal handleOnClose={handleOnClose} />;
 		}
 	};
 

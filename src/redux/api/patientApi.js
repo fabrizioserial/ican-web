@@ -61,10 +61,17 @@ export const patientApi = api.injectEndpoints({
 				method: 'PATCH',
 			}),
 		}),
+		getTreatmentById: builder.query({
+			query: (treatmentId) => ({
+				url: `/api/treatment/${treatmentId}`,
+				method: 'GET',
+			}),
+		}),
 	}),
 });
 
 export const {
+	useGetTreatmentByIdQuery,
 	useLazyGetPatientDataFormQuery,
 	useLazyGetPatientDataQuery,
 	useGetPatientDataQuery,
