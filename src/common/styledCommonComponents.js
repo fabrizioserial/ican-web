@@ -76,7 +76,7 @@ export const StyledCardHome = styled(StyledBox)`
 		height: ${(props) => props.height};
 		transition: all 0.4s ease-out;
 		opacity: 1 !important;
-		margin-left: 30px;
+	
 	}
 	&.close {
 		width: 0px;

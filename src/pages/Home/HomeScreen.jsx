@@ -23,13 +23,16 @@ function HomeScreen() {
 						display: 'flex',
 						flexDirection: 'column',
 						maxWidth: '777px',
+						flexWrap: "wrap",
+						rowGap: "30px",
+						columnGap: "30px",
 					}}
 				>
 					<WidgetHome />
 					<WidgetPastelStats />
 					<WidgetDailyChart />
 				</StyledBox>
-				<StyledBox css={{ display: 'flex', marginLeft: '50px' }}>
+				<StyledBox css={{ display: 'flex', marginLeft: '30px' }}>
 					<PatientsList />
 				</StyledBox>
 			</StyledBox>

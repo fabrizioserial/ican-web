@@ -11,8 +11,7 @@ const WidgetHome = () => {
 				height: '230px',
 				display: 'flex',
 				flexDirection: 'row',
-				justifyContent: 'space-between',
-				marginBottom: '35px',
+				columnGap: '30px',
 			}}
 		>
 			<WeeklySummary />
