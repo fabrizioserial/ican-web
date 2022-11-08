@@ -29,6 +29,7 @@ const ActionInputField = ({ index, label, handleClick }) => {
 				break;
 			case actionTypeEnum.ADD_MEDICATION_TREATMENT_MODAL:
 				dispatch(addNewMedication());
+				break;
 			default:
 				handleClick();
 				break;
