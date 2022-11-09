@@ -11,13 +11,22 @@ import PollResultsHeader from './PollResultsHeader';
 import PollResultsBody from './PollResultsBody';
 import PollResultsBottom from './PollResultsBottom';
 import { useParams } from 'react-router';
-import { useGetPollResultsQuery } from '../../redux/api/patientApi';
+import { useGetPollResultsQuery, useLazyGetPatientDataQuery } from '../../redux/api/patientApi';
+import { CapitalizeText } from '../../utils/utils';
 
 const PollResultsScreen = () => {
 	const { patientId } = useParams();
 	const { data: dataPollResults, isSuccess: isSuccessPollResults } =
 		useGetPollResultsQuery(patientId);
 	const [pollResults, setPollResults] = useState(undefined);
+
+	const [refetchPatientData, { data: dataPatient, isSuccess, isLoading }] =
+		useLazyGetPatientDataQuery();
+
+
+	useEffect(() => {
+		refetchPatientData(patientId);
+	}, [patientId]);
 
 	useEffect(() => {
 		if (dataPollResults) {
@@ -60,7 +69,7 @@ const PollResultsScreen = () => {
 				}}
 			>
 				<StyledH3>
-					Registros diarios y semanales de Agustin Von Chiwisky
+					Registros diarios y semanales de {CapitalizeText(dataPatient?.name) + ' ' +CapitalizeText(dataPatient?.surname)}
 				</StyledH3>
 				<StyledBox
 					css={{
