@@ -13,7 +13,7 @@ import {
 import TableBody from '@material-ui/core/TableBody';
 import {
 	StyledBodyCell,
-	StyledBodyRow,
+	StyledBodyRow, StyledCellP,
 } from '../../PatientList/PatientListBody/styles';
 import { useDispatch } from 'react-redux';
 import { setModalOpen, setReportId } from '../../../redux/slices/utilsSlice';
@@ -51,7 +51,9 @@ const PollResultsBody = ({ data }) => {
 					</StyledBodyCell>
 
 					<StyledBodyCell width={'90%'}>
-						{parseData(bodyItem.date)}
+						<StyledCellP>{parseData(bodyItem.date)}
+						</StyledCellP>
+
 					</StyledBodyCell>
 					<StyledBodyCell width={'10%'}>
 						{renderPollPill(bodyItem.status)}
