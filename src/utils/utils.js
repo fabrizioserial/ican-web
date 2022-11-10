@@ -218,43 +218,51 @@ export const PatientListHeaderConst = [
 		label: ' ',
 		sortId: '',
 		width: '5%',
+		minWidth:'82px',
 		css: { paddingLeft: '30px' },
 	},
 	{
 		label: 'Nro de Historial Medico',
 		sortId: 'medicHistoryNumber',
 		width: '12%',
+		minWidth:'147.78px',
 	},
 	{
 		label: 'Nombre y Apellido',
 		sortId: 'name',
 		width: '14%',
+		minWidth:'169.95px',
 	},
 	{
 		label: 'DNI',
 		sortId: '',
 		width: '14%',
+		minWidth:'169.95px',
 	},
 
 	{
 		label: 'Tumor Primario',
 		sortId: 'organ',
 		width: '10%',
+		minWidth:'125.62px',
 	},
 	{
 		label: 'Tratamiento',
 		sortId: 'treatment',
 		width: '26%',
+		minWidth:'303.84px',
 	},
 	{
 		label: 'Tratamiento de Tumor Primario',
 		sortId: 'tumorTreatment',
 		width: '14%',
+		minWidth:'170.83px',
 	},
 	{
 		label: 'Estado',
 		sortId: 'status',
 		width: '5%',
+		minWidth:'120.02px',
 		css: { paddingRight: '30px' },
 	},
 ];

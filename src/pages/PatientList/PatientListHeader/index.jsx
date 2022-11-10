@@ -63,6 +63,7 @@ const PatientListHeader = () => {
 							height: '65px',
 							boxSizing: 'border-box',
 							borderBottomColor: 'rgba(225, 209, 252, 0.22) !important',
+							minWidth:headerItem.minWidth
 						}}
 						width={headerItem.width}
 						sortDirection={columnState[headerItem.sortId]}

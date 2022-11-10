@@ -24,6 +24,7 @@ const reducers = combineReducers({
 	homeSlice: homeSliceReducer,
 	formSlice: formSliceReducer,
 	listSlice: listSliceReducer,
+	// reportsSlice: resporstSliceReducer,
 	utilsSlice: utilsSliceReducer,
 });
 

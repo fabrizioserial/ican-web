@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TableCell, TableRow } from '@material-ui/core';
 import { StyledBox } from '../../../common/styledCommonComponents';
 import ArrowLeftIcon from '../../../assets/ArrowLeftIcon';
 import ArrowRightIcon from '../../../assets/ArrowRightIcon';
 
-const PollResultsBottom = ({ currentPage = 1, maxPages = 10 }) => {
-	const handleMoveToNextPage = () => {};
-	const handleMoveToPreviousPage = () => {};
+const PollResultsBottom = ({changePage,page}) => {
+	const [currentPage,setCurrentPage]=useState(page)
+	const handleMoveToNextPage = () => {
+		changePage(page+1)
+	};
+	const handleMoveToPreviousPage = () => {
+		changePage(page-1)
+	};
 	return (
 		<StyledBox
 			css={{

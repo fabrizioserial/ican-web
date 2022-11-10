@@ -19,6 +19,7 @@ import { useDispatch } from 'react-redux';
 import { setModalOpen, setReportId } from '../../../redux/slices/utilsSlice';
 
 const PollResultsBody = ({ data }) => {
+	const [page,setPage]=useState(1)
 	const dispatch = useDispatch();
 
 	const openModal = (id, type) => {
@@ -39,9 +40,14 @@ const PollResultsBody = ({ data }) => {
 		else return <WeeklyIcon />;
 	};
 
+	function getPage(page) {
+		return data?.slice(page-1,page*2)
+
+	}
+
 	return (
 		<TableBody>
-			{data?.map((bodyItem, index) => (
+			{getPage(page).map((bodyItem, index) => (
 				<StyledBodyRow
 					key={index}
 					onClick={() => openModal(bodyItem.id, bodyItem.type)}
