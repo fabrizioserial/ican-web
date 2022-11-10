@@ -43,7 +43,7 @@ const PatientListBody = () => {
 						<StyledCellP>{bodyItem.medicHistoryNumber}</StyledCellP>
 					</StyledBodyCell>
 					<StyledBodyCell width={'14%'}>
-						<StyledCellP>	{CapitalizeText(bodyItem.name) +
+						<StyledCellP css={{whiteSpace: 'normal'}}>	{CapitalizeText(bodyItem.name) +
 						' ' +
 						CapitalizeText(bodyItem.surname)}</StyledCellP>
 

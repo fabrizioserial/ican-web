@@ -63,7 +63,9 @@ const PatientListHeader = () => {
 							height: '65px',
 							boxSizing: 'border-box',
 							borderBottomColor: 'rgba(225, 209, 252, 0.22) !important',
-							minWidth:headerItem.minWidth
+							minWidth:headerItem.minWidth,
+
+							wordWrap: "break-word"
 						}}
 						width={headerItem.width}
 						sortDirection={columnState[headerItem.sortId]}
@@ -78,10 +80,8 @@ const PatientListHeader = () => {
 					>
 						<StyledBox
 							as={TableSortLabel}
-							css={{
-								color: ' #9357f7 !important',
-								fontSize: '12px',
-							}}
+							css={headerItem.css}
+
 							active={true}
 							direction={columnState[headerItem.sortId]}
 							onClick={() => sortColumn(headerItem.sortId)}
