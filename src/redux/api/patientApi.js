@@ -47,6 +47,7 @@ export const patientApi = api.injectEndpoints({
 				url: `/api/home/patient-treatments/${patientID}`,
 				method: 'GET',
 			}),
+			providesTags: ['TreatmentList'],
 		}),
 		getPollResults: builder.query({
 			query: (userId) => ({
@@ -62,10 +63,11 @@ export const patientApi = api.injectEndpoints({
 			}),
 		}),
 		getTreatmentById: builder.query({
-			query: (treatmentId) => ({
-				url: `/api/treatment/${treatmentId}`,
+			query: ({ reportId }) => ({
+				url: `/api/treatment/${reportId}`,
 				method: 'GET',
 			}),
+			providesTags: ['TreatmentList'],
 		}),
 	}),
 });

@@ -12,8 +12,8 @@ import { clearTreatmentModal } from '../../../../../redux/slices/treatmentSlice'
 const TreatmentModal = ({ handleOnClose }) => {
 	const dispatch = useDispatch();
 
-	const OnClose = () => {
-		dispatch(clearTreatmentModal());
+	const OnClose = async () => {
+		await dispatch(clearTreatmentModal());
 		handleOnClose();
 	};
 
@@ -46,7 +46,7 @@ const TreatmentModal = ({ handleOnClose }) => {
 					</StyledP>
 				</StyledBox>
 			}
-			body={<TreatmentBody />}
+			body={<TreatmentBody onClose={OnClose} />}
 		/>
 	);
 };

@@ -54,7 +54,7 @@ const ReportComponent = () => {
 				marginTop: '30px',
 			}}
 		>
-			<StyledBox css={{ width: '100%', height: '100%' }}>
+			<StyledBox css={{ width: '100%', height: '100%', overflowY: 'auto' }}>
 				{isLoading ? (
 					<StyledBox
 						css={{

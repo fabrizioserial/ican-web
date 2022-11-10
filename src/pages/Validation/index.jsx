@@ -116,28 +116,22 @@ const Validation = () => {
 			biomarkers,
 		};
 
-		for (let indexSetBacks = 1; indexSetBacks < 16; indexSetBacks++) {
-			if (
-				!values['setBackDate'.concat(indexSetBacks)] &&
-				!values['diagnosisDate'.concat(indexSetBacks)] &&
-				!values['setBackPlace'.concat(indexSetBacks)]
-			) {
-				break;
-			}
+		values.setbacks.setbacksId?.forEach((setbackId) => {
 			setbacks = [
 				...setbacks,
 				{
 					setBackDate: new Date(
-						values['setBackDate'.concat(indexSetBacks)],
+						values[`setBackDate${setbackId}`],
 					).toISOString(),
 					diagnosisDate: new Date(
-						values['diagnosisDate'.concat(indexSetBacks)],
+						values[`diagnosisDate${setbackId}`],
 					).toISOString(),
-					setBackPlace: values['setBackPlace'.concat(indexSetBacks)],
+					setBackPlace: values[`setBackPlace${setbackId}`],
 					patientId: patientId,
 				},
 			];
-		}
+		});
+
 		setbacks.map((item) => setSetbacks(item));
 		setPatientForm(medicalHistory);
 	};

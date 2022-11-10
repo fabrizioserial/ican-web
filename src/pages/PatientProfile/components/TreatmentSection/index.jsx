@@ -11,15 +11,20 @@ import { useGetPatientTreatmetsQuery } from '../../../../redux/api/patientApi';
 import _ from 'lodash';
 import { StyledTreatmentItemContainer } from './TreatmentItemContainer';
 import { StyledCircularProgress } from '../../../../components/CustomCircularProgress/styles';
+import { useDispatch } from 'react-redux';
+import { ModalTypeEnum } from '../../../../utils/utils';
+import { setModalOpen } from '../../../../redux/slices/utilsSlice';
+import { switchToEdit } from '../../../../redux/slices/treatmentSlice';
 
 const TreatmentSection = () => {
 	const theme = useTheme();
 	const { patientId } = useParams();
+	const dispatch = useDispatch();
 	const {
 		data: treatmentsData,
 		isSuccess: isSuccessTreatmentsData,
 		isLoading: isLoadingTreatment,
-	} = useGetPatientTreatmetsQuery(patientId);
+	} = useGetPatientTreatmetsQuery(patientId, { skip: !patientId });
 	const [treatmentsResults, setTreatmentsResults] = useState([]);
 
 	useEffect(() => {
@@ -63,6 +68,32 @@ const TreatmentSection = () => {
 		return medicationArray;
 	};
 
+	const openModalNewTreatment = () => {
+		if (
+			treatmentsResults?.find((treatment) => treatment.finishDate === null)
+		) {
+			dispatch(
+				setModalOpen({
+					open: true,
+					type: ModalTypeEnum.TREATMENT_MODAL,
+					id: treatmentsResults?.find(
+						(treatment) => treatment.finishDate === null,
+					).id,
+					patientId: patientId,
+				}),
+			);
+		} else {
+			dispatch(switchToEdit());
+			dispatch(
+				setModalOpen({
+					open: true,
+					type: ModalTypeEnum.TREATMENT_MODAL,
+					patientId: patientId,
+				}),
+			);
+		}
+	};
+
 	return (
 		<Card
 			title={'Tratamientos'}
@@ -79,7 +110,7 @@ const TreatmentSection = () => {
 					display: 'flex',
 					flexDirection: 'column',
 					justifyContent: 'space-between',
-					height: '100%',
+					height: '-webkit-fill-available',
 					paddingBottom: '20px',
 				}}
 			>
@@ -110,61 +141,70 @@ const TreatmentSection = () => {
 							</StyledP>
 						</StyledBox>
 					) : (
-						treatmentsResults?.map((treatment, index) => (
-							<TreatmentItem
-								medications={parseMedicationList(treatment.treatment)}
-								id={treatment.id}
-								status={treatment.status}
-								startedDate={parseDate(treatment.startDate)}
-								finishDate={parseDate(treatment.finishDate)}
-							/>
-						))
+						<StyledBox
+							css={{
+								height: '100%',
+								display: 'flex',
+								flexDirection: 'column',
+								justifyContent: 'space-between',
+							}}
+						>
+							<StyledBox css={{ height: 'auto' }}>
+								{treatmentsResults?.map((treatment, index) => (
+									<TreatmentItem
+										medications={parseMedicationList(
+											treatment.treatment,
+										)}
+										id={treatment.id}
+										status={treatment.status}
+										startedDate={parseDate(treatment.startDate)}
+										finishDate={parseDate(treatment.finishDate)}
+									/>
+								))}
+							</StyledBox>
+
+							<StyledBox
+								css={{
+									boxSizing: 'border-box',
+									width: '100%',
+									height: '31px',
+									background: '#FFFFFF',
+									border: '1px solid #E1D1FC',
+									borderRadius: '20px',
+									marginTop: '15px',
+									padding: '7px 62px',
+									display: 'flex',
+									flexDirection: 'row',
+									columnGap: '5px',
+									alignItems: 'center',
+									cursor: 'pointer',
+									'&:hover': {
+										boxShadow:
+											'0px 4px 24px rgba(214, 203, 252, 0.3)',
+										transition: 'all 0.2s ease-out',
+									},
+								}}
+								onClick={() => openModalNewTreatment()}
+							>
+								<PlusCircleIcon />
+								<StyledP
+									css={{
+										fontStyle: 'normal',
+										fontWeight: 400,
+										fontSize: '11px',
+										alignItems: 'center',
+										letterSpacing: '0.05em',
+										textTransform: 'capitalize',
+										color: '#AF7EFF',
+										whiteSpace: 'nowrap',
+									}}
+								>
+									Nuevo Tratamiento
+								</StyledP>
+							</StyledBox>
+						</StyledBox>
 					)}
 				</StyledTreatmentItemContainer>
-				{/*	<StyledBox css={{ display:'flex',flexDirection:"column",alignItems: 'center',}}>
-				<StyledBox
-					css={{
-						boxSizing: 'border-box',
-						width: '255px',
-						height: '31px',
-						background: '#FFFFFF',
-						border: '1px solid #E1D1FC',
-						borderRadius: '20px',
-						padding: '7px 62px',
-						display: 'flex',
-						flexDirection: 'row',
-						columnGap: '5px',
-						alignItems: 'center',
-						cursor: 'pointer',
-						'&:hover': {
-							boxShadow: '0px 4px 24px rgba(214, 203, 252, 0.3)',
-							transition: 'all 0.2s ease-out',
-						},
-
-					}}
-				>
-					<PlusCircleIcon />
-					<StyledP
-						css={{
-							width: '108px',
-							height: '13px',
-							fontStyle: 'normal',
-							fontWeight: 400,
-							fontSize: '11px',
-							lineHeight: '13px',
-							display: 'flex',
-							alignItems: 'center',
-							letterSpacing: '0.05em',
-							textTransform: 'capitalize',
-							color: '#AF7EFF',
-							whiteSpace: 'nowrap',
-
-						}}
-					>
-						Nuevo Tratamiento
-					</StyledP>
-				</StyledBox>
-				</StyledBox>	*/}
 			</StyledBox>
 		</Card>
 	);
