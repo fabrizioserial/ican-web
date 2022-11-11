@@ -4,13 +4,16 @@ import { StyledBox } from '../../../common/styledCommonComponents';
 import ArrowLeftIcon from '../../../assets/ArrowLeftIcon';
 import ArrowRightIcon from '../../../assets/ArrowRightIcon';
 
-const PollResultsBottom = ({changePage,page}) => {
-	const [currentPage,setCurrentPage]=useState(page)
+const PollResultsBottom = ({
+	handleChangePage,
+	currentPage = '',
+	maxPage = '',
+}) => {
 	const handleMoveToNextPage = () => {
-		changePage(page+1)
+		handleChangePage(true);
 	};
 	const handleMoveToPreviousPage = () => {
-		changePage(page-1)
+		handleChangePage(false);
 	};
 	return (
 		<StyledBox
@@ -36,6 +39,7 @@ const PollResultsBottom = ({changePage,page}) => {
 					alignItems: 'center',
 					justifyContent: 'center',
 					cursor: 'pointer',
+					opacity: currentPage === 1 ? 0 : 1,
 				}}
 				onClick={handleMoveToPreviousPage}
 				className={'withBoxShadow'}
@@ -43,7 +47,7 @@ const PollResultsBottom = ({changePage,page}) => {
 				<ArrowLeftIcon />
 			</StyledBox>
 			<StyledBox css={{ fontSize: '11px' }}>
-				Pagina {currentPage} de {maxPages}
+				Pagina {currentPage} de {maxPage}
 			</StyledBox>
 			<StyledBox
 				css={{
@@ -55,6 +59,7 @@ const PollResultsBottom = ({changePage,page}) => {
 					alignItems: 'center',
 					justifyContent: 'center',
 					cursor: 'pointer',
+					opacity: currentPage < maxPage ? 1 : 0,
 				}}
 				onClick={handleMoveToNextPage}
 				className={'withBoxShadow'}

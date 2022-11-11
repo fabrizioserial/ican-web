@@ -43,32 +43,37 @@ const PatientListBody = () => {
 						<StyledCellP>{bodyItem.medicHistoryNumber}</StyledCellP>
 					</StyledBodyCell>
 					<StyledBodyCell width={'14%'}>
-						<StyledCellP css={{whiteSpace: 'normal'}}>	{CapitalizeText(bodyItem.name) +
-						' ' +
-						CapitalizeText(bodyItem.surname)}</StyledCellP>
-
+						<StyledCellP
+							css={{ whiteSpace: 'normal', width: '200px !important' }}
+						>
+							{CapitalizeText(bodyItem.name) +
+								' ' +
+								CapitalizeText(bodyItem.surname)}
+						</StyledCellP>
 					</StyledBodyCell>
 					<StyledBodyCell width={'14%'}>
 						<StyledCellP>{bodyItem.dni}</StyledCellP>
 					</StyledBodyCell>
 
 					<StyledBodyCell width={'10%'}>
-						<StyledCellP>
-							{CapitalizeText(bodyItem.organ)}
-						</StyledCellP>
+						<StyledCellP>{CapitalizeText(bodyItem.organ)}</StyledCellP>
 					</StyledBodyCell>
 					<StyledBodyCell width={'26%'}>
-						<StyledCellP css={{ whiteSpace: "nowrap",
-							textOverflow: "ellipsis", overflow: "hidden", maxWidth:"150px"}}>
+						<StyledCellP
+							css={{
+								whiteSpace: 'nowrap',
+								textOverflow: 'ellipsis',
+								overflow: 'hidden',
+								maxWidth: '150px',
+							}}
+						>
 							{bodyItem.treatment}
 						</StyledCellP>
-
 					</StyledBodyCell>
 					<StyledBodyCell width={'14%'}>
 						<StyledCellP>
 							{CapitalizeText(bodyItem.tumorTreatment)}
 						</StyledCellP>
-
 					</StyledBodyCell>
 
 					<StyledBodyCell width={'5%'} style={{ paddingRight: '30px' }}>

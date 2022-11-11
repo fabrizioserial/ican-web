@@ -11,7 +11,7 @@ const WidgetPastelStats = () => {
 				height: '300px',
 				display: 'flex',
 				flexDirection: 'row',
-				columnGap:"30px",
+				marginBottom: '35px',
 				justifyContent: 'space-between',
 			}}
 		>

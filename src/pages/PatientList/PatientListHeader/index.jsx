@@ -40,7 +40,7 @@ const PatientListHeader = () => {
 			params: {
 				order: columnState[columnName] === 'desc' ? 'asc' : 'desc',
 				skip: 0,
-				take: 2,
+				take: 8,
 			},
 		});
 		dispatch(
@@ -63,9 +63,9 @@ const PatientListHeader = () => {
 							height: '65px',
 							boxSizing: 'border-box',
 							borderBottomColor: 'rgba(225, 209, 252, 0.22) !important',
-							minWidth:headerItem.minWidth,
+							minWidth: headerItem.minWidth,
 
-							wordWrap: "break-word"
+							wordWrap: 'break-word',
 						}}
 						width={headerItem.width}
 						sortDirection={columnState[headerItem.sortId]}
@@ -81,7 +81,6 @@ const PatientListHeader = () => {
 						<StyledBox
 							as={TableSortLabel}
 							css={headerItem.css}
-
 							active={true}
 							direction={columnState[headerItem.sortId]}
 							onClick={() => sortColumn(headerItem.sortId)}

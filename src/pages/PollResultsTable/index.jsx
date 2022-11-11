@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
 	StyledBox,
 	StyledH3,
@@ -11,33 +11,58 @@ import PollResultsHeader from './PollResultsHeader';
 import PollResultsBody from './PollResultsBody';
 import PollResultsBottom from './PollResultsBottom';
 import { useParams } from 'react-router';
-import { useGetPollResultsQuery, useLazyGetPatientDataQuery } from '../../redux/api/patientApi';
+import {
+	useLazyGetPollTableQuery,
+	useGetPollResultsQuery,
+	useLazyGetPatientDataQuery,
+} from '../../redux/api/patientApi';
 import { CapitalizeText } from '../../utils/utils';
 
 const PollResultsScreen = () => {
 	const { patientId } = useParams();
 	const { data: dataPollResults, isSuccess: isSuccessPollResults } =
-		useGetPollResultsQuery(patientId);
+		useGetPollResultsQuery({ patientId, params: { take: 8, skip: 0 } });
+	const [
+		refetchPoll,
+		{ data: dataPollTableResults, isSuccess: isSuccessPollTableResults },
+	] = useLazyGetPollTableQuery();
 	const [pollResults, setPollResults] = useState(undefined);
 
 	const [refetchPatientData, { data: dataPatient, isSuccess, isLoading }] =
 		useLazyGetPatientDataQuery();
 
+	const handleChangePage = useCallback(
+		(next) => {
+			const params = {
+				take: 8,
+				skip:
+					8 *
+					((dataPollTableResults?.page ?? dataPollResults?.page) +
+						(next ? 1 : -1) -
+						1),
+			};
+			refetchPoll({ userId: patientId, params });
+		},
+		[dataPollTableResults, dataPollResults],
+	);
 
 	useEffect(() => {
 		refetchPatientData(patientId);
 	}, [patientId]);
 
 	useEffect(() => {
-		if (dataPollResults) {
+		if (dataPollTableResults || dataPollResults) {
 			let finalArray = [];
+			console.log(dataPollTableResults, dataPollResults);
 			finalArray = finalArray.concat(
-				dataPollResults.reports.dailyReports.map((item) => ({
-					...item,
-					type: 'daily',
-				})),
+				(dataPollTableResults ?? dataPollResults).reports.dailyReports.map(
+					(item) => ({
+						...item,
+						type: 'daily',
+					}),
+				),
 
-				dataPollResults.reports.weeklyReports
+				(dataPollTableResults ?? dataPollResults).reports.weeklyReports
 					.map((item) => ({
 						id: item.id,
 						status: item.status,
@@ -49,7 +74,7 @@ const PollResultsScreen = () => {
 			finalArray = _.orderBy(finalArray, 'date', 'desc');
 			setPollResults(finalArray);
 		}
-	}, [isSuccessPollResults]);
+	}, [dataPollTableResults, dataPollResults]);
 	return (
 		<StyledScreen
 			css={{
@@ -69,7 +94,10 @@ const PollResultsScreen = () => {
 				}}
 			>
 				<StyledH3>
-					Registros diarios y semanales de {CapitalizeText(dataPatient?.name) + ' ' +CapitalizeText(dataPatient?.surname)}
+					Registros diarios y semanales de{' '}
+					{CapitalizeText(dataPatient?.name) +
+						' ' +
+						CapitalizeText(dataPatient?.surname)}
 				</StyledH3>
 				<StyledBox
 					css={{
@@ -106,7 +134,15 @@ const PollResultsScreen = () => {
 						<PollResultsHeader />
 						<PollResultsBody data={pollResults} />
 					</Table>
-					<PollResultsBottom />
+					<PollResultsBottom
+						handleChangePage={handleChangePage}
+						currentPage={
+							dataPollTableResults?.page ?? dataPollResults?.page
+						}
+						maxPage={
+							dataPollTableResults?.maxPage ?? dataPollResults?.maxPage
+						}
+					/>
 				</StyledBox>
 			</StyledBox>
 		</StyledScreen>

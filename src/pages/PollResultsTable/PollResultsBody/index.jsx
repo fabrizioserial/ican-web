@@ -13,13 +13,14 @@ import {
 import TableBody from '@material-ui/core/TableBody';
 import {
 	StyledBodyCell,
-	StyledBodyRow, StyledCellP,
+	StyledBodyRow,
+	StyledCellP,
 } from '../../PatientList/PatientListBody/styles';
 import { useDispatch } from 'react-redux';
 import { setModalOpen, setReportId } from '../../../redux/slices/utilsSlice';
 
 const PollResultsBody = ({ data }) => {
-	const [page,setPage]=useState(1)
+	const [page, setPage] = useState(1);
 	const dispatch = useDispatch();
 
 	const openModal = (id, type) => {
@@ -40,15 +41,14 @@ const PollResultsBody = ({ data }) => {
 		else return <WeeklyIcon />;
 	};
 
-	function getPage(page) {
-		setPage(page)
-		return data?.slice(page-1,page*2)
-
-	}
+	const getPage = (page) => {
+		setPage(page);
+		return data?.slice(page - 1, page * 2);
+	};
 
 	return (
 		<TableBody>
-			{getPage(page).map((bodyItem, index) => (
+			{data?.map((bodyItem, index) => (
 				<StyledBodyRow
 					key={index}
 					onClick={() => openModal(bodyItem.id, bodyItem.type)}
@@ -58,9 +58,7 @@ const PollResultsBody = ({ data }) => {
 					</StyledBodyCell>
 
 					<StyledBodyCell width={'90%'}>
-						<StyledCellP>{parseData(bodyItem.date)}
-						</StyledCellP>
-
+						<StyledCellP>{parseData(bodyItem.date)}</StyledCellP>
 					</StyledBodyCell>
 					<StyledBodyCell width={'10%'}>
 						{renderPollPill(bodyItem.status)}

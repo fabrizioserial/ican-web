@@ -19,19 +19,18 @@ const ReportComponent = () => {
 		data: dataPollResults,
 		isSuccess: isSuccessPollResults,
 		isLoading,
-	} = useGetPollResultsQuery(patientId);
+	} = useGetPollResultsQuery({ patientId });
 
 	useEffect(() => {
 		if (dataPollResults) {
 			let finalArray = [];
 			finalArray = finalArray.concat(
-				dataPollResults.reports.dailyReports.slice(0, 5).map((item) => ({
+				dataPollResults.reports.dailyReports.map((item) => ({
 					...item,
 					type: 'daily',
 				})),
 
 				dataPollResults.reports.weeklyReports
-					.slice(0, 5)
 					.map((item) => ({
 						id: item.id,
 						status: item.status,
@@ -44,6 +43,9 @@ const ReportComponent = () => {
 			setPollResults(finalArray);
 		}
 	}, [dataPollResults, isSuccessPollResults]);
+
+	console.log(pollResults);
+
 	return (
 		<Card
 			title={'Últimos reportes'}
@@ -70,7 +72,7 @@ const ReportComponent = () => {
 				) : (
 					<Table>
 						{pollResults && Object.values(pollResults).length > 0 ? (
-							<PollResultsBody data={pollResults} />
+							<PollResultsBody data={pollResults.slice(0, 4)} />
 						) : (
 							<StyledBox
 								css={{

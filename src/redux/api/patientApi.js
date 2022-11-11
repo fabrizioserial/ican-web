@@ -50,9 +50,17 @@ export const patientApi = api.injectEndpoints({
 			providesTags: ['TreatmentList'],
 		}),
 		getPollResults: builder.query({
-			query: (userId) => ({
+			query: ({ patientId, params }) => ({
+				url: '/api/home/patient-reports/' + patientId,
+				method: 'GET',
+				params: params,
+			}),
+		}),
+		getPollTable: builder.query({
+			query: ({ userId, params }) => ({
 				url: '/api/home/patient-reports/' + userId,
 				method: 'GET',
+				params: params,
 			}),
 		}),
 		updateFixedPatient: builder.mutation({
@@ -82,6 +90,7 @@ export const {
 	useLazyGetSocialPhysicalQuery,
 	useLazyGetCalendarQuery,
 	useGetPollResultsQuery,
+	useLazyGetPollTableQuery,
 	useGetDailyReportQuery,
 	useGetWeeklyReportQuery,
 	useGetPatientTreatmetsQuery,
@@ -98,6 +107,7 @@ export const {
 		getDailyReport,
 		getWeeklyReport,
 		getPollResults,
+		getPollTable,
 		getPatientTreatments,
 		updateFixedPatient,
 	},

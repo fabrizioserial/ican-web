@@ -35,7 +35,7 @@ function PatientsInTreatments({ patientsInTreatment, totalPatients }) {
 			width={'337px'}
 			height={'300px'}
 			css={{
-
+				marginRight: '35px',
 			}}
 		>
 			<StyledBox
