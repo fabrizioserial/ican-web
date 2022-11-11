@@ -71,6 +71,7 @@ export const validateFormApi = api.injectEndpoints({
 
 export const {
 	useLazyGetCancerQuery,
+	useGetCancerQuery,
 	useGetBiomarkersQuery,
 	useLazyGetCancerTypeQuery,
 	useLazyGetCancerSubTypeQuery,

@@ -10,6 +10,8 @@
 		"@mui/icons-material": "^5.10.9",
 		"@mui/utils": "^5.10.9",
 		"@reduxjs/toolkit": "^1.8.3",
+		"@sentry/react": "^7.18.0",
+		"@sentry/tracing": "^7.18.0",
 		"apexcharts": "^3.35.5",
 		"classnames": "^2.3.2",
 		"lodash": "^4.17.21",

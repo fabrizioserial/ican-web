@@ -67,7 +67,8 @@ export const patientApi = api.injectEndpoints({
 				url: `/api/treatment/${reportId}`,
 				method: 'GET',
 			}),
-			providesTags: ['TreatmentList'],
+			invalidatesTags: ['TreatmentList'],
+			keepUnusedDataFor: 0.1,
 		}),
 	}),
 });

@@ -18,7 +18,9 @@ import { useEndTreatmentMutation } from '../../../../../../redux/api/treatmentAp
 import { useSetTreatmentFormMutation } from '../../../../../../redux/api/validateFormApi';
 
 const TreatmentBody = ({ onClose }) => {
-	const { reportId, patientId } = useSelector((state) => state.utilsSlice);
+	const { reportId, patientId, modalOpen } = useSelector(
+		(state) => state.utilsSlice,
+	);
 	const { fields, values, status } = useSelector(
 		(state) => state.treatmentSlice,
 	);
@@ -31,7 +33,7 @@ const TreatmentBody = ({ onClose }) => {
 	const { isLoading } = useGetTreatmentByIdQuery(
 		{ reportId: reportId, sessionTime: timestampRef },
 		{
-			skip: !reportId,
+			skip: !reportId || !modalOpen,
 		},
 	);
 	const [

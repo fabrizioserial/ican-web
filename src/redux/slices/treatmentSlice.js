@@ -88,6 +88,7 @@ const initialState = {
 		objective: '',
 		medicationIds: [],
 		endingMotive: '',
+		otherMotive: undefined,
 	},
 	edit: false,
 	medications: [],
@@ -104,7 +105,10 @@ const treatmentSlice = createSlice({
 				[action.payload.name]: action.payload.value,
 			};
 			const aux = current(state.fields);
-			if (state.values?.endingMotive === 'Other') {
+			if (
+				state.values?.endingMotive === 'Other' &&
+				state.values?.otherMotive === null
+			) {
 				state.fields = [
 					...state.fields,
 					[
@@ -119,6 +123,7 @@ const treatmentSlice = createSlice({
 					],
 				];
 			} else if (
+				state.values?.endingMotive !== 'Other' &&
 				aux.find((column) =>
 					column.find((field) => field.name === 'otherMotive'),
 				)
@@ -133,13 +138,17 @@ const treatmentSlice = createSlice({
 			const medications = state.fields.slice(
 				0,
 				state.fields.length -
-					(state.edit || state.status === TreatmentStatusType.IS_FINISHED
+					(state.edit
+						? 4
+						: state.status === TreatmentStatusType.IS_FINISHED
 						? 5
 						: 3),
 			);
 			const fixedRows = state.fields.slice(
 				state.fields.length -
-					(state.edit || state.status === TreatmentStatusType.IS_FINISHED
+					(state.edit
+						? 4
+						: state.status === TreatmentStatusType.IS_FINISHED
 						? 5
 						: 3),
 				state.fields.length,
@@ -344,7 +353,7 @@ const treatmentSlice = createSlice({
 					}
 				}
 
-				action.payload?.medications.forEach((medication) => {
+				action.payload?.medications?.forEach((medication) => {
 					treatmentSlice.caseReducers.addNewMedication(state, {
 						payload: {
 							medicationValue: medication.medicationId,
@@ -354,7 +363,7 @@ const treatmentSlice = createSlice({
 				});
 
 				let medications = {};
-				action.payload.medications.forEach((medication) => {
+				action.payload.medications?.forEach((medication) => {
 					medications[medication.typeOfMedication] = {
 						...medications[medication.typeOfMedication],
 						[medication.medicationId]: {

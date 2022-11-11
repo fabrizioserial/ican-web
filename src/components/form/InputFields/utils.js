@@ -122,6 +122,7 @@ const InputTypeBuilder = (
 					id={properties.id}
 					type={properties.type}
 					values={{
+						...values,
 						biomarker: values[`${properties.names[0]}${properties.id}`],
 						evaluation: values[`${properties.names[1]}${properties.id}`],
 					}}

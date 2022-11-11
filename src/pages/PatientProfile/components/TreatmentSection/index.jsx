@@ -149,20 +149,6 @@ const TreatmentSection = () => {
 								justifyContent: 'space-between',
 							}}
 						>
-							<StyledBox css={{ height: 'auto' }}>
-								{treatmentsResults?.map((treatment, index) => (
-									<TreatmentItem
-										medications={parseMedicationList(
-											treatment.treatment,
-										)}
-										id={treatment.id}
-										status={treatment.status}
-										startedDate={parseDate(treatment.startDate)}
-										finishDate={parseDate(treatment.finishDate)}
-									/>
-								))}
-							</StyledBox>
-
 							<StyledBox
 								css={{
 									boxSizing: 'border-box',
@@ -201,6 +187,21 @@ const TreatmentSection = () => {
 								>
 									Nuevo Tratamiento
 								</StyledP>
+							</StyledBox>
+							<StyledBox css={{ height: 'auto' }}>
+								{treatmentsResults
+									?.reverse()
+									.map((treatment, index) => (
+										<TreatmentItem
+											medications={parseMedicationList(
+												treatment.treatment,
+											)}
+											id={treatment.id}
+											status={treatment.status}
+											startedDate={parseDate(treatment.startDate)}
+											finishDate={parseDate(treatment.finishDate)}
+										/>
+									))}
 							</StyledBox>
 						</StyledBox>
 					)}

@@ -17,6 +17,7 @@ import {
 import { patientApi } from '../api/patientApi';
 import { validateFormApi } from '../api/validateFormApi';
 import { authSlice } from './authSlice';
+import { tnmOptions } from '../../utils/tnm_options';
 
 const initialState = {
 	patients: {
@@ -148,43 +149,34 @@ const initialState = {
 			],
 			[
 				{
-					placeholder: 'Introduzca Expresion del PDL1',
-					type: 'number',
-					max: 100,
-					min: 0,
-					label: 'Expresión de PDL1',
-					input_type: InputTypeEnum.TEXTFIELD,
-					name: 'expresionPDL1',
-				},
-				{
-					label: 'Estadio',
-					input_type: InputTypeEnum.CONDITIONAL,
-					name: 'cancerStage',
-					varToEvaluate: 'organ',
-					options: TNMOptions,
-				},
-			],
-			[
-				{
 					label: 'T',
 					input_type: InputTypeEnum.CONDITIONAL,
 					name: 'tumor',
 					varToEvaluate: 'organ',
-					options: TNMOptions,
+					options: tnmOptions,
 				},
 				{
 					label: 'N',
 					input_type: InputTypeEnum.CONDITIONAL,
 					name: 'nodule',
 					varToEvaluate: 'organ',
-					options: TNMOptions,
+					options: tnmOptions,
 				},
 				{
 					label: 'M',
 					input_type: InputTypeEnum.CONDITIONAL,
 					name: 'metastasis',
 					varToEvaluate: 'organ',
-					options: TNMOptions,
+					options: tnmOptions,
+				},
+			],
+			[
+				{
+					label: 'Estadio',
+					input_type: InputTypeEnum.CONDITIONAL,
+					name: 'cancerStage',
+					varToEvaluate: 'organ',
+					options: tnmOptions,
 				},
 			],
 			[
