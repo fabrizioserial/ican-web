@@ -455,7 +455,7 @@ export const tnmOptions = {
 			},
 		},
 	},
-	Gastrico: {
+	Estómago: {
 		tumor: {
 			TX: 'TX',
 			T0: 'T0',
@@ -532,7 +532,7 @@ export const tnmOptions = {
 			},
 		},
 	},
-	Higado: {
+	Hígado: {
 		tumor: {
 			TX: 'TX',
 			T0: 'T0',
@@ -832,7 +832,7 @@ export const tnmOptions = {
 			},
 		},
 	},
-	Esofago: {
+	Esófago: {
 		tumor: {
 			TX: 'TX',
 			T0: 'T0',
@@ -990,7 +990,7 @@ export const tnmOptions = {
 			},
 		},
 	},
-	Pancreas: {
+	Páncreas: {
 		tumor: {
 			TX: 'TX',
 			T0: 'T0',

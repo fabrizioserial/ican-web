@@ -243,7 +243,16 @@ const InputTypeBuilder = (
 				/>
 			);
 		case InputTypeEnum.ACTIONFIELD:
-			return <></>;
+			return (
+				<ActionInputField
+					key={index}
+					values={values}
+					index={index}
+					label={properties.label}
+					classname={properties.classname}
+					handleClick={handleClick}
+				/>
+			);
 		default:
 			return (
 				<StyledBox

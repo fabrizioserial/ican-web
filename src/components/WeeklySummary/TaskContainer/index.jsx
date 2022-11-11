@@ -19,11 +19,11 @@ const TaskContainer = ({ quantity, title, color, progress = 0, icon }) => {
 				break;
 			case 'pink':
 				setColors({
-					background: 'oncoLightPink',
-					colorBar: 'oncoLightPink2',
-					mainColor: 'oncoPink',
-					titleColor: 'oncoPinkTitle',
-					subtitleColor: 'oncoPinkSubtitle',
+					background: 'oncoLightBlue',
+					colorBar: 'oncoLightBlue2',
+					mainColor: 'oncoBlue',
+					titleColor: 'oncoBlueTitle',
+					subtitleColor: 'oncoBlueSubtitle',
 				});
 				break;
 			case 'orange':

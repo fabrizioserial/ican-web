@@ -69,6 +69,7 @@ export const patientApi = api.injectEndpoints({
 				body: body,
 				method: 'PATCH',
 			}),
+			invalidatesTags: ['UserList'],
 		}),
 		getTreatmentById: builder.query({
 			query: ({ reportId }) => ({

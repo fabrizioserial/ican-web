@@ -53,7 +53,6 @@ const PollResultsScreen = () => {
 	useEffect(() => {
 		if (dataPollTableResults || dataPollResults) {
 			let finalArray = [];
-			console.log(dataPollTableResults, dataPollResults);
 			finalArray = finalArray.concat(
 				(dataPollTableResults ?? dataPollResults).reports.dailyReports.map(
 					(item) => ({

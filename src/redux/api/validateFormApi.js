@@ -46,6 +46,13 @@ export const validateFormApi = api.injectEndpoints({
 				body: setBacks,
 			}),
 		}),
+		setBiomarker: builder.mutation({
+			query: (biomarker) => ({
+				url: '/api/medical-history/biomarker',
+				method: 'POST',
+				body: biomarker,
+			}),
+		}),
 		setTreatmentForm: builder.mutation({
 			query: (treatment) => ({
 				url: '/api/treatment',
@@ -77,6 +84,7 @@ export const {
 	useLazyGetCancerSubTypeQuery,
 	useGetCancerMedicationQuery,
 	useSetPatientFormMutation,
+	useSetBiomarkerMutation,
 	useSetSetbacksMutation,
 	useSetTreatmentFormMutation,
 	useUpdateValidatePatientMutation,
@@ -90,6 +98,7 @@ export const {
 		getCancerSubType,
 		getCancerMedication,
 		setPatientForm,
+		setBiomarker,
 		setSetbacks,
 		setTreatmentForm,
 		updateValidatePatient,

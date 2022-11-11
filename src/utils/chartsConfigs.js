@@ -415,6 +415,7 @@ export const DailyColumnChartConfig = (data, total) => {
 		return aux;
 	};
 	return {
+		isEmpty: !Object.values(data).find((a) => a[1]),
 		series: [
 			{
 				data: dataAux(),

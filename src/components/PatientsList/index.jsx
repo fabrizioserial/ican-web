@@ -12,9 +12,11 @@ import {
 	useGetFixedPatientsQuery,
 	usePatientsListQuery,
 } from '../../redux/api/listApi';
+import { useNavigate } from 'react-router';
 
 const PatientsList = () => {
 	const theme = useTheme();
+	const navigate = useNavigate();
 	const { data, isLoading } = usePatientsListQuery({ skip: 0, take: 9 });
 
 	// const { data, isLoading, isSuccess } = useGetFixedPatientsQuery();
@@ -94,7 +96,7 @@ const PatientsList = () => {
 									))}
 					</StyledBox>
 					{data?.patients?.length > 9 && (
-						<StyledButtonMore onClick={() => console.log('asd')}>
+						<StyledButtonMore onClick={() => navigate('/my-patients')}>
 							Ver más
 						</StyledButtonMore>
 					)}

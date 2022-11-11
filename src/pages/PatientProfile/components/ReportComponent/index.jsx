@@ -44,8 +44,6 @@ const ReportComponent = () => {
 		}
 	}, [dataPollResults, isSuccessPollResults]);
 
-	console.log(pollResults);
-
 	return (
 		<Card
 			title={'Últimos reportes'}

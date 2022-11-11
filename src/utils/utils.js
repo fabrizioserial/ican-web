@@ -62,6 +62,7 @@ export const actionTypeEnum = {
 	ADD_TREATMENT: 'ADD_TREATMENT',
 	ADD_MEDICATION_TREATMENT_MODAL: 'ADD_MEDICATION_TREATMENT_MODAL',
 	ADD_MEDICATION: 'ADD_MEDICATION',
+	FINISH_TREATMENT: 'FINISH_TREATMENT',
 	DELETE_MEDICATION: 'DELETE_MEDICATION',
 };
 
@@ -374,25 +375,25 @@ export const getIconByCategory = (category) => {
 
 export const textColorStatus = {
 	Accepted: '#1D6535',
-	inactive: '#5F5F5F',
+	inactive: '#5784F7',
 	Pending: '#EA8053',
 };
 
 export const pollTextColorStatus = {
 	Completed: '#1D6535',
 	Incomplete: '#EA8053',
-	Empty: '#5F5F5F',
+	Empty: '#5784F7',
 };
 
 export const backgroundPollColorStatus = {
 	Completed: '#BEE8CF',
-	Empty: '#C4C4C4',
+	Empty: '#DFE8FF',
 	Incomplete: '#F9E0D6',
 };
 
 export const backgroundColorStatus = {
 	Accepted: '#BEE8CF',
-	innactive: '#C4C4C4',
+	innactive: '#DFE8FF',
 	Pending: '#F9E0D6',
 };
 
@@ -527,7 +528,7 @@ export const translateQuestion = (type) => {
 
 export const pollBackgroundColorStatus = {
 	completed: '#BEE8CF',
-	incomplete: '#C4C4C4',
+	incomplete: '#DFE8FF',
 	unstarted: '#F9E0D6',
 };
 

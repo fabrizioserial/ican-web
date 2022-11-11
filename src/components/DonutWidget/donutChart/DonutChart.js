@@ -1,6 +1,6 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
-import { StyledBox } from '../../../common/styledCommonComponents';
+import { StyledBox, StyledP } from '../../../common/styledCommonComponents';
 import { useCancerStatisticsQuery } from '../../../redux/api/homeApi';
 import { CapitalizeText } from '../../../utils/utils';
 
@@ -102,7 +102,30 @@ const DonutChart = () => {
 				color: '#fff !important',
 			}}
 		>
-			<Chart options={options} series={series} type="donut" width={350} />
+			{data?.tumors.map((tum) => CapitalizeText(tum.organ)).length === 0 ? (
+				<StyledBox
+					css={{
+						height: '100%',
+						width: '100%',
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						backgroundColor: 'white',
+					}}
+				>
+					<StyledP
+						css={{
+							maxWidth: '200px',
+							textAlign: 'center',
+							color: '#A3A3A3',
+						}}
+					>
+						No se encontraron registros suficientes
+					</StyledP>
+				</StyledBox>
+			) : (
+				<Chart options={options} series={series} type="donut" width={350} />
+			)}
 		</StyledBox>
 	);
 };
