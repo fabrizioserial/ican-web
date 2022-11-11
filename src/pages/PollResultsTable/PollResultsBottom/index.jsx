@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TableCell, TableRow } from '@material-ui/core';
 import { StyledBox } from '../../../common/styledCommonComponents';
 import ArrowLeftIcon from '../../../assets/ArrowLeftIcon';
 import ArrowRightIcon from '../../../assets/ArrowRightIcon';
 
-const PollResultsBottom = ({ currentPage = 1, maxPages = 10 }) => {
-	const handleMoveToNextPage = () => {};
-	const handleMoveToPreviousPage = () => {};
+const PollResultsBottom = ({
+	handleChangePage,
+	currentPage = '',
+	maxPage = '',
+}) => {
+	const handleMoveToNextPage = () => {
+		handleChangePage(true);
+	};
+	const handleMoveToPreviousPage = () => {
+		handleChangePage(false);
+	};
 	return (
 		<StyledBox
 			css={{
@@ -31,6 +39,7 @@ const PollResultsBottom = ({ currentPage = 1, maxPages = 10 }) => {
 					alignItems: 'center',
 					justifyContent: 'center',
 					cursor: 'pointer',
+					opacity: currentPage === 1 ? 0 : 1,
 				}}
 				onClick={handleMoveToPreviousPage}
 				className={'withBoxShadow'}
@@ -38,7 +47,7 @@ const PollResultsBottom = ({ currentPage = 1, maxPages = 10 }) => {
 				<ArrowLeftIcon />
 			</StyledBox>
 			<StyledBox css={{ fontSize: '11px' }}>
-				Pagina {currentPage} de {maxPages}
+				Pagina {currentPage} de {maxPage}
 			</StyledBox>
 			<StyledBox
 				css={{
@@ -50,6 +59,7 @@ const PollResultsBottom = ({ currentPage = 1, maxPages = 10 }) => {
 					alignItems: 'center',
 					justifyContent: 'center',
 					cursor: 'pointer',
+					opacity: currentPage < maxPage ? 1 : 0,
 				}}
 				onClick={handleMoveToNextPage}
 				className={'withBoxShadow'}

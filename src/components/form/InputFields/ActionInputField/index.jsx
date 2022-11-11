@@ -8,11 +8,16 @@ import {
 	addTreatment,
 	addTreatmentMedication,
 } from '../../../../redux/slices/formSlice';
-import { actionTypeEnum } from '../../../../utils/utils';
+import { actionTypeEnum, ModalTypeEnum } from '../../../../utils/utils';
 import { addNewMedication } from '../../../../redux/slices/treatmentSlice';
+import { useNavigate, useParams } from 'react-router';
+import { setModalOpen } from '../../../../redux/slices/utilsSlice';
+import classNames from 'classnames';
 
-const ActionInputField = ({ index, label, handleClick }) => {
+const ActionInputField = ({ index, label, handleClick, values, classname }) => {
 	const dispatch = useDispatch();
+	const navigation = useNavigate();
+	const { patientId } = useParams();
 	const onClick = () => {
 		switch (handleClick()) {
 			case actionTypeEnum.ADD_BIOMARKER:
@@ -28,7 +33,18 @@ const ActionInputField = ({ index, label, handleClick }) => {
 				dispatch(addTreatmentMedication());
 				break;
 			case actionTypeEnum.ADD_MEDICATION_TREATMENT_MODAL:
-				dispatch(addNewMedication());
+				dispatch(addNewMedication({ edited: true }));
+				break;
+			case actionTypeEnum.FINISH_TREATMENT:
+				navigation(`/profile/${patientId}`);
+				dispatch(
+					setModalOpen({
+						open: true,
+						type: ModalTypeEnum.TREATMENT_MODAL,
+						id: values.treatmentId,
+						patientId: patientId,
+					}),
+				);
 				break;
 			default:
 				handleClick();
@@ -38,11 +54,11 @@ const ActionInputField = ({ index, label, handleClick }) => {
 
 	return (
 		<Button
-			className="action"
+			className={classNames('', { action: !classname, rejected: classname })}
 			key={index}
 			text={label}
 			disabled={true}
-			icon={<PlusCircelIcon />}
+			icon={classname ? <></> : <PlusCircelIcon />}
 			onClick={onClick}
 		/>
 	);

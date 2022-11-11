@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { StyledBox } from '../../../common/styledCommonComponents';
+import { StyledBox, StyledP } from '../../../common/styledCommonComponents';
 import { TableCell, TableRow } from '@material-ui/core';
 
 export const StyledBodyRow = styled(TableRow)`
@@ -20,9 +20,21 @@ export const StyledBodyCell = styled(TableCell)`
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	overflow-y: hidden;
-
+	color: #5f5f5f;
 	box-sizing: border-box;
 	max-width: ${(props) => props.width} !important;
 	min-width: ${(props) => props.width} !important;
 	width: ${(props) => props.width} !important;
+`;
+
+export const StyledCellP = styled(StyledP)`
+	width: 73px;
+	height: 13px;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 11px;
+	line-height: 13px;
+	display: flex;
+	align-items: center;
+	color: #5f5f5f;
 `;

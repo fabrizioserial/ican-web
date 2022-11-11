@@ -17,7 +17,7 @@ export const withModal = (Component) => (props) => {
 	const dispatch = useDispatch();
 
 	const handleOnClose = () => {
-		dispatch(closeModal(''));
+		dispatch(closeModal());
 	};
 
 	const renderModal = () => {

@@ -8,6 +8,7 @@ export const homeApi = api.injectEndpoints({
 		}),
 		patientsReport: builder.query({
 			query: () => ({ url: '/api/home/patients-statistics', method: 'GET' }),
+			providesTags: ['PatientsStatistics'],
 		}),
 		weeklyQuestions: builder.query({
 			query: () => ({
@@ -18,6 +19,7 @@ export const homeApi = api.injectEndpoints({
 			query: () => ({
 				url: '/api/cancer/statistics',
 			}),
+			providesTags: ['CancerStatistics'],
 		}),
 		dailySummaryStatistics: builder.query({
 			query: () => ({
@@ -28,6 +30,7 @@ export const homeApi = api.injectEndpoints({
 			query: () => ({
 				url: '/api/home/patients-table',
 			}),
+			providesTags: ['UserList'],
 		}),
 		weeklyStatistics: builder.query({
 			query: () => ({

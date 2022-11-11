@@ -11,13 +11,6 @@ const baseQuery = fetchBaseQuery({
 			: prodUrl.BASE_URL,
 	prepareHeaders: (headers) => {
 		const token = store.getState()?.authSlice?.accessToken;
-		console.log(
-			process.env.REACT_APP_DEVELOPMENT_MODE,
-			process.env.REACT_APP_DEVELOPMENT_MODE === 'dev'
-				? devUrl.BASE_URL
-				: prodUrl.BASE_URL,
-		);
-
 		if (token) {
 			headers.set('authorization', `Bearer ${token}`);
 		}

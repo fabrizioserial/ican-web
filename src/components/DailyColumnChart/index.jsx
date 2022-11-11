@@ -1,7 +1,11 @@
 import React, { useMemo } from 'react';
 import Chart from 'react-apexcharts';
 import ExclamamtionIcon from '../../assets/ExclamamtionIcon';
-import { StyledBox, StyledH3 } from '../../common/styledCommonComponents';
+import {
+	StyledBox,
+	StyledH3,
+	StyledP,
+} from '../../common/styledCommonComponents';
 import { DailyColumnChartConfig } from '../../utils/chartsConfigs';
 import Card from '../Card';
 import { StyledCircularProgress } from '../CustomCircularProgress/styles';
@@ -31,6 +35,27 @@ const DailyColumnChart = ({ data, isLoading }) => {
 			>
 				{isLoading ? (
 					<StyledCircularProgress size={50} />
+				) : options.isEmpty ? (
+					<StyledBox
+						css={{
+							height: '100%',
+							width: '100%',
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'center',
+							backgroundColor: 'white',
+						}}
+					>
+						<StyledP
+							css={{
+								maxWidth: '200px',
+								textAlign: 'center',
+								color: '#A3A3A3',
+							}}
+						>
+							No se encontraron registros suficientes
+						</StyledP>
+					</StyledBox>
 				) : (
 					<StyledBox
 						css={{

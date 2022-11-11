@@ -3,15 +3,44 @@ import { useDispatch } from 'react-redux';
 import TrashIcon from '../../../../assets/TrashIcon';
 import IconButton from '../../../../common/components/iconButton';
 import { StyledBox } from '../../../../common/styledCommonComponents';
-import { useGetBiomarkersQuery } from '../../../../redux/api/validateFormApi';
+import {
+	useGetBiomarkersQuery,
+	useGetCancerQuery,
+} from '../../../../redux/api/validateFormApi';
 import { removeBiomarker } from '../../../../redux/slices/formSlice';
 import SelectorInputField from '../SelectorInputField';
 import { useTheme } from 'styled-components';
 import { useLazyGetPatientDataFormQuery } from '../../../../redux/api/patientApi';
+import TextInputField from '../TextInputField';
 
 const optionsEvaluation = {
-	true: 'Positiva',
-	false: 'Negativa',
+	Mutated: {
+		unknown: 'Desconocido',
+		mutated: 'Mutado',
+		normal: 'Normal',
+	},
+	Amplified: {
+		unknown: 'Desconocido',
+		amplified: 'Amplificado',
+		mutated: 'Mutado',
+		normal: 'Normal',
+	},
+	Fusion: {
+		unknown: 'Desconocido',
+		fusion: 'Fusion',
+		normal: 'Normal',
+	},
+	Boolean: {
+		unknown: 'Desconocido',
+		true: 'Positivo',
+		false: 'Negativo',
+	},
+	Stable: {
+		unknown: 'Desconocido',
+		stable: 'Estable',
+		unstable: 'Inestable',
+		normal: 'Normal',
+	},
 };
 
 const BiomarkerField = ({ id, names, values, onChange, type, disabled }) => {
@@ -26,6 +55,8 @@ const BiomarkerField = ({ id, names, values, onChange, type, disabled }) => {
 		useGetBiomarkersQuery();
 	const theme = useTheme();
 
+	const { data: cancerList } = useGetCancerQuery();
+
 	const handleChangeEvaluation = () => {};
 
 	const dispatch = useDispatch();
@@ -37,16 +68,34 @@ const BiomarkerField = ({ id, names, values, onChange, type, disabled }) => {
 	const [_, { data }] = useLazyGetPatientDataFormQuery();
 
 	useEffect(() => {
-		if (isSuccessBio) {
-			let auxBio = [];
-			Object.values(dataBiomarkers).map(
-				(bio) => (auxBio[bio.id] = bio.type),
-			);
+		if (isSuccessBio && cancerList && values.organ) {
+			let auxBio = {};
+			Object.values(dataBiomarkers).forEach((bio) => {
+				if (
+					bio.cancerBiomarkers.find(
+						(organWithCancer) =>
+							organWithCancer.cancerOrgan ===
+							cancerList.find((item) => item.id === values.organ).organ,
+					)
+				) {
+					auxBio = {
+						...auxBio,
+						[bio.id]: {
+							value: bio.id,
+							label: bio.type,
+							answerType: bio.answerType,
+						},
+					};
+				}
+			});
 
-			auxBio[0] = 'Seleccione Biomarcador';
+			auxBio = {
+				...auxBio,
+				0: 'Seleccione Biomarcador',
+			};
 			setOptionsbio(auxBio);
 		}
-	}, [dataBiomarkers, isSuccessBio]);
+	}, [dataBiomarkers, isSuccessBio, values.organ, cancerList]);
 
 	useEffect(() => {
 		if (data) {
@@ -90,15 +139,49 @@ const BiomarkerField = ({ id, names, values, onChange, type, disabled }) => {
 					columnGap: '20px',
 				}}
 			>
-				<SelectorInputField
-					type={type}
-					value={values.evaluation}
-					label={'Evaluación'}
-					name={names.evaluation}
-					onChange={onChange} // onChange gramaje
-					options={optionsEvaluation} // recibe del endpoint
-					disabled={disabled}
-				/>
+				{values.biomarker &&
+					([
+						'Mutated',
+						'Amplified',
+						'Fusion',
+						'Stable',
+						'Boolean',
+					].includes(
+						optionsBio[
+							Object.keys(optionsBio)?.find(
+								(option) => option === values.biomarker,
+							)
+						]?.answerType,
+					) ? (
+						<SelectorInputField
+							type={type}
+							value={values.evaluation}
+							label={'Evaluación'}
+							name={names.evaluation}
+							onChange={onChange} // onChange gramaje
+							options={
+								optionsEvaluation[
+									optionsBio[
+										Object.keys(optionsBio)?.find(
+											(option) => option === values.biomarker,
+										)
+									]?.answerType
+								]
+							} // recibe del endpoint
+							disabled={disabled}
+						/>
+					) : (
+						<TextInputField
+							disabled={disabled}
+							type={'number'}
+							placeholder={'Escriba porcentaje'}
+							value={values.evaluation}
+							label={'Evaluación'}
+							name={names.evaluation}
+							onChange={onChange}
+						/>
+					))}
+
 				{!disabled && (
 					<StyledBox
 						css={{

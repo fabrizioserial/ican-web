@@ -29,7 +29,7 @@ function HomeScreen() {
 					<WidgetPastelStats />
 					<WidgetDailyChart />
 				</StyledBox>
-				<StyledBox css={{ display: 'flex', marginLeft: '50px' }}>
+				<StyledBox css={{ display: 'flex', marginLeft: '35px' }}>
 					<PatientsList />
 				</StyledBox>
 			</StyledBox>

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, current } from '@reduxjs/toolkit';
 import UserIcon from '../../assets/UserIcon';
 import CrossIcon from '../../assets/CrossIcon';
 import BiomarkerIcon from '../../assets/BiomarkerIcon';
@@ -17,6 +17,7 @@ import {
 import { patientApi } from '../api/patientApi';
 import { validateFormApi } from '../api/validateFormApi';
 import { authSlice } from './authSlice';
+import { tnmOptions } from '../../utils/tnm_options';
 
 const initialState = {
 	patients: {
@@ -148,43 +149,34 @@ const initialState = {
 			],
 			[
 				{
-					placeholder: 'Introduzca Expresion del PDL1',
-					type: 'number',
-					max: 100,
-					min: 0,
-					label: 'Expresión de PDL1',
-					input_type: InputTypeEnum.TEXTFIELD,
-					name: 'expresionPDL1',
-				},
-				{
-					label: 'Estadio',
-					input_type: InputTypeEnum.CONDITIONAL,
-					name: 'cancerStage',
-					varToEvaluate: 'organ',
-					options: TNMOptions,
-				},
-			],
-			[
-				{
 					label: 'T',
 					input_type: InputTypeEnum.CONDITIONAL,
 					name: 'tumor',
 					varToEvaluate: 'organ',
-					options: TNMOptions,
+					options: tnmOptions,
 				},
 				{
 					label: 'N',
 					input_type: InputTypeEnum.CONDITIONAL,
 					name: 'nodule',
 					varToEvaluate: 'organ',
-					options: TNMOptions,
+					options: tnmOptions,
 				},
 				{
 					label: 'M',
 					input_type: InputTypeEnum.CONDITIONAL,
 					name: 'metastasis',
 					varToEvaluate: 'organ',
-					options: TNMOptions,
+					options: tnmOptions,
+				},
+			],
+			[
+				{
+					label: 'Estadio',
+					input_type: InputTypeEnum.CONDITIONAL,
+					name: 'cancerStage',
+					varToEvaluate: 'organ',
+					options: tnmOptions,
 				},
 			],
 			[
@@ -244,38 +236,6 @@ const initialState = {
 			],
 		],
 	},
-	// state: {
-	// 	title: 'Estado',
-	// 	icon: <StateIcon />,
-	// 	fields: [
-	// 		[
-	// 			{
-	// 				label: 'Números de Lineas de Tratamiento',
-	// 				type: 'number',
-	// 				input_type: InputTypeEnum.TEXTFIELD,
-	// 				name: 'treatmentLine',
-	// 			},
-	// 			{
-	// 				label: 'Progresión de la Enfermedad',
-	// 				options: {
-	// 					yes: 'Si',
-	// 					no: 'No',
-	// 				},
-	// 				input_type: InputTypeEnum.SELECTOR,
-	// 				name: 'progression',
-	// 			},
-	// 		],
-	// 		[
-	// 			{
-	// 				label: 'Fecha de Progresión',
-	// 				placeholder: 'XX/XX/XX',
-	// 				input_type: InputTypeEnum.DATEFIELD,
-	// 				name: 'load_date',
-	// 				type: 'text',
-	// 			},
-	// 		],
-	// 	],
-	// },
 	treatment: {
 		title: 'Tratamiento',
 		icon: <TreatmentIcon width={30} height={25} />,
@@ -295,6 +255,10 @@ const initialState = {
 		organ: 'no_value',
 		cancerType: 'no_value',
 		cancerSubType: 'no_value',
+		tumor: '',
+		metastasis: '',
+		nodulo: '',
+		cancerStage: '',
 		biomarkers: {
 			biomarkersId: [],
 		},
@@ -545,6 +509,28 @@ export const formSlice = createSlice({
 				state = initialState;
 			})
 			.addMatcher(
+				validateFormApi.endpoints.setBiomarker.matchFulfilled,
+				(state, action) => {
+					const currentState = current(state);
+					let newField = currentState.biomarkers.fields.map((column) =>
+						column.map((field) => ({ ...field, disabled: true })),
+					);
+
+					state.biomarkers.fields = newField;
+				},
+			)
+			.addMatcher(
+				validateFormApi.endpoints.setSetbacks.matchFulfilled,
+				(state, action) => {
+					const currentState = current(state);
+					let newField = currentState.setbacks.fields.map((column) =>
+						column.map((field) => ({ ...field, disabled: true })),
+					);
+
+					state.setbacks.fields = newField;
+				},
+			)
+			.addMatcher(
 				patientApi.endpoints.getPatientDataForm.matchFulfilled,
 				(state, action) => {
 					const accepted = action.payload.status === 'Accepted';
@@ -702,6 +688,17 @@ export const formSlice = createSlice({
 											disabled: true,
 										},
 									],
+									[
+										{
+											label: 'Finalizar tratamiento',
+											type: 'text',
+											input_type: InputTypeEnum.ACTIONFIELD,
+											classname: 'rejected',
+											icon: <PlusCircleIcon />,
+											handleClick: () =>
+												actionTypeEnum.FINISH_TREATMENT,
+										},
+									],
 							  ]
 							: [
 									[
@@ -818,24 +815,21 @@ export const formSlice = createSlice({
 							};
 						});
 
-						state.biomarkers.fields = [...aux];
+						state.biomarkers.fields = [
+							...aux,
+							...state.biomarkers.fields,
+						];
 
 						state.values = {
 							...state.values,
 							[`biomarker1`]: action.payload.biomarkers[0].id,
 							[`evaluation1`]: action.payload.biomarkers[0].evaluation,
 						};
-
-						// console.log(state.values)
 					}
 
 					if (action.payload.setbacks?.length > 0) {
-						state.setbacks.fields = [];
+						let setbackstoSet = [];
 						action.payload.setbacks.forEach((setback, index) => {
-							// const setbacks = state.setbacks.fields.slice(
-							// 	0,
-							// 	state.setbacks.fields.length - 1,
-							// );
 							const newId = uuidv4();
 							const setbacksToAdd = {
 								id: newId,
@@ -844,10 +838,7 @@ export const formSlice = createSlice({
 								disabled: true,
 							};
 
-							state.setbacks.fields = [
-								...state.setbacks.fields,
-								[setbacksToAdd],
-							];
+							setbackstoSet = [...setbackstoSet, [setbacksToAdd]];
 
 							state.values = {
 								...state.values,
@@ -859,18 +850,16 @@ export const formSlice = createSlice({
 									action.payload.setbacks[index].diagnosisDate,
 							};
 						});
+						state.setbacks.fields = [
+							...setbackstoSet,
+							...state.setbacks.fields,
+						];
 					} else {
 						state.values.setbacks = {
 							...state.values.setbacks,
 							setbacksId: [],
 						};
 					}
-					// console.log(action.payload)
-					// console.log(action.payload.biomarkers ? console.log("tiene bio") : console.log("no tiene"))
-					// action.payload.biomarkers && formSlice.caseReducers.addBiomarkers()
-					//     console.log(action.payload.diseases ? console.log("tiene bdiseaseso") : console.log("no tiene"))
-					// console.log(action.payload.otherMedications ? console.log("tiene med") : console.log("no tiene"))
-					// console.log(action.payload.setbacks ? console.log("tiene setb") : console.log("no tiene"))
 				},
 			)
 			.addMatcher(

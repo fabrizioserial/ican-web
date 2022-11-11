@@ -4,7 +4,7 @@ import { StyledBox } from '../../../../../common/styledCommonComponents';
 export const StyledTreatmentItemContainer = styled(StyledBox)`
 	overflow-y: auto;
 	margin: 5px 5px 10px 10px;
-	height: 560px;
+	height: 100%;
 	&::-webkit-scrollbar {
 		width: 0px;
 	}

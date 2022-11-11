@@ -11,8 +11,8 @@ const WidgetPastelStats = () => {
 				height: '300px',
 				display: 'flex',
 				flexDirection: 'row',
-				justifyContent: 'space-between',
 				marginBottom: '35px',
+				justifyContent: 'space-between',
 			}}
 		>
 			<PatientsInTreatments patientsInTreatment={50} totalPatients={70} />

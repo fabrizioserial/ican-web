@@ -122,6 +122,7 @@ const InputTypeBuilder = (
 					id={properties.id}
 					type={properties.type}
 					values={{
+						...values,
 						biomarker: values[`${properties.names[0]}${properties.id}`],
 						evaluation: values[`${properties.names[1]}${properties.id}`],
 					}}
@@ -242,7 +243,16 @@ const InputTypeBuilder = (
 				/>
 			);
 		case InputTypeEnum.ACTIONFIELD:
-			return <></>;
+			return (
+				<ActionInputField
+					key={index}
+					values={values}
+					index={index}
+					label={properties.label}
+					classname={properties.classname}
+					handleClick={handleClick}
+				/>
+			);
 		default:
 			return (
 				<StyledBox

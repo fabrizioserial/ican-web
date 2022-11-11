@@ -33,6 +33,14 @@ export const ModalTypeEnum = {
 	CONTACT_MODAL: 'CONTACT_MODAL',
 };
 
+export const TreatmentStatusType = {
+	HAS_TREATMENT: 'HAS_TREATMENT',
+	FINISHING_TREATMENT: 'FINISHING_TREATMENT',
+	WITHOUT_TREATMENT: 'WITHOUT_TREATMENT',
+	IS_FINISHED: 'IS_FINISHED',
+	IS_COMPLETED: 'IS_COMPLETED',
+};
+
 export const InputTypeEnum = {
 	BUTTON: 'BUTTON',
 	TEXTFIELD: 'TEXTFIELD',
@@ -54,6 +62,7 @@ export const actionTypeEnum = {
 	ADD_TREATMENT: 'ADD_TREATMENT',
 	ADD_MEDICATION_TREATMENT_MODAL: 'ADD_MEDICATION_TREATMENT_MODAL',
 	ADD_MEDICATION: 'ADD_MEDICATION',
+	FINISH_TREATMENT: 'FINISH_TREATMENT',
 	DELETE_MEDICATION: 'DELETE_MEDICATION',
 };
 
@@ -220,44 +229,74 @@ export const PatientListHeaderConst = [
 		label: ' ',
 		sortId: '',
 		width: '5%',
-		css: { paddingLeft: '30px' },
+		minWidth: '82px',
+		maxWidth: '82px',
+		css: {
+			color: ' #9357f7 !important',
+			fontSize: '12px',
+			paddingLeft: '30px',
+		},
 	},
 	{
 		label: 'Nro de Historial Medico',
 		sortId: 'medicHistoryNumber',
 		width: '12%',
+		minWidth: '147.78px',
+		maxWidth: '147.78px',
+		css: { color: ' #9357f7 !important', fontSize: '12px' },
 	},
 	{
 		label: 'Nombre y Apellido',
 		sortId: 'name',
 		width: '14%',
+		minWidth: '169.95px',
+		maxWidth: '169.95px',
+		css: { color: ' #9357f7 !important', fontSize: '12px' },
 	},
 	{
 		label: 'DNI',
 		sortId: '',
 		width: '14%',
+		minWidth: '169.95px',
+		maxWidth: '169.95px',
+		css: { color: ' #9357f7 !important', fontSize: '12px' },
 	},
 
 	{
 		label: 'Tumor Primario',
 		sortId: 'organ',
 		width: '10%',
+		minWidth: '125.62px',
+		maxWidth: '125.62px',
+		css: { color: ' #9357f7 !important', fontSize: '12px' },
 	},
 	{
 		label: 'Tratamiento',
 		sortId: 'treatment',
 		width: '26%',
+		minWidth: '303.84px',
+		maxWidth: '303.84px',
+		css: { color: ' #9357f7 !important', fontSize: '12px' },
 	},
 	{
 		label: 'Tratamiento de Tumor Primario',
 		sortId: 'tumorTreatment',
 		width: '14%',
+		minWidth: '170.83px',
+		maxWidth: '170.83px',
+		css: { color: ' #9357f7 !important', fontSize: '12px' },
 	},
 	{
 		label: 'Estado',
 		sortId: 'status',
 		width: '5%',
-		css: { paddingRight: '30px' },
+		minWidth: '120.02px',
+		maxWidth: '120.02px',
+		css: {
+			color: ' #9357f7 !important',
+			fontSize: '12px',
+			paddingRight: '30px',
+		},
 	},
 ];
 
@@ -336,25 +375,25 @@ export const getIconByCategory = (category) => {
 
 export const textColorStatus = {
 	Accepted: '#1D6535',
-	inactive: '#5F5F5F',
+	inactive: '#5784F7',
 	Pending: '#EA8053',
 };
 
 export const pollTextColorStatus = {
 	Completed: '#1D6535',
 	Incomplete: '#EA8053',
-	Empty: '#5F5F5F',
+	Empty: '#5784F7',
 };
 
 export const backgroundPollColorStatus = {
 	Completed: '#BEE8CF',
-	Empty: '#C4C4C4',
+	Empty: '#DFE8FF',
 	Incomplete: '#F9E0D6',
 };
 
 export const backgroundColorStatus = {
 	Accepted: '#BEE8CF',
-	innactive: '#C4C4C4',
+	innactive: '#DFE8FF',
 	Pending: '#F9E0D6',
 };
 
@@ -489,7 +528,7 @@ export const translateQuestion = (type) => {
 
 export const pollBackgroundColorStatus = {
 	completed: '#BEE8CF',
-	incomplete: '#C4C4C4',
+	incomplete: '#DFE8FF',
 	unstarted: '#F9E0D6',
 };
 
