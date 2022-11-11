@@ -52,6 +52,7 @@ export const validateFormApi = api.injectEndpoints({
 				method: 'POST',
 				body: treatment,
 			}),
+			invalidatesTags: ['TreatmentList'],
 		}),
 		updateValidatePatient: builder.mutation({
 			query: (status) => ({
@@ -59,12 +60,18 @@ export const validateFormApi = api.injectEndpoints({
 				method: 'PATCH',
 				body: status,
 			}),
+			invalidatesTags: [
+				'UserList',
+				'CancerStatistics',
+				'PatientsStatistics',
+			],
 		}),
 	}),
 });
 
 export const {
 	useLazyGetCancerQuery,
+	useGetCancerQuery,
 	useGetBiomarkersQuery,
 	useLazyGetCancerTypeQuery,
 	useLazyGetCancerSubTypeQuery,

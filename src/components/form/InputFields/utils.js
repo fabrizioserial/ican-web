@@ -12,6 +12,7 @@ import MedicationField from './MedicationField';
 import BiomarkerField from './BiomarkersField';
 import SetBacksField from './SetBacksField';
 import ListField from './ListField';
+import MedicationTreatmentField from './MedicationTreatmentField';
 
 export const FormBuilder = (formSqueleton, values, onChangeHandle) => {
 	return formSqueleton?.map((section, index) => (
@@ -41,6 +42,34 @@ export const FormBuilder = (formSqueleton, values, onChangeHandle) => {
 					</StyledBox>
 				))}
 			</StyledBox>
+		</StyledBox>
+	));
+};
+
+export const FormBuilderWithoutHeader = (
+	formSqueleton,
+	values,
+	onChangeHandle,
+) => {
+	return formSqueleton?.map((field, index) => (
+		<StyledBox
+			css={{
+				columnGap: '30px',
+				display: 'flex',
+				padding: '20px 45px',
+				boxSizing: 'border-box',
+			}}
+		>
+			{field?.map((component, index) =>
+				InputTypeBuilder(
+					component?.input_type,
+					index,
+					component,
+					values,
+					onChangeHandle,
+					component?.handleClick,
+				),
+			)}
 		</StyledBox>
 	));
 };
@@ -93,6 +122,7 @@ const InputTypeBuilder = (
 					id={properties.id}
 					type={properties.type}
 					values={{
+						...values,
 						biomarker: values[`${properties.names[0]}${properties.id}`],
 						evaluation: values[`${properties.names[1]}${properties.id}`],
 					}}
@@ -129,6 +159,24 @@ const InputTypeBuilder = (
 		case InputTypeEnum.MEDICATION_ROW:
 			return (
 				<MedicationField
+					key={index}
+					id={properties.id}
+					type={properties.type}
+					values={{
+						medication: values[`${properties.names[0]}${properties.id}`],
+						grammage: values[`${properties.names[1]}${properties.id}`],
+					}}
+					names={{
+						medication: `${properties.names[0]}${properties.id}`,
+						grammage: `${properties.names[1]}${properties.id}`,
+					}}
+					onChange={onChangeHandle}
+					disabled={properties.disabled}
+				/>
+			);
+		case InputTypeEnum.MEDICATION_TREATMENT_ROW:
+			return (
+				<MedicationTreatmentField
 					key={index}
 					id={properties.id}
 					type={properties.type}

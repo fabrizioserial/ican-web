@@ -1,29 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import TrashIcon from '../../../../assets/TrashIcon';
-import IconButton from '../../../../common/components/iconButton';
 import { StyledBox } from '../../../../common/styledCommonComponents';
-import { useGetCancerMedicationQuery } from '../../../../redux/api/validateFormApi';
-import { removeTreatmentMedication } from '../../../../redux/slices/formSlice';
 import SelectorInputField from '../SelectorInputField';
-import { useLazyGetPatientDataFormQuery } from '../../../../redux/api/patientApi';
+import IconButton from '../../../../common/components/iconButton';
+import TrashIcon from '../../../../assets/TrashIcon';
+import React, { useEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
+import { useGetCancerMedicationQuery } from '../../../../redux/api/validateFormApi';
+import { useDispatch } from 'react-redux';
+import { removeTreatmentMedication } from '../../../../redux/slices/formSlice';
 
-const MedicationField = ({ id, names, values, onChange, type, disabled }) => {
-	// pegar directo al endpoint que trae la medicacion y el gramaje
-
-	// crear funciones 1: onchange para gramaje, 2: onChange para medication
-	// argumentos para onChange: names y values
-
+const MedicationTreatmentField = ({
+	id,
+	names,
+	values,
+	onChange,
+	type,
+	disabled,
+}) => {
 	const theme = useTheme();
-
+	const dispatch = useDispatch();
 	const { data: dataCancerMed, isSuccess: isSuccessCancerMed } =
 		useGetCancerMedicationQuery();
 
 	const [optionsMed, setOptionsMed] = useState([]);
 	const [optionsGram, setOptionsGram] = useState([]);
-
-	const [_, { data }] = useLazyGetPatientDataFormQuery();
 
 	useEffect(() => {
 		if (isSuccessCancerMed) {
@@ -52,10 +51,7 @@ const MedicationField = ({ id, names, values, onChange, type, disabled }) => {
 			setOptionsMed(auxOptMed);
 			setOptionsGram(auxOptGram);
 		}
-	}, [dataCancerMed, isSuccessCancerMed, data]);
-
-	// onDelete, usa el dispatch(removeTreatmentMedication(id))
-	const dispatch = useDispatch();
+	}, [dataCancerMed, isSuccessCancerMed]);
 
 	const handleDelete = (id) => {
 		dispatch(removeTreatmentMedication(id));
@@ -102,7 +98,7 @@ const MedicationField = ({ id, names, values, onChange, type, disabled }) => {
 					options={optionsGram[values?.medication] ?? []} // recibe del endpoint
 					disabled={disabled}
 				/>
-				{id !== 1 && (
+				{id !== 1 && !disabled && (
 					<StyledBox
 						css={{
 							backgroundColor: disabled ? theme.oncoGrey : 'transparent',
@@ -120,5 +116,4 @@ const MedicationField = ({ id, names, values, onChange, type, disabled }) => {
 		</StyledBox>
 	);
 };
-
-export default MedicationField;
+export default MedicationTreatmentField;

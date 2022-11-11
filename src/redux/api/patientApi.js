@@ -47,6 +47,7 @@ export const patientApi = api.injectEndpoints({
 				url: `/api/home/patient-treatments/${patientID}`,
 				method: 'GET',
 			}),
+			providesTags: ['TreatmentList'],
 		}),
 		getPollResults: builder.query({
 			query: (userId) => ({
@@ -61,10 +62,19 @@ export const patientApi = api.injectEndpoints({
 				method: 'PATCH',
 			}),
 		}),
+		getTreatmentById: builder.query({
+			query: ({ reportId }) => ({
+				url: `/api/treatment/${reportId}`,
+				method: 'GET',
+			}),
+			invalidatesTags: ['TreatmentList'],
+			keepUnusedDataFor: 0.1,
+		}),
 	}),
 });
 
 export const {
+	useGetTreatmentByIdQuery,
 	useLazyGetPatientDataFormQuery,
 	useLazyGetPatientDataQuery,
 	useGetPatientDataQuery,

@@ -77,23 +77,23 @@ const WeeklySummary = () => {
 						<TaskContainer
 							color={'green'}
 							title={'Completado'}
-							quantity={data.complete}
-							progress={(data.complete / totalAmount) * 100}
+							quantity={data?.complete}
+							progress={(data?.complete / totalAmount) * 100}
 							icon={CheckIcon}
 						/>
 						<TaskContainer
 							color={'pink'}
 							title={'En proceso'}
-							quantity={data.incompleted}
-							progress={(data.incompleted / totalAmount) * 100}
+							quantity={data?.incompleted}
+							progress={(data?.incompleted / totalAmount) * 100}
 							icon={TimeIcon}
 						/>
 
 						<TaskContainer
 							color={'orange'}
 							title={'Sin arrancar'}
-							quantity={totalAmount}
-							progress={(data.empty / totalAmount) * 100}
+							quantity={data?.empty}
+							progress={(data?.empty / totalAmount) * 100}
 							icon={MarkIcon}
 						/>
 					</>

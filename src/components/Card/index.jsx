@@ -52,7 +52,7 @@ const Card = ({ icon, title, children, width, height, align, css }) => {
 			<StyledBox
 				css={{
 					width: '100%',
-					height: 'inherit',
+					height: `calc(${height} - 50px)`,
 					display: 'flex',
 					justifyContent: align,
 					alignItems: 'center',

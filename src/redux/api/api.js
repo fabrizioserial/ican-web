@@ -1,14 +1,16 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { store } from '../store';
-import appInfo from '../../settings.json';
-import authState from '../slices/authSlice';
+import devUrl from '../../settings.json';
+import prodUrl from '../../settings_prod.json';
 
 const baseQuery = fetchBaseQuery({
 	reducerPath: 'generalApi',
-	baseUrl: appInfo.BASE_URL,
+	baseUrl:
+		process.env.REACT_APP_DEVELOPMENT_MODE === 'dev'
+			? devUrl.BASE_URL
+			: prodUrl.BASE_URL,
 	prepareHeaders: (headers) => {
 		const token = store.getState()?.authSlice?.accessToken;
-
 		if (token) {
 			headers.set('authorization', `Bearer ${token}`);
 		}
