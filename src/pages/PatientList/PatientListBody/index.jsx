@@ -58,7 +58,8 @@ const PatientListBody = () => {
 						</StyledCellP>
 					</StyledBodyCell>
 					<StyledBodyCell width={'26%'}>
-						<StyledCellP>
+						<StyledCellP css={{ whiteSpace: "nowrap",
+							textOverflow: "ellipsis", overflow: "hidden", maxWidth:"150px"}}>
 							{bodyItem.treatment}
 						</StyledCellP>
 

@@ -41,6 +41,7 @@ const PollResultsBody = ({ data }) => {
 	};
 
 	function getPage(page) {
+		setPage(page)
 		return data?.slice(page-1,page*2)
 
 	}
