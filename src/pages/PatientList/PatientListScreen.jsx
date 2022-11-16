@@ -63,7 +63,6 @@ const PatientListScreen = () => {
 				<StyledBox
 					as={TableContainer}
 					css={{
-						maxWidth: '100vw',
 						width: 'calc(100vw - 40px)',
 						height: '100%',
 						flex: 1,
