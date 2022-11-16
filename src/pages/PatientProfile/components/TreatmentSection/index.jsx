@@ -7,7 +7,10 @@ import PillIcon from '../../../../assets/PillIcon';
 import PlusCircleIcon from '../../../../assets/PlusCircleIcon';
 import TreatmentItem from './TreatmentItem';
 import { useParams } from 'react-router';
-import { useGetPatientTreatmetsQuery } from '../../../../redux/api/patientApi';
+import {
+	useGetPatientDataQuery,
+	useGetPatientTreatmetsQuery,
+} from '../../../../redux/api/patientApi';
 import _ from 'lodash';
 import { StyledTreatmentItemContainer } from './TreatmentItemContainer';
 import { StyledCircularProgress } from '../../../../components/CustomCircularProgress/styles';
@@ -26,6 +29,9 @@ const TreatmentSection = () => {
 		isLoading: isLoadingTreatment,
 	} = useGetPatientTreatmetsQuery(patientId, { skip: !patientId });
 	const [treatmentsResults, setTreatmentsResults] = useState([]);
+	const { data: patientData } = useGetPatientDataQuery(patientId, {
+		skip: !patientId,
+	});
 
 	useEffect(() => {
 		if (treatmentsData) {
@@ -134,45 +140,47 @@ const TreatmentSection = () => {
 								flexDirection: 'column',
 							}}
 						>
-							<StyledBox
-								css={{
-									boxSizing: 'border-box',
-									width: '100%',
-									height: '31px',
-									background: '#FFFFFF',
-									border: '1px solid #E1D1FC',
-									borderRadius: '20px',
-									marginTop: '15px',
-									padding: '7px 62px',
-									display: 'flex',
-									flexDirection: 'row',
-									columnGap: '5px',
-									alignItems: 'center',
-									cursor: 'pointer',
-									'&:hover': {
-										boxShadow:
-											'0px 4px 24px rgba(214, 203, 252, 0.3)',
-										transition: 'all 0.2s ease-out',
-									},
-								}}
-								onClick={() => openModalNewTreatment()}
-							>
-								<PlusCircleIcon />
-								<StyledP
+							{patientData?.status === 'Accepted' && (
+								<StyledBox
 									css={{
-										fontStyle: 'normal',
-										fontWeight: 400,
-										fontSize: '11px',
+										boxSizing: 'border-box',
+										width: '100%',
+										height: '31px',
+										background: '#FFFFFF',
+										border: '1px solid #E1D1FC',
+										borderRadius: '20px',
+										marginTop: '15px',
+										padding: '7px 62px',
+										display: 'flex',
+										flexDirection: 'row',
+										columnGap: '5px',
 										alignItems: 'center',
-										letterSpacing: '0.05em',
-										textTransform: 'capitalize',
-										color: '#AF7EFF',
-										whiteSpace: 'nowrap',
+										cursor: 'pointer',
+										'&:hover': {
+											boxShadow:
+												'0px 4px 24px rgba(214, 203, 252, 0.3)',
+											transition: 'all 0.2s ease-out',
+										},
 									}}
+									onClick={() => openModalNewTreatment()}
 								>
-									Nuevo Tratamiento
-								</StyledP>
-							</StyledBox>
+									<PlusCircleIcon />
+									<StyledP
+										css={{
+											fontStyle: 'normal',
+											fontWeight: 400,
+											fontSize: '11px',
+											alignItems: 'center',
+											letterSpacing: '0.05em',
+											textTransform: 'capitalize',
+											color: '#AF7EFF',
+											whiteSpace: 'nowrap',
+										}}
+									>
+										Nuevo Tratamiento
+									</StyledP>
+								</StyledBox>
+							)}
 							<StyledBox css={{ height: 'auto' }}>
 								{treatmentsResults
 									?.reverse()

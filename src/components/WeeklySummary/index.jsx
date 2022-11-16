@@ -24,7 +24,12 @@ const WeeklySummary = () => {
 		[data],
 	);
 	const { data: otherComponentData, isLoading: otherComponentLoading } =
-		useFilterPatientQuery('status', { value: 'Pending' });
+		useFilterPatientQuery({
+			column: 'status',
+			params: {
+				value: 'Pending',
+			},
+		});
 
 	return (
 		<StyledCardHome
