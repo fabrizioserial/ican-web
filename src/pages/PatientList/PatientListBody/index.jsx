@@ -18,7 +18,13 @@ const PatientListBody = () => {
 	return (
 		<TableBody>
 			{patients.map((bodyItem) => (
-				<StyledBodyRow onClick={() => navigate(`/profile/${bodyItem.id}`)}>
+				<StyledBodyRow
+					onClick={() =>
+						bodyItem.status === 'Pending'
+							? navigate(`/validate-patient/${bodyItem.id}`)
+							: navigate(`/profile/${bodyItem.id}`)
+					}
+				>
 					<StyledBodyCell width={'5%'} style={{ paddingLeft: '30px' }}>
 						<StyledBox
 							css={{

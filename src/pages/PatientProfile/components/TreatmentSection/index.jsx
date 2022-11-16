@@ -115,7 +115,7 @@ const TreatmentSection = () => {
 				}}
 			>
 				<StyledTreatmentItemContainer>
-					{isLoadingTreatment && (
+					{isLoadingTreatment ? (
 						<StyledBox
 							css={{
 								display: 'flex',
@@ -125,20 +125,6 @@ const TreatmentSection = () => {
 							}}
 						>
 							<StyledCircularProgress />
-						</StyledBox>
-					)}
-					{treatmentsResults?.length === 0 ? (
-						<StyledBox
-							css={{
-								height: '100%',
-								display: 'flex',
-								alignItems: 'center',
-								justifyContent: 'center',
-							}}
-						>
-							<StyledP css={{ color: theme.oncoGrey2 }}>
-								No se encontraron tratamientos
-							</StyledP>
 						</StyledBox>
 					) : (
 						<StyledBox
