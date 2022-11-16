@@ -90,6 +90,8 @@ const Validation = () => {
 	const handleUpdate = () => {
 		let biomarkers = [];
 		let setbacks = [];
+		let treatment = [];
+		let medications = [];
 
 		// Has new biomarkers?
 		if (values.biomarkers.biomarkersId.length > 0) {
@@ -123,6 +125,34 @@ const Validation = () => {
 				];
 			});
 		}
+		if (
+			values.treatment.medicationsIds.length > 0 &&
+			values.treatmentStartDate &&
+			values.estimateFinishDate
+		) {
+			values.treatment.medicationsIds.forEach((id) => {
+				medications = [
+					...medications,
+					{
+						medicationId: values[`medication${id}`],
+						intention: values.intention,
+						grammageId: values[`grammage${id}`],
+					},
+				];
+			});
+			treatment = {
+				medicalHistoryId: values.medicalHistoryId,
+				objective: values.treatmentObjective,
+				tumorTreatment: values.tumorTreatment,
+				// treatmentLine: values.treatmentLine ?? 1,
+				medications: medications,
+				startDate: values.treatmentStartDate,
+				estimateFinishDate: values.estimateFinishDate,
+			};
+		}
+
+		treatment.medications.length > 0 && setTreatmentForm(treatment); // listo
+
 		setbacks && setbacks.map((item) => setSetbacks(item));
 		biomarkers && biomarkers.map((biomarker) => postBiomarkers(biomarker));
 	};
