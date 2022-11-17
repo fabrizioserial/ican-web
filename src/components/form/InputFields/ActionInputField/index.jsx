@@ -16,7 +16,6 @@ import classNames from 'classnames';
 
 const ActionInputField = ({ index, label, handleClick, values, classname }) => {
 	const dispatch = useDispatch();
-	const navigation = useNavigate();
 	const { patientId } = useParams();
 	const onClick = () => {
 		switch (handleClick()) {
@@ -36,7 +35,6 @@ const ActionInputField = ({ index, label, handleClick, values, classname }) => {
 				dispatch(addNewMedication({ edited: true }));
 				break;
 			case actionTypeEnum.FINISH_TREATMENT:
-				navigation(`/profile/${patientId}`);
 				dispatch(
 					setModalOpen({
 						open: true,

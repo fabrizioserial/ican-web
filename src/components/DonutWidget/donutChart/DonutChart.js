@@ -40,8 +40,9 @@ const DonutChart = () => {
 				return [
 					seriesName,
 					'  ',
-					(opts.w.globals.series[opts.seriesIndex] / data.total) * 100 +
-						'%',
+					Math.trunc(
+						(opts.w.globals.series[opts.seriesIndex] / data.total) * 100,
+					) + '%',
 				];
 			},
 			labels: {
