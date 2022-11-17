@@ -94,7 +94,7 @@ const Validation = () => {
 		let medications = [];
 
 		// Has new biomarkers?
-		if (values.biomarkers.biomarkersId.length > 0) {
+		if (values.biomarkers?.biomarkersId?.length > 0) {
 			values.biomarkers.biomarkersId.forEach((id) => {
 				biomarkers = [
 					...biomarkers,
@@ -108,7 +108,7 @@ const Validation = () => {
 		}
 
 		// Has new set backs?
-		if (values.setbacks.setbacksId.length > 0) {
+		if (values.setbacks?.setbacksId?.length > 0) {
 			values.setbacks.setbacksId?.forEach((setbackId) => {
 				setbacks = [
 					...setbacks,
@@ -126,7 +126,7 @@ const Validation = () => {
 			});
 		}
 		if (
-			values.treatment.medicationsIds.length > 0 &&
+			values?.treatment?.medicationsIds?.length > 0 &&
 			values.treatmentStartDate &&
 			values.estimateFinishDate
 		) {
@@ -172,7 +172,7 @@ const Validation = () => {
 			diagnosisDate: values.diagnosisDate,
 		};
 
-		values.biomarkers.biomarkersId.forEach((id) => {
+		values.biomarkers?.biomarkersId?.forEach((id) => {
 			biomarkers = [
 				...biomarkers,
 				{
